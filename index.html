@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ระบบจัดตารางสอน</title>
+<style>
+  html, body, #root { margin: 0; padding: 0; min-height: 100vh; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script>
+  // ==========================================================
+  // ตัวจำลอง window.storage ด้วย localStorage ของเบราว์เซอร์
+  //
+  // ไฟล์นี้เดิมสร้างในสภาพแวดล้อม Claude Artifacts ซึ่งมี API
+  // window.storage สำหรับบันทึกข้อมูลถาวรให้อัตโนมัติ (เฉพาะที่นั่น)
+  // เมื่อนำมารันบนเว็บของตัวเอง ต้องจำลอง API หน้าตาเดียวกันขึ้นมาเอง
+  // โดยข้อมูลจะถูกเก็บไว้ใน localStorage ของเบราว์เซอร์เครื่องนั้นๆ แทน
+  // (พฤติกรรมเดียวกับ window.storage จริง: get คีย์ที่ไม่มีค่าจะ throw
+  // ไม่ใช่ return null — โค้ดแอปจับ error ส่วนนี้ไว้อยู่แล้ว)
+  // ==========================================================
+  window.storage = {
+    get: async (key) => {
+      const raw = window.localStorage.getItem(key);
+      if (raw === null) throw new Error('key not found: ' + key);
+      return { key, value: raw, shared: false };
+    },
+    set: async (key, value) => {
+      try {
+        window.localStorage.setItem(key, value);
+        return { key, value, shared: false };
+      } catch (e) {
+        console.error('localStorage set failed', e);
+        return null;
+      }
+    },
+    delete: async (key) => {
+      window.localStorage.removeItem(key);
+      return { key, deleted: true, shared: false };
+    },
+    list: async (prefix) => {
+      const keys = Object.keys(window.localStorage).filter(k => !prefix || k.startsWith(prefix));
+      return { keys, prefix: prefix || null, shared: false };
+    }
+  };
+</script>
+
+<script src="bundle.js"></script>
+</body>
+</html>
