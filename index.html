@@ -1,53 +1,29 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ระบบจัดตารางสอน</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ระบบจัดตารางเรียนและตารางสอน</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  html, body, #root { margin: 0; padding: 0; min-height: 100vh; }
+  html, body { margin: 0; padding: 0; background: #ECEEF3; }
+  #root { min-height: 100vh; }
+  /* Minimal utility classes the app uses for icon sizing (subset of Tailwind's scale) */
+  .w-3{width:.75rem} .h-3{height:.75rem}
+  .w-3\.5{width:.875rem} .h-3\.5{height:.875rem}
+  .w-4{width:1rem} .h-4{height:1rem}
+  .w-5{width:1.25rem} .h-5{height:1.25rem}
+  .w-6{width:1.5rem} .h-6{height:1.5rem}
+  .animate-spin{animation:tt-spin 1s linear infinite}
+  @keyframes tt-spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
 </style>
 </head>
 <body>
 <div id="root"></div>
-
-<script>
-  // ==========================================================
-  // ตัวจำลอง window.storage ด้วย localStorage ของเบราว์เซอร์
-  //
-  // ไฟล์นี้เดิมสร้างในสภาพแวดล้อม Claude Artifacts ซึ่งมี API
-  // window.storage สำหรับบันทึกข้อมูลถาวรให้อัตโนมัติ (เฉพาะที่นั่น)
-  // เมื่อนำมารันบนเว็บของตัวเอง ต้องจำลอง API หน้าตาเดียวกันขึ้นมาเอง
-  // โดยข้อมูลจะถูกเก็บไว้ใน localStorage ของเบราว์เซอร์เครื่องนั้นๆ แทน
-  // (พฤติกรรมเดียวกับ window.storage จริง: get คีย์ที่ไม่มีค่าจะ throw
-  // ไม่ใช่ return null — โค้ดแอปจับ error ส่วนนี้ไว้อยู่แล้ว)
-  // ==========================================================
-  window.storage = {
-    get: async (key) => {
-      const raw = window.localStorage.getItem(key);
-      if (raw === null) throw new Error('key not found: ' + key);
-      return { key, value: raw, shared: false };
-    },
-    set: async (key, value) => {
-      try {
-        window.localStorage.setItem(key, value);
-        return { key, value, shared: false };
-      } catch (e) {
-        console.error('localStorage set failed', e);
-        return null;
-      }
-    },
-    delete: async (key) => {
-      window.localStorage.removeItem(key);
-      return { key, deleted: true, shared: false };
-    },
-    list: async (prefix) => {
-      const keys = Object.keys(window.localStorage).filter(k => !prefix || k.startsWith(prefix));
-      return { keys, prefix: prefix || null, shared: false };
-    }
-  };
-</script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.3.1/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.3.1/umd/react-dom.production.min.js"></script>
 <script src="bundle.js"></script>
 </body>
 </html>
