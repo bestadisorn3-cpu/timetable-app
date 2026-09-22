@@ -1,34 +1,2246 @@
-(()=>{var Yg=Object.create;var Tf=Object.defineProperty;var Jg=Object.getOwnPropertyDescriptor;var Rg=Object.getOwnPropertyNames;var ex=Object.getPrototypeOf,ax=Object.prototype.hasOwnProperty;var Kt=(e,a)=>()=>{try{return a||e((a={exports:{}}).exports,a),a.exports}catch(t){throw a=0,t}};var tx=(e,a,t,l)=>{if(a&&typeof a=="object"||typeof a=="function")for(let r of Rg(a))!ax.call(e,r)&&r!==t&&Tf(e,r,{get:()=>a[r],enumerable:!(l=Jg(a,r))||l.enumerable});return e};var Eo=(e,a,t)=>(t=e!=null?Yg(ex(e)):{},tx(a||!e||!e.__esModule?Tf(t,"default",{value:e,enumerable:!0}):t,e));var jf=Kt(V=>{"use strict";var zl=Symbol.for("react.element"),ox=Symbol.for("react.portal"),lx=Symbol.for("react.fragment"),rx=Symbol.for("react.strict_mode"),nx=Symbol.for("react.profiler"),sx=Symbol.for("react.provider"),ux=Symbol.for("react.context"),dx=Symbol.for("react.forward_ref"),ix=Symbol.for("react.suspense"),fx=Symbol.for("react.memo"),cx=Symbol.for("react.lazy"),Af=Symbol.iterator;function px(e){return e===null||typeof e!="object"?null:(e=Af&&e[Af]||e["@@iterator"],typeof e=="function"?e:null)}var Ef={isMounted:function(){return!1},enqueueForceUpdate:function(){},enqueueReplaceState:function(){},enqueueSetState:function(){}},Of=Object.assign,zf={};function Oo(e,a,t){this.props=e,this.context=a,this.refs=zf,this.updater=t||Ef}Oo.prototype.isReactComponent={};Oo.prototype.setState=function(e,a){if(typeof e!="object"&&typeof e!="function"&&e!=null)throw Error("setState(...): takes an object of state variables to update or a function which returns an object of state variables.");this.updater.enqueueSetState(this,e,a,"setState")};Oo.prototype.forceUpdate=function(e){this.updater.enqueueForceUpdate(this,e,"forceUpdate")};function Uf(){}Uf.prototype=Oo.prototype;function wu(e,a,t){this.props=e,this.context=a,this.refs=zf,this.updater=t||Ef}var bu=wu.prototype=new Uf;bu.constructor=wu;Of(bu,Oo.prototype);bu.isPureReactComponent=!0;var Mf=Array.isArray,qf=Object.prototype.hasOwnProperty,Pu={current:null},Hf={key:!0,ref:!0,__self:!0,__source:!0};function _f(e,a,t){var l,r={},s=null,u=null;if(a!=null)for(l in a.ref!==void 0&&(u=a.ref),a.key!==void 0&&(s=""+a.key),a)qf.call(a,l)&&!Hf.hasOwnProperty(l)&&(r[l]=a[l]);var c=arguments.length-2;if(c===1)r.children=t;else if(1<c){for(var f=Array(c),h=0;h<c;h++)f[h]=arguments[h+2];r.children=f}if(e&&e.defaultProps)for(l in c=e.defaultProps,c)r[l]===void 0&&(r[l]=c[l]);return{$$typeof:zl,type:e,key:s,ref:u,props:r,_owner:Pu.current}}function mx(e,a){return{$$typeof:zl,type:e.type,key:a,ref:e.ref,props:e.props,_owner:e._owner}}function Nu(e){return typeof e=="object"&&e!==null&&e.$$typeof===zl}function hx(e){var a={"=":"=0",":":"=2"};return"$"+e.replace(/[=:]/g,function(t){return a[t]})}var Bf=/\/+/g;function ku(e,a){return typeof e=="object"&&e!==null&&e.key!=null?hx(""+e.key):a.toString(36)}function pn(e,a,t,l,r){var s=typeof e;(s==="undefined"||s==="boolean")&&(e=null);var u=!1;if(e===null)u=!0;else switch(s){case"string":case"number":u=!0;break;case"object":switch(e.$$typeof){case zl:case ox:u=!0}}if(u)return u=e,r=r(u),e=l===""?"."+ku(u,0):l,Mf(r)?(t="",e!=null&&(t=e.replace(Bf,"$&/")+"/"),pn(r,a,t,"",function(h){return h})):r!=null&&(Nu(r)&&(r=mx(r,t+(!r.key||u&&u.key===r.key?"":(""+r.key).replace(Bf,"$&/")+"/")+e)),a.push(r)),1;if(u=0,l=l===""?".":l+":",Mf(e))for(var c=0;c<e.length;c++){s=e[c];var f=l+ku(s,c);u+=pn(s,a,t,f,r)}else if(f=px(e),typeof f=="function")for(e=f.call(e),c=0;!(s=e.next()).done;)s=s.value,f=l+ku(s,c++),u+=pn(s,a,t,f,r);else if(s==="object")throw a=String(e),Error("Objects are not valid as a React child (found: "+(a==="[object Object]"?"object with keys {"+Object.keys(e).join(", ")+"}":a)+"). If you meant to render a collection of children, use an array instead.");return u}function cn(e,a,t){if(e==null)return e;var l=[],r=0;return pn(e,l,"","",function(s){return a.call(t,s,r++)}),l}function gx(e){if(e._status===-1){var a=e._result;a=a(),a.then(function(t){(e._status===0||e._status===-1)&&(e._status=1,e._result=t)},function(t){(e._status===0||e._status===-1)&&(e._status=2,e._result=t)}),e._status===-1&&(e._status=0,e._result=a)}if(e._status===1)return e._result.default;throw e._result}var He={current:null},mn={transition:null},xx={ReactCurrentDispatcher:He,ReactCurrentBatchConfig:mn,ReactCurrentOwner:Pu};function Wf(){throw Error("act(...) is not supported in production builds of React.")}V.Children={map:cn,forEach:function(e,a,t){cn(e,function(){a.apply(this,arguments)},t)},count:function(e){var a=0;return cn(e,function(){a++}),a},toArray:function(e){return cn(e,function(a){return a})||[]},only:function(e){if(!Nu(e))throw Error("React.Children.only expected to receive a single React element child.");return e}};V.Component=Oo;V.Fragment=lx;V.Profiler=nx;V.PureComponent=wu;V.StrictMode=rx;V.Suspense=ix;V.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED=xx;V.act=Wf;V.cloneElement=function(e,a,t){if(e==null)throw Error("React.cloneElement(...): The argument must be a React element, but you passed "+e+".");var l=Of({},e.props),r=e.key,s=e.ref,u=e._owner;if(a!=null){if(a.ref!==void 0&&(s=a.ref,u=Pu.current),a.key!==void 0&&(r=""+a.key),e.type&&e.type.defaultProps)var c=e.type.defaultProps;for(f in a)qf.call(a,f)&&!Hf.hasOwnProperty(f)&&(l[f]=a[f]===void 0&&c!==void 0?c[f]:a[f])}var f=arguments.length-2;if(f===1)l.children=t;else if(1<f){c=Array(f);for(var h=0;h<f;h++)c[h]=arguments[h+2];l.children=c}return{$$typeof:zl,type:e.type,key:r,ref:s,props:l,_owner:u}};V.createContext=function(e){return e={$$typeof:ux,_currentValue:e,_currentValue2:e,_threadCount:0,Provider:null,Consumer:null,_defaultValue:null,_globalName:null},e.Provider={$$typeof:sx,_context:e},e.Consumer=e};V.createElement=_f;V.createFactory=function(e){var a=_f.bind(null,e);return a.type=e,a};V.createRef=function(){return{current:null}};V.forwardRef=function(e){return{$$typeof:dx,render:e}};V.isValidElement=Nu;V.lazy=function(e){return{$$typeof:cx,_payload:{_status:-1,_result:e},_init:gx}};V.memo=function(e,a){return{$$typeof:fx,type:e,compare:a===void 0?null:a}};V.startTransition=function(e){var a=mn.transition;mn.transition={};try{e()}finally{mn.transition=a}};V.unstable_act=Wf;V.useCallback=function(e,a){return He.current.useCallback(e,a)};V.useContext=function(e){return He.current.useContext(e)};V.useDebugValue=function(){};V.useDeferredValue=function(e){return He.current.useDeferredValue(e)};V.useEffect=function(e,a){return He.current.useEffect(e,a)};V.useId=function(){return He.current.useId()};V.useImperativeHandle=function(e,a,t){return He.current.useImperativeHandle(e,a,t)};V.useInsertionEffect=function(e,a){return He.current.useInsertionEffect(e,a)};V.useLayoutEffect=function(e,a){return He.current.useLayoutEffect(e,a)};V.useMemo=function(e,a){return He.current.useMemo(e,a)};V.useReducer=function(e,a,t){return He.current.useReducer(e,a,t)};V.useRef=function(e){return He.current.useRef(e)};V.useState=function(e){return He.current.useState(e)};V.useSyncExternalStore=function(e,a,t){return He.current.useSyncExternalStore(e,a,t)};V.useTransition=function(){return He.current.useTransition()};V.version="18.3.1"});var Qt=Kt((Bv,$f)=>{"use strict";$f.exports=jf()});var ec=Kt(R=>{"use strict";function Au(e,a){var t=e.length;e.push(a);e:for(;0<t;){var l=t-1>>>1,r=e[l];if(0<hn(r,a))e[l]=a,e[t]=r,t=l;else break e}}function xa(e){return e.length===0?null:e[0]}function xn(e){if(e.length===0)return null;var a=e[0],t=e.pop();if(t!==a){e[0]=t;e:for(var l=0,r=e.length,s=r>>>1;l<s;){var u=2*(l+1)-1,c=e[u],f=u+1,h=e[f];if(0>hn(c,t))f<r&&0>hn(h,c)?(e[l]=h,e[f]=t,l=f):(e[l]=c,e[u]=t,l=u);else if(f<r&&0>hn(h,t))e[l]=h,e[f]=t,l=f;else break e}}return a}function hn(e,a){var t=e.sortIndex-a.sortIndex;return t!==0?t:e.id-a.id}typeof performance=="object"&&typeof performance.now=="function"?(Vf=performance,R.unstable_now=function(){return Vf.now()}):(Fu=Date,Gf=Fu.now(),R.unstable_now=function(){return Fu.now()-Gf});var Vf,Fu,Gf,Fa=[],dt=[],Lx=1,da=null,Ae=3,Ln=!1,Zt=!1,ql=!1,Qf=typeof setTimeout=="function"?setTimeout:null,Zf=typeof clearTimeout=="function"?clearTimeout:null,Xf=typeof setImmediate<"u"?setImmediate:null;typeof navigator<"u"&&navigator.scheduling!==void 0&&navigator.scheduling.isInputPending!==void 0&&navigator.scheduling.isInputPending.bind(navigator.scheduling);function Mu(e){for(var a=xa(dt);a!==null;){if(a.callback===null)xn(dt);else if(a.startTime<=e)xn(dt),a.sortIndex=a.expirationTime,Au(Fa,a);else break;a=xa(dt)}}function Bu(e){if(ql=!1,Mu(e),!Zt)if(xa(Fa)!==null)Zt=!0,Ou(Eu);else{var a=xa(dt);a!==null&&zu(Bu,a.startTime-e)}}function Eu(e,a){Zt=!1,ql&&(ql=!1,Zf(Hl),Hl=-1),Ln=!0;var t=Ae;try{for(Mu(a),da=xa(Fa);da!==null&&(!(da.expirationTime>a)||e&&!Rf());){var l=da.callback;if(typeof l=="function"){da.callback=null,Ae=da.priorityLevel;var r=l(da.expirationTime<=a);a=R.unstable_now(),typeof r=="function"?da.callback=r:da===xa(Fa)&&xn(Fa),Mu(a)}else xn(Fa);da=xa(Fa)}if(da!==null)var s=!0;else{var u=xa(dt);u!==null&&zu(Bu,u.startTime-a),s=!1}return s}finally{da=null,Ae=t,Ln=!1}}var vn=!1,gn=null,Hl=-1,Yf=5,Jf=-1;function Rf(){return!(R.unstable_now()-Jf<Yf)}function Du(){if(gn!==null){var e=R.unstable_now();Jf=e;var a=!0;try{a=gn(!0,e)}finally{a?Ul():(vn=!1,gn=null)}}else vn=!1}var Ul;typeof Xf=="function"?Ul=function(){Xf(Du)}:typeof MessageChannel<"u"?(Tu=new MessageChannel,Kf=Tu.port2,Tu.port1.onmessage=Du,Ul=function(){Kf.postMessage(null)}):Ul=function(){Qf(Du,0)};var Tu,Kf;function Ou(e){gn=e,vn||(vn=!0,Ul())}function zu(e,a){Hl=Qf(function(){e(R.unstable_now())},a)}R.unstable_IdlePriority=5;R.unstable_ImmediatePriority=1;R.unstable_LowPriority=4;R.unstable_NormalPriority=3;R.unstable_Profiling=null;R.unstable_UserBlockingPriority=2;R.unstable_cancelCallback=function(e){e.callback=null};R.unstable_continueExecution=function(){Zt||Ln||(Zt=!0,Ou(Eu))};R.unstable_forceFrameRate=function(e){0>e||125<e?console.error("forceFrameRate takes a positive int between 0 and 125, forcing frame rates higher than 125 fps is not supported"):Yf=0<e?Math.floor(1e3/e):5};R.unstable_getCurrentPriorityLevel=function(){return Ae};R.unstable_getFirstCallbackNode=function(){return xa(Fa)};R.unstable_next=function(e){switch(Ae){case 1:case 2:case 3:var a=3;break;default:a=Ae}var t=Ae;Ae=a;try{return e()}finally{Ae=t}};R.unstable_pauseExecution=function(){};R.unstable_requestPaint=function(){};R.unstable_runWithPriority=function(e,a){switch(e){case 1:case 2:case 3:case 4:case 5:break;default:e=3}var t=Ae;Ae=e;try{return a()}finally{Ae=t}};R.unstable_scheduleCallback=function(e,a,t){var l=R.unstable_now();switch(typeof t=="object"&&t!==null?(t=t.delay,t=typeof t=="number"&&0<t?l+t:l):t=l,e){case 1:var r=-1;break;case 2:r=250;break;case 5:r=1073741823;break;case 4:r=1e4;break;default:r=5e3}return r=t+r,e={id:Lx++,callback:a,priorityLevel:e,startTime:t,expirationTime:r,sortIndex:-1},t>l?(e.sortIndex=t,Au(dt,e),xa(Fa)===null&&e===xa(dt)&&(ql?(Zf(Hl),Hl=-1):ql=!0,zu(Bu,t-l))):(e.sortIndex=r,Au(Fa,e),Zt||Ln||(Zt=!0,Ou(Eu))),e};R.unstable_shouldYield=Rf;R.unstable_wrapCallback=function(e){var a=Ae;return function(){var t=Ae;Ae=a;try{return e.apply(this,arguments)}finally{Ae=t}}}});var tc=Kt((Ov,ac)=>{"use strict";ac.exports=ec()});var nh=Kt(na=>{"use strict";var vx=Qt(),la=tc();function D(e){for(var a="https://reactjs.org/docs/error-decoder.html?invariant="+e,t=1;t<arguments.length;t++)a+="&args[]="+encodeURIComponent(arguments[t]);return"Minified React error #"+e+"; visit "+a+" for the full message or use the non-minified dev environment for full errors and additional helpful warnings."}var dp=new Set,ur={};function io(e,a){ol(e,a),ol(e+"Capture",a)}function ol(e,a){for(ur[e]=a,e=0;e<a.length;e++)dp.add(a[e])}var Ka=!(typeof window>"u"||typeof window.document>"u"||typeof window.document.createElement>"u"),nd=Object.prototype.hasOwnProperty,yx=/^[:A-Z_a-z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u02FF\u0370-\u037D\u037F-\u1FFF\u200C-\u200D\u2070-\u218F\u2C00-\u2FEF\u3001-\uD7FF\uF900-\uFDCF\uFDF0-\uFFFD][:A-Z_a-z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u02FF\u0370-\u037D\u037F-\u1FFF\u200C-\u200D\u2070-\u218F\u2C00-\u2FEF\u3001-\uD7FF\uF900-\uFDCF\uFDF0-\uFFFD\-.0-9\u00B7\u0300-\u036F\u203F-\u2040]*$/,oc={},lc={};function Ix(e){return nd.call(lc,e)?!0:nd.call(oc,e)?!1:yx.test(e)?lc[e]=!0:(oc[e]=!0,!1)}function Cx(e,a,t,l){if(t!==null&&t.type===0)return!1;switch(typeof a){case"function":case"symbol":return!0;case"boolean":return l?!1:t!==null?!t.acceptsBooleans:(e=e.toLowerCase().slice(0,5),e!=="data-"&&e!=="aria-");default:return!1}}function Sx(e,a,t,l){if(a===null||typeof a>"u"||Cx(e,a,t,l))return!0;if(l)return!1;if(t!==null)switch(t.type){case 3:return!a;case 4:return a===!1;case 5:return isNaN(a);case 6:return isNaN(a)||1>a}return!1}function je(e,a,t,l,r,s,u){this.acceptsBooleans=a===2||a===3||a===4,this.attributeName=l,this.attributeNamespace=r,this.mustUseProperty=t,this.propertyName=e,this.type=a,this.sanitizeURL=s,this.removeEmptyString=u}var Fe={};"children dangerouslySetInnerHTML defaultValue defaultChecked innerHTML suppressContentEditableWarning suppressHydrationWarning style".split(" ").forEach(function(e){Fe[e]=new je(e,0,!1,e,null,!1,!1)});[["acceptCharset","accept-charset"],["className","class"],["htmlFor","for"],["httpEquiv","http-equiv"]].forEach(function(e){var a=e[0];Fe[a]=new je(a,1,!1,e[1],null,!1,!1)});["contentEditable","draggable","spellCheck","value"].forEach(function(e){Fe[e]=new je(e,2,!1,e.toLowerCase(),null,!1,!1)});["autoReverse","externalResourcesRequired","focusable","preserveAlpha"].forEach(function(e){Fe[e]=new je(e,2,!1,e,null,!1,!1)});"allowFullScreen async autoFocus autoPlay controls default defer disabled disablePictureInPicture disableRemotePlayback formNoValidate hidden loop noModule noValidate open playsInline readOnly required reversed scoped seamless itemScope".split(" ").forEach(function(e){Fe[e]=new je(e,3,!1,e.toLowerCase(),null,!1,!1)});["checked","multiple","muted","selected"].forEach(function(e){Fe[e]=new je(e,3,!0,e,null,!1,!1)});["capture","download"].forEach(function(e){Fe[e]=new je(e,4,!1,e,null,!1,!1)});["cols","rows","size","span"].forEach(function(e){Fe[e]=new je(e,6,!1,e,null,!1,!1)});["rowSpan","start"].forEach(function(e){Fe[e]=new je(e,5,!1,e.toLowerCase(),null,!1,!1)});var Jd=/[\-:]([a-z])/g;function Rd(e){return e[1].toUpperCase()}"accent-height alignment-baseline arabic-form baseline-shift cap-height clip-path clip-rule color-interpolation color-interpolation-filters color-profile color-rendering dominant-baseline enable-background fill-opacity fill-rule flood-color flood-opacity font-family font-size font-size-adjust font-stretch font-style font-variant font-weight glyph-name glyph-orientation-horizontal glyph-orientation-vertical horiz-adv-x horiz-origin-x image-rendering letter-spacing lighting-color marker-end marker-mid marker-start overline-position overline-thickness paint-order panose-1 pointer-events rendering-intent shape-rendering stop-color stop-opacity strikethrough-position strikethrough-thickness stroke-dasharray stroke-dashoffset stroke-linecap stroke-linejoin stroke-miterlimit stroke-opacity stroke-width text-anchor text-decoration text-rendering underline-position underline-thickness unicode-bidi unicode-range units-per-em v-alphabetic v-hanging v-ideographic v-mathematical vector-effect vert-adv-y vert-origin-x vert-origin-y word-spacing writing-mode xmlns:xlink x-height".split(" ").forEach(function(e){var a=e.replace(Jd,Rd);Fe[a]=new je(a,1,!1,e,null,!1,!1)});"xlink:actuate xlink:arcrole xlink:role xlink:show xlink:title xlink:type".split(" ").forEach(function(e){var a=e.replace(Jd,Rd);Fe[a]=new je(a,1,!1,e,"http://www.w3.org/1999/xlink",!1,!1)});["xml:base","xml:lang","xml:space"].forEach(function(e){var a=e.replace(Jd,Rd);Fe[a]=new je(a,1,!1,e,"http://www.w3.org/XML/1998/namespace",!1,!1)});["tabIndex","crossOrigin"].forEach(function(e){Fe[e]=new je(e,1,!1,e.toLowerCase(),null,!1,!1)});Fe.xlinkHref=new je("xlinkHref",1,!1,"xlink:href","http://www.w3.org/1999/xlink",!0,!1);["src","href","action","formAction"].forEach(function(e){Fe[e]=new je(e,1,!1,e.toLowerCase(),null,!0,!0)});function ei(e,a,t,l){var r=Fe.hasOwnProperty(a)?Fe[a]:null;(r!==null?r.type!==0:l||!(2<a.length)||a[0]!=="o"&&a[0]!=="O"||a[1]!=="n"&&a[1]!=="N")&&(Sx(a,t,r,l)&&(t=null),l||r===null?Ix(a)&&(t===null?e.removeAttribute(a):e.setAttribute(a,""+t)):r.mustUseProperty?e[r.propertyName]=t===null?r.type===3?!1:"":t:(a=r.attributeName,l=r.attributeNamespace,t===null?e.removeAttribute(a):(r=r.type,t=r===3||r===4&&t===!0?"":""+t,l?e.setAttributeNS(l,a,t):e.setAttribute(a,t))))}var Ja=vx.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED,yn=Symbol.for("react.element"),qo=Symbol.for("react.portal"),Ho=Symbol.for("react.fragment"),ai=Symbol.for("react.strict_mode"),sd=Symbol.for("react.profiler"),ip=Symbol.for("react.provider"),fp=Symbol.for("react.context"),ti=Symbol.for("react.forward_ref"),ud=Symbol.for("react.suspense"),dd=Symbol.for("react.suspense_list"),oi=Symbol.for("react.memo"),ft=Symbol.for("react.lazy"),cp=Symbol.for("react.offscreen"),rc=Symbol.iterator;function _l(e){return e===null||typeof e!="object"?null:(e=rc&&e[rc]||e["@@iterator"],typeof e=="function"?e:null)}var ce=Object.assign,Uu;function Ql(e){if(Uu===void 0)try{throw Error()}catch(t){var a=t.stack.trim().match(/\n( *(at )?)/);Uu=a&&a[1]||""}return`
-`+Uu+e}var qu=!1;function Hu(e,a){if(!e||qu)return"";qu=!0;var t=Error.prepareStackTrace;Error.prepareStackTrace=void 0;try{if(a)if(a=function(){throw Error()},Object.defineProperty(a.prototype,"props",{set:function(){throw Error()}}),typeof Reflect=="object"&&Reflect.construct){try{Reflect.construct(a,[])}catch(h){var l=h}Reflect.construct(e,[],a)}else{try{a.call()}catch(h){l=h}e.call(a.prototype)}else{try{throw Error()}catch(h){l=h}e()}}catch(h){if(h&&l&&typeof h.stack=="string"){for(var r=h.stack.split(`
-`),s=l.stack.split(`
-`),u=r.length-1,c=s.length-1;1<=u&&0<=c&&r[u]!==s[c];)c--;for(;1<=u&&0<=c;u--,c--)if(r[u]!==s[c]){if(u!==1||c!==1)do if(u--,c--,0>c||r[u]!==s[c]){var f=`
-`+r[u].replace(" at new "," at ");return e.displayName&&f.includes("<anonymous>")&&(f=f.replace("<anonymous>",e.displayName)),f}while(1<=u&&0<=c);break}}}finally{qu=!1,Error.prepareStackTrace=t}return(e=e?e.displayName||e.name:"")?Ql(e):""}function kx(e){switch(e.tag){case 5:return Ql(e.type);case 16:return Ql("Lazy");case 13:return Ql("Suspense");case 19:return Ql("SuspenseList");case 0:case 2:case 15:return e=Hu(e.type,!1),e;case 11:return e=Hu(e.type.render,!1),e;case 1:return e=Hu(e.type,!0),e;default:return""}}function id(e){if(e==null)return null;if(typeof e=="function")return e.displayName||e.name||null;if(typeof e=="string")return e;switch(e){case Ho:return"Fragment";case qo:return"Portal";case sd:return"Profiler";case ai:return"StrictMode";case ud:return"Suspense";case dd:return"SuspenseList"}if(typeof e=="object")switch(e.$$typeof){case fp:return(e.displayName||"Context")+".Consumer";case ip:return(e._context.displayName||"Context")+".Provider";case ti:var a=e.render;return e=e.displayName,e||(e=a.displayName||a.name||"",e=e!==""?"ForwardRef("+e+")":"ForwardRef"),e;case oi:return a=e.displayName||null,a!==null?a:id(e.type)||"Memo";case ft:a=e._payload,e=e._init;try{return id(e(a))}catch{}}return null}function wx(e){var a=e.type;switch(e.tag){case 24:return"Cache";case 9:return(a.displayName||"Context")+".Consumer";case 10:return(a._context.displayName||"Context")+".Provider";case 18:return"DehydratedFragment";case 11:return e=a.render,e=e.displayName||e.name||"",a.displayName||(e!==""?"ForwardRef("+e+")":"ForwardRef");case 7:return"Fragment";case 5:return a;case 4:return"Portal";case 3:return"Root";case 6:return"Text";case 16:return id(a);case 8:return a===ai?"StrictMode":"Mode";case 22:return"Offscreen";case 12:return"Profiler";case 21:return"Scope";case 13:return"Suspense";case 19:return"SuspenseList";case 25:return"TracingMarker";case 1:case 0:case 17:case 2:case 14:case 15:if(typeof a=="function")return a.displayName||a.name||null;if(typeof a=="string")return a}return null}function wt(e){switch(typeof e){case"boolean":case"number":case"string":case"undefined":return e;case"object":return e;default:return""}}function pp(e){var a=e.type;return(e=e.nodeName)&&e.toLowerCase()==="input"&&(a==="checkbox"||a==="radio")}function bx(e){var a=pp(e)?"checked":"value",t=Object.getOwnPropertyDescriptor(e.constructor.prototype,a),l=""+e[a];if(!e.hasOwnProperty(a)&&typeof t<"u"&&typeof t.get=="function"&&typeof t.set=="function"){var r=t.get,s=t.set;return Object.defineProperty(e,a,{configurable:!0,get:function(){return r.call(this)},set:function(u){l=""+u,s.call(this,u)}}),Object.defineProperty(e,a,{enumerable:t.enumerable}),{getValue:function(){return l},setValue:function(u){l=""+u},stopTracking:function(){e._valueTracker=null,delete e[a]}}}}function In(e){e._valueTracker||(e._valueTracker=bx(e))}function mp(e){if(!e)return!1;var a=e._valueTracker;if(!a)return!0;var t=a.getValue(),l="";return e&&(l=pp(e)?e.checked?"true":"false":e.value),e=l,e!==t?(a.setValue(e),!0):!1}function Qn(e){if(e=e||(typeof document<"u"?document:void 0),typeof e>"u")return null;try{return e.activeElement||e.body}catch{return e.body}}function fd(e,a){var t=a.checked;return ce({},a,{defaultChecked:void 0,defaultValue:void 0,value:void 0,checked:t??e._wrapperState.initialChecked})}function nc(e,a){var t=a.defaultValue==null?"":a.defaultValue,l=a.checked!=null?a.checked:a.defaultChecked;t=wt(a.value!=null?a.value:t),e._wrapperState={initialChecked:l,initialValue:t,controlled:a.type==="checkbox"||a.type==="radio"?a.checked!=null:a.value!=null}}function hp(e,a){a=a.checked,a!=null&&ei(e,"checked",a,!1)}function cd(e,a){hp(e,a);var t=wt(a.value),l=a.type;if(t!=null)l==="number"?(t===0&&e.value===""||e.value!=t)&&(e.value=""+t):e.value!==""+t&&(e.value=""+t);else if(l==="submit"||l==="reset"){e.removeAttribute("value");return}a.hasOwnProperty("value")?pd(e,a.type,t):a.hasOwnProperty("defaultValue")&&pd(e,a.type,wt(a.defaultValue)),a.checked==null&&a.defaultChecked!=null&&(e.defaultChecked=!!a.defaultChecked)}function sc(e,a,t){if(a.hasOwnProperty("value")||a.hasOwnProperty("defaultValue")){var l=a.type;if(!(l!=="submit"&&l!=="reset"||a.value!==void 0&&a.value!==null))return;a=""+e._wrapperState.initialValue,t||a===e.value||(e.value=a),e.defaultValue=a}t=e.name,t!==""&&(e.name=""),e.defaultChecked=!!e._wrapperState.initialChecked,t!==""&&(e.name=t)}function pd(e,a,t){(a!=="number"||Qn(e.ownerDocument)!==e)&&(t==null?e.defaultValue=""+e._wrapperState.initialValue:e.defaultValue!==""+t&&(e.defaultValue=""+t))}var Zl=Array.isArray;function Yo(e,a,t,l){if(e=e.options,a){a={};for(var r=0;r<t.length;r++)a["$"+t[r]]=!0;for(t=0;t<e.length;t++)r=a.hasOwnProperty("$"+e[t].value),e[t].selected!==r&&(e[t].selected=r),r&&l&&(e[t].defaultSelected=!0)}else{for(t=""+wt(t),a=null,r=0;r<e.length;r++){if(e[r].value===t){e[r].selected=!0,l&&(e[r].defaultSelected=!0);return}a!==null||e[r].disabled||(a=e[r])}a!==null&&(a.selected=!0)}}function md(e,a){if(a.dangerouslySetInnerHTML!=null)throw Error(D(91));return ce({},a,{value:void 0,defaultValue:void 0,children:""+e._wrapperState.initialValue})}function uc(e,a){var t=a.value;if(t==null){if(t=a.children,a=a.defaultValue,t!=null){if(a!=null)throw Error(D(92));if(Zl(t)){if(1<t.length)throw Error(D(93));t=t[0]}a=t}a==null&&(a=""),t=a}e._wrapperState={initialValue:wt(t)}}function gp(e,a){var t=wt(a.value),l=wt(a.defaultValue);t!=null&&(t=""+t,t!==e.value&&(e.value=t),a.defaultValue==null&&e.defaultValue!==t&&(e.defaultValue=t)),l!=null&&(e.defaultValue=""+l)}function dc(e){var a=e.textContent;a===e._wrapperState.initialValue&&a!==""&&a!==null&&(e.value=a)}function xp(e){switch(e){case"svg":return"http://www.w3.org/2000/svg";case"math":return"http://www.w3.org/1998/Math/MathML";default:return"http://www.w3.org/1999/xhtml"}}function hd(e,a){return e==null||e==="http://www.w3.org/1999/xhtml"?xp(a):e==="http://www.w3.org/2000/svg"&&a==="foreignObject"?"http://www.w3.org/1999/xhtml":e}var Cn,Lp=(function(e){return typeof MSApp<"u"&&MSApp.execUnsafeLocalFunction?function(a,t,l,r){MSApp.execUnsafeLocalFunction(function(){return e(a,t,l,r)})}:e})(function(e,a){if(e.namespaceURI!=="http://www.w3.org/2000/svg"||"innerHTML"in e)e.innerHTML=a;else{for(Cn=Cn||document.createElement("div"),Cn.innerHTML="<svg>"+a.valueOf().toString()+"</svg>",a=Cn.firstChild;e.firstChild;)e.removeChild(e.firstChild);for(;a.firstChild;)e.appendChild(a.firstChild)}});function dr(e,a){if(a){var t=e.firstChild;if(t&&t===e.lastChild&&t.nodeType===3){t.nodeValue=a;return}}e.textContent=a}var Rl={animationIterationCount:!0,aspectRatio:!0,borderImageOutset:!0,borderImageSlice:!0,borderImageWidth:!0,boxFlex:!0,boxFlexGroup:!0,boxOrdinalGroup:!0,columnCount:!0,columns:!0,flex:!0,flexGrow:!0,flexPositive:!0,flexShrink:!0,flexNegative:!0,flexOrder:!0,gridArea:!0,gridRow:!0,gridRowEnd:!0,gridRowSpan:!0,gridRowStart:!0,gridColumn:!0,gridColumnEnd:!0,gridColumnSpan:!0,gridColumnStart:!0,fontWeight:!0,lineClamp:!0,lineHeight:!0,opacity:!0,order:!0,orphans:!0,tabSize:!0,widows:!0,zIndex:!0,zoom:!0,fillOpacity:!0,floodOpacity:!0,stopOpacity:!0,strokeDasharray:!0,strokeDashoffset:!0,strokeMiterlimit:!0,strokeOpacity:!0,strokeWidth:!0},Px=["Webkit","ms","Moz","O"];Object.keys(Rl).forEach(function(e){Px.forEach(function(a){a=a+e.charAt(0).toUpperCase()+e.substring(1),Rl[a]=Rl[e]})});function vp(e,a,t){return a==null||typeof a=="boolean"||a===""?"":t||typeof a!="number"||a===0||Rl.hasOwnProperty(e)&&Rl[e]?(""+a).trim():a+"px"}function yp(e,a){e=e.style;for(var t in a)if(a.hasOwnProperty(t)){var l=t.indexOf("--")===0,r=vp(t,a[t],l);t==="float"&&(t="cssFloat"),l?e.setProperty(t,r):e[t]=r}}var Nx=ce({menuitem:!0},{area:!0,base:!0,br:!0,col:!0,embed:!0,hr:!0,img:!0,input:!0,keygen:!0,link:!0,meta:!0,param:!0,source:!0,track:!0,wbr:!0});function gd(e,a){if(a){if(Nx[e]&&(a.children!=null||a.dangerouslySetInnerHTML!=null))throw Error(D(137,e));if(a.dangerouslySetInnerHTML!=null){if(a.children!=null)throw Error(D(60));if(typeof a.dangerouslySetInnerHTML!="object"||!("__html"in a.dangerouslySetInnerHTML))throw Error(D(61))}if(a.style!=null&&typeof a.style!="object")throw Error(D(62))}}function xd(e,a){if(e.indexOf("-")===-1)return typeof a.is=="string";switch(e){case"annotation-xml":case"color-profile":case"font-face":case"font-face-src":case"font-face-uri":case"font-face-format":case"font-face-name":case"missing-glyph":return!1;default:return!0}}var Ld=null;function li(e){return e=e.target||e.srcElement||window,e.correspondingUseElement&&(e=e.correspondingUseElement),e.nodeType===3?e.parentNode:e}var vd=null,Jo=null,Ro=null;function ic(e){if(e=Pr(e)){if(typeof vd!="function")throw Error(D(280));var a=e.stateNode;a&&(a=Ss(a),vd(e.stateNode,e.type,a))}}function Ip(e){Jo?Ro?Ro.push(e):Ro=[e]:Jo=e}function Cp(){if(Jo){var e=Jo,a=Ro;if(Ro=Jo=null,ic(e),a)for(e=0;e<a.length;e++)ic(a[e])}}function Sp(e,a){return e(a)}function kp(){}var _u=!1;function wp(e,a,t){if(_u)return e(a,t);_u=!0;try{return Sp(e,a,t)}finally{_u=!1,(Jo!==null||Ro!==null)&&(kp(),Cp())}}function ir(e,a){var t=e.stateNode;if(t===null)return null;var l=Ss(t);if(l===null)return null;t=l[a];e:switch(a){case"onClick":case"onClickCapture":case"onDoubleClick":case"onDoubleClickCapture":case"onMouseDown":case"onMouseDownCapture":case"onMouseMove":case"onMouseMoveCapture":case"onMouseUp":case"onMouseUpCapture":case"onMouseEnter":(l=!l.disabled)||(e=e.type,l=!(e==="button"||e==="input"||e==="select"||e==="textarea")),e=!l;break e;default:e=!1}if(e)return null;if(t&&typeof t!="function")throw Error(D(231,a,typeof t));return t}var yd=!1;if(Ka)try{zo={},Object.defineProperty(zo,"passive",{get:function(){yd=!0}}),window.addEventListener("test",zo,zo),window.removeEventListener("test",zo,zo)}catch{yd=!1}var zo;function Fx(e,a,t,l,r,s,u,c,f){var h=Array.prototype.slice.call(arguments,3);try{a.apply(t,h)}catch(v){this.onError(v)}}var er=!1,Zn=null,Yn=!1,Id=null,Dx={onError:function(e){er=!0,Zn=e}};function Tx(e,a,t,l,r,s,u,c,f){er=!1,Zn=null,Fx.apply(Dx,arguments)}function Ax(e,a,t,l,r,s,u,c,f){if(Tx.apply(this,arguments),er){if(er){var h=Zn;er=!1,Zn=null}else throw Error(D(198));Yn||(Yn=!0,Id=h)}}function fo(e){var a=e,t=e;if(e.alternate)for(;a.return;)a=a.return;else{e=a;do a=e,(a.flags&4098)!==0&&(t=a.return),e=a.return;while(e)}return a.tag===3?t:null}function bp(e){if(e.tag===13){var a=e.memoizedState;if(a===null&&(e=e.alternate,e!==null&&(a=e.memoizedState)),a!==null)return a.dehydrated}return null}function fc(e){if(fo(e)!==e)throw Error(D(188))}function Mx(e){var a=e.alternate;if(!a){if(a=fo(e),a===null)throw Error(D(188));return a!==e?null:e}for(var t=e,l=a;;){var r=t.return;if(r===null)break;var s=r.alternate;if(s===null){if(l=r.return,l!==null){t=l;continue}break}if(r.child===s.child){for(s=r.child;s;){if(s===t)return fc(r),e;if(s===l)return fc(r),a;s=s.sibling}throw Error(D(188))}if(t.return!==l.return)t=r,l=s;else{for(var u=!1,c=r.child;c;){if(c===t){u=!0,t=r,l=s;break}if(c===l){u=!0,l=r,t=s;break}c=c.sibling}if(!u){for(c=s.child;c;){if(c===t){u=!0,t=s,l=r;break}if(c===l){u=!0,l=s,t=r;break}c=c.sibling}if(!u)throw Error(D(189))}}if(t.alternate!==l)throw Error(D(190))}if(t.tag!==3)throw Error(D(188));return t.stateNode.current===t?e:a}function Pp(e){return e=Mx(e),e!==null?Np(e):null}function Np(e){if(e.tag===5||e.tag===6)return e;for(e=e.child;e!==null;){var a=Np(e);if(a!==null)return a;e=e.sibling}return null}var Fp=la.unstable_scheduleCallback,cc=la.unstable_cancelCallback,Bx=la.unstable_shouldYield,Ex=la.unstable_requestPaint,he=la.unstable_now,Ox=la.unstable_getCurrentPriorityLevel,ri=la.unstable_ImmediatePriority,Dp=la.unstable_UserBlockingPriority,Jn=la.unstable_NormalPriority,zx=la.unstable_LowPriority,Tp=la.unstable_IdlePriority,vs=null,Ma=null;function Ux(e){if(Ma&&typeof Ma.onCommitFiberRoot=="function")try{Ma.onCommitFiberRoot(vs,e,void 0,(e.current.flags&128)===128)}catch{}}var Ca=Math.clz32?Math.clz32:_x,qx=Math.log,Hx=Math.LN2;function _x(e){return e>>>=0,e===0?32:31-(qx(e)/Hx|0)|0}var Sn=64,kn=4194304;function Yl(e){switch(e&-e){case 1:return 1;case 2:return 2;case 4:return 4;case 8:return 8;case 16:return 16;case 32:return 32;case 64:case 128:case 256:case 512:case 1024:case 2048:case 4096:case 8192:case 16384:case 32768:case 65536:case 131072:case 262144:case 524288:case 1048576:case 2097152:return e&4194240;case 4194304:case 8388608:case 16777216:case 33554432:case 67108864:return e&130023424;case 134217728:return 134217728;case 268435456:return 268435456;case 536870912:return 536870912;case 1073741824:return 1073741824;default:return e}}function Rn(e,a){var t=e.pendingLanes;if(t===0)return 0;var l=0,r=e.suspendedLanes,s=e.pingedLanes,u=t&268435455;if(u!==0){var c=u&~r;c!==0?l=Yl(c):(s&=u,s!==0&&(l=Yl(s)))}else u=t&~r,u!==0?l=Yl(u):s!==0&&(l=Yl(s));if(l===0)return 0;if(a!==0&&a!==l&&(a&r)===0&&(r=l&-l,s=a&-a,r>=s||r===16&&(s&4194240)!==0))return a;if((l&4)!==0&&(l|=t&16),a=e.entangledLanes,a!==0)for(e=e.entanglements,a&=l;0<a;)t=31-Ca(a),r=1<<t,l|=e[t],a&=~r;return l}function Wx(e,a){switch(e){case 1:case 2:case 4:return a+250;case 8:case 16:case 32:case 64:case 128:case 256:case 512:case 1024:case 2048:case 4096:case 8192:case 16384:case 32768:case 65536:case 131072:case 262144:case 524288:case 1048576:case 2097152:return a+5e3;case 4194304:case 8388608:case 16777216:case 33554432:case 67108864:return-1;case 134217728:case 268435456:case 536870912:case 1073741824:return-1;default:return-1}}function jx(e,a){for(var t=e.suspendedLanes,l=e.pingedLanes,r=e.expirationTimes,s=e.pendingLanes;0<s;){var u=31-Ca(s),c=1<<u,f=r[u];f===-1?((c&t)===0||(c&l)!==0)&&(r[u]=Wx(c,a)):f<=a&&(e.expiredLanes|=c),s&=~c}}function Cd(e){return e=e.pendingLanes&-1073741825,e!==0?e:e&1073741824?1073741824:0}function Ap(){var e=Sn;return Sn<<=1,(Sn&4194240)===0&&(Sn=64),e}function Wu(e){for(var a=[],t=0;31>t;t++)a.push(e);return a}function wr(e,a,t){e.pendingLanes|=a,a!==536870912&&(e.suspendedLanes=0,e.pingedLanes=0),e=e.eventTimes,a=31-Ca(a),e[a]=t}function $x(e,a){var t=e.pendingLanes&~a;e.pendingLanes=a,e.suspendedLanes=0,e.pingedLanes=0,e.expiredLanes&=a,e.mutableReadLanes&=a,e.entangledLanes&=a,a=e.entanglements;var l=e.eventTimes;for(e=e.expirationTimes;0<t;){var r=31-Ca(t),s=1<<r;a[r]=0,l[r]=-1,e[r]=-1,t&=~s}}function ni(e,a){var t=e.entangledLanes|=a;for(e=e.entanglements;t;){var l=31-Ca(t),r=1<<l;r&a|e[l]&a&&(e[l]|=a),t&=~r}}var Y=0;function Mp(e){return e&=-e,1<e?4<e?(e&268435455)!==0?16:536870912:4:1}var Bp,si,Ep,Op,zp,Sd=!1,wn=[],xt=null,Lt=null,vt=null,fr=new Map,cr=new Map,pt=[],Vx="mousedown mouseup touchcancel touchend touchstart auxclick dblclick pointercancel pointerdown pointerup dragend dragstart drop compositionend compositionstart keydown keypress keyup input textInput copy cut paste click change contextmenu reset submit".split(" ");function pc(e,a){switch(e){case"focusin":case"focusout":xt=null;break;case"dragenter":case"dragleave":Lt=null;break;case"mouseover":case"mouseout":vt=null;break;case"pointerover":case"pointerout":fr.delete(a.pointerId);break;case"gotpointercapture":case"lostpointercapture":cr.delete(a.pointerId)}}function Wl(e,a,t,l,r,s){return e===null||e.nativeEvent!==s?(e={blockedOn:a,domEventName:t,eventSystemFlags:l,nativeEvent:s,targetContainers:[r]},a!==null&&(a=Pr(a),a!==null&&si(a)),e):(e.eventSystemFlags|=l,a=e.targetContainers,r!==null&&a.indexOf(r)===-1&&a.push(r),e)}function Gx(e,a,t,l,r){switch(a){case"focusin":return xt=Wl(xt,e,a,t,l,r),!0;case"dragenter":return Lt=Wl(Lt,e,a,t,l,r),!0;case"mouseover":return vt=Wl(vt,e,a,t,l,r),!0;case"pointerover":var s=r.pointerId;return fr.set(s,Wl(fr.get(s)||null,e,a,t,l,r)),!0;case"gotpointercapture":return s=r.pointerId,cr.set(s,Wl(cr.get(s)||null,e,a,t,l,r)),!0}return!1}function Up(e){var a=Rt(e.target);if(a!==null){var t=fo(a);if(t!==null){if(a=t.tag,a===13){if(a=bp(t),a!==null){e.blockedOn=a,zp(e.priority,function(){Ep(t)});return}}else if(a===3&&t.stateNode.current.memoizedState.isDehydrated){e.blockedOn=t.tag===3?t.stateNode.containerInfo:null;return}}}e.blockedOn=null}function qn(e){if(e.blockedOn!==null)return!1;for(var a=e.targetContainers;0<a.length;){var t=kd(e.domEventName,e.eventSystemFlags,a[0],e.nativeEvent);if(t===null){t=e.nativeEvent;var l=new t.constructor(t.type,t);Ld=l,t.target.dispatchEvent(l),Ld=null}else return a=Pr(t),a!==null&&si(a),e.blockedOn=t,!1;a.shift()}return!0}function mc(e,a,t){qn(e)&&t.delete(a)}function Xx(){Sd=!1,xt!==null&&qn(xt)&&(xt=null),Lt!==null&&qn(Lt)&&(Lt=null),vt!==null&&qn(vt)&&(vt=null),fr.forEach(mc),cr.forEach(mc)}function jl(e,a){e.blockedOn===a&&(e.blockedOn=null,Sd||(Sd=!0,la.unstable_scheduleCallback(la.unstable_NormalPriority,Xx)))}function pr(e){function a(r){return jl(r,e)}if(0<wn.length){jl(wn[0],e);for(var t=1;t<wn.length;t++){var l=wn[t];l.blockedOn===e&&(l.blockedOn=null)}}for(xt!==null&&jl(xt,e),Lt!==null&&jl(Lt,e),vt!==null&&jl(vt,e),fr.forEach(a),cr.forEach(a),t=0;t<pt.length;t++)l=pt[t],l.blockedOn===e&&(l.blockedOn=null);for(;0<pt.length&&(t=pt[0],t.blockedOn===null);)Up(t),t.blockedOn===null&&pt.shift()}var el=Ja.ReactCurrentBatchConfig,es=!0;function Kx(e,a,t,l){var r=Y,s=el.transition;el.transition=null;try{Y=1,ui(e,a,t,l)}finally{Y=r,el.transition=s}}function Qx(e,a,t,l){var r=Y,s=el.transition;el.transition=null;try{Y=4,ui(e,a,t,l)}finally{Y=r,el.transition=s}}function ui(e,a,t,l){if(es){var r=kd(e,a,t,l);if(r===null)Qu(e,a,l,as,t),pc(e,l);else if(Gx(r,e,a,t,l))l.stopPropagation();else if(pc(e,l),a&4&&-1<Vx.indexOf(e)){for(;r!==null;){var s=Pr(r);if(s!==null&&Bp(s),s=kd(e,a,t,l),s===null&&Qu(e,a,l,as,t),s===r)break;r=s}r!==null&&l.stopPropagation()}else Qu(e,a,l,null,t)}}var as=null;function kd(e,a,t,l){if(as=null,e=li(l),e=Rt(e),e!==null)if(a=fo(e),a===null)e=null;else if(t=a.tag,t===13){if(e=bp(a),e!==null)return e;e=null}else if(t===3){if(a.stateNode.current.memoizedState.isDehydrated)return a.tag===3?a.stateNode.containerInfo:null;e=null}else a!==e&&(e=null);return as=e,null}function qp(e){switch(e){case"cancel":case"click":case"close":case"contextmenu":case"copy":case"cut":case"auxclick":case"dblclick":case"dragend":case"dragstart":case"drop":case"focusin":case"focusout":case"input":case"invalid":case"keydown":case"keypress":case"keyup":case"mousedown":case"mouseup":case"paste":case"pause":case"play":case"pointercancel":case"pointerdown":case"pointerup":case"ratechange":case"reset":case"resize":case"seeked":case"submit":case"touchcancel":case"touchend":case"touchstart":case"volumechange":case"change":case"selectionchange":case"textInput":case"compositionstart":case"compositionend":case"compositionupdate":case"beforeblur":case"afterblur":case"beforeinput":case"blur":case"fullscreenchange":case"focus":case"hashchange":case"popstate":case"select":case"selectstart":return 1;case"drag":case"dragenter":case"dragexit":case"dragleave":case"dragover":case"mousemove":case"mouseout":case"mouseover":case"pointermove":case"pointerout":case"pointerover":case"scroll":case"toggle":case"touchmove":case"wheel":case"mouseenter":case"mouseleave":case"pointerenter":case"pointerleave":return 4;case"message":switch(Ox()){case ri:return 1;case Dp:return 4;case Jn:case zx:return 16;case Tp:return 536870912;default:return 16}default:return 16}}var ht=null,di=null,Hn=null;function Hp(){if(Hn)return Hn;var e,a=di,t=a.length,l,r="value"in ht?ht.value:ht.textContent,s=r.length;for(e=0;e<t&&a[e]===r[e];e++);var u=t-e;for(l=1;l<=u&&a[t-l]===r[s-l];l++);return Hn=r.slice(e,1<l?1-l:void 0)}function _n(e){var a=e.keyCode;return"charCode"in e?(e=e.charCode,e===0&&a===13&&(e=13)):e=a,e===10&&(e=13),32<=e||e===13?e:0}function bn(){return!0}function hc(){return!1}function ra(e){function a(t,l,r,s,u){this._reactName=t,this._targetInst=r,this.type=l,this.nativeEvent=s,this.target=u,this.currentTarget=null;for(var c in e)e.hasOwnProperty(c)&&(t=e[c],this[c]=t?t(s):s[c]);return this.isDefaultPrevented=(s.defaultPrevented!=null?s.defaultPrevented:s.returnValue===!1)?bn:hc,this.isPropagationStopped=hc,this}return ce(a.prototype,{preventDefault:function(){this.defaultPrevented=!0;var t=this.nativeEvent;t&&(t.preventDefault?t.preventDefault():typeof t.returnValue!="unknown"&&(t.returnValue=!1),this.isDefaultPrevented=bn)},stopPropagation:function(){var t=this.nativeEvent;t&&(t.stopPropagation?t.stopPropagation():typeof t.cancelBubble!="unknown"&&(t.cancelBubble=!0),this.isPropagationStopped=bn)},persist:function(){},isPersistent:bn}),a}var il={eventPhase:0,bubbles:0,cancelable:0,timeStamp:function(e){return e.timeStamp||Date.now()},defaultPrevented:0,isTrusted:0},ii=ra(il),br=ce({},il,{view:0,detail:0}),Zx=ra(br),ju,$u,$l,ys=ce({},br,{screenX:0,screenY:0,clientX:0,clientY:0,pageX:0,pageY:0,ctrlKey:0,shiftKey:0,altKey:0,metaKey:0,getModifierState:fi,button:0,buttons:0,relatedTarget:function(e){return e.relatedTarget===void 0?e.fromElement===e.srcElement?e.toElement:e.fromElement:e.relatedTarget},movementX:function(e){return"movementX"in e?e.movementX:(e!==$l&&($l&&e.type==="mousemove"?(ju=e.screenX-$l.screenX,$u=e.screenY-$l.screenY):$u=ju=0,$l=e),ju)},movementY:function(e){return"movementY"in e?e.movementY:$u}}),gc=ra(ys),Yx=ce({},ys,{dataTransfer:0}),Jx=ra(Yx),Rx=ce({},br,{relatedTarget:0}),Vu=ra(Rx),eL=ce({},il,{animationName:0,elapsedTime:0,pseudoElement:0}),aL=ra(eL),tL=ce({},il,{clipboardData:function(e){return"clipboardData"in e?e.clipboardData:window.clipboardData}}),oL=ra(tL),lL=ce({},il,{data:0}),xc=ra(lL),rL={Esc:"Escape",Spacebar:" ",Left:"ArrowLeft",Up:"ArrowUp",Right:"ArrowRight",Down:"ArrowDown",Del:"Delete",Win:"OS",Menu:"ContextMenu",Apps:"ContextMenu",Scroll:"ScrollLock",MozPrintableKey:"Unidentified"},nL={8:"Backspace",9:"Tab",12:"Clear",13:"Enter",16:"Shift",17:"Control",18:"Alt",19:"Pause",20:"CapsLock",27:"Escape",32:" ",33:"PageUp",34:"PageDown",35:"End",36:"Home",37:"ArrowLeft",38:"ArrowUp",39:"ArrowRight",40:"ArrowDown",45:"Insert",46:"Delete",112:"F1",113:"F2",114:"F3",115:"F4",116:"F5",117:"F6",118:"F7",119:"F8",120:"F9",121:"F10",122:"F11",123:"F12",144:"NumLock",145:"ScrollLock",224:"Meta"},sL={Alt:"altKey",Control:"ctrlKey",Meta:"metaKey",Shift:"shiftKey"};function uL(e){var a=this.nativeEvent;return a.getModifierState?a.getModifierState(e):(e=sL[e])?!!a[e]:!1}function fi(){return uL}var dL=ce({},br,{key:function(e){if(e.key){var a=rL[e.key]||e.key;if(a!=="Unidentified")return a}return e.type==="keypress"?(e=_n(e),e===13?"Enter":String.fromCharCode(e)):e.type==="keydown"||e.type==="keyup"?nL[e.keyCode]||"Unidentified":""},code:0,location:0,ctrlKey:0,shiftKey:0,altKey:0,metaKey:0,repeat:0,locale:0,getModifierState:fi,charCode:function(e){return e.type==="keypress"?_n(e):0},keyCode:function(e){return e.type==="keydown"||e.type==="keyup"?e.keyCode:0},which:function(e){return e.type==="keypress"?_n(e):e.type==="keydown"||e.type==="keyup"?e.keyCode:0}}),iL=ra(dL),fL=ce({},ys,{pointerId:0,width:0,height:0,pressure:0,tangentialPressure:0,tiltX:0,tiltY:0,twist:0,pointerType:0,isPrimary:0}),Lc=ra(fL),cL=ce({},br,{touches:0,targetTouches:0,changedTouches:0,altKey:0,metaKey:0,ctrlKey:0,shiftKey:0,getModifierState:fi}),pL=ra(cL),mL=ce({},il,{propertyName:0,elapsedTime:0,pseudoElement:0}),hL=ra(mL),gL=ce({},ys,{deltaX:function(e){return"deltaX"in e?e.deltaX:"wheelDeltaX"in e?-e.wheelDeltaX:0},deltaY:function(e){return"deltaY"in e?e.deltaY:"wheelDeltaY"in e?-e.wheelDeltaY:"wheelDelta"in e?-e.wheelDelta:0},deltaZ:0,deltaMode:0}),xL=ra(gL),LL=[9,13,27,32],ci=Ka&&"CompositionEvent"in window,ar=null;Ka&&"documentMode"in document&&(ar=document.documentMode);var vL=Ka&&"TextEvent"in window&&!ar,_p=Ka&&(!ci||ar&&8<ar&&11>=ar),vc=" ",yc=!1;function Wp(e,a){switch(e){case"keyup":return LL.indexOf(a.keyCode)!==-1;case"keydown":return a.keyCode!==229;case"keypress":case"mousedown":case"focusout":return!0;default:return!1}}function jp(e){return e=e.detail,typeof e=="object"&&"data"in e?e.data:null}var _o=!1;function yL(e,a){switch(e){case"compositionend":return jp(a);case"keypress":return a.which!==32?null:(yc=!0,vc);case"textInput":return e=a.data,e===vc&&yc?null:e;default:return null}}function IL(e,a){if(_o)return e==="compositionend"||!ci&&Wp(e,a)?(e=Hp(),Hn=di=ht=null,_o=!1,e):null;switch(e){case"paste":return null;case"keypress":if(!(a.ctrlKey||a.altKey||a.metaKey)||a.ctrlKey&&a.altKey){if(a.char&&1<a.char.length)return a.char;if(a.which)return String.fromCharCode(a.which)}return null;case"compositionend":return _p&&a.locale!=="ko"?null:a.data;default:return null}}var CL={color:!0,date:!0,datetime:!0,"datetime-local":!0,email:!0,month:!0,number:!0,password:!0,range:!0,search:!0,tel:!0,text:!0,time:!0,url:!0,week:!0};function Ic(e){var a=e&&e.nodeName&&e.nodeName.toLowerCase();return a==="input"?!!CL[e.type]:a==="textarea"}function $p(e,a,t,l){Ip(l),a=ts(a,"onChange"),0<a.length&&(t=new ii("onChange","change",null,t,l),e.push({event:t,listeners:a}))}var tr=null,mr=null;function SL(e){am(e,0)}function Is(e){var a=$o(e);if(mp(a))return e}function kL(e,a){if(e==="change")return a}var Vp=!1;Ka&&(Ka?(Nn="oninput"in document,Nn||(Gu=document.createElement("div"),Gu.setAttribute("oninput","return;"),Nn=typeof Gu.oninput=="function"),Pn=Nn):Pn=!1,Vp=Pn&&(!document.documentMode||9<document.documentMode));var Pn,Nn,Gu;function Cc(){tr&&(tr.detachEvent("onpropertychange",Gp),mr=tr=null)}function Gp(e){if(e.propertyName==="value"&&Is(mr)){var a=[];$p(a,mr,e,li(e)),wp(SL,a)}}function wL(e,a,t){e==="focusin"?(Cc(),tr=a,mr=t,tr.attachEvent("onpropertychange",Gp)):e==="focusout"&&Cc()}function bL(e){if(e==="selectionchange"||e==="keyup"||e==="keydown")return Is(mr)}function PL(e,a){if(e==="click")return Is(a)}function NL(e,a){if(e==="input"||e==="change")return Is(a)}function FL(e,a){return e===a&&(e!==0||1/e===1/a)||e!==e&&a!==a}var ka=typeof Object.is=="function"?Object.is:FL;function hr(e,a){if(ka(e,a))return!0;if(typeof e!="object"||e===null||typeof a!="object"||a===null)return!1;var t=Object.keys(e),l=Object.keys(a);if(t.length!==l.length)return!1;for(l=0;l<t.length;l++){var r=t[l];if(!nd.call(a,r)||!ka(e[r],a[r]))return!1}return!0}function Sc(e){for(;e&&e.firstChild;)e=e.firstChild;return e}function kc(e,a){var t=Sc(e);e=0;for(var l;t;){if(t.nodeType===3){if(l=e+t.textContent.length,e<=a&&l>=a)return{node:t,offset:a-e};e=l}e:{for(;t;){if(t.nextSibling){t=t.nextSibling;break e}t=t.parentNode}t=void 0}t=Sc(t)}}function Xp(e,a){return e&&a?e===a?!0:e&&e.nodeType===3?!1:a&&a.nodeType===3?Xp(e,a.parentNode):"contains"in e?e.contains(a):e.compareDocumentPosition?!!(e.compareDocumentPosition(a)&16):!1:!1}function Kp(){for(var e=window,a=Qn();a instanceof e.HTMLIFrameElement;){try{var t=typeof a.contentWindow.location.href=="string"}catch{t=!1}if(t)e=a.contentWindow;else break;a=Qn(e.document)}return a}function pi(e){var a=e&&e.nodeName&&e.nodeName.toLowerCase();return a&&(a==="input"&&(e.type==="text"||e.type==="search"||e.type==="tel"||e.type==="url"||e.type==="password")||a==="textarea"||e.contentEditable==="true")}function DL(e){var a=Kp(),t=e.focusedElem,l=e.selectionRange;if(a!==t&&t&&t.ownerDocument&&Xp(t.ownerDocument.documentElement,t)){if(l!==null&&pi(t)){if(a=l.start,e=l.end,e===void 0&&(e=a),"selectionStart"in t)t.selectionStart=a,t.selectionEnd=Math.min(e,t.value.length);else if(e=(a=t.ownerDocument||document)&&a.defaultView||window,e.getSelection){e=e.getSelection();var r=t.textContent.length,s=Math.min(l.start,r);l=l.end===void 0?s:Math.min(l.end,r),!e.extend&&s>l&&(r=l,l=s,s=r),r=kc(t,s);var u=kc(t,l);r&&u&&(e.rangeCount!==1||e.anchorNode!==r.node||e.anchorOffset!==r.offset||e.focusNode!==u.node||e.focusOffset!==u.offset)&&(a=a.createRange(),a.setStart(r.node,r.offset),e.removeAllRanges(),s>l?(e.addRange(a),e.extend(u.node,u.offset)):(a.setEnd(u.node,u.offset),e.addRange(a)))}}for(a=[],e=t;e=e.parentNode;)e.nodeType===1&&a.push({element:e,left:e.scrollLeft,top:e.scrollTop});for(typeof t.focus=="function"&&t.focus(),t=0;t<a.length;t++)e=a[t],e.element.scrollLeft=e.left,e.element.scrollTop=e.top}}var TL=Ka&&"documentMode"in document&&11>=document.documentMode,Wo=null,wd=null,or=null,bd=!1;function wc(e,a,t){var l=t.window===t?t.document:t.nodeType===9?t:t.ownerDocument;bd||Wo==null||Wo!==Qn(l)||(l=Wo,"selectionStart"in l&&pi(l)?l={start:l.selectionStart,end:l.selectionEnd}:(l=(l.ownerDocument&&l.ownerDocument.defaultView||window).getSelection(),l={anchorNode:l.anchorNode,anchorOffset:l.anchorOffset,focusNode:l.focusNode,focusOffset:l.focusOffset}),or&&hr(or,l)||(or=l,l=ts(wd,"onSelect"),0<l.length&&(a=new ii("onSelect","select",null,a,t),e.push({event:a,listeners:l}),a.target=Wo)))}function Fn(e,a){var t={};return t[e.toLowerCase()]=a.toLowerCase(),t["Webkit"+e]="webkit"+a,t["Moz"+e]="moz"+a,t}var jo={animationend:Fn("Animation","AnimationEnd"),animationiteration:Fn("Animation","AnimationIteration"),animationstart:Fn("Animation","AnimationStart"),transitionend:Fn("Transition","TransitionEnd")},Xu={},Qp={};Ka&&(Qp=document.createElement("div").style,"AnimationEvent"in window||(delete jo.animationend.animation,delete jo.animationiteration.animation,delete jo.animationstart.animation),"TransitionEvent"in window||delete jo.transitionend.transition);function Cs(e){if(Xu[e])return Xu[e];if(!jo[e])return e;var a=jo[e],t;for(t in a)if(a.hasOwnProperty(t)&&t in Qp)return Xu[e]=a[t];return e}var Zp=Cs("animationend"),Yp=Cs("animationiteration"),Jp=Cs("animationstart"),Rp=Cs("transitionend"),em=new Map,bc="abort auxClick cancel canPlay canPlayThrough click close contextMenu copy cut drag dragEnd dragEnter dragExit dragLeave dragOver dragStart drop durationChange emptied encrypted ended error gotPointerCapture input invalid keyDown keyPress keyUp load loadedData loadedMetadata loadStart lostPointerCapture mouseDown mouseMove mouseOut mouseOver mouseUp paste pause play playing pointerCancel pointerDown pointerMove pointerOut pointerOver pointerUp progress rateChange reset resize seeked seeking stalled submit suspend timeUpdate touchCancel touchEnd touchStart volumeChange scroll toggle touchMove waiting wheel".split(" ");function Pt(e,a){em.set(e,a),io(a,[e])}for(Dn=0;Dn<bc.length;Dn++)Tn=bc[Dn],Pc=Tn.toLowerCase(),Nc=Tn[0].toUpperCase()+Tn.slice(1),Pt(Pc,"on"+Nc);var Tn,Pc,Nc,Dn;Pt(Zp,"onAnimationEnd");Pt(Yp,"onAnimationIteration");Pt(Jp,"onAnimationStart");Pt("dblclick","onDoubleClick");Pt("focusin","onFocus");Pt("focusout","onBlur");Pt(Rp,"onTransitionEnd");ol("onMouseEnter",["mouseout","mouseover"]);ol("onMouseLeave",["mouseout","mouseover"]);ol("onPointerEnter",["pointerout","pointerover"]);ol("onPointerLeave",["pointerout","pointerover"]);io("onChange","change click focusin focusout input keydown keyup selectionchange".split(" "));io("onSelect","focusout contextmenu dragend focusin keydown keyup mousedown mouseup selectionchange".split(" "));io("onBeforeInput",["compositionend","keypress","textInput","paste"]);io("onCompositionEnd","compositionend focusout keydown keypress keyup mousedown".split(" "));io("onCompositionStart","compositionstart focusout keydown keypress keyup mousedown".split(" "));io("onCompositionUpdate","compositionupdate focusout keydown keypress keyup mousedown".split(" "));var Jl="abort canplay canplaythrough durationchange emptied encrypted ended error loadeddata loadedmetadata loadstart pause play playing progress ratechange resize seeked seeking stalled suspend timeupdate volumechange waiting".split(" "),AL=new Set("cancel close invalid load scroll toggle".split(" ").concat(Jl));function Fc(e,a,t){var l=e.type||"unknown-event";e.currentTarget=t,Ax(l,a,void 0,e),e.currentTarget=null}function am(e,a){a=(a&4)!==0;for(var t=0;t<e.length;t++){var l=e[t],r=l.event;l=l.listeners;e:{var s=void 0;if(a)for(var u=l.length-1;0<=u;u--){var c=l[u],f=c.instance,h=c.currentTarget;if(c=c.listener,f!==s&&r.isPropagationStopped())break e;Fc(r,c,h),s=f}else for(u=0;u<l.length;u++){if(c=l[u],f=c.instance,h=c.currentTarget,c=c.listener,f!==s&&r.isPropagationStopped())break e;Fc(r,c,h),s=f}}}if(Yn)throw e=Id,Yn=!1,Id=null,e}function te(e,a){var t=a[Td];t===void 0&&(t=a[Td]=new Set);var l=e+"__bubble";t.has(l)||(tm(a,e,2,!1),t.add(l))}function Ku(e,a,t){var l=0;a&&(l|=4),tm(t,e,l,a)}var An="_reactListening"+Math.random().toString(36).slice(2);function gr(e){if(!e[An]){e[An]=!0,dp.forEach(function(t){t!=="selectionchange"&&(AL.has(t)||Ku(t,!1,e),Ku(t,!0,e))});var a=e.nodeType===9?e:e.ownerDocument;a===null||a[An]||(a[An]=!0,Ku("selectionchange",!1,a))}}function tm(e,a,t,l){switch(qp(a)){case 1:var r=Kx;break;case 4:r=Qx;break;default:r=ui}t=r.bind(null,a,t,e),r=void 0,!yd||a!=="touchstart"&&a!=="touchmove"&&a!=="wheel"||(r=!0),l?r!==void 0?e.addEventListener(a,t,{capture:!0,passive:r}):e.addEventListener(a,t,!0):r!==void 0?e.addEventListener(a,t,{passive:r}):e.addEventListener(a,t,!1)}function Qu(e,a,t,l,r){var s=l;if((a&1)===0&&(a&2)===0&&l!==null)e:for(;;){if(l===null)return;var u=l.tag;if(u===3||u===4){var c=l.stateNode.containerInfo;if(c===r||c.nodeType===8&&c.parentNode===r)break;if(u===4)for(u=l.return;u!==null;){var f=u.tag;if((f===3||f===4)&&(f=u.stateNode.containerInfo,f===r||f.nodeType===8&&f.parentNode===r))return;u=u.return}for(;c!==null;){if(u=Rt(c),u===null)return;if(f=u.tag,f===5||f===6){l=s=u;continue e}c=c.parentNode}}l=l.return}wp(function(){var h=s,v=li(t),k=[];e:{var I=em.get(e);if(I!==void 0){var N=ii,w=e;switch(e){case"keypress":if(_n(t)===0)break e;case"keydown":case"keyup":N=iL;break;case"focusin":w="focus",N=Vu;break;case"focusout":w="blur",N=Vu;break;case"beforeblur":case"afterblur":N=Vu;break;case"click":if(t.button===2)break e;case"auxclick":case"dblclick":case"mousedown":case"mousemove":case"mouseup":case"mouseout":case"mouseover":case"contextmenu":N=gc;break;case"drag":case"dragend":case"dragenter":case"dragexit":case"dragleave":case"dragover":case"dragstart":case"drop":N=Jx;break;case"touchcancel":case"touchend":case"touchmove":case"touchstart":N=pL;break;case Zp:case Yp:case Jp:N=aL;break;case Rp:N=hL;break;case"scroll":N=Zx;break;case"wheel":N=xL;break;case"copy":case"cut":case"paste":N=oL;break;case"gotpointercapture":case"lostpointercapture":case"pointercancel":case"pointerdown":case"pointermove":case"pointerout":case"pointerover":case"pointerup":N=Lc}var M=(a&4)!==0,q=!M&&e==="scroll",x=M?I!==null?I+"Capture":null:I;M=[];for(var m=h,L;m!==null;){L=m;var b=L.stateNode;if(L.tag===5&&b!==null&&(L=b,x!==null&&(b=ir(m,x),b!=null&&M.push(xr(m,b,L)))),q)break;m=m.return}0<M.length&&(I=new N(I,w,null,t,v),k.push({event:I,listeners:M}))}}if((a&7)===0){e:{if(I=e==="mouseover"||e==="pointerover",N=e==="mouseout"||e==="pointerout",I&&t!==Ld&&(w=t.relatedTarget||t.fromElement)&&(Rt(w)||w[Qa]))break e;if((N||I)&&(I=v.window===v?v:(I=v.ownerDocument)?I.defaultView||I.parentWindow:window,N?(w=t.relatedTarget||t.toElement,N=h,w=w?Rt(w):null,w!==null&&(q=fo(w),w!==q||w.tag!==5&&w.tag!==6)&&(w=null)):(N=null,w=h),N!==w)){if(M=gc,b="onMouseLeave",x="onMouseEnter",m="mouse",(e==="pointerout"||e==="pointerover")&&(M=Lc,b="onPointerLeave",x="onPointerEnter",m="pointer"),q=N==null?I:$o(N),L=w==null?I:$o(w),I=new M(b,m+"leave",N,t,v),I.target=q,I.relatedTarget=L,b=null,Rt(v)===h&&(M=new M(x,m+"enter",w,t,v),M.target=L,M.relatedTarget=q,b=M),q=b,N&&w)a:{for(M=N,x=w,m=0,L=M;L;L=Uo(L))m++;for(L=0,b=x;b;b=Uo(b))L++;for(;0<m-L;)M=Uo(M),m--;for(;0<L-m;)x=Uo(x),L--;for(;m--;){if(M===x||x!==null&&M===x.alternate)break a;M=Uo(M),x=Uo(x)}M=null}else M=null;N!==null&&Dc(k,I,N,M,!1),w!==null&&q!==null&&Dc(k,q,w,M,!0)}}e:{if(I=h?$o(h):window,N=I.nodeName&&I.nodeName.toLowerCase(),N==="select"||N==="input"&&I.type==="file")var E=kL;else if(Ic(I))if(Vp)E=NL;else{E=bL;var z=wL}else(N=I.nodeName)&&N.toLowerCase()==="input"&&(I.type==="checkbox"||I.type==="radio")&&(E=PL);if(E&&(E=E(e,h))){$p(k,E,t,v);break e}z&&z(e,I,h),e==="focusout"&&(z=I._wrapperState)&&z.controlled&&I.type==="number"&&pd(I,"number",I.value)}switch(z=h?$o(h):window,e){case"focusin":(Ic(z)||z.contentEditable==="true")&&(Wo=z,wd=h,or=null);break;case"focusout":or=wd=Wo=null;break;case"mousedown":bd=!0;break;case"contextmenu":case"mouseup":case"dragend":bd=!1,wc(k,t,v);break;case"selectionchange":if(TL)break;case"keydown":case"keyup":wc(k,t,v)}var H;if(ci)e:{switch(e){case"compositionstart":var F="onCompositionStart";break e;case"compositionend":F="onCompositionEnd";break e;case"compositionupdate":F="onCompositionUpdate";break e}F=void 0}else _o?Wp(e,t)&&(F="onCompositionEnd"):e==="keydown"&&t.keyCode===229&&(F="onCompositionStart");F&&(_p&&t.locale!=="ko"&&(_o||F!=="onCompositionStart"?F==="onCompositionEnd"&&_o&&(H=Hp()):(ht=v,di="value"in ht?ht.value:ht.textContent,_o=!0)),z=ts(h,F),0<z.length&&(F=new xc(F,e,null,t,v),k.push({event:F,listeners:z}),H?F.data=H:(H=jp(t),H!==null&&(F.data=H)))),(H=vL?yL(e,t):IL(e,t))&&(h=ts(h,"onBeforeInput"),0<h.length&&(v=new xc("onBeforeInput","beforeinput",null,t,v),k.push({event:v,listeners:h}),v.data=H))}am(k,a)})}function xr(e,a,t){return{instance:e,listener:a,currentTarget:t}}function ts(e,a){for(var t=a+"Capture",l=[];e!==null;){var r=e,s=r.stateNode;r.tag===5&&s!==null&&(r=s,s=ir(e,t),s!=null&&l.unshift(xr(e,s,r)),s=ir(e,a),s!=null&&l.push(xr(e,s,r))),e=e.return}return l}function Uo(e){if(e===null)return null;do e=e.return;while(e&&e.tag!==5);return e||null}function Dc(e,a,t,l,r){for(var s=a._reactName,u=[];t!==null&&t!==l;){var c=t,f=c.alternate,h=c.stateNode;if(f!==null&&f===l)break;c.tag===5&&h!==null&&(c=h,r?(f=ir(t,s),f!=null&&u.unshift(xr(t,f,c))):r||(f=ir(t,s),f!=null&&u.push(xr(t,f,c)))),t=t.return}u.length!==0&&e.push({event:a,listeners:u})}var ML=/\r\n?/g,BL=/\u0000|\uFFFD/g;function Tc(e){return(typeof e=="string"?e:""+e).replace(ML,`
-`).replace(BL,"")}function Mn(e,a,t){if(a=Tc(a),Tc(e)!==a&&t)throw Error(D(425))}function os(){}var Pd=null,Nd=null;function Fd(e,a){return e==="textarea"||e==="noscript"||typeof a.children=="string"||typeof a.children=="number"||typeof a.dangerouslySetInnerHTML=="object"&&a.dangerouslySetInnerHTML!==null&&a.dangerouslySetInnerHTML.__html!=null}var Dd=typeof setTimeout=="function"?setTimeout:void 0,EL=typeof clearTimeout=="function"?clearTimeout:void 0,Ac=typeof Promise=="function"?Promise:void 0,OL=typeof queueMicrotask=="function"?queueMicrotask:typeof Ac<"u"?function(e){return Ac.resolve(null).then(e).catch(zL)}:Dd;function zL(e){setTimeout(function(){throw e})}function Zu(e,a){var t=a,l=0;do{var r=t.nextSibling;if(e.removeChild(t),r&&r.nodeType===8)if(t=r.data,t==="/$"){if(l===0){e.removeChild(r),pr(a);return}l--}else t!=="$"&&t!=="$?"&&t!=="$!"||l++;t=r}while(t);pr(a)}function yt(e){for(;e!=null;e=e.nextSibling){var a=e.nodeType;if(a===1||a===3)break;if(a===8){if(a=e.data,a==="$"||a==="$!"||a==="$?")break;if(a==="/$")return null}}return e}function Mc(e){e=e.previousSibling;for(var a=0;e;){if(e.nodeType===8){var t=e.data;if(t==="$"||t==="$!"||t==="$?"){if(a===0)return e;a--}else t==="/$"&&a++}e=e.previousSibling}return null}var fl=Math.random().toString(36).slice(2),Aa="__reactFiber$"+fl,Lr="__reactProps$"+fl,Qa="__reactContainer$"+fl,Td="__reactEvents$"+fl,UL="__reactListeners$"+fl,qL="__reactHandles$"+fl;function Rt(e){var a=e[Aa];if(a)return a;for(var t=e.parentNode;t;){if(a=t[Qa]||t[Aa]){if(t=a.alternate,a.child!==null||t!==null&&t.child!==null)for(e=Mc(e);e!==null;){if(t=e[Aa])return t;e=Mc(e)}return a}e=t,t=e.parentNode}return null}function Pr(e){return e=e[Aa]||e[Qa],!e||e.tag!==5&&e.tag!==6&&e.tag!==13&&e.tag!==3?null:e}function $o(e){if(e.tag===5||e.tag===6)return e.stateNode;throw Error(D(33))}function Ss(e){return e[Lr]||null}var Ad=[],Vo=-1;function Nt(e){return{current:e}}function oe(e){0>Vo||(e.current=Ad[Vo],Ad[Vo]=null,Vo--)}function ee(e,a){Vo++,Ad[Vo]=e.current,e.current=a}var bt={},Oe=Nt(bt),Qe=Nt(!1),lo=bt;function ll(e,a){var t=e.type.contextTypes;if(!t)return bt;var l=e.stateNode;if(l&&l.__reactInternalMemoizedUnmaskedChildContext===a)return l.__reactInternalMemoizedMaskedChildContext;var r={},s;for(s in t)r[s]=a[s];return l&&(e=e.stateNode,e.__reactInternalMemoizedUnmaskedChildContext=a,e.__reactInternalMemoizedMaskedChildContext=r),r}function Ze(e){return e=e.childContextTypes,e!=null}function ls(){oe(Qe),oe(Oe)}function Bc(e,a,t){if(Oe.current!==bt)throw Error(D(168));ee(Oe,a),ee(Qe,t)}function om(e,a,t){var l=e.stateNode;if(a=a.childContextTypes,typeof l.getChildContext!="function")return t;l=l.getChildContext();for(var r in l)if(!(r in a))throw Error(D(108,wx(e)||"Unknown",r));return ce({},t,l)}function rs(e){return e=(e=e.stateNode)&&e.__reactInternalMemoizedMergedChildContext||bt,lo=Oe.current,ee(Oe,e),ee(Qe,Qe.current),!0}function Ec(e,a,t){var l=e.stateNode;if(!l)throw Error(D(169));t?(e=om(e,a,lo),l.__reactInternalMemoizedMergedChildContext=e,oe(Qe),oe(Oe),ee(Oe,e)):oe(Qe),ee(Qe,t)}var $a=null,ks=!1,Yu=!1;function lm(e){$a===null?$a=[e]:$a.push(e)}function HL(e){ks=!0,lm(e)}function Ft(){if(!Yu&&$a!==null){Yu=!0;var e=0,a=Y;try{var t=$a;for(Y=1;e<t.length;e++){var l=t[e];do l=l(!0);while(l!==null)}$a=null,ks=!1}catch(r){throw $a!==null&&($a=$a.slice(e+1)),Fp(ri,Ft),r}finally{Y=a,Yu=!1}}return null}var Go=[],Xo=0,ns=null,ss=0,ia=[],fa=0,ro=null,Va=1,Ga="";function Yt(e,a){Go[Xo++]=ss,Go[Xo++]=ns,ns=e,ss=a}function rm(e,a,t){ia[fa++]=Va,ia[fa++]=Ga,ia[fa++]=ro,ro=e;var l=Va;e=Ga;var r=32-Ca(l)-1;l&=~(1<<r),t+=1;var s=32-Ca(a)+r;if(30<s){var u=r-r%5;s=(l&(1<<u)-1).toString(32),l>>=u,r-=u,Va=1<<32-Ca(a)+r|t<<r|l,Ga=s+e}else Va=1<<s|t<<r|l,Ga=e}function mi(e){e.return!==null&&(Yt(e,1),rm(e,1,0))}function hi(e){for(;e===ns;)ns=Go[--Xo],Go[Xo]=null,ss=Go[--Xo],Go[Xo]=null;for(;e===ro;)ro=ia[--fa],ia[fa]=null,Ga=ia[--fa],ia[fa]=null,Va=ia[--fa],ia[fa]=null}var oa=null,ta=null,ue=!1,Ia=null;function nm(e,a){var t=ca(5,null,null,0);t.elementType="DELETED",t.stateNode=a,t.return=e,a=e.deletions,a===null?(e.deletions=[t],e.flags|=16):a.push(t)}function Oc(e,a){switch(e.tag){case 5:var t=e.type;return a=a.nodeType!==1||t.toLowerCase()!==a.nodeName.toLowerCase()?null:a,a!==null?(e.stateNode=a,oa=e,ta=yt(a.firstChild),!0):!1;case 6:return a=e.pendingProps===""||a.nodeType!==3?null:a,a!==null?(e.stateNode=a,oa=e,ta=null,!0):!1;case 13:return a=a.nodeType!==8?null:a,a!==null?(t=ro!==null?{id:Va,overflow:Ga}:null,e.memoizedState={dehydrated:a,treeContext:t,retryLane:1073741824},t=ca(18,null,null,0),t.stateNode=a,t.return=e,e.child=t,oa=e,ta=null,!0):!1;default:return!1}}function Md(e){return(e.mode&1)!==0&&(e.flags&128)===0}function Bd(e){if(ue){var a=ta;if(a){var t=a;if(!Oc(e,a)){if(Md(e))throw Error(D(418));a=yt(t.nextSibling);var l=oa;a&&Oc(e,a)?nm(l,t):(e.flags=e.flags&-4097|2,ue=!1,oa=e)}}else{if(Md(e))throw Error(D(418));e.flags=e.flags&-4097|2,ue=!1,oa=e}}}function zc(e){for(e=e.return;e!==null&&e.tag!==5&&e.tag!==3&&e.tag!==13;)e=e.return;oa=e}function Bn(e){if(e!==oa)return!1;if(!ue)return zc(e),ue=!0,!1;var a;if((a=e.tag!==3)&&!(a=e.tag!==5)&&(a=e.type,a=a!=="head"&&a!=="body"&&!Fd(e.type,e.memoizedProps)),a&&(a=ta)){if(Md(e))throw sm(),Error(D(418));for(;a;)nm(e,a),a=yt(a.nextSibling)}if(zc(e),e.tag===13){if(e=e.memoizedState,e=e!==null?e.dehydrated:null,!e)throw Error(D(317));e:{for(e=e.nextSibling,a=0;e;){if(e.nodeType===8){var t=e.data;if(t==="/$"){if(a===0){ta=yt(e.nextSibling);break e}a--}else t!=="$"&&t!=="$!"&&t!=="$?"||a++}e=e.nextSibling}ta=null}}else ta=oa?yt(e.stateNode.nextSibling):null;return!0}function sm(){for(var e=ta;e;)e=yt(e.nextSibling)}function rl(){ta=oa=null,ue=!1}function gi(e){Ia===null?Ia=[e]:Ia.push(e)}var _L=Ja.ReactCurrentBatchConfig;function Vl(e,a,t){if(e=t.ref,e!==null&&typeof e!="function"&&typeof e!="object"){if(t._owner){if(t=t._owner,t){if(t.tag!==1)throw Error(D(309));var l=t.stateNode}if(!l)throw Error(D(147,e));var r=l,s=""+e;return a!==null&&a.ref!==null&&typeof a.ref=="function"&&a.ref._stringRef===s?a.ref:(a=function(u){var c=r.refs;u===null?delete c[s]:c[s]=u},a._stringRef=s,a)}if(typeof e!="string")throw Error(D(284));if(!t._owner)throw Error(D(290,e))}return e}function En(e,a){throw e=Object.prototype.toString.call(a),Error(D(31,e==="[object Object]"?"object with keys {"+Object.keys(a).join(", ")+"}":e))}function Uc(e){var a=e._init;return a(e._payload)}function um(e){function a(x,m){if(e){var L=x.deletions;L===null?(x.deletions=[m],x.flags|=16):L.push(m)}}function t(x,m){if(!e)return null;for(;m!==null;)a(x,m),m=m.sibling;return null}function l(x,m){for(x=new Map;m!==null;)m.key!==null?x.set(m.key,m):x.set(m.index,m),m=m.sibling;return x}function r(x,m){return x=kt(x,m),x.index=0,x.sibling=null,x}function s(x,m,L){return x.index=L,e?(L=x.alternate,L!==null?(L=L.index,L<m?(x.flags|=2,m):L):(x.flags|=2,m)):(x.flags|=1048576,m)}function u(x){return e&&x.alternate===null&&(x.flags|=2),x}function c(x,m,L,b){return m===null||m.tag!==6?(m=ld(L,x.mode,b),m.return=x,m):(m=r(m,L),m.return=x,m)}function f(x,m,L,b){var E=L.type;return E===Ho?v(x,m,L.props.children,b,L.key):m!==null&&(m.elementType===E||typeof E=="object"&&E!==null&&E.$$typeof===ft&&Uc(E)===m.type)?(b=r(m,L.props),b.ref=Vl(x,m,L),b.return=x,b):(b=Kn(L.type,L.key,L.props,null,x.mode,b),b.ref=Vl(x,m,L),b.return=x,b)}function h(x,m,L,b){return m===null||m.tag!==4||m.stateNode.containerInfo!==L.containerInfo||m.stateNode.implementation!==L.implementation?(m=rd(L,x.mode,b),m.return=x,m):(m=r(m,L.children||[]),m.return=x,m)}function v(x,m,L,b,E){return m===null||m.tag!==7?(m=oo(L,x.mode,b,E),m.return=x,m):(m=r(m,L),m.return=x,m)}function k(x,m,L){if(typeof m=="string"&&m!==""||typeof m=="number")return m=ld(""+m,x.mode,L),m.return=x,m;if(typeof m=="object"&&m!==null){switch(m.$$typeof){case yn:return L=Kn(m.type,m.key,m.props,null,x.mode,L),L.ref=Vl(x,null,m),L.return=x,L;case qo:return m=rd(m,x.mode,L),m.return=x,m;case ft:var b=m._init;return k(x,b(m._payload),L)}if(Zl(m)||_l(m))return m=oo(m,x.mode,L,null),m.return=x,m;En(x,m)}return null}function I(x,m,L,b){var E=m!==null?m.key:null;if(typeof L=="string"&&L!==""||typeof L=="number")return E!==null?null:c(x,m,""+L,b);if(typeof L=="object"&&L!==null){switch(L.$$typeof){case yn:return L.key===E?f(x,m,L,b):null;case qo:return L.key===E?h(x,m,L,b):null;case ft:return E=L._init,I(x,m,E(L._payload),b)}if(Zl(L)||_l(L))return E!==null?null:v(x,m,L,b,null);En(x,L)}return null}function N(x,m,L,b,E){if(typeof b=="string"&&b!==""||typeof b=="number")return x=x.get(L)||null,c(m,x,""+b,E);if(typeof b=="object"&&b!==null){switch(b.$$typeof){case yn:return x=x.get(b.key===null?L:b.key)||null,f(m,x,b,E);case qo:return x=x.get(b.key===null?L:b.key)||null,h(m,x,b,E);case ft:var z=b._init;return N(x,m,L,z(b._payload),E)}if(Zl(b)||_l(b))return x=x.get(L)||null,v(m,x,b,E,null);En(m,b)}return null}function w(x,m,L,b){for(var E=null,z=null,H=m,F=m=0,de=null;H!==null&&F<L.length;F++){H.index>F?(de=H,H=null):de=H.sibling;var j=I(x,H,L[F],b);if(j===null){H===null&&(H=de);break}e&&H&&j.alternate===null&&a(x,H),m=s(j,m,F),z===null?E=j:z.sibling=j,z=j,H=de}if(F===L.length)return t(x,H),ue&&Yt(x,F),E;if(H===null){for(;F<L.length;F++)H=k(x,L[F],b),H!==null&&(m=s(H,m,F),z===null?E=H:z.sibling=H,z=H);return ue&&Yt(x,F),E}for(H=l(x,H);F<L.length;F++)de=N(H,x,F,L[F],b),de!==null&&(e&&de.alternate!==null&&H.delete(de.key===null?F:de.key),m=s(de,m,F),z===null?E=de:z.sibling=de,z=de);return e&&H.forEach(function(ga){return a(x,ga)}),ue&&Yt(x,F),E}function M(x,m,L,b){var E=_l(L);if(typeof E!="function")throw Error(D(150));if(L=E.call(L),L==null)throw Error(D(151));for(var z=E=null,H=m,F=m=0,de=null,j=L.next();H!==null&&!j.done;F++,j=L.next()){H.index>F?(de=H,H=null):de=H.sibling;var ga=I(x,H,j.value,b);if(ga===null){H===null&&(H=de);break}e&&H&&ga.alternate===null&&a(x,H),m=s(ga,m,F),z===null?E=ga:z.sibling=ga,z=ga,H=de}if(j.done)return t(x,H),ue&&Yt(x,F),E;if(H===null){for(;!j.done;F++,j=L.next())j=k(x,j.value,b),j!==null&&(m=s(j,m,F),z===null?E=j:z.sibling=j,z=j);return ue&&Yt(x,F),E}for(H=l(x,H);!j.done;F++,j=L.next())j=N(H,x,F,j.value,b),j!==null&&(e&&j.alternate!==null&&H.delete(j.key===null?F:j.key),m=s(j,m,F),z===null?E=j:z.sibling=j,z=j);return e&&H.forEach(function(xo){return a(x,xo)}),ue&&Yt(x,F),E}function q(x,m,L,b){if(typeof L=="object"&&L!==null&&L.type===Ho&&L.key===null&&(L=L.props.children),typeof L=="object"&&L!==null){switch(L.$$typeof){case yn:e:{for(var E=L.key,z=m;z!==null;){if(z.key===E){if(E=L.type,E===Ho){if(z.tag===7){t(x,z.sibling),m=r(z,L.props.children),m.return=x,x=m;break e}}else if(z.elementType===E||typeof E=="object"&&E!==null&&E.$$typeof===ft&&Uc(E)===z.type){t(x,z.sibling),m=r(z,L.props),m.ref=Vl(x,z,L),m.return=x,x=m;break e}t(x,z);break}else a(x,z);z=z.sibling}L.type===Ho?(m=oo(L.props.children,x.mode,b,L.key),m.return=x,x=m):(b=Kn(L.type,L.key,L.props,null,x.mode,b),b.ref=Vl(x,m,L),b.return=x,x=b)}return u(x);case qo:e:{for(z=L.key;m!==null;){if(m.key===z)if(m.tag===4&&m.stateNode.containerInfo===L.containerInfo&&m.stateNode.implementation===L.implementation){t(x,m.sibling),m=r(m,L.children||[]),m.return=x,x=m;break e}else{t(x,m);break}else a(x,m);m=m.sibling}m=rd(L,x.mode,b),m.return=x,x=m}return u(x);case ft:return z=L._init,q(x,m,z(L._payload),b)}if(Zl(L))return w(x,m,L,b);if(_l(L))return M(x,m,L,b);En(x,L)}return typeof L=="string"&&L!==""||typeof L=="number"?(L=""+L,m!==null&&m.tag===6?(t(x,m.sibling),m=r(m,L),m.return=x,x=m):(t(x,m),m=ld(L,x.mode,b),m.return=x,x=m),u(x)):t(x,m)}return q}var nl=um(!0),dm=um(!1),us=Nt(null),ds=null,Ko=null,xi=null;function Li(){xi=Ko=ds=null}function vi(e){var a=us.current;oe(us),e._currentValue=a}function Ed(e,a,t){for(;e!==null;){var l=e.alternate;if((e.childLanes&a)!==a?(e.childLanes|=a,l!==null&&(l.childLanes|=a)):l!==null&&(l.childLanes&a)!==a&&(l.childLanes|=a),e===t)break;e=e.return}}function al(e,a){ds=e,xi=Ko=null,e=e.dependencies,e!==null&&e.firstContext!==null&&((e.lanes&a)!==0&&(Ke=!0),e.firstContext=null)}function ma(e){var a=e._currentValue;if(xi!==e)if(e={context:e,memoizedValue:a,next:null},Ko===null){if(ds===null)throw Error(D(308));Ko=e,ds.dependencies={lanes:0,firstContext:e}}else Ko=Ko.next=e;return a}var eo=null;function yi(e){eo===null?eo=[e]:eo.push(e)}function im(e,a,t,l){var r=a.interleaved;return r===null?(t.next=t,yi(a)):(t.next=r.next,r.next=t),a.interleaved=t,Za(e,l)}function Za(e,a){e.lanes|=a;var t=e.alternate;for(t!==null&&(t.lanes|=a),t=e,e=e.return;e!==null;)e.childLanes|=a,t=e.alternate,t!==null&&(t.childLanes|=a),t=e,e=e.return;return t.tag===3?t.stateNode:null}var ct=!1;function Ii(e){e.updateQueue={baseState:e.memoizedState,firstBaseUpdate:null,lastBaseUpdate:null,shared:{pending:null,interleaved:null,lanes:0},effects:null}}function fm(e,a){e=e.updateQueue,a.updateQueue===e&&(a.updateQueue={baseState:e.baseState,firstBaseUpdate:e.firstBaseUpdate,lastBaseUpdate:e.lastBaseUpdate,shared:e.shared,effects:e.effects})}function Xa(e,a){return{eventTime:e,lane:a,tag:0,payload:null,callback:null,next:null}}function It(e,a,t){var l=e.updateQueue;if(l===null)return null;if(l=l.shared,(Q&2)!==0){var r=l.pending;return r===null?a.next=a:(a.next=r.next,r.next=a),l.pending=a,Za(e,t)}return r=l.interleaved,r===null?(a.next=a,yi(l)):(a.next=r.next,r.next=a),l.interleaved=a,Za(e,t)}function Wn(e,a,t){if(a=a.updateQueue,a!==null&&(a=a.shared,(t&4194240)!==0)){var l=a.lanes;l&=e.pendingLanes,t|=l,a.lanes=t,ni(e,t)}}function qc(e,a){var t=e.updateQueue,l=e.alternate;if(l!==null&&(l=l.updateQueue,t===l)){var r=null,s=null;if(t=t.firstBaseUpdate,t!==null){do{var u={eventTime:t.eventTime,lane:t.lane,tag:t.tag,payload:t.payload,callback:t.callback,next:null};s===null?r=s=u:s=s.next=u,t=t.next}while(t!==null);s===null?r=s=a:s=s.next=a}else r=s=a;t={baseState:l.baseState,firstBaseUpdate:r,lastBaseUpdate:s,shared:l.shared,effects:l.effects},e.updateQueue=t;return}e=t.lastBaseUpdate,e===null?t.firstBaseUpdate=a:e.next=a,t.lastBaseUpdate=a}function is(e,a,t,l){var r=e.updateQueue;ct=!1;var s=r.firstBaseUpdate,u=r.lastBaseUpdate,c=r.shared.pending;if(c!==null){r.shared.pending=null;var f=c,h=f.next;f.next=null,u===null?s=h:u.next=h,u=f;var v=e.alternate;v!==null&&(v=v.updateQueue,c=v.lastBaseUpdate,c!==u&&(c===null?v.firstBaseUpdate=h:c.next=h,v.lastBaseUpdate=f))}if(s!==null){var k=r.baseState;u=0,v=h=f=null,c=s;do{var I=c.lane,N=c.eventTime;if((l&I)===I){v!==null&&(v=v.next={eventTime:N,lane:0,tag:c.tag,payload:c.payload,callback:c.callback,next:null});e:{var w=e,M=c;switch(I=a,N=t,M.tag){case 1:if(w=M.payload,typeof w=="function"){k=w.call(N,k,I);break e}k=w;break e;case 3:w.flags=w.flags&-65537|128;case 0:if(w=M.payload,I=typeof w=="function"?w.call(N,k,I):w,I==null)break e;k=ce({},k,I);break e;case 2:ct=!0}}c.callback!==null&&c.lane!==0&&(e.flags|=64,I=r.effects,I===null?r.effects=[c]:I.push(c))}else N={eventTime:N,lane:I,tag:c.tag,payload:c.payload,callback:c.callback,next:null},v===null?(h=v=N,f=k):v=v.next=N,u|=I;if(c=c.next,c===null){if(c=r.shared.pending,c===null)break;I=c,c=I.next,I.next=null,r.lastBaseUpdate=I,r.shared.pending=null}}while(!0);if(v===null&&(f=k),r.baseState=f,r.firstBaseUpdate=h,r.lastBaseUpdate=v,a=r.shared.interleaved,a!==null){r=a;do u|=r.lane,r=r.next;while(r!==a)}else s===null&&(r.shared.lanes=0);so|=u,e.lanes=u,e.memoizedState=k}}function Hc(e,a,t){if(e=a.effects,a.effects=null,e!==null)for(a=0;a<e.length;a++){var l=e[a],r=l.callback;if(r!==null){if(l.callback=null,l=t,typeof r!="function")throw Error(D(191,r));r.call(l)}}}var Nr={},Ba=Nt(Nr),vr=Nt(Nr),yr=Nt(Nr);function ao(e){if(e===Nr)throw Error(D(174));return e}function Ci(e,a){switch(ee(yr,a),ee(vr,e),ee(Ba,Nr),e=a.nodeType,e){case 9:case 11:a=(a=a.documentElement)?a.namespaceURI:hd(null,"");break;default:e=e===8?a.parentNode:a,a=e.namespaceURI||null,e=e.tagName,a=hd(a,e)}oe(Ba),ee(Ba,a)}function sl(){oe(Ba),oe(vr),oe(yr)}function cm(e){ao(yr.current);var a=ao(Ba.current),t=hd(a,e.type);a!==t&&(ee(vr,e),ee(Ba,t))}function Si(e){vr.current===e&&(oe(Ba),oe(vr))}var ie=Nt(0);function fs(e){for(var a=e;a!==null;){if(a.tag===13){var t=a.memoizedState;if(t!==null&&(t=t.dehydrated,t===null||t.data==="$?"||t.data==="$!"))return a}else if(a.tag===19&&a.memoizedProps.revealOrder!==void 0){if((a.flags&128)!==0)return a}else if(a.child!==null){a.child.return=a,a=a.child;continue}if(a===e)break;for(;a.sibling===null;){if(a.return===null||a.return===e)return null;a=a.return}a.sibling.return=a.return,a=a.sibling}return null}var Ju=[];function ki(){for(var e=0;e<Ju.length;e++)Ju[e]._workInProgressVersionPrimary=null;Ju.length=0}var jn=Ja.ReactCurrentDispatcher,Ru=Ja.ReactCurrentBatchConfig,no=0,fe=null,ye=null,we=null,cs=!1,lr=!1,Ir=0,WL=0;function Me(){throw Error(D(321))}function wi(e,a){if(a===null)return!1;for(var t=0;t<a.length&&t<e.length;t++)if(!ka(e[t],a[t]))return!1;return!0}function bi(e,a,t,l,r,s){if(no=s,fe=a,a.memoizedState=null,a.updateQueue=null,a.lanes=0,jn.current=e===null||e.memoizedState===null?GL:XL,e=t(l,r),lr){s=0;do{if(lr=!1,Ir=0,25<=s)throw Error(D(301));s+=1,we=ye=null,a.updateQueue=null,jn.current=KL,e=t(l,r)}while(lr)}if(jn.current=ps,a=ye!==null&&ye.next!==null,no=0,we=ye=fe=null,cs=!1,a)throw Error(D(300));return e}function Pi(){var e=Ir!==0;return Ir=0,e}function Ta(){var e={memoizedState:null,baseState:null,baseQueue:null,queue:null,next:null};return we===null?fe.memoizedState=we=e:we=we.next=e,we}function ha(){if(ye===null){var e=fe.alternate;e=e!==null?e.memoizedState:null}else e=ye.next;var a=we===null?fe.memoizedState:we.next;if(a!==null)we=a,ye=e;else{if(e===null)throw Error(D(310));ye=e,e={memoizedState:ye.memoizedState,baseState:ye.baseState,baseQueue:ye.baseQueue,queue:ye.queue,next:null},we===null?fe.memoizedState=we=e:we=we.next=e}return we}function Cr(e,a){return typeof a=="function"?a(e):a}function ed(e){var a=ha(),t=a.queue;if(t===null)throw Error(D(311));t.lastRenderedReducer=e;var l=ye,r=l.baseQueue,s=t.pending;if(s!==null){if(r!==null){var u=r.next;r.next=s.next,s.next=u}l.baseQueue=r=s,t.pending=null}if(r!==null){s=r.next,l=l.baseState;var c=u=null,f=null,h=s;do{var v=h.lane;if((no&v)===v)f!==null&&(f=f.next={lane:0,action:h.action,hasEagerState:h.hasEagerState,eagerState:h.eagerState,next:null}),l=h.hasEagerState?h.eagerState:e(l,h.action);else{var k={lane:v,action:h.action,hasEagerState:h.hasEagerState,eagerState:h.eagerState,next:null};f===null?(c=f=k,u=l):f=f.next=k,fe.lanes|=v,so|=v}h=h.next}while(h!==null&&h!==s);f===null?u=l:f.next=c,ka(l,a.memoizedState)||(Ke=!0),a.memoizedState=l,a.baseState=u,a.baseQueue=f,t.lastRenderedState=l}if(e=t.interleaved,e!==null){r=e;do s=r.lane,fe.lanes|=s,so|=s,r=r.next;while(r!==e)}else r===null&&(t.lanes=0);return[a.memoizedState,t.dispatch]}function ad(e){var a=ha(),t=a.queue;if(t===null)throw Error(D(311));t.lastRenderedReducer=e;var l=t.dispatch,r=t.pending,s=a.memoizedState;if(r!==null){t.pending=null;var u=r=r.next;do s=e(s,u.action),u=u.next;while(u!==r);ka(s,a.memoizedState)||(Ke=!0),a.memoizedState=s,a.baseQueue===null&&(a.baseState=s),t.lastRenderedState=s}return[s,l]}function pm(){}function mm(e,a){var t=fe,l=ha(),r=a(),s=!ka(l.memoizedState,r);if(s&&(l.memoizedState=r,Ke=!0),l=l.queue,Ni(xm.bind(null,t,l,e),[e]),l.getSnapshot!==a||s||we!==null&&we.memoizedState.tag&1){if(t.flags|=2048,Sr(9,gm.bind(null,t,l,r,a),void 0,null),be===null)throw Error(D(349));(no&30)!==0||hm(t,a,r)}return r}function hm(e,a,t){e.flags|=16384,e={getSnapshot:a,value:t},a=fe.updateQueue,a===null?(a={lastEffect:null,stores:null},fe.updateQueue=a,a.stores=[e]):(t=a.stores,t===null?a.stores=[e]:t.push(e))}function gm(e,a,t,l){a.value=t,a.getSnapshot=l,Lm(a)&&vm(e)}function xm(e,a,t){return t(function(){Lm(a)&&vm(e)})}function Lm(e){var a=e.getSnapshot;e=e.value;try{var t=a();return!ka(e,t)}catch{return!0}}function vm(e){var a=Za(e,1);a!==null&&Sa(a,e,1,-1)}function _c(e){var a=Ta();return typeof e=="function"&&(e=e()),a.memoizedState=a.baseState=e,e={pending:null,interleaved:null,lanes:0,dispatch:null,lastRenderedReducer:Cr,lastRenderedState:e},a.queue=e,e=e.dispatch=VL.bind(null,fe,e),[a.memoizedState,e]}function Sr(e,a,t,l){return e={tag:e,create:a,destroy:t,deps:l,next:null},a=fe.updateQueue,a===null?(a={lastEffect:null,stores:null},fe.updateQueue=a,a.lastEffect=e.next=e):(t=a.lastEffect,t===null?a.lastEffect=e.next=e:(l=t.next,t.next=e,e.next=l,a.lastEffect=e)),e}function ym(){return ha().memoizedState}function $n(e,a,t,l){var r=Ta();fe.flags|=e,r.memoizedState=Sr(1|a,t,void 0,l===void 0?null:l)}function ws(e,a,t,l){var r=ha();l=l===void 0?null:l;var s=void 0;if(ye!==null){var u=ye.memoizedState;if(s=u.destroy,l!==null&&wi(l,u.deps)){r.memoizedState=Sr(a,t,s,l);return}}fe.flags|=e,r.memoizedState=Sr(1|a,t,s,l)}function Wc(e,a){return $n(8390656,8,e,a)}function Ni(e,a){return ws(2048,8,e,a)}function Im(e,a){return ws(4,2,e,a)}function Cm(e,a){return ws(4,4,e,a)}function Sm(e,a){if(typeof a=="function")return e=e(),a(e),function(){a(null)};if(a!=null)return e=e(),a.current=e,function(){a.current=null}}function km(e,a,t){return t=t!=null?t.concat([e]):null,ws(4,4,Sm.bind(null,a,e),t)}function Fi(){}function wm(e,a){var t=ha();a=a===void 0?null:a;var l=t.memoizedState;return l!==null&&a!==null&&wi(a,l[1])?l[0]:(t.memoizedState=[e,a],e)}function bm(e,a){var t=ha();a=a===void 0?null:a;var l=t.memoizedState;return l!==null&&a!==null&&wi(a,l[1])?l[0]:(e=e(),t.memoizedState=[e,a],e)}function Pm(e,a,t){return(no&21)===0?(e.baseState&&(e.baseState=!1,Ke=!0),e.memoizedState=t):(ka(t,a)||(t=Ap(),fe.lanes|=t,so|=t,e.baseState=!0),a)}function jL(e,a){var t=Y;Y=t!==0&&4>t?t:4,e(!0);var l=Ru.transition;Ru.transition={};try{e(!1),a()}finally{Y=t,Ru.transition=l}}function Nm(){return ha().memoizedState}function $L(e,a,t){var l=St(e);if(t={lane:l,action:t,hasEagerState:!1,eagerState:null,next:null},Fm(e))Dm(a,t);else if(t=im(e,a,t,l),t!==null){var r=We();Sa(t,e,l,r),Tm(t,a,l)}}function VL(e,a,t){var l=St(e),r={lane:l,action:t,hasEagerState:!1,eagerState:null,next:null};if(Fm(e))Dm(a,r);else{var s=e.alternate;if(e.lanes===0&&(s===null||s.lanes===0)&&(s=a.lastRenderedReducer,s!==null))try{var u=a.lastRenderedState,c=s(u,t);if(r.hasEagerState=!0,r.eagerState=c,ka(c,u)){var f=a.interleaved;f===null?(r.next=r,yi(a)):(r.next=f.next,f.next=r),a.interleaved=r;return}}catch{}t=im(e,a,r,l),t!==null&&(r=We(),Sa(t,e,l,r),Tm(t,a,l))}}function Fm(e){var a=e.alternate;return e===fe||a!==null&&a===fe}function Dm(e,a){lr=cs=!0;var t=e.pending;t===null?a.next=a:(a.next=t.next,t.next=a),e.pending=a}function Tm(e,a,t){if((t&4194240)!==0){var l=a.lanes;l&=e.pendingLanes,t|=l,a.lanes=t,ni(e,t)}}var ps={readContext:ma,useCallback:Me,useContext:Me,useEffect:Me,useImperativeHandle:Me,useInsertionEffect:Me,useLayoutEffect:Me,useMemo:Me,useReducer:Me,useRef:Me,useState:Me,useDebugValue:Me,useDeferredValue:Me,useTransition:Me,useMutableSource:Me,useSyncExternalStore:Me,useId:Me,unstable_isNewReconciler:!1},GL={readContext:ma,useCallback:function(e,a){return Ta().memoizedState=[e,a===void 0?null:a],e},useContext:ma,useEffect:Wc,useImperativeHandle:function(e,a,t){return t=t!=null?t.concat([e]):null,$n(4194308,4,Sm.bind(null,a,e),t)},useLayoutEffect:function(e,a){return $n(4194308,4,e,a)},useInsertionEffect:function(e,a){return $n(4,2,e,a)},useMemo:function(e,a){var t=Ta();return a=a===void 0?null:a,e=e(),t.memoizedState=[e,a],e},useReducer:function(e,a,t){var l=Ta();return a=t!==void 0?t(a):a,l.memoizedState=l.baseState=a,e={pending:null,interleaved:null,lanes:0,dispatch:null,lastRenderedReducer:e,lastRenderedState:a},l.queue=e,e=e.dispatch=$L.bind(null,fe,e),[l.memoizedState,e]},useRef:function(e){var a=Ta();return e={current:e},a.memoizedState=e},useState:_c,useDebugValue:Fi,useDeferredValue:function(e){return Ta().memoizedState=e},useTransition:function(){var e=_c(!1),a=e[0];return e=jL.bind(null,e[1]),Ta().memoizedState=e,[a,e]},useMutableSource:function(){},useSyncExternalStore:function(e,a,t){var l=fe,r=Ta();if(ue){if(t===void 0)throw Error(D(407));t=t()}else{if(t=a(),be===null)throw Error(D(349));(no&30)!==0||hm(l,a,t)}r.memoizedState=t;var s={value:t,getSnapshot:a};return r.queue=s,Wc(xm.bind(null,l,s,e),[e]),l.flags|=2048,Sr(9,gm.bind(null,l,s,t,a),void 0,null),t},useId:function(){var e=Ta(),a=be.identifierPrefix;if(ue){var t=Ga,l=Va;t=(l&~(1<<32-Ca(l)-1)).toString(32)+t,a=":"+a+"R"+t,t=Ir++,0<t&&(a+="H"+t.toString(32)),a+=":"}else t=WL++,a=":"+a+"r"+t.toString(32)+":";return e.memoizedState=a},unstable_isNewReconciler:!1},XL={readContext:ma,useCallback:wm,useContext:ma,useEffect:Ni,useImperativeHandle:km,useInsertionEffect:Im,useLayoutEffect:Cm,useMemo:bm,useReducer:ed,useRef:ym,useState:function(){return ed(Cr)},useDebugValue:Fi,useDeferredValue:function(e){var a=ha();return Pm(a,ye.memoizedState,e)},useTransition:function(){var e=ed(Cr)[0],a=ha().memoizedState;return[e,a]},useMutableSource:pm,useSyncExternalStore:mm,useId:Nm,unstable_isNewReconciler:!1},KL={readContext:ma,useCallback:wm,useContext:ma,useEffect:Ni,useImperativeHandle:km,useInsertionEffect:Im,useLayoutEffect:Cm,useMemo:bm,useReducer:ad,useRef:ym,useState:function(){return ad(Cr)},useDebugValue:Fi,useDeferredValue:function(e){var a=ha();return ye===null?a.memoizedState=e:Pm(a,ye.memoizedState,e)},useTransition:function(){var e=ad(Cr)[0],a=ha().memoizedState;return[e,a]},useMutableSource:pm,useSyncExternalStore:mm,useId:Nm,unstable_isNewReconciler:!1};function va(e,a){if(e&&e.defaultProps){a=ce({},a),e=e.defaultProps;for(var t in e)a[t]===void 0&&(a[t]=e[t]);return a}return a}function Od(e,a,t,l){a=e.memoizedState,t=t(l,a),t=t==null?a:ce({},a,t),e.memoizedState=t,e.lanes===0&&(e.updateQueue.baseState=t)}var bs={isMounted:function(e){return(e=e._reactInternals)?fo(e)===e:!1},enqueueSetState:function(e,a,t){e=e._reactInternals;var l=We(),r=St(e),s=Xa(l,r);s.payload=a,t!=null&&(s.callback=t),a=It(e,s,r),a!==null&&(Sa(a,e,r,l),Wn(a,e,r))},enqueueReplaceState:function(e,a,t){e=e._reactInternals;var l=We(),r=St(e),s=Xa(l,r);s.tag=1,s.payload=a,t!=null&&(s.callback=t),a=It(e,s,r),a!==null&&(Sa(a,e,r,l),Wn(a,e,r))},enqueueForceUpdate:function(e,a){e=e._reactInternals;var t=We(),l=St(e),r=Xa(t,l);r.tag=2,a!=null&&(r.callback=a),a=It(e,r,l),a!==null&&(Sa(a,e,l,t),Wn(a,e,l))}};function jc(e,a,t,l,r,s,u){return e=e.stateNode,typeof e.shouldComponentUpdate=="function"?e.shouldComponentUpdate(l,s,u):a.prototype&&a.prototype.isPureReactComponent?!hr(t,l)||!hr(r,s):!0}function Am(e,a,t){var l=!1,r=bt,s=a.contextType;return typeof s=="object"&&s!==null?s=ma(s):(r=Ze(a)?lo:Oe.current,l=a.contextTypes,s=(l=l!=null)?ll(e,r):bt),a=new a(t,s),e.memoizedState=a.state!==null&&a.state!==void 0?a.state:null,a.updater=bs,e.stateNode=a,a._reactInternals=e,l&&(e=e.stateNode,e.__reactInternalMemoizedUnmaskedChildContext=r,e.__reactInternalMemoizedMaskedChildContext=s),a}function $c(e,a,t,l){e=a.state,typeof a.componentWillReceiveProps=="function"&&a.componentWillReceiveProps(t,l),typeof a.UNSAFE_componentWillReceiveProps=="function"&&a.UNSAFE_componentWillReceiveProps(t,l),a.state!==e&&bs.enqueueReplaceState(a,a.state,null)}function zd(e,a,t,l){var r=e.stateNode;r.props=t,r.state=e.memoizedState,r.refs={},Ii(e);var s=a.contextType;typeof s=="object"&&s!==null?r.context=ma(s):(s=Ze(a)?lo:Oe.current,r.context=ll(e,s)),r.state=e.memoizedState,s=a.getDerivedStateFromProps,typeof s=="function"&&(Od(e,a,s,t),r.state=e.memoizedState),typeof a.getDerivedStateFromProps=="function"||typeof r.getSnapshotBeforeUpdate=="function"||typeof r.UNSAFE_componentWillMount!="function"&&typeof r.componentWillMount!="function"||(a=r.state,typeof r.componentWillMount=="function"&&r.componentWillMount(),typeof r.UNSAFE_componentWillMount=="function"&&r.UNSAFE_componentWillMount(),a!==r.state&&bs.enqueueReplaceState(r,r.state,null),is(e,t,r,l),r.state=e.memoizedState),typeof r.componentDidMount=="function"&&(e.flags|=4194308)}function ul(e,a){try{var t="",l=a;do t+=kx(l),l=l.return;while(l);var r=t}catch(s){r=`
-Error generating stack: `+s.message+`
-`+s.stack}return{value:e,source:a,stack:r,digest:null}}function td(e,a,t){return{value:e,source:null,stack:t??null,digest:a??null}}function Ud(e,a){try{console.error(a.value)}catch(t){setTimeout(function(){throw t})}}var QL=typeof WeakMap=="function"?WeakMap:Map;function Mm(e,a,t){t=Xa(-1,t),t.tag=3,t.payload={element:null};var l=a.value;return t.callback=function(){hs||(hs=!0,Kd=l),Ud(e,a)},t}function Bm(e,a,t){t=Xa(-1,t),t.tag=3;var l=e.type.getDerivedStateFromError;if(typeof l=="function"){var r=a.value;t.payload=function(){return l(r)},t.callback=function(){Ud(e,a)}}var s=e.stateNode;return s!==null&&typeof s.componentDidCatch=="function"&&(t.callback=function(){Ud(e,a),typeof l!="function"&&(Ct===null?Ct=new Set([this]):Ct.add(this));var u=a.stack;this.componentDidCatch(a.value,{componentStack:u!==null?u:""})}),t}function Vc(e,a,t){var l=e.pingCache;if(l===null){l=e.pingCache=new QL;var r=new Set;l.set(a,r)}else r=l.get(a),r===void 0&&(r=new Set,l.set(a,r));r.has(t)||(r.add(t),e=dv.bind(null,e,a,t),a.then(e,e))}function Gc(e){do{var a;if((a=e.tag===13)&&(a=e.memoizedState,a=a!==null?a.dehydrated!==null:!0),a)return e;e=e.return}while(e!==null);return null}function Xc(e,a,t,l,r){return(e.mode&1)===0?(e===a?e.flags|=65536:(e.flags|=128,t.flags|=131072,t.flags&=-52805,t.tag===1&&(t.alternate===null?t.tag=17:(a=Xa(-1,1),a.tag=2,It(t,a,1))),t.lanes|=1),e):(e.flags|=65536,e.lanes=r,e)}var ZL=Ja.ReactCurrentOwner,Ke=!1;function _e(e,a,t,l){a.child=e===null?dm(a,null,t,l):nl(a,e.child,t,l)}function Kc(e,a,t,l,r){t=t.render;var s=a.ref;return al(a,r),l=bi(e,a,t,l,s,r),t=Pi(),e!==null&&!Ke?(a.updateQueue=e.updateQueue,a.flags&=-2053,e.lanes&=~r,Ya(e,a,r)):(ue&&t&&mi(a),a.flags|=1,_e(e,a,l,r),a.child)}function Qc(e,a,t,l,r){if(e===null){var s=t.type;return typeof s=="function"&&!zi(s)&&s.defaultProps===void 0&&t.compare===null&&t.defaultProps===void 0?(a.tag=15,a.type=s,Em(e,a,s,l,r)):(e=Kn(t.type,null,l,a,a.mode,r),e.ref=a.ref,e.return=a,a.child=e)}if(s=e.child,(e.lanes&r)===0){var u=s.memoizedProps;if(t=t.compare,t=t!==null?t:hr,t(u,l)&&e.ref===a.ref)return Ya(e,a,r)}return a.flags|=1,e=kt(s,l),e.ref=a.ref,e.return=a,a.child=e}function Em(e,a,t,l,r){if(e!==null){var s=e.memoizedProps;if(hr(s,l)&&e.ref===a.ref)if(Ke=!1,a.pendingProps=l=s,(e.lanes&r)!==0)(e.flags&131072)!==0&&(Ke=!0);else return a.lanes=e.lanes,Ya(e,a,r)}return qd(e,a,t,l,r)}function Om(e,a,t){var l=a.pendingProps,r=l.children,s=e!==null?e.memoizedState:null;if(l.mode==="hidden")if((a.mode&1)===0)a.memoizedState={baseLanes:0,cachePool:null,transitions:null},ee(Zo,aa),aa|=t;else{if((t&1073741824)===0)return e=s!==null?s.baseLanes|t:t,a.lanes=a.childLanes=1073741824,a.memoizedState={baseLanes:e,cachePool:null,transitions:null},a.updateQueue=null,ee(Zo,aa),aa|=e,null;a.memoizedState={baseLanes:0,cachePool:null,transitions:null},l=s!==null?s.baseLanes:t,ee(Zo,aa),aa|=l}else s!==null?(l=s.baseLanes|t,a.memoizedState=null):l=t,ee(Zo,aa),aa|=l;return _e(e,a,r,t),a.child}function zm(e,a){var t=a.ref;(e===null&&t!==null||e!==null&&e.ref!==t)&&(a.flags|=512,a.flags|=2097152)}function qd(e,a,t,l,r){var s=Ze(t)?lo:Oe.current;return s=ll(a,s),al(a,r),t=bi(e,a,t,l,s,r),l=Pi(),e!==null&&!Ke?(a.updateQueue=e.updateQueue,a.flags&=-2053,e.lanes&=~r,Ya(e,a,r)):(ue&&l&&mi(a),a.flags|=1,_e(e,a,t,r),a.child)}function Zc(e,a,t,l,r){if(Ze(t)){var s=!0;rs(a)}else s=!1;if(al(a,r),a.stateNode===null)Vn(e,a),Am(a,t,l),zd(a,t,l,r),l=!0;else if(e===null){var u=a.stateNode,c=a.memoizedProps;u.props=c;var f=u.context,h=t.contextType;typeof h=="object"&&h!==null?h=ma(h):(h=Ze(t)?lo:Oe.current,h=ll(a,h));var v=t.getDerivedStateFromProps,k=typeof v=="function"||typeof u.getSnapshotBeforeUpdate=="function";k||typeof u.UNSAFE_componentWillReceiveProps!="function"&&typeof u.componentWillReceiveProps!="function"||(c!==l||f!==h)&&$c(a,u,l,h),ct=!1;var I=a.memoizedState;u.state=I,is(a,l,u,r),f=a.memoizedState,c!==l||I!==f||Qe.current||ct?(typeof v=="function"&&(Od(a,t,v,l),f=a.memoizedState),(c=ct||jc(a,t,c,l,I,f,h))?(k||typeof u.UNSAFE_componentWillMount!="function"&&typeof u.componentWillMount!="function"||(typeof u.componentWillMount=="function"&&u.componentWillMount(),typeof u.UNSAFE_componentWillMount=="function"&&u.UNSAFE_componentWillMount()),typeof u.componentDidMount=="function"&&(a.flags|=4194308)):(typeof u.componentDidMount=="function"&&(a.flags|=4194308),a.memoizedProps=l,a.memoizedState=f),u.props=l,u.state=f,u.context=h,l=c):(typeof u.componentDidMount=="function"&&(a.flags|=4194308),l=!1)}else{u=a.stateNode,fm(e,a),c=a.memoizedProps,h=a.type===a.elementType?c:va(a.type,c),u.props=h,k=a.pendingProps,I=u.context,f=t.contextType,typeof f=="object"&&f!==null?f=ma(f):(f=Ze(t)?lo:Oe.current,f=ll(a,f));var N=t.getDerivedStateFromProps;(v=typeof N=="function"||typeof u.getSnapshotBeforeUpdate=="function")||typeof u.UNSAFE_componentWillReceiveProps!="function"&&typeof u.componentWillReceiveProps!="function"||(c!==k||I!==f)&&$c(a,u,l,f),ct=!1,I=a.memoizedState,u.state=I,is(a,l,u,r);var w=a.memoizedState;c!==k||I!==w||Qe.current||ct?(typeof N=="function"&&(Od(a,t,N,l),w=a.memoizedState),(h=ct||jc(a,t,h,l,I,w,f)||!1)?(v||typeof u.UNSAFE_componentWillUpdate!="function"&&typeof u.componentWillUpdate!="function"||(typeof u.componentWillUpdate=="function"&&u.componentWillUpdate(l,w,f),typeof u.UNSAFE_componentWillUpdate=="function"&&u.UNSAFE_componentWillUpdate(l,w,f)),typeof u.componentDidUpdate=="function"&&(a.flags|=4),typeof u.getSnapshotBeforeUpdate=="function"&&(a.flags|=1024)):(typeof u.componentDidUpdate!="function"||c===e.memoizedProps&&I===e.memoizedState||(a.flags|=4),typeof u.getSnapshotBeforeUpdate!="function"||c===e.memoizedProps&&I===e.memoizedState||(a.flags|=1024),a.memoizedProps=l,a.memoizedState=w),u.props=l,u.state=w,u.context=f,l=h):(typeof u.componentDidUpdate!="function"||c===e.memoizedProps&&I===e.memoizedState||(a.flags|=4),typeof u.getSnapshotBeforeUpdate!="function"||c===e.memoizedProps&&I===e.memoizedState||(a.flags|=1024),l=!1)}return Hd(e,a,t,l,s,r)}function Hd(e,a,t,l,r,s){zm(e,a);var u=(a.flags&128)!==0;if(!l&&!u)return r&&Ec(a,t,!1),Ya(e,a,s);l=a.stateNode,ZL.current=a;var c=u&&typeof t.getDerivedStateFromError!="function"?null:l.render();return a.flags|=1,e!==null&&u?(a.child=nl(a,e.child,null,s),a.child=nl(a,null,c,s)):_e(e,a,c,s),a.memoizedState=l.state,r&&Ec(a,t,!0),a.child}function Um(e){var a=e.stateNode;a.pendingContext?Bc(e,a.pendingContext,a.pendingContext!==a.context):a.context&&Bc(e,a.context,!1),Ci(e,a.containerInfo)}function Yc(e,a,t,l,r){return rl(),gi(r),a.flags|=256,_e(e,a,t,l),a.child}var _d={dehydrated:null,treeContext:null,retryLane:0};function Wd(e){return{baseLanes:e,cachePool:null,transitions:null}}function qm(e,a,t){var l=a.pendingProps,r=ie.current,s=!1,u=(a.flags&128)!==0,c;if((c=u)||(c=e!==null&&e.memoizedState===null?!1:(r&2)!==0),c?(s=!0,a.flags&=-129):(e===null||e.memoizedState!==null)&&(r|=1),ee(ie,r&1),e===null)return Bd(a),e=a.memoizedState,e!==null&&(e=e.dehydrated,e!==null)?((a.mode&1)===0?a.lanes=1:e.data==="$!"?a.lanes=8:a.lanes=1073741824,null):(u=l.children,e=l.fallback,s?(l=a.mode,s=a.child,u={mode:"hidden",children:u},(l&1)===0&&s!==null?(s.childLanes=0,s.pendingProps=u):s=Fs(u,l,0,null),e=oo(e,l,t,null),s.return=a,e.return=a,s.sibling=e,a.child=s,a.child.memoizedState=Wd(t),a.memoizedState=_d,e):Di(a,u));if(r=e.memoizedState,r!==null&&(c=r.dehydrated,c!==null))return YL(e,a,u,l,c,r,t);if(s){s=l.fallback,u=a.mode,r=e.child,c=r.sibling;var f={mode:"hidden",children:l.children};return(u&1)===0&&a.child!==r?(l=a.child,l.childLanes=0,l.pendingProps=f,a.deletions=null):(l=kt(r,f),l.subtreeFlags=r.subtreeFlags&14680064),c!==null?s=kt(c,s):(s=oo(s,u,t,null),s.flags|=2),s.return=a,l.return=a,l.sibling=s,a.child=l,l=s,s=a.child,u=e.child.memoizedState,u=u===null?Wd(t):{baseLanes:u.baseLanes|t,cachePool:null,transitions:u.transitions},s.memoizedState=u,s.childLanes=e.childLanes&~t,a.memoizedState=_d,l}return s=e.child,e=s.sibling,l=kt(s,{mode:"visible",children:l.children}),(a.mode&1)===0&&(l.lanes=t),l.return=a,l.sibling=null,e!==null&&(t=a.deletions,t===null?(a.deletions=[e],a.flags|=16):t.push(e)),a.child=l,a.memoizedState=null,l}function Di(e,a){return a=Fs({mode:"visible",children:a},e.mode,0,null),a.return=e,e.child=a}function On(e,a,t,l){return l!==null&&gi(l),nl(a,e.child,null,t),e=Di(a,a.pendingProps.children),e.flags|=2,a.memoizedState=null,e}function YL(e,a,t,l,r,s,u){if(t)return a.flags&256?(a.flags&=-257,l=td(Error(D(422))),On(e,a,u,l)):a.memoizedState!==null?(a.child=e.child,a.flags|=128,null):(s=l.fallback,r=a.mode,l=Fs({mode:"visible",children:l.children},r,0,null),s=oo(s,r,u,null),s.flags|=2,l.return=a,s.return=a,l.sibling=s,a.child=l,(a.mode&1)!==0&&nl(a,e.child,null,u),a.child.memoizedState=Wd(u),a.memoizedState=_d,s);if((a.mode&1)===0)return On(e,a,u,null);if(r.data==="$!"){if(l=r.nextSibling&&r.nextSibling.dataset,l)var c=l.dgst;return l=c,s=Error(D(419)),l=td(s,l,void 0),On(e,a,u,l)}if(c=(u&e.childLanes)!==0,Ke||c){if(l=be,l!==null){switch(u&-u){case 4:r=2;break;case 16:r=8;break;case 64:case 128:case 256:case 512:case 1024:case 2048:case 4096:case 8192:case 16384:case 32768:case 65536:case 131072:case 262144:case 524288:case 1048576:case 2097152:case 4194304:case 8388608:case 16777216:case 33554432:case 67108864:r=32;break;case 536870912:r=268435456;break;default:r=0}r=(r&(l.suspendedLanes|u))!==0?0:r,r!==0&&r!==s.retryLane&&(s.retryLane=r,Za(e,r),Sa(l,e,r,-1))}return Oi(),l=td(Error(D(421))),On(e,a,u,l)}return r.data==="$?"?(a.flags|=128,a.child=e.child,a=iv.bind(null,e),r._reactRetry=a,null):(e=s.treeContext,ta=yt(r.nextSibling),oa=a,ue=!0,Ia=null,e!==null&&(ia[fa++]=Va,ia[fa++]=Ga,ia[fa++]=ro,Va=e.id,Ga=e.overflow,ro=a),a=Di(a,l.children),a.flags|=4096,a)}function Jc(e,a,t){e.lanes|=a;var l=e.alternate;l!==null&&(l.lanes|=a),Ed(e.return,a,t)}function od(e,a,t,l,r){var s=e.memoizedState;s===null?e.memoizedState={isBackwards:a,rendering:null,renderingStartTime:0,last:l,tail:t,tailMode:r}:(s.isBackwards=a,s.rendering=null,s.renderingStartTime=0,s.last=l,s.tail=t,s.tailMode=r)}function Hm(e,a,t){var l=a.pendingProps,r=l.revealOrder,s=l.tail;if(_e(e,a,l.children,t),l=ie.current,(l&2)!==0)l=l&1|2,a.flags|=128;else{if(e!==null&&(e.flags&128)!==0)e:for(e=a.child;e!==null;){if(e.tag===13)e.memoizedState!==null&&Jc(e,t,a);else if(e.tag===19)Jc(e,t,a);else if(e.child!==null){e.child.return=e,e=e.child;continue}if(e===a)break e;for(;e.sibling===null;){if(e.return===null||e.return===a)break e;e=e.return}e.sibling.return=e.return,e=e.sibling}l&=1}if(ee(ie,l),(a.mode&1)===0)a.memoizedState=null;else switch(r){case"forwards":for(t=a.child,r=null;t!==null;)e=t.alternate,e!==null&&fs(e)===null&&(r=t),t=t.sibling;t=r,t===null?(r=a.child,a.child=null):(r=t.sibling,t.sibling=null),od(a,!1,r,t,s);break;case"backwards":for(t=null,r=a.child,a.child=null;r!==null;){if(e=r.alternate,e!==null&&fs(e)===null){a.child=r;break}e=r.sibling,r.sibling=t,t=r,r=e}od(a,!0,t,null,s);break;case"together":od(a,!1,null,null,void 0);break;default:a.memoizedState=null}return a.child}function Vn(e,a){(a.mode&1)===0&&e!==null&&(e.alternate=null,a.alternate=null,a.flags|=2)}function Ya(e,a,t){if(e!==null&&(a.dependencies=e.dependencies),so|=a.lanes,(t&a.childLanes)===0)return null;if(e!==null&&a.child!==e.child)throw Error(D(153));if(a.child!==null){for(e=a.child,t=kt(e,e.pendingProps),a.child=t,t.return=a;e.sibling!==null;)e=e.sibling,t=t.sibling=kt(e,e.pendingProps),t.return=a;t.sibling=null}return a.child}function JL(e,a,t){switch(a.tag){case 3:Um(a),rl();break;case 5:cm(a);break;case 1:Ze(a.type)&&rs(a);break;case 4:Ci(a,a.stateNode.containerInfo);break;case 10:var l=a.type._context,r=a.memoizedProps.value;ee(us,l._currentValue),l._currentValue=r;break;case 13:if(l=a.memoizedState,l!==null)return l.dehydrated!==null?(ee(ie,ie.current&1),a.flags|=128,null):(t&a.child.childLanes)!==0?qm(e,a,t):(ee(ie,ie.current&1),e=Ya(e,a,t),e!==null?e.sibling:null);ee(ie,ie.current&1);break;case 19:if(l=(t&a.childLanes)!==0,(e.flags&128)!==0){if(l)return Hm(e,a,t);a.flags|=128}if(r=a.memoizedState,r!==null&&(r.rendering=null,r.tail=null,r.lastEffect=null),ee(ie,ie.current),l)break;return null;case 22:case 23:return a.lanes=0,Om(e,a,t)}return Ya(e,a,t)}var _m,jd,Wm,jm;_m=function(e,a){for(var t=a.child;t!==null;){if(t.tag===5||t.tag===6)e.appendChild(t.stateNode);else if(t.tag!==4&&t.child!==null){t.child.return=t,t=t.child;continue}if(t===a)break;for(;t.sibling===null;){if(t.return===null||t.return===a)return;t=t.return}t.sibling.return=t.return,t=t.sibling}};jd=function(){};Wm=function(e,a,t,l){var r=e.memoizedProps;if(r!==l){e=a.stateNode,ao(Ba.current);var s=null;switch(t){case"input":r=fd(e,r),l=fd(e,l),s=[];break;case"select":r=ce({},r,{value:void 0}),l=ce({},l,{value:void 0}),s=[];break;case"textarea":r=md(e,r),l=md(e,l),s=[];break;default:typeof r.onClick!="function"&&typeof l.onClick=="function"&&(e.onclick=os)}gd(t,l);var u;t=null;for(h in r)if(!l.hasOwnProperty(h)&&r.hasOwnProperty(h)&&r[h]!=null)if(h==="style"){var c=r[h];for(u in c)c.hasOwnProperty(u)&&(t||(t={}),t[u]="")}else h!=="dangerouslySetInnerHTML"&&h!=="children"&&h!=="suppressContentEditableWarning"&&h!=="suppressHydrationWarning"&&h!=="autoFocus"&&(ur.hasOwnProperty(h)?s||(s=[]):(s=s||[]).push(h,null));for(h in l){var f=l[h];if(c=r?.[h],l.hasOwnProperty(h)&&f!==c&&(f!=null||c!=null))if(h==="style")if(c){for(u in c)!c.hasOwnProperty(u)||f&&f.hasOwnProperty(u)||(t||(t={}),t[u]="");for(u in f)f.hasOwnProperty(u)&&c[u]!==f[u]&&(t||(t={}),t[u]=f[u])}else t||(s||(s=[]),s.push(h,t)),t=f;else h==="dangerouslySetInnerHTML"?(f=f?f.__html:void 0,c=c?c.__html:void 0,f!=null&&c!==f&&(s=s||[]).push(h,f)):h==="children"?typeof f!="string"&&typeof f!="number"||(s=s||[]).push(h,""+f):h!=="suppressContentEditableWarning"&&h!=="suppressHydrationWarning"&&(ur.hasOwnProperty(h)?(f!=null&&h==="onScroll"&&te("scroll",e),s||c===f||(s=[])):(s=s||[]).push(h,f))}t&&(s=s||[]).push("style",t);var h=s;(a.updateQueue=h)&&(a.flags|=4)}};jm=function(e,a,t,l){t!==l&&(a.flags|=4)};function Gl(e,a){if(!ue)switch(e.tailMode){case"hidden":a=e.tail;for(var t=null;a!==null;)a.alternate!==null&&(t=a),a=a.sibling;t===null?e.tail=null:t.sibling=null;break;case"collapsed":t=e.tail;for(var l=null;t!==null;)t.alternate!==null&&(l=t),t=t.sibling;l===null?a||e.tail===null?e.tail=null:e.tail.sibling=null:l.sibling=null}}function Be(e){var a=e.alternate!==null&&e.alternate.child===e.child,t=0,l=0;if(a)for(var r=e.child;r!==null;)t|=r.lanes|r.childLanes,l|=r.subtreeFlags&14680064,l|=r.flags&14680064,r.return=e,r=r.sibling;else for(r=e.child;r!==null;)t|=r.lanes|r.childLanes,l|=r.subtreeFlags,l|=r.flags,r.return=e,r=r.sibling;return e.subtreeFlags|=l,e.childLanes=t,a}function RL(e,a,t){var l=a.pendingProps;switch(hi(a),a.tag){case 2:case 16:case 15:case 0:case 11:case 7:case 8:case 12:case 9:case 14:return Be(a),null;case 1:return Ze(a.type)&&ls(),Be(a),null;case 3:return l=a.stateNode,sl(),oe(Qe),oe(Oe),ki(),l.pendingContext&&(l.context=l.pendingContext,l.pendingContext=null),(e===null||e.child===null)&&(Bn(a)?a.flags|=4:e===null||e.memoizedState.isDehydrated&&(a.flags&256)===0||(a.flags|=1024,Ia!==null&&(Yd(Ia),Ia=null))),jd(e,a),Be(a),null;case 5:Si(a);var r=ao(yr.current);if(t=a.type,e!==null&&a.stateNode!=null)Wm(e,a,t,l,r),e.ref!==a.ref&&(a.flags|=512,a.flags|=2097152);else{if(!l){if(a.stateNode===null)throw Error(D(166));return Be(a),null}if(e=ao(Ba.current),Bn(a)){l=a.stateNode,t=a.type;var s=a.memoizedProps;switch(l[Aa]=a,l[Lr]=s,e=(a.mode&1)!==0,t){case"dialog":te("cancel",l),te("close",l);break;case"iframe":case"object":case"embed":te("load",l);break;case"video":case"audio":for(r=0;r<Jl.length;r++)te(Jl[r],l);break;case"source":te("error",l);break;case"img":case"image":case"link":te("error",l),te("load",l);break;case"details":te("toggle",l);break;case"input":nc(l,s),te("invalid",l);break;case"select":l._wrapperState={wasMultiple:!!s.multiple},te("invalid",l);break;case"textarea":uc(l,s),te("invalid",l)}gd(t,s),r=null;for(var u in s)if(s.hasOwnProperty(u)){var c=s[u];u==="children"?typeof c=="string"?l.textContent!==c&&(s.suppressHydrationWarning!==!0&&Mn(l.textContent,c,e),r=["children",c]):typeof c=="number"&&l.textContent!==""+c&&(s.suppressHydrationWarning!==!0&&Mn(l.textContent,c,e),r=["children",""+c]):ur.hasOwnProperty(u)&&c!=null&&u==="onScroll"&&te("scroll",l)}switch(t){case"input":In(l),sc(l,s,!0);break;case"textarea":In(l),dc(l);break;case"select":case"option":break;default:typeof s.onClick=="function"&&(l.onclick=os)}l=r,a.updateQueue=l,l!==null&&(a.flags|=4)}else{u=r.nodeType===9?r:r.ownerDocument,e==="http://www.w3.org/1999/xhtml"&&(e=xp(t)),e==="http://www.w3.org/1999/xhtml"?t==="script"?(e=u.createElement("div"),e.innerHTML="<script><\/script>",e=e.removeChild(e.firstChild)):typeof l.is=="string"?e=u.createElement(t,{is:l.is}):(e=u.createElement(t),t==="select"&&(u=e,l.multiple?u.multiple=!0:l.size&&(u.size=l.size))):e=u.createElementNS(e,t),e[Aa]=a,e[Lr]=l,_m(e,a,!1,!1),a.stateNode=e;e:{switch(u=xd(t,l),t){case"dialog":te("cancel",e),te("close",e),r=l;break;case"iframe":case"object":case"embed":te("load",e),r=l;break;case"video":case"audio":for(r=0;r<Jl.length;r++)te(Jl[r],e);r=l;break;case"source":te("error",e),r=l;break;case"img":case"image":case"link":te("error",e),te("load",e),r=l;break;case"details":te("toggle",e),r=l;break;case"input":nc(e,l),r=fd(e,l),te("invalid",e);break;case"option":r=l;break;case"select":e._wrapperState={wasMultiple:!!l.multiple},r=ce({},l,{value:void 0}),te("invalid",e);break;case"textarea":uc(e,l),r=md(e,l),te("invalid",e);break;default:r=l}gd(t,r),c=r;for(s in c)if(c.hasOwnProperty(s)){var f=c[s];s==="style"?yp(e,f):s==="dangerouslySetInnerHTML"?(f=f?f.__html:void 0,f!=null&&Lp(e,f)):s==="children"?typeof f=="string"?(t!=="textarea"||f!=="")&&dr(e,f):typeof f=="number"&&dr(e,""+f):s!=="suppressContentEditableWarning"&&s!=="suppressHydrationWarning"&&s!=="autoFocus"&&(ur.hasOwnProperty(s)?f!=null&&s==="onScroll"&&te("scroll",e):f!=null&&ei(e,s,f,u))}switch(t){case"input":In(e),sc(e,l,!1);break;case"textarea":In(e),dc(e);break;case"option":l.value!=null&&e.setAttribute("value",""+wt(l.value));break;case"select":e.multiple=!!l.multiple,s=l.value,s!=null?Yo(e,!!l.multiple,s,!1):l.defaultValue!=null&&Yo(e,!!l.multiple,l.defaultValue,!0);break;default:typeof r.onClick=="function"&&(e.onclick=os)}switch(t){case"button":case"input":case"select":case"textarea":l=!!l.autoFocus;break e;case"img":l=!0;break e;default:l=!1}}l&&(a.flags|=4)}a.ref!==null&&(a.flags|=512,a.flags|=2097152)}return Be(a),null;case 6:if(e&&a.stateNode!=null)jm(e,a,e.memoizedProps,l);else{if(typeof l!="string"&&a.stateNode===null)throw Error(D(166));if(t=ao(yr.current),ao(Ba.current),Bn(a)){if(l=a.stateNode,t=a.memoizedProps,l[Aa]=a,(s=l.nodeValue!==t)&&(e=oa,e!==null))switch(e.tag){case 3:Mn(l.nodeValue,t,(e.mode&1)!==0);break;case 5:e.memoizedProps.suppressHydrationWarning!==!0&&Mn(l.nodeValue,t,(e.mode&1)!==0)}s&&(a.flags|=4)}else l=(t.nodeType===9?t:t.ownerDocument).createTextNode(l),l[Aa]=a,a.stateNode=l}return Be(a),null;case 13:if(oe(ie),l=a.memoizedState,e===null||e.memoizedState!==null&&e.memoizedState.dehydrated!==null){if(ue&&ta!==null&&(a.mode&1)!==0&&(a.flags&128)===0)sm(),rl(),a.flags|=98560,s=!1;else if(s=Bn(a),l!==null&&l.dehydrated!==null){if(e===null){if(!s)throw Error(D(318));if(s=a.memoizedState,s=s!==null?s.dehydrated:null,!s)throw Error(D(317));s[Aa]=a}else rl(),(a.flags&128)===0&&(a.memoizedState=null),a.flags|=4;Be(a),s=!1}else Ia!==null&&(Yd(Ia),Ia=null),s=!0;if(!s)return a.flags&65536?a:null}return(a.flags&128)!==0?(a.lanes=t,a):(l=l!==null,l!==(e!==null&&e.memoizedState!==null)&&l&&(a.child.flags|=8192,(a.mode&1)!==0&&(e===null||(ie.current&1)!==0?Ie===0&&(Ie=3):Oi())),a.updateQueue!==null&&(a.flags|=4),Be(a),null);case 4:return sl(),jd(e,a),e===null&&gr(a.stateNode.containerInfo),Be(a),null;case 10:return vi(a.type._context),Be(a),null;case 17:return Ze(a.type)&&ls(),Be(a),null;case 19:if(oe(ie),s=a.memoizedState,s===null)return Be(a),null;if(l=(a.flags&128)!==0,u=s.rendering,u===null)if(l)Gl(s,!1);else{if(Ie!==0||e!==null&&(e.flags&128)!==0)for(e=a.child;e!==null;){if(u=fs(e),u!==null){for(a.flags|=128,Gl(s,!1),l=u.updateQueue,l!==null&&(a.updateQueue=l,a.flags|=4),a.subtreeFlags=0,l=t,t=a.child;t!==null;)s=t,e=l,s.flags&=14680066,u=s.alternate,u===null?(s.childLanes=0,s.lanes=e,s.child=null,s.subtreeFlags=0,s.memoizedProps=null,s.memoizedState=null,s.updateQueue=null,s.dependencies=null,s.stateNode=null):(s.childLanes=u.childLanes,s.lanes=u.lanes,s.child=u.child,s.subtreeFlags=0,s.deletions=null,s.memoizedProps=u.memoizedProps,s.memoizedState=u.memoizedState,s.updateQueue=u.updateQueue,s.type=u.type,e=u.dependencies,s.dependencies=e===null?null:{lanes:e.lanes,firstContext:e.firstContext}),t=t.sibling;return ee(ie,ie.current&1|2),a.child}e=e.sibling}s.tail!==null&&he()>dl&&(a.flags|=128,l=!0,Gl(s,!1),a.lanes=4194304)}else{if(!l)if(e=fs(u),e!==null){if(a.flags|=128,l=!0,t=e.updateQueue,t!==null&&(a.updateQueue=t,a.flags|=4),Gl(s,!0),s.tail===null&&s.tailMode==="hidden"&&!u.alternate&&!ue)return Be(a),null}else 2*he()-s.renderingStartTime>dl&&t!==1073741824&&(a.flags|=128,l=!0,Gl(s,!1),a.lanes=4194304);s.isBackwards?(u.sibling=a.child,a.child=u):(t=s.last,t!==null?t.sibling=u:a.child=u,s.last=u)}return s.tail!==null?(a=s.tail,s.rendering=a,s.tail=a.sibling,s.renderingStartTime=he(),a.sibling=null,t=ie.current,ee(ie,l?t&1|2:t&1),a):(Be(a),null);case 22:case 23:return Ei(),l=a.memoizedState!==null,e!==null&&e.memoizedState!==null!==l&&(a.flags|=8192),l&&(a.mode&1)!==0?(aa&1073741824)!==0&&(Be(a),a.subtreeFlags&6&&(a.flags|=8192)):Be(a),null;case 24:return null;case 25:return null}throw Error(D(156,a.tag))}function ev(e,a){switch(hi(a),a.tag){case 1:return Ze(a.type)&&ls(),e=a.flags,e&65536?(a.flags=e&-65537|128,a):null;case 3:return sl(),oe(Qe),oe(Oe),ki(),e=a.flags,(e&65536)!==0&&(e&128)===0?(a.flags=e&-65537|128,a):null;case 5:return Si(a),null;case 13:if(oe(ie),e=a.memoizedState,e!==null&&e.dehydrated!==null){if(a.alternate===null)throw Error(D(340));rl()}return e=a.flags,e&65536?(a.flags=e&-65537|128,a):null;case 19:return oe(ie),null;case 4:return sl(),null;case 10:return vi(a.type._context),null;case 22:case 23:return Ei(),null;case 24:return null;default:return null}}var zn=!1,Ee=!1,av=typeof WeakSet=="function"?WeakSet:Set,O=null;function Qo(e,a){var t=e.ref;if(t!==null)if(typeof t=="function")try{t(null)}catch(l){me(e,a,l)}else t.current=null}function $d(e,a,t){try{t()}catch(l){me(e,a,l)}}var Rc=!1;function tv(e,a){if(Pd=es,e=Kp(),pi(e)){if("selectionStart"in e)var t={start:e.selectionStart,end:e.selectionEnd};else e:{t=(t=e.ownerDocument)&&t.defaultView||window;var l=t.getSelection&&t.getSelection();if(l&&l.rangeCount!==0){t=l.anchorNode;var r=l.anchorOffset,s=l.focusNode;l=l.focusOffset;try{t.nodeType,s.nodeType}catch{t=null;break e}var u=0,c=-1,f=-1,h=0,v=0,k=e,I=null;a:for(;;){for(var N;k!==t||r!==0&&k.nodeType!==3||(c=u+r),k!==s||l!==0&&k.nodeType!==3||(f=u+l),k.nodeType===3&&(u+=k.nodeValue.length),(N=k.firstChild)!==null;)I=k,k=N;for(;;){if(k===e)break a;if(I===t&&++h===r&&(c=u),I===s&&++v===l&&(f=u),(N=k.nextSibling)!==null)break;k=I,I=k.parentNode}k=N}t=c===-1||f===-1?null:{start:c,end:f}}else t=null}t=t||{start:0,end:0}}else t=null;for(Nd={focusedElem:e,selectionRange:t},es=!1,O=a;O!==null;)if(a=O,e=a.child,(a.subtreeFlags&1028)!==0&&e!==null)e.return=a,O=e;else for(;O!==null;){a=O;try{var w=a.alternate;if((a.flags&1024)!==0)switch(a.tag){case 0:case 11:case 15:break;case 1:if(w!==null){var M=w.memoizedProps,q=w.memoizedState,x=a.stateNode,m=x.getSnapshotBeforeUpdate(a.elementType===a.type?M:va(a.type,M),q);x.__reactInternalSnapshotBeforeUpdate=m}break;case 3:var L=a.stateNode.containerInfo;L.nodeType===1?L.textContent="":L.nodeType===9&&L.documentElement&&L.removeChild(L.documentElement);break;case 5:case 6:case 4:case 17:break;default:throw Error(D(163))}}catch(b){me(a,a.return,b)}if(e=a.sibling,e!==null){e.return=a.return,O=e;break}O=a.return}return w=Rc,Rc=!1,w}function rr(e,a,t){var l=a.updateQueue;if(l=l!==null?l.lastEffect:null,l!==null){var r=l=l.next;do{if((r.tag&e)===e){var s=r.destroy;r.destroy=void 0,s!==void 0&&$d(a,t,s)}r=r.next}while(r!==l)}}function Ps(e,a){if(a=a.updateQueue,a=a!==null?a.lastEffect:null,a!==null){var t=a=a.next;do{if((t.tag&e)===e){var l=t.create;t.destroy=l()}t=t.next}while(t!==a)}}function Vd(e){var a=e.ref;if(a!==null){var t=e.stateNode;e.tag,e=t,typeof a=="function"?a(e):a.current=e}}function $m(e){var a=e.alternate;a!==null&&(e.alternate=null,$m(a)),e.child=null,e.deletions=null,e.sibling=null,e.tag===5&&(a=e.stateNode,a!==null&&(delete a[Aa],delete a[Lr],delete a[Td],delete a[UL],delete a[qL])),e.stateNode=null,e.return=null,e.dependencies=null,e.memoizedProps=null,e.memoizedState=null,e.pendingProps=null,e.stateNode=null,e.updateQueue=null}function Vm(e){return e.tag===5||e.tag===3||e.tag===4}function ep(e){e:for(;;){for(;e.sibling===null;){if(e.return===null||Vm(e.return))return null;e=e.return}for(e.sibling.return=e.return,e=e.sibling;e.tag!==5&&e.tag!==6&&e.tag!==18;){if(e.flags&2||e.child===null||e.tag===4)continue e;e.child.return=e,e=e.child}if(!(e.flags&2))return e.stateNode}}function Gd(e,a,t){var l=e.tag;if(l===5||l===6)e=e.stateNode,a?t.nodeType===8?t.parentNode.insertBefore(e,a):t.insertBefore(e,a):(t.nodeType===8?(a=t.parentNode,a.insertBefore(e,t)):(a=t,a.appendChild(e)),t=t._reactRootContainer,t!=null||a.onclick!==null||(a.onclick=os));else if(l!==4&&(e=e.child,e!==null))for(Gd(e,a,t),e=e.sibling;e!==null;)Gd(e,a,t),e=e.sibling}function Xd(e,a,t){var l=e.tag;if(l===5||l===6)e=e.stateNode,a?t.insertBefore(e,a):t.appendChild(e);else if(l!==4&&(e=e.child,e!==null))for(Xd(e,a,t),e=e.sibling;e!==null;)Xd(e,a,t),e=e.sibling}var Pe=null,ya=!1;function it(e,a,t){for(t=t.child;t!==null;)Gm(e,a,t),t=t.sibling}function Gm(e,a,t){if(Ma&&typeof Ma.onCommitFiberUnmount=="function")try{Ma.onCommitFiberUnmount(vs,t)}catch{}switch(t.tag){case 5:Ee||Qo(t,a);case 6:var l=Pe,r=ya;Pe=null,it(e,a,t),Pe=l,ya=r,Pe!==null&&(ya?(e=Pe,t=t.stateNode,e.nodeType===8?e.parentNode.removeChild(t):e.removeChild(t)):Pe.removeChild(t.stateNode));break;case 18:Pe!==null&&(ya?(e=Pe,t=t.stateNode,e.nodeType===8?Zu(e.parentNode,t):e.nodeType===1&&Zu(e,t),pr(e)):Zu(Pe,t.stateNode));break;case 4:l=Pe,r=ya,Pe=t.stateNode.containerInfo,ya=!0,it(e,a,t),Pe=l,ya=r;break;case 0:case 11:case 14:case 15:if(!Ee&&(l=t.updateQueue,l!==null&&(l=l.lastEffect,l!==null))){r=l=l.next;do{var s=r,u=s.destroy;s=s.tag,u!==void 0&&((s&2)!==0||(s&4)!==0)&&$d(t,a,u),r=r.next}while(r!==l)}it(e,a,t);break;case 1:if(!Ee&&(Qo(t,a),l=t.stateNode,typeof l.componentWillUnmount=="function"))try{l.props=t.memoizedProps,l.state=t.memoizedState,l.componentWillUnmount()}catch(c){me(t,a,c)}it(e,a,t);break;case 21:it(e,a,t);break;case 22:t.mode&1?(Ee=(l=Ee)||t.memoizedState!==null,it(e,a,t),Ee=l):it(e,a,t);break;default:it(e,a,t)}}function ap(e){var a=e.updateQueue;if(a!==null){e.updateQueue=null;var t=e.stateNode;t===null&&(t=e.stateNode=new av),a.forEach(function(l){var r=fv.bind(null,e,l);t.has(l)||(t.add(l),l.then(r,r))})}}function La(e,a){var t=a.deletions;if(t!==null)for(var l=0;l<t.length;l++){var r=t[l];try{var s=e,u=a,c=u;e:for(;c!==null;){switch(c.tag){case 5:Pe=c.stateNode,ya=!1;break e;case 3:Pe=c.stateNode.containerInfo,ya=!0;break e;case 4:Pe=c.stateNode.containerInfo,ya=!0;break e}c=c.return}if(Pe===null)throw Error(D(160));Gm(s,u,r),Pe=null,ya=!1;var f=r.alternate;f!==null&&(f.return=null),r.return=null}catch(h){me(r,a,h)}}if(a.subtreeFlags&12854)for(a=a.child;a!==null;)Xm(a,e),a=a.sibling}function Xm(e,a){var t=e.alternate,l=e.flags;switch(e.tag){case 0:case 11:case 14:case 15:if(La(a,e),Da(e),l&4){try{rr(3,e,e.return),Ps(3,e)}catch(M){me(e,e.return,M)}try{rr(5,e,e.return)}catch(M){me(e,e.return,M)}}break;case 1:La(a,e),Da(e),l&512&&t!==null&&Qo(t,t.return);break;case 5:if(La(a,e),Da(e),l&512&&t!==null&&Qo(t,t.return),e.flags&32){var r=e.stateNode;try{dr(r,"")}catch(M){me(e,e.return,M)}}if(l&4&&(r=e.stateNode,r!=null)){var s=e.memoizedProps,u=t!==null?t.memoizedProps:s,c=e.type,f=e.updateQueue;if(e.updateQueue=null,f!==null)try{c==="input"&&s.type==="radio"&&s.name!=null&&hp(r,s),xd(c,u);var h=xd(c,s);for(u=0;u<f.length;u+=2){var v=f[u],k=f[u+1];v==="style"?yp(r,k):v==="dangerouslySetInnerHTML"?Lp(r,k):v==="children"?dr(r,k):ei(r,v,k,h)}switch(c){case"input":cd(r,s);break;case"textarea":gp(r,s);break;case"select":var I=r._wrapperState.wasMultiple;r._wrapperState.wasMultiple=!!s.multiple;var N=s.value;N!=null?Yo(r,!!s.multiple,N,!1):I!==!!s.multiple&&(s.defaultValue!=null?Yo(r,!!s.multiple,s.defaultValue,!0):Yo(r,!!s.multiple,s.multiple?[]:"",!1))}r[Lr]=s}catch(M){me(e,e.return,M)}}break;case 6:if(La(a,e),Da(e),l&4){if(e.stateNode===null)throw Error(D(162));r=e.stateNode,s=e.memoizedProps;try{r.nodeValue=s}catch(M){me(e,e.return,M)}}break;case 3:if(La(a,e),Da(e),l&4&&t!==null&&t.memoizedState.isDehydrated)try{pr(a.containerInfo)}catch(M){me(e,e.return,M)}break;case 4:La(a,e),Da(e);break;case 13:La(a,e),Da(e),r=e.child,r.flags&8192&&(s=r.memoizedState!==null,r.stateNode.isHidden=s,!s||r.alternate!==null&&r.alternate.memoizedState!==null||(Mi=he())),l&4&&ap(e);break;case 22:if(v=t!==null&&t.memoizedState!==null,e.mode&1?(Ee=(h=Ee)||v,La(a,e),Ee=h):La(a,e),Da(e),l&8192){if(h=e.memoizedState!==null,(e.stateNode.isHidden=h)&&!v&&(e.mode&1)!==0)for(O=e,v=e.child;v!==null;){for(k=O=v;O!==null;){switch(I=O,N=I.child,I.tag){case 0:case 11:case 14:case 15:rr(4,I,I.return);break;case 1:Qo(I,I.return);var w=I.stateNode;if(typeof w.componentWillUnmount=="function"){l=I,t=I.return;try{a=l,w.props=a.memoizedProps,w.state=a.memoizedState,w.componentWillUnmount()}catch(M){me(l,t,M)}}break;case 5:Qo(I,I.return);break;case 22:if(I.memoizedState!==null){op(k);continue}}N!==null?(N.return=I,O=N):op(k)}v=v.sibling}e:for(v=null,k=e;;){if(k.tag===5){if(v===null){v=k;try{r=k.stateNode,h?(s=r.style,typeof s.setProperty=="function"?s.setProperty("display","none","important"):s.display="none"):(c=k.stateNode,f=k.memoizedProps.style,u=f!=null&&f.hasOwnProperty("display")?f.display:null,c.style.display=vp("display",u))}catch(M){me(e,e.return,M)}}}else if(k.tag===6){if(v===null)try{k.stateNode.nodeValue=h?"":k.memoizedProps}catch(M){me(e,e.return,M)}}else if((k.tag!==22&&k.tag!==23||k.memoizedState===null||k===e)&&k.child!==null){k.child.return=k,k=k.child;continue}if(k===e)break e;for(;k.sibling===null;){if(k.return===null||k.return===e)break e;v===k&&(v=null),k=k.return}v===k&&(v=null),k.sibling.return=k.return,k=k.sibling}}break;case 19:La(a,e),Da(e),l&4&&ap(e);break;case 21:break;default:La(a,e),Da(e)}}function Da(e){var a=e.flags;if(a&2){try{e:{for(var t=e.return;t!==null;){if(Vm(t)){var l=t;break e}t=t.return}throw Error(D(160))}switch(l.tag){case 5:var r=l.stateNode;l.flags&32&&(dr(r,""),l.flags&=-33);var s=ep(e);Xd(e,s,r);break;case 3:case 4:var u=l.stateNode.containerInfo,c=ep(e);Gd(e,c,u);break;default:throw Error(D(161))}}catch(f){me(e,e.return,f)}e.flags&=-3}a&4096&&(e.flags&=-4097)}function ov(e,a,t){O=e,Km(e,a,t)}function Km(e,a,t){for(var l=(e.mode&1)!==0;O!==null;){var r=O,s=r.child;if(r.tag===22&&l){var u=r.memoizedState!==null||zn;if(!u){var c=r.alternate,f=c!==null&&c.memoizedState!==null||Ee;c=zn;var h=Ee;if(zn=u,(Ee=f)&&!h)for(O=r;O!==null;)u=O,f=u.child,u.tag===22&&u.memoizedState!==null?lp(r):f!==null?(f.return=u,O=f):lp(r);for(;s!==null;)O=s,Km(s,a,t),s=s.sibling;O=r,zn=c,Ee=h}tp(e,a,t)}else(r.subtreeFlags&8772)!==0&&s!==null?(s.return=r,O=s):tp(e,a,t)}}function tp(e){for(;O!==null;){var a=O;if((a.flags&8772)!==0){var t=a.alternate;try{if((a.flags&8772)!==0)switch(a.tag){case 0:case 11:case 15:Ee||Ps(5,a);break;case 1:var l=a.stateNode;if(a.flags&4&&!Ee)if(t===null)l.componentDidMount();else{var r=a.elementType===a.type?t.memoizedProps:va(a.type,t.memoizedProps);l.componentDidUpdate(r,t.memoizedState,l.__reactInternalSnapshotBeforeUpdate)}var s=a.updateQueue;s!==null&&Hc(a,s,l);break;case 3:var u=a.updateQueue;if(u!==null){if(t=null,a.child!==null)switch(a.child.tag){case 5:t=a.child.stateNode;break;case 1:t=a.child.stateNode}Hc(a,u,t)}break;case 5:var c=a.stateNode;if(t===null&&a.flags&4){t=c;var f=a.memoizedProps;switch(a.type){case"button":case"input":case"select":case"textarea":f.autoFocus&&t.focus();break;case"img":f.src&&(t.src=f.src)}}break;case 6:break;case 4:break;case 12:break;case 13:if(a.memoizedState===null){var h=a.alternate;if(h!==null){var v=h.memoizedState;if(v!==null){var k=v.dehydrated;k!==null&&pr(k)}}}break;case 19:case 17:case 21:case 22:case 23:case 25:break;default:throw Error(D(163))}Ee||a.flags&512&&Vd(a)}catch(I){me(a,a.return,I)}}if(a===e){O=null;break}if(t=a.sibling,t!==null){t.return=a.return,O=t;break}O=a.return}}function op(e){for(;O!==null;){var a=O;if(a===e){O=null;break}var t=a.sibling;if(t!==null){t.return=a.return,O=t;break}O=a.return}}function lp(e){for(;O!==null;){var a=O;try{switch(a.tag){case 0:case 11:case 15:var t=a.return;try{Ps(4,a)}catch(f){me(a,t,f)}break;case 1:var l=a.stateNode;if(typeof l.componentDidMount=="function"){var r=a.return;try{l.componentDidMount()}catch(f){me(a,r,f)}}var s=a.return;try{Vd(a)}catch(f){me(a,s,f)}break;case 5:var u=a.return;try{Vd(a)}catch(f){me(a,u,f)}}}catch(f){me(a,a.return,f)}if(a===e){O=null;break}var c=a.sibling;if(c!==null){c.return=a.return,O=c;break}O=a.return}}var lv=Math.ceil,ms=Ja.ReactCurrentDispatcher,Ti=Ja.ReactCurrentOwner,pa=Ja.ReactCurrentBatchConfig,Q=0,be=null,xe=null,Ne=0,aa=0,Zo=Nt(0),Ie=0,kr=null,so=0,Ns=0,Ai=0,nr=null,Xe=null,Mi=0,dl=1/0,ja=null,hs=!1,Kd=null,Ct=null,Un=!1,gt=null,gs=0,sr=0,Qd=null,Gn=-1,Xn=0;function We(){return(Q&6)!==0?he():Gn!==-1?Gn:Gn=he()}function St(e){return(e.mode&1)===0?1:(Q&2)!==0&&Ne!==0?Ne&-Ne:_L.transition!==null?(Xn===0&&(Xn=Ap()),Xn):(e=Y,e!==0||(e=window.event,e=e===void 0?16:qp(e.type)),e)}function Sa(e,a,t,l){if(50<sr)throw sr=0,Qd=null,Error(D(185));wr(e,t,l),((Q&2)===0||e!==be)&&(e===be&&((Q&2)===0&&(Ns|=t),Ie===4&&mt(e,Ne)),Ye(e,l),t===1&&Q===0&&(a.mode&1)===0&&(dl=he()+500,ks&&Ft()))}function Ye(e,a){var t=e.callbackNode;jx(e,a);var l=Rn(e,e===be?Ne:0);if(l===0)t!==null&&cc(t),e.callbackNode=null,e.callbackPriority=0;else if(a=l&-l,e.callbackPriority!==a){if(t!=null&&cc(t),a===1)e.tag===0?HL(rp.bind(null,e)):lm(rp.bind(null,e)),OL(function(){(Q&6)===0&&Ft()}),t=null;else{switch(Mp(l)){case 1:t=ri;break;case 4:t=Dp;break;case 16:t=Jn;break;case 536870912:t=Tp;break;default:t=Jn}t=th(t,Qm.bind(null,e))}e.callbackPriority=a,e.callbackNode=t}}function Qm(e,a){if(Gn=-1,Xn=0,(Q&6)!==0)throw Error(D(327));var t=e.callbackNode;if(tl()&&e.callbackNode!==t)return null;var l=Rn(e,e===be?Ne:0);if(l===0)return null;if((l&30)!==0||(l&e.expiredLanes)!==0||a)a=xs(e,l);else{a=l;var r=Q;Q|=2;var s=Ym();(be!==e||Ne!==a)&&(ja=null,dl=he()+500,to(e,a));do try{sv();break}catch(c){Zm(e,c)}while(!0);Li(),ms.current=s,Q=r,xe!==null?a=0:(be=null,Ne=0,a=Ie)}if(a!==0){if(a===2&&(r=Cd(e),r!==0&&(l=r,a=Zd(e,r))),a===1)throw t=kr,to(e,0),mt(e,l),Ye(e,he()),t;if(a===6)mt(e,l);else{if(r=e.current.alternate,(l&30)===0&&!rv(r)&&(a=xs(e,l),a===2&&(s=Cd(e),s!==0&&(l=s,a=Zd(e,s))),a===1))throw t=kr,to(e,0),mt(e,l),Ye(e,he()),t;switch(e.finishedWork=r,e.finishedLanes=l,a){case 0:case 1:throw Error(D(345));case 2:Jt(e,Xe,ja);break;case 3:if(mt(e,l),(l&130023424)===l&&(a=Mi+500-he(),10<a)){if(Rn(e,0)!==0)break;if(r=e.suspendedLanes,(r&l)!==l){We(),e.pingedLanes|=e.suspendedLanes&r;break}e.timeoutHandle=Dd(Jt.bind(null,e,Xe,ja),a);break}Jt(e,Xe,ja);break;case 4:if(mt(e,l),(l&4194240)===l)break;for(a=e.eventTimes,r=-1;0<l;){var u=31-Ca(l);s=1<<u,u=a[u],u>r&&(r=u),l&=~s}if(l=r,l=he()-l,l=(120>l?120:480>l?480:1080>l?1080:1920>l?1920:3e3>l?3e3:4320>l?4320:1960*lv(l/1960))-l,10<l){e.timeoutHandle=Dd(Jt.bind(null,e,Xe,ja),l);break}Jt(e,Xe,ja);break;case 5:Jt(e,Xe,ja);break;default:throw Error(D(329))}}}return Ye(e,he()),e.callbackNode===t?Qm.bind(null,e):null}function Zd(e,a){var t=nr;return e.current.memoizedState.isDehydrated&&(to(e,a).flags|=256),e=xs(e,a),e!==2&&(a=Xe,Xe=t,a!==null&&Yd(a)),e}function Yd(e){Xe===null?Xe=e:Xe.push.apply(Xe,e)}function rv(e){for(var a=e;;){if(a.flags&16384){var t=a.updateQueue;if(t!==null&&(t=t.stores,t!==null))for(var l=0;l<t.length;l++){var r=t[l],s=r.getSnapshot;r=r.value;try{if(!ka(s(),r))return!1}catch{return!1}}}if(t=a.child,a.subtreeFlags&16384&&t!==null)t.return=a,a=t;else{if(a===e)break;for(;a.sibling===null;){if(a.return===null||a.return===e)return!0;a=a.return}a.sibling.return=a.return,a=a.sibling}}return!0}function mt(e,a){for(a&=~Ai,a&=~Ns,e.suspendedLanes|=a,e.pingedLanes&=~a,e=e.expirationTimes;0<a;){var t=31-Ca(a),l=1<<t;e[t]=-1,a&=~l}}function rp(e){if((Q&6)!==0)throw Error(D(327));tl();var a=Rn(e,0);if((a&1)===0)return Ye(e,he()),null;var t=xs(e,a);if(e.tag!==0&&t===2){var l=Cd(e);l!==0&&(a=l,t=Zd(e,l))}if(t===1)throw t=kr,to(e,0),mt(e,a),Ye(e,he()),t;if(t===6)throw Error(D(345));return e.finishedWork=e.current.alternate,e.finishedLanes=a,Jt(e,Xe,ja),Ye(e,he()),null}function Bi(e,a){var t=Q;Q|=1;try{return e(a)}finally{Q=t,Q===0&&(dl=he()+500,ks&&Ft())}}function uo(e){gt!==null&&gt.tag===0&&(Q&6)===0&&tl();var a=Q;Q|=1;var t=pa.transition,l=Y;try{if(pa.transition=null,Y=1,e)return e()}finally{Y=l,pa.transition=t,Q=a,(Q&6)===0&&Ft()}}function Ei(){aa=Zo.current,oe(Zo)}function to(e,a){e.finishedWork=null,e.finishedLanes=0;var t=e.timeoutHandle;if(t!==-1&&(e.timeoutHandle=-1,EL(t)),xe!==null)for(t=xe.return;t!==null;){var l=t;switch(hi(l),l.tag){case 1:l=l.type.childContextTypes,l!=null&&ls();break;case 3:sl(),oe(Qe),oe(Oe),ki();break;case 5:Si(l);break;case 4:sl();break;case 13:oe(ie);break;case 19:oe(ie);break;case 10:vi(l.type._context);break;case 22:case 23:Ei()}t=t.return}if(be=e,xe=e=kt(e.current,null),Ne=aa=a,Ie=0,kr=null,Ai=Ns=so=0,Xe=nr=null,eo!==null){for(a=0;a<eo.length;a++)if(t=eo[a],l=t.interleaved,l!==null){t.interleaved=null;var r=l.next,s=t.pending;if(s!==null){var u=s.next;s.next=r,l.next=u}t.pending=l}eo=null}return e}function Zm(e,a){do{var t=xe;try{if(Li(),jn.current=ps,cs){for(var l=fe.memoizedState;l!==null;){var r=l.queue;r!==null&&(r.pending=null),l=l.next}cs=!1}if(no=0,we=ye=fe=null,lr=!1,Ir=0,Ti.current=null,t===null||t.return===null){Ie=1,kr=a,xe=null;break}e:{var s=e,u=t.return,c=t,f=a;if(a=Ne,c.flags|=32768,f!==null&&typeof f=="object"&&typeof f.then=="function"){var h=f,v=c,k=v.tag;if((v.mode&1)===0&&(k===0||k===11||k===15)){var I=v.alternate;I?(v.updateQueue=I.updateQueue,v.memoizedState=I.memoizedState,v.lanes=I.lanes):(v.updateQueue=null,v.memoizedState=null)}var N=Gc(u);if(N!==null){N.flags&=-257,Xc(N,u,c,s,a),N.mode&1&&Vc(s,h,a),a=N,f=h;var w=a.updateQueue;if(w===null){var M=new Set;M.add(f),a.updateQueue=M}else w.add(f);break e}else{if((a&1)===0){Vc(s,h,a),Oi();break e}f=Error(D(426))}}else if(ue&&c.mode&1){var q=Gc(u);if(q!==null){(q.flags&65536)===0&&(q.flags|=256),Xc(q,u,c,s,a),gi(ul(f,c));break e}}s=f=ul(f,c),Ie!==4&&(Ie=2),nr===null?nr=[s]:nr.push(s),s=u;do{switch(s.tag){case 3:s.flags|=65536,a&=-a,s.lanes|=a;var x=Mm(s,f,a);qc(s,x);break e;case 1:c=f;var m=s.type,L=s.stateNode;if((s.flags&128)===0&&(typeof m.getDerivedStateFromError=="function"||L!==null&&typeof L.componentDidCatch=="function"&&(Ct===null||!Ct.has(L)))){s.flags|=65536,a&=-a,s.lanes|=a;var b=Bm(s,c,a);qc(s,b);break e}}s=s.return}while(s!==null)}Rm(t)}catch(E){a=E,xe===t&&t!==null&&(xe=t=t.return);continue}break}while(!0)}function Ym(){var e=ms.current;return ms.current=ps,e===null?ps:e}function Oi(){(Ie===0||Ie===3||Ie===2)&&(Ie=4),be===null||(so&268435455)===0&&(Ns&268435455)===0||mt(be,Ne)}function xs(e,a){var t=Q;Q|=2;var l=Ym();(be!==e||Ne!==a)&&(ja=null,to(e,a));do try{nv();break}catch(r){Zm(e,r)}while(!0);if(Li(),Q=t,ms.current=l,xe!==null)throw Error(D(261));return be=null,Ne=0,Ie}function nv(){for(;xe!==null;)Jm(xe)}function sv(){for(;xe!==null&&!Bx();)Jm(xe)}function Jm(e){var a=ah(e.alternate,e,aa);e.memoizedProps=e.pendingProps,a===null?Rm(e):xe=a,Ti.current=null}function Rm(e){var a=e;do{var t=a.alternate;if(e=a.return,(a.flags&32768)===0){if(t=RL(t,a,aa),t!==null){xe=t;return}}else{if(t=ev(t,a),t!==null){t.flags&=32767,xe=t;return}if(e!==null)e.flags|=32768,e.subtreeFlags=0,e.deletions=null;else{Ie=6,xe=null;return}}if(a=a.sibling,a!==null){xe=a;return}xe=a=e}while(a!==null);Ie===0&&(Ie=5)}function Jt(e,a,t){var l=Y,r=pa.transition;try{pa.transition=null,Y=1,uv(e,a,t,l)}finally{pa.transition=r,Y=l}return null}function uv(e,a,t,l){do tl();while(gt!==null);if((Q&6)!==0)throw Error(D(327));t=e.finishedWork;var r=e.finishedLanes;if(t===null)return null;if(e.finishedWork=null,e.finishedLanes=0,t===e.current)throw Error(D(177));e.callbackNode=null,e.callbackPriority=0;var s=t.lanes|t.childLanes;if($x(e,s),e===be&&(xe=be=null,Ne=0),(t.subtreeFlags&2064)===0&&(t.flags&2064)===0||Un||(Un=!0,th(Jn,function(){return tl(),null})),s=(t.flags&15990)!==0,(t.subtreeFlags&15990)!==0||s){s=pa.transition,pa.transition=null;var u=Y;Y=1;var c=Q;Q|=4,Ti.current=null,tv(e,t),Xm(t,e),DL(Nd),es=!!Pd,Nd=Pd=null,e.current=t,ov(t,e,r),Ex(),Q=c,Y=u,pa.transition=s}else e.current=t;if(Un&&(Un=!1,gt=e,gs=r),s=e.pendingLanes,s===0&&(Ct=null),Ux(t.stateNode,l),Ye(e,he()),a!==null)for(l=e.onRecoverableError,t=0;t<a.length;t++)r=a[t],l(r.value,{componentStack:r.stack,digest:r.digest});if(hs)throw hs=!1,e=Kd,Kd=null,e;return(gs&1)!==0&&e.tag!==0&&tl(),s=e.pendingLanes,(s&1)!==0?e===Qd?sr++:(sr=0,Qd=e):sr=0,Ft(),null}function tl(){if(gt!==null){var e=Mp(gs),a=pa.transition,t=Y;try{if(pa.transition=null,Y=16>e?16:e,gt===null)var l=!1;else{if(e=gt,gt=null,gs=0,(Q&6)!==0)throw Error(D(331));var r=Q;for(Q|=4,O=e.current;O!==null;){var s=O,u=s.child;if((O.flags&16)!==0){var c=s.deletions;if(c!==null){for(var f=0;f<c.length;f++){var h=c[f];for(O=h;O!==null;){var v=O;switch(v.tag){case 0:case 11:case 15:rr(8,v,s)}var k=v.child;if(k!==null)k.return=v,O=k;else for(;O!==null;){v=O;var I=v.sibling,N=v.return;if($m(v),v===h){O=null;break}if(I!==null){I.return=N,O=I;break}O=N}}}var w=s.alternate;if(w!==null){var M=w.child;if(M!==null){w.child=null;do{var q=M.sibling;M.sibling=null,M=q}while(M!==null)}}O=s}}if((s.subtreeFlags&2064)!==0&&u!==null)u.return=s,O=u;else e:for(;O!==null;){if(s=O,(s.flags&2048)!==0)switch(s.tag){case 0:case 11:case 15:rr(9,s,s.return)}var x=s.sibling;if(x!==null){x.return=s.return,O=x;break e}O=s.return}}var m=e.current;for(O=m;O!==null;){u=O;var L=u.child;if((u.subtreeFlags&2064)!==0&&L!==null)L.return=u,O=L;else e:for(u=m;O!==null;){if(c=O,(c.flags&2048)!==0)try{switch(c.tag){case 0:case 11:case 15:Ps(9,c)}}catch(E){me(c,c.return,E)}if(c===u){O=null;break e}var b=c.sibling;if(b!==null){b.return=c.return,O=b;break e}O=c.return}}if(Q=r,Ft(),Ma&&typeof Ma.onPostCommitFiberRoot=="function")try{Ma.onPostCommitFiberRoot(vs,e)}catch{}l=!0}return l}finally{Y=t,pa.transition=a}}return!1}function np(e,a,t){a=ul(t,a),a=Mm(e,a,1),e=It(e,a,1),a=We(),e!==null&&(wr(e,1,a),Ye(e,a))}function me(e,a,t){if(e.tag===3)np(e,e,t);else for(;a!==null;){if(a.tag===3){np(a,e,t);break}else if(a.tag===1){var l=a.stateNode;if(typeof a.type.getDerivedStateFromError=="function"||typeof l.componentDidCatch=="function"&&(Ct===null||!Ct.has(l))){e=ul(t,e),e=Bm(a,e,1),a=It(a,e,1),e=We(),a!==null&&(wr(a,1,e),Ye(a,e));break}}a=a.return}}function dv(e,a,t){var l=e.pingCache;l!==null&&l.delete(a),a=We(),e.pingedLanes|=e.suspendedLanes&t,be===e&&(Ne&t)===t&&(Ie===4||Ie===3&&(Ne&130023424)===Ne&&500>he()-Mi?to(e,0):Ai|=t),Ye(e,a)}function eh(e,a){a===0&&((e.mode&1)===0?a=1:(a=kn,kn<<=1,(kn&130023424)===0&&(kn=4194304)));var t=We();e=Za(e,a),e!==null&&(wr(e,a,t),Ye(e,t))}function iv(e){var a=e.memoizedState,t=0;a!==null&&(t=a.retryLane),eh(e,t)}function fv(e,a){var t=0;switch(e.tag){case 13:var l=e.stateNode,r=e.memoizedState;r!==null&&(t=r.retryLane);break;case 19:l=e.stateNode;break;default:throw Error(D(314))}l!==null&&l.delete(a),eh(e,t)}var ah;ah=function(e,a,t){if(e!==null)if(e.memoizedProps!==a.pendingProps||Qe.current)Ke=!0;else{if((e.lanes&t)===0&&(a.flags&128)===0)return Ke=!1,JL(e,a,t);Ke=(e.flags&131072)!==0}else Ke=!1,ue&&(a.flags&1048576)!==0&&rm(a,ss,a.index);switch(a.lanes=0,a.tag){case 2:var l=a.type;Vn(e,a),e=a.pendingProps;var r=ll(a,Oe.current);al(a,t),r=bi(null,a,l,e,r,t);var s=Pi();return a.flags|=1,typeof r=="object"&&r!==null&&typeof r.render=="function"&&r.$$typeof===void 0?(a.tag=1,a.memoizedState=null,a.updateQueue=null,Ze(l)?(s=!0,rs(a)):s=!1,a.memoizedState=r.state!==null&&r.state!==void 0?r.state:null,Ii(a),r.updater=bs,a.stateNode=r,r._reactInternals=a,zd(a,l,e,t),a=Hd(null,a,l,!0,s,t)):(a.tag=0,ue&&s&&mi(a),_e(null,a,r,t),a=a.child),a;case 16:l=a.elementType;e:{switch(Vn(e,a),e=a.pendingProps,r=l._init,l=r(l._payload),a.type=l,r=a.tag=pv(l),e=va(l,e),r){case 0:a=qd(null,a,l,e,t);break e;case 1:a=Zc(null,a,l,e,t);break e;case 11:a=Kc(null,a,l,e,t);break e;case 14:a=Qc(null,a,l,va(l.type,e),t);break e}throw Error(D(306,l,""))}return a;case 0:return l=a.type,r=a.pendingProps,r=a.elementType===l?r:va(l,r),qd(e,a,l,r,t);case 1:return l=a.type,r=a.pendingProps,r=a.elementType===l?r:va(l,r),Zc(e,a,l,r,t);case 3:e:{if(Um(a),e===null)throw Error(D(387));l=a.pendingProps,s=a.memoizedState,r=s.element,fm(e,a),is(a,l,null,t);var u=a.memoizedState;if(l=u.element,s.isDehydrated)if(s={element:l,isDehydrated:!1,cache:u.cache,pendingSuspenseBoundaries:u.pendingSuspenseBoundaries,transitions:u.transitions},a.updateQueue.baseState=s,a.memoizedState=s,a.flags&256){r=ul(Error(D(423)),a),a=Yc(e,a,l,t,r);break e}else if(l!==r){r=ul(Error(D(424)),a),a=Yc(e,a,l,t,r);break e}else for(ta=yt(a.stateNode.containerInfo.firstChild),oa=a,ue=!0,Ia=null,t=dm(a,null,l,t),a.child=t;t;)t.flags=t.flags&-3|4096,t=t.sibling;else{if(rl(),l===r){a=Ya(e,a,t);break e}_e(e,a,l,t)}a=a.child}return a;case 5:return cm(a),e===null&&Bd(a),l=a.type,r=a.pendingProps,s=e!==null?e.memoizedProps:null,u=r.children,Fd(l,r)?u=null:s!==null&&Fd(l,s)&&(a.flags|=32),zm(e,a),_e(e,a,u,t),a.child;case 6:return e===null&&Bd(a),null;case 13:return qm(e,a,t);case 4:return Ci(a,a.stateNode.containerInfo),l=a.pendingProps,e===null?a.child=nl(a,null,l,t):_e(e,a,l,t),a.child;case 11:return l=a.type,r=a.pendingProps,r=a.elementType===l?r:va(l,r),Kc(e,a,l,r,t);case 7:return _e(e,a,a.pendingProps,t),a.child;case 8:return _e(e,a,a.pendingProps.children,t),a.child;case 12:return _e(e,a,a.pendingProps.children,t),a.child;case 10:e:{if(l=a.type._context,r=a.pendingProps,s=a.memoizedProps,u=r.value,ee(us,l._currentValue),l._currentValue=u,s!==null)if(ka(s.value,u)){if(s.children===r.children&&!Qe.current){a=Ya(e,a,t);break e}}else for(s=a.child,s!==null&&(s.return=a);s!==null;){var c=s.dependencies;if(c!==null){u=s.child;for(var f=c.firstContext;f!==null;){if(f.context===l){if(s.tag===1){f=Xa(-1,t&-t),f.tag=2;var h=s.updateQueue;if(h!==null){h=h.shared;var v=h.pending;v===null?f.next=f:(f.next=v.next,v.next=f),h.pending=f}}s.lanes|=t,f=s.alternate,f!==null&&(f.lanes|=t),Ed(s.return,t,a),c.lanes|=t;break}f=f.next}}else if(s.tag===10)u=s.type===a.type?null:s.child;else if(s.tag===18){if(u=s.return,u===null)throw Error(D(341));u.lanes|=t,c=u.alternate,c!==null&&(c.lanes|=t),Ed(u,t,a),u=s.sibling}else u=s.child;if(u!==null)u.return=s;else for(u=s;u!==null;){if(u===a){u=null;break}if(s=u.sibling,s!==null){s.return=u.return,u=s;break}u=u.return}s=u}_e(e,a,r.children,t),a=a.child}return a;case 9:return r=a.type,l=a.pendingProps.children,al(a,t),r=ma(r),l=l(r),a.flags|=1,_e(e,a,l,t),a.child;case 14:return l=a.type,r=va(l,a.pendingProps),r=va(l.type,r),Qc(e,a,l,r,t);case 15:return Em(e,a,a.type,a.pendingProps,t);case 17:return l=a.type,r=a.pendingProps,r=a.elementType===l?r:va(l,r),Vn(e,a),a.tag=1,Ze(l)?(e=!0,rs(a)):e=!1,al(a,t),Am(a,l,r),zd(a,l,r,t),Hd(null,a,l,!0,e,t);case 19:return Hm(e,a,t);case 22:return Om(e,a,t)}throw Error(D(156,a.tag))};function th(e,a){return Fp(e,a)}function cv(e,a,t,l){this.tag=e,this.key=t,this.sibling=this.child=this.return=this.stateNode=this.type=this.elementType=null,this.index=0,this.ref=null,this.pendingProps=a,this.dependencies=this.memoizedState=this.updateQueue=this.memoizedProps=null,this.mode=l,this.subtreeFlags=this.flags=0,this.deletions=null,this.childLanes=this.lanes=0,this.alternate=null}function ca(e,a,t,l){return new cv(e,a,t,l)}function zi(e){return e=e.prototype,!(!e||!e.isReactComponent)}function pv(e){if(typeof e=="function")return zi(e)?1:0;if(e!=null){if(e=e.$$typeof,e===ti)return 11;if(e===oi)return 14}return 2}function kt(e,a){var t=e.alternate;return t===null?(t=ca(e.tag,a,e.key,e.mode),t.elementType=e.elementType,t.type=e.type,t.stateNode=e.stateNode,t.alternate=e,e.alternate=t):(t.pendingProps=a,t.type=e.type,t.flags=0,t.subtreeFlags=0,t.deletions=null),t.flags=e.flags&14680064,t.childLanes=e.childLanes,t.lanes=e.lanes,t.child=e.child,t.memoizedProps=e.memoizedProps,t.memoizedState=e.memoizedState,t.updateQueue=e.updateQueue,a=e.dependencies,t.dependencies=a===null?null:{lanes:a.lanes,firstContext:a.firstContext},t.sibling=e.sibling,t.index=e.index,t.ref=e.ref,t}function Kn(e,a,t,l,r,s){var u=2;if(l=e,typeof e=="function")zi(e)&&(u=1);else if(typeof e=="string")u=5;else e:switch(e){case Ho:return oo(t.children,r,s,a);case ai:u=8,r|=8;break;case sd:return e=ca(12,t,a,r|2),e.elementType=sd,e.lanes=s,e;case ud:return e=ca(13,t,a,r),e.elementType=ud,e.lanes=s,e;case dd:return e=ca(19,t,a,r),e.elementType=dd,e.lanes=s,e;case cp:return Fs(t,r,s,a);default:if(typeof e=="object"&&e!==null)switch(e.$$typeof){case ip:u=10;break e;case fp:u=9;break e;case ti:u=11;break e;case oi:u=14;break e;case ft:u=16,l=null;break e}throw Error(D(130,e==null?e:typeof e,""))}return a=ca(u,t,a,r),a.elementType=e,a.type=l,a.lanes=s,a}function oo(e,a,t,l){return e=ca(7,e,l,a),e.lanes=t,e}function Fs(e,a,t,l){return e=ca(22,e,l,a),e.elementType=cp,e.lanes=t,e.stateNode={isHidden:!1},e}function ld(e,a,t){return e=ca(6,e,null,a),e.lanes=t,e}function rd(e,a,t){return a=ca(4,e.children!==null?e.children:[],e.key,a),a.lanes=t,a.stateNode={containerInfo:e.containerInfo,pendingChildren:null,implementation:e.implementation},a}function mv(e,a,t,l,r){this.tag=a,this.containerInfo=e,this.finishedWork=this.pingCache=this.current=this.pendingChildren=null,this.timeoutHandle=-1,this.callbackNode=this.pendingContext=this.context=null,this.callbackPriority=0,this.eventTimes=Wu(0),this.expirationTimes=Wu(-1),this.entangledLanes=this.finishedLanes=this.mutableReadLanes=this.expiredLanes=this.pingedLanes=this.suspendedLanes=this.pendingLanes=0,this.entanglements=Wu(0),this.identifierPrefix=l,this.onRecoverableError=r,this.mutableSourceEagerHydrationData=null}function Ui(e,a,t,l,r,s,u,c,f){return e=new mv(e,a,t,c,f),a===1?(a=1,s===!0&&(a|=8)):a=0,s=ca(3,null,null,a),e.current=s,s.stateNode=e,s.memoizedState={element:l,isDehydrated:t,cache:null,transitions:null,pendingSuspenseBoundaries:null},Ii(s),e}function hv(e,a,t){var l=3<arguments.length&&arguments[3]!==void 0?arguments[3]:null;return{$$typeof:qo,key:l==null?null:""+l,children:e,containerInfo:a,implementation:t}}function oh(e){if(!e)return bt;e=e._reactInternals;e:{if(fo(e)!==e||e.tag!==1)throw Error(D(170));var a=e;do{switch(a.tag){case 3:a=a.stateNode.context;break e;case 1:if(Ze(a.type)){a=a.stateNode.__reactInternalMemoizedMergedChildContext;break e}}a=a.return}while(a!==null);throw Error(D(171))}if(e.tag===1){var t=e.type;if(Ze(t))return om(e,t,a)}return a}function lh(e,a,t,l,r,s,u,c,f){return e=Ui(t,l,!0,e,r,s,u,c,f),e.context=oh(null),t=e.current,l=We(),r=St(t),s=Xa(l,r),s.callback=a??null,It(t,s,r),e.current.lanes=r,wr(e,r,l),Ye(e,l),e}function Ds(e,a,t,l){var r=a.current,s=We(),u=St(r);return t=oh(t),a.context===null?a.context=t:a.pendingContext=t,a=Xa(s,u),a.payload={element:e},l=l===void 0?null:l,l!==null&&(a.callback=l),e=It(r,a,u),e!==null&&(Sa(e,r,u,s),Wn(e,r,u)),u}function Ls(e){return e=e.current,e.child?(e.child.tag===5,e.child.stateNode):null}function sp(e,a){if(e=e.memoizedState,e!==null&&e.dehydrated!==null){var t=e.retryLane;e.retryLane=t!==0&&t<a?t:a}}function qi(e,a){sp(e,a),(e=e.alternate)&&sp(e,a)}function gv(){return null}var rh=typeof reportError=="function"?reportError:function(e){console.error(e)};function Hi(e){this._internalRoot=e}Ts.prototype.render=Hi.prototype.render=function(e){var a=this._internalRoot;if(a===null)throw Error(D(409));Ds(e,a,null,null)};Ts.prototype.unmount=Hi.prototype.unmount=function(){var e=this._internalRoot;if(e!==null){this._internalRoot=null;var a=e.containerInfo;uo(function(){Ds(null,e,null,null)}),a[Qa]=null}};function Ts(e){this._internalRoot=e}Ts.prototype.unstable_scheduleHydration=function(e){if(e){var a=Op();e={blockedOn:null,target:e,priority:a};for(var t=0;t<pt.length&&a!==0&&a<pt[t].priority;t++);pt.splice(t,0,e),t===0&&Up(e)}};function _i(e){return!(!e||e.nodeType!==1&&e.nodeType!==9&&e.nodeType!==11)}function As(e){return!(!e||e.nodeType!==1&&e.nodeType!==9&&e.nodeType!==11&&(e.nodeType!==8||e.nodeValue!==" react-mount-point-unstable "))}function up(){}function xv(e,a,t,l,r){if(r){if(typeof l=="function"){var s=l;l=function(){var h=Ls(u);s.call(h)}}var u=lh(a,l,e,0,null,!1,!1,"",up);return e._reactRootContainer=u,e[Qa]=u.current,gr(e.nodeType===8?e.parentNode:e),uo(),u}for(;r=e.lastChild;)e.removeChild(r);if(typeof l=="function"){var c=l;l=function(){var h=Ls(f);c.call(h)}}var f=Ui(e,0,!1,null,null,!1,!1,"",up);return e._reactRootContainer=f,e[Qa]=f.current,gr(e.nodeType===8?e.parentNode:e),uo(function(){Ds(a,f,t,l)}),f}function Ms(e,a,t,l,r){var s=t._reactRootContainer;if(s){var u=s;if(typeof r=="function"){var c=r;r=function(){var f=Ls(u);c.call(f)}}Ds(a,u,e,r)}else u=xv(t,a,e,r,l);return Ls(u)}Bp=function(e){switch(e.tag){case 3:var a=e.stateNode;if(a.current.memoizedState.isDehydrated){var t=Yl(a.pendingLanes);t!==0&&(ni(a,t|1),Ye(a,he()),(Q&6)===0&&(dl=he()+500,Ft()))}break;case 13:uo(function(){var l=Za(e,1);if(l!==null){var r=We();Sa(l,e,1,r)}}),qi(e,1)}};si=function(e){if(e.tag===13){var a=Za(e,134217728);if(a!==null){var t=We();Sa(a,e,134217728,t)}qi(e,134217728)}};Ep=function(e){if(e.tag===13){var a=St(e),t=Za(e,a);if(t!==null){var l=We();Sa(t,e,a,l)}qi(e,a)}};Op=function(){return Y};zp=function(e,a){var t=Y;try{return Y=e,a()}finally{Y=t}};vd=function(e,a,t){switch(a){case"input":if(cd(e,t),a=t.name,t.type==="radio"&&a!=null){for(t=e;t.parentNode;)t=t.parentNode;for(t=t.querySelectorAll("input[name="+JSON.stringify(""+a)+'][type="radio"]'),a=0;a<t.length;a++){var l=t[a];if(l!==e&&l.form===e.form){var r=Ss(l);if(!r)throw Error(D(90));mp(l),cd(l,r)}}}break;case"textarea":gp(e,t);break;case"select":a=t.value,a!=null&&Yo(e,!!t.multiple,a,!1)}};Sp=Bi;kp=uo;var Lv={usingClientEntryPoint:!1,Events:[Pr,$o,Ss,Ip,Cp,Bi]},Xl={findFiberByHostInstance:Rt,bundleType:0,version:"18.3.1",rendererPackageName:"react-dom"},vv={bundleType:Xl.bundleType,version:Xl.version,rendererPackageName:Xl.rendererPackageName,rendererConfig:Xl.rendererConfig,overrideHookState:null,overrideHookStateDeletePath:null,overrideHookStateRenamePath:null,overrideProps:null,overridePropsDeletePath:null,overridePropsRenamePath:null,setErrorHandler:null,setSuspenseHandler:null,scheduleUpdate:null,currentDispatcherRef:Ja.ReactCurrentDispatcher,findHostInstanceByFiber:function(e){return e=Pp(e),e===null?null:e.stateNode},findFiberByHostInstance:Xl.findFiberByHostInstance||gv,findHostInstancesForRefresh:null,scheduleRefresh:null,scheduleRoot:null,setRefreshHandler:null,getCurrentFiber:null,reconcilerVersion:"18.3.1-next-f1338f8080-20240426"};if(typeof __REACT_DEVTOOLS_GLOBAL_HOOK__<"u"&&(Kl=__REACT_DEVTOOLS_GLOBAL_HOOK__,!Kl.isDisabled&&Kl.supportsFiber))try{vs=Kl.inject(vv),Ma=Kl}catch{}var Kl;na.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED=Lv;na.createPortal=function(e,a){var t=2<arguments.length&&arguments[2]!==void 0?arguments[2]:null;if(!_i(a))throw Error(D(200));return hv(e,a,null,t)};na.createRoot=function(e,a){if(!_i(e))throw Error(D(299));var t=!1,l="",r=rh;return a!=null&&(a.unstable_strictMode===!0&&(t=!0),a.identifierPrefix!==void 0&&(l=a.identifierPrefix),a.onRecoverableError!==void 0&&(r=a.onRecoverableError)),a=Ui(e,1,!1,null,null,t,!1,l,r),e[Qa]=a.current,gr(e.nodeType===8?e.parentNode:e),new Hi(a)};na.findDOMNode=function(e){if(e==null)return null;if(e.nodeType===1)return e;var a=e._reactInternals;if(a===void 0)throw typeof e.render=="function"?Error(D(188)):(e=Object.keys(e).join(","),Error(D(268,e)));return e=Pp(a),e=e===null?null:e.stateNode,e};na.flushSync=function(e){return uo(e)};na.hydrate=function(e,a,t){if(!As(a))throw Error(D(200));return Ms(null,e,a,!0,t)};na.hydrateRoot=function(e,a,t){if(!_i(e))throw Error(D(405));var l=t!=null&&t.hydratedSources||null,r=!1,s="",u=rh;if(t!=null&&(t.unstable_strictMode===!0&&(r=!0),t.identifierPrefix!==void 0&&(s=t.identifierPrefix),t.onRecoverableError!==void 0&&(u=t.onRecoverableError)),a=lh(a,null,e,1,t??null,r,!1,s,u),e[Qa]=a.current,gr(e),l)for(e=0;e<l.length;e++)t=l[e],r=t._getVersion,r=r(t._source),a.mutableSourceEagerHydrationData==null?a.mutableSourceEagerHydrationData=[t,r]:a.mutableSourceEagerHydrationData.push(t,r);return new Ts(a)};na.render=function(e,a,t){if(!As(a))throw Error(D(200));return Ms(null,e,a,!1,t)};na.unmountComponentAtNode=function(e){if(!As(e))throw Error(D(40));return e._reactRootContainer?(uo(function(){Ms(null,null,e,!1,function(){e._reactRootContainer=null,e[Qa]=null})}),!0):!1};na.unstable_batchedUpdates=Bi;na.unstable_renderSubtreeIntoContainer=function(e,a,t,l){if(!As(t))throw Error(D(200));if(e==null||e._reactInternals===void 0)throw Error(D(38));return Ms(e,a,t,!1,l)};na.version="18.3.1-next-f1338f8080-20240426"});var dh=Kt((Uv,uh)=>{"use strict";function sh(){if(!(typeof __REACT_DEVTOOLS_GLOBAL_HOOK__>"u"||typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE!="function"))try{__REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE(sh)}catch(e){console.error(e)}}sh(),uh.exports=nh()});var fh=Kt(Wi=>{"use strict";var ih=dh();Wi.createRoot=ih.createRoot,Wi.hydrateRoot=ih.hydrateRoot;var qv});var og=Eo(Qt()),lg=Eo(fh());var o=Eo(Qt());var Bs=Eo(Qt(),1);var ch=e=>e?.replace(/([a-z0-9])([A-Z])/g,"$1-$2").toLowerCase();function ph(e,a,t=[]){if(a==null)throw new Error("[lucide]: iconNode is required when icon name is used");return{name:ch(e),size:24,node:a,...t.length>0?{aliases:t}:{}}}var mh=e=>{let a="",t=!1;for(let l of e){if(l==="-"||l==="_"||l<=" "){t=a.length>0;continue}a.length===0?a+=l.toLowerCase():a+=t?l.toUpperCase():l,t=!1}return a};var hh=e=>{let a=mh(e);return a.charAt(0).toUpperCase()+a.slice(1)};var Dr=Eo(Qt(),1);var Fr=(...e)=>e.filter((a,t,l)=>!!a&&a.trim()!==""&&l.indexOf(a)===t).join(" ").trim();var Dt={xmlns:"http://www.w3.org/2000/svg",width:24,height:24,viewBox:"0 0 24 24",fill:"none",stroke:"currentColor","stroke-width":2,"stroke-linecap":"round","stroke-linejoin":"round"};function ji(e){return e!=null}function gh(e,a={}){let t=a.attributeNames??{},l=I=>t[I]??I,r=e.size??e.width??Dt.width,s=e.size??e.height??Dt.height,u=e.aliases?.filter(I=>typeof I=="string"&&I.trim()!=="").map(I=>`lucide-${I}`)??[],c=[...e.name?[`lucide-${e.name}`]:[],...u],f=a.className?.split(" ").filter(Boolean)??[],h=a.includeDefaultClasses===!1?Fr(...f):Fr("lucide",...c,...f),v=a.absoluteStrokeWidth?Number(a.strokeWidth??Dt["stroke-width"])*Number(e.size??e.width??Dt.width)/Number(a.size??a.width??Dt.width):a.strokeWidth??Dt["stroke-width"];return["svg",{...Object.entries(Dt).reduce((I,[N,w])=>(I[l(N)]=w,I),{}),..."color"in a&&a.color&&{[l("stroke")]:a.color},..."size"in a&&ji(a.size)&&{[l("width")]:a.size,[l("height")]:a.size},..."width"in a&&ji(a.width)&&{[l("width")]:a.width},..."height"in a&&ji(a.height)&&{[l("height")]:a.height},[l("stroke-width")]:v,...h&&{[l("class")]:h},[l("viewBox")]:`0 0 ${r} ${s}`,...a.hasA11yProp===!1?{[l("aria-hidden")]:"true"}:{},..."attributes"in a&&a.attributes},e.node.map(I=>{let[N,w,M]=I,q=a.nonScalingStroke?{[l("vector-effect")]:"non-scaling-stroke",...w}:w;return M?[N,q,M]:[N,q]})]}function xh(e,a={}){return gh(e,{...a,attributeNames:{...a.attributeNames,class:"className","stroke-width":"strokeWidth","stroke-linecap":"strokeLinecap","stroke-linejoin":"strokeLinejoin","vector-effect":"vectorEffect"}})}var Lh=e=>{for(let a in e)if(a.startsWith("aria-")||a==="role"||a==="title")return!0;return!1};var cl=Eo(Qt(),1);var yv=(0,cl.createContext)({});var vh=()=>(0,cl.useContext)(yv);var yh=(0,Dr.forwardRef)(({color:e,size:a,width:t,height:l,strokeWidth:r,absoluteStrokeWidth:s,nonScalingStroke:u,className:c="",children:f,iconNode:h=[],icon:v={node:h,aliases:[],size:24},...k},I)=>{let{size:N=24,strokeWidth:w=2,absoluteStrokeWidth:M=!1,nonScalingStroke:q=!1,color:x="currentColor",className:m=""}=vh()??{},L=!!f||Lh(k),[b,E,z=[]]=xh(v,{color:e??x,width:t??a??N,height:l??a??N,strokeWidth:r??w,absoluteStrokeWidth:s??M,nonScalingStroke:u??q,className:Fr(m,c),hasA11yProp:L,attributes:k});return(0,Dr.createElement)(b,{ref:I,...E},[...z.map(([H,F])=>(0,Dr.createElement)(H,F)),...Array.isArray(f)?f:[f]])});function W(e,a=[],t=[]){let l=typeof e=="string"?ph(e,a,t):e,r=(0,Bs.forwardRef)(({className:s,...u},c)=>(0,Bs.createElement)(yh,{ref:c,icon:l,className:s,...u}));return l.name&&(r.displayName=hh(l.name)),r}var Ih={name:"arrow-right",size:24,node:[["path",{d:"M5 12h14",key:"1ays0h"}],["path",{d:"m12 5 7 7-7 7",key:"xquz4c"}]]};Ih.node;var pl=W(Ih);var Ch={name:"book-open",size:24,node:[["path",{d:"M12 5v16",key:"1f6ucr"}],["path",{d:"M20.001 19A2 2 0 0022 17V5a2 2 0 00-1.999-2L16 3.002A5 5 0 0012 5a5 5 0 00-4-2H4a2 2 0 00-2 2v12a2 2 0 001.999 2H8a5 5 0 014 2 5 5 0 014-2z",key:"1fyvmf"}]]};Ch.node;var ml=W(Ch);var Sh={name:"calendar",size:24,node:[["path",{d:"M8 2v3",key:"1ioesn"}],["path",{d:"M16 2v3",key:"otl347"}],["rect",{x:"3",y:"3",width:"18",height:"18",rx:"2",key:"h1oib"}],["path",{d:"M3 9h18",key:"1pudct"}]]};Sh.node;var hl=W(Sh);var kh={name:"check",size:24,node:[["path",{d:"M20 6 9 17l-5-5",key:"1gmf2c"}]]};kh.node;var sa=W(kh);var wh={name:"chevron-down",size:24,node:[["path",{d:"m6 9 6 6 6-6",key:"qrunsl"}]]};wh.node;var Tr=W(wh);var bh={name:"circle-alert",size:24,node:[["circle",{cx:"12",cy:"12",r:"10",key:"1mglay"}],["line",{x1:"12",x2:"12",y1:"8",y2:"12",key:"1pkeuh"}],["line",{x1:"12",x2:"12.01",y1:"16",y2:"16",key:"4dfq90"}]],aliases:["alert-circle"]};bh.node;var $e=W(bh);var Ph={name:"copy",size:24,node:[["rect",{width:"14",height:"14",x:"8",y:"8",rx:"2",ry:"2",key:"17jyea"}],["path",{d:"M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2",key:"zix9uf"}]]};Ph.node;var Ar=W(Ph);var Nh={name:"door-open",size:24,node:[["path",{d:"M10 21H2",key:"1sthdo"}],["path",{d:"M10 3H7a2 2 0 00-2 2v16",key:"15gt7x"}],["path",{d:"M14 12h.01",key:"1jfl7z"}],["path",{d:"M19 21V5a2 2 0 00-1.675-1.974l-6.163-1.013A1 1 0 0010 3v18a1 1 0 001.124.992z",key:"tyvg9a"}],["path",{d:"M22 21h-3",key:"1ec3tr"}]]};Nh.node;var Ra=W(Nh);var Fh={name:"download",size:24,node:[["path",{d:"M12 15V3",key:"m9g1x1"}],["path",{d:"M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4",key:"ih7n3h"}],["path",{d:"m7 10 5 5 5-5",key:"brsn70"}]]};Fh.node;var et=W(Fh);var Dh={name:"file-spreadsheet",size:24,node:[["path",{d:"M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z",key:"1oefj6"}],["path",{d:"M14 2v5a1 1 0 0 0 1 1h5",key:"wfsgrz"}],["path",{d:"M8 13h2",key:"yr2amv"}],["path",{d:"M14 13h2",key:"un5t4a"}],["path",{d:"M8 17h2",key:"2yhykz"}],["path",{d:"M14 17h2",key:"10kma7"}]]};Dh.node;var co=W(Dh);var Th={name:"folder-open",size:24,node:[["path",{d:"m6 14 1.5-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.54 6a2 2 0 0 1-1.95 1.5H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H18a2 2 0 0 1 2 2v2",key:"usdka0"}]]};Th.node;var po=W(Th);var Ah={name:"grip-vertical",size:24,node:[["circle",{cx:"9",cy:"12",r:"1",key:"1vctgf"}],["circle",{cx:"9",cy:"5",r:"1",key:"hp0tcf"}],["circle",{cx:"9",cy:"19",r:"1",key:"fkjjf6"}],["circle",{cx:"15",cy:"12",r:"1",key:"1tmaij"}],["circle",{cx:"15",cy:"5",r:"1",key:"19l28e"}],["circle",{cx:"15",cy:"19",r:"1",key:"f4zoj3"}]]};Ah.node;var Mr=W(Ah);var Mh={name:"loader-circle",size:24,node:[["path",{d:"M21 12a9 9 0 1 1-6.219-8.56",key:"13zald"}]],aliases:["loader-2"]};Mh.node;var at=W(Mh);var Bh={name:"panel-right-close",size:24,node:[["rect",{width:"18",height:"18",x:"3",y:"3",rx:"2",key:"afitv7"}],["path",{d:"M15 3v18",key:"14nvp0"}],["path",{d:"m8 9 3 3-3 3",key:"12hl5m"}]]};Bh.node;var Br=W(Bh);var Eh={name:"panel-right-open",size:24,node:[["rect",{width:"18",height:"18",x:"3",y:"3",rx:"2",key:"afitv7"}],["path",{d:"M15 3v18",key:"14nvp0"}],["path",{d:"m10 15-3-3 3-3",key:"1pgupc"}]]};Eh.node;var Er=W(Eh);var Oh={name:"pen",size:24,node:[["path",{d:"M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z",key:"1a8usu"}]],aliases:["edit-2"]};Oh.node;var wa=W(Oh);var zh={name:"plus",size:24,node:[["path",{d:"M5 12h14",key:"1ays0h"}],["path",{d:"M12 5v14",key:"s699le"}]]};zh.node;var ba=W(zh);var Uh={name:"printer",size:24,node:[["path",{d:"M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2",key:"143wyd"}],["path",{d:"M6 9V3a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v6",key:"1itne7"}],["rect",{x:"6",y:"14",width:"12",height:"8",rx:"1",key:"1ue0tg"}]]};Uh.node;var Ea=W(Uh);var qh={name:"refresh-cw",size:24,node:[["path",{d:"M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8",key:"v9h5vc"}],["path",{d:"M21 3v5h-5",key:"1q7to0"}],["path",{d:"M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16",key:"3uifl3"}],["path",{d:"M8 16H3v5",key:"1cv678"}]]};qh.node;var Or=W(qh);var Hh={name:"save",size:24,node:[["path",{d:"M15.2 3a2 2 0 0 1 1.4.6l3.8 3.8a2 2 0 0 1 .6 1.4V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z",key:"1c8476"}],["path",{d:"M17 21v-7a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v7",key:"1ydtos"}],["path",{d:"M7 3v4a1 1 0 0 0 1 1h7",key:"t51u73"}]]};Hh.node;var Tt=W(Hh);var _h={name:"settings",size:24,node:[["path",{d:"M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915",key:"1i5ecw"}],["circle",{cx:"12",cy:"12",r:"3",key:"1v7zrd"}]]};_h.node;var mo=W(_h);var Wh={name:"shield-check",size:24,node:[["path",{d:"M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z",key:"oel41y"}],["path",{d:"m9 12 2 2 4-4",key:"dzmm74"}]]};Wh.node;var zr=W(Wh);var jh={name:"trash",size:24,node:[["path",{d:"M10 11v6",key:"nco0om"}],["path",{d:"M14 11v6",key:"outv1u"}],["path",{d:"M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6",key:"miytrc"}],["path",{d:"M3 6h18",key:"d0wm0j"}],["path",{d:"M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2",key:"e791ji"}]],aliases:["trash-2"]};jh.node;var Je=W(jh);var $h={name:"undo-2",size:24,node:[["path",{d:"M9 14 4 9l5-5",key:"102s5s"}],["path",{d:"M4 9h10.5a5.5 5.5 0 0 1 5.5 5.5a5.5 5.5 0 0 1-5.5 5.5H11",key:"f3b9sd"}]]};$h.node;var gl=W($h);var Vh={name:"upload",size:24,node:[["path",{d:"M12 3v12",key:"1x0j5s"}],["path",{d:"m17 8-5-5-5 5",key:"7q97r8"}],["path",{d:"M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4",key:"ih7n3h"}]]};Vh.node;var ho=W(Vh);var Gh={name:"user",size:24,node:[["path",{d:"M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2",key:"975kel"}],["circle",{cx:"12",cy:"7",r:"4",key:"17ys0d"}]]};Gh.node;var At=W(Gh);var Xh={name:"users",size:24,node:[["path",{d:"M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2",key:"1yyitq"}],["path",{d:"M16 3.128a4 4 0 0 1 0 7.744",key:"16gr8j"}],["path",{d:"M22 21v-2a4 4 0 0 0-3-3.87",key:"kshegd"}],["circle",{cx:"9",cy:"7",r:"4",key:"nufk8"}]]};Xh.node;var go=W(Xh);var Kh={name:"x",size:24,node:[["path",{d:"M18 6 6 18",key:"1bl5f8"}],["path",{d:"m6 6 12 12",key:"d8bk6v"}]]};Kh.node;var ua=W(Kh);var Oa=["\u0E08\u0E31\u0E19\u0E17\u0E23\u0E4C","\u0E2D\u0E31\u0E07\u0E04\u0E32\u0E23","\u0E1E\u0E38\u0E18","\u0E1E\u0E24\u0E2B\u0E31\u0E2A\u0E1A\u0E14\u0E35","\u0E28\u0E38\u0E01\u0E23\u0E4C"],Iv={\u0E08\u0E31\u0E19\u0E17\u0E23\u0E4C:"\u0E08",\u0E2D\u0E31\u0E07\u0E04\u0E32\u0E23:"\u0E2D",\u0E1E\u0E38\u0E18:"\u0E1E",\u0E1E\u0E24\u0E2B\u0E31\u0E2A\u0E1A\u0E14\u0E35:"\u0E1E\u0E24",\u0E28\u0E38\u0E01\u0E23\u0E4C:"\u0E28"},Qh=Array.from({length:12},(e,a)=>2569+a),Pa=Array.from({length:11},(e,a)=>{let t=a+1,l=s=>s.toString().padStart(2,"0"),r=`${l(8+a)}:20-
-${l(9+a)}:20`;return{id:t,time:r,start:`${l(8+a)}:20`,end:`${l(9+a)}:20`,rawTime:`${l(8+a)}:20 - ${l(9+a)}:20`}}),$i=[],Vi=[],Gi=[],Zh=e=>{let a=Array.isArray(e.rooms)?e.rooms.map(h=>({...h})):[],t=new Map(a.map(h=>[String(h.name).trim(),h.id])),l=0,r=h=>{let v=String(h??"").trim();if(!v)return null;if(t.has(v))return t.get(v);let k=`r_mig_${Date.now()}_${l++}`;return t.set(v,k),a.push({id:k,name:v,note:""}),k},s=(e.teachers||[]).map(h=>({...h,roomId:h.roomId||r(h.room)})),u=(e.schedule||[]).map(h=>({...h,roomId:h.roomId||r(h.room)})),c=new Set(a.map(h=>h.id)),f=h=>h&&c.has(h)?h:null;return{rooms:a,teachers:s.map(h=>({...h,roomId:f(h.roomId)})),schedule:u.map(h=>({...h,roomId:f(h.roomId),roomName:h.roomName||null}))}},vl={"\u0E1B\u0E27\u0E0A.":"\u0E0A\u0E48\u0E32\u0E07\u0E44\u0E1F\u0E1F\u0E49\u0E32","\u0E1B\u0E27\u0E2A.":"\u0E44\u0E1F\u0E1F\u0E49\u0E32"},Es=20,Qi=(e,a)=>{let t=Array.from({length:e},(r,s)=>s+1),l=Number(a);return l&&!t.includes(l)&&t.push(l),t.sort((r,s)=>r-s)},Yh=(e,a)=>Qi(e==="\u0E1B\u0E27\u0E2A."?2:3,a),Jh=Object.values(vl),xl=[{id:"c1",name:"\u0E0A\u0E48\u0E32\u0E07\u0E44\u0E1F\u0E1F\u0E49\u0E32 \u0E1B\u0E27\u0E0A. 1/1",major:"\u0E0A\u0E48\u0E32\u0E07\u0E44\u0E1F\u0E1F\u0E49\u0E32",level:"\u0E1B\u0E27\u0E0A.",year:1,room:1,studentCount:30,advisor:"\u0E04\u0E23\u0E39\u0E2D\u0E14\u0E34\u0E28\u0E23",lunchPeriod:5},{id:"c2",name:"\u0E44\u0E1F\u0E1F\u0E49\u0E32 \u0E1B\u0E27\u0E2A. 1/1",major:"\u0E44\u0E1F\u0E1F\u0E49\u0E32",level:"\u0E1B\u0E27\u0E2A.",year:1,room:1,studentCount:25,advisor:"\u0E04\u0E23\u0E39\u0E2D\u0E14\u0E34\u0E28\u0E31\u0E01\u0E14\u0E34\u0E4C",lunchPeriod:4}],Os="timetable-data",zs="timetable-ui-state",Us="timetable-history",Cv=12,Sv=2*1024*1024,Xi={year:"",term:1},Rh=(e,a)=>{let t=a||[],l=t.reduce((c,f)=>c+Number(f.theory||0),0),r=t.reduce((c,f)=>c+Number(f.practical||0),0),s=t.reduce((c,f)=>c+Number(f.credit||0),0),u=l+r;return{classId:e,summary:t,sumTheory:l,sumPractical:r,sumCredit:s,sumHours:u}},Ki=(e,a,t)=>{let l=a.filter(v=>!v.isManualTeacher&&v.teacherId===e),r={};l.forEach(v=>{let k=(t[v.classId]||[]).find(N=>N.id===v.subjectId),I=k?{key:`${k.code||""}_${k.name}`,code:k.code,name:k.name,theory:Number(k.theory)||0,practical:Number(k.practical)||0,credit:Number(k.credit)||0}:v.subjectName?{key:`ext_${v.subjectName}`,code:"",name:v.subjectName,theory:0,practical:0,credit:0,external:!0}:null;I&&(r[I.key]||(r[I.key]={...I,hours:0}),r[I.key].hours+=1)});let s=Object.values(r),u=s.reduce((v,k)=>v+k.theory,0),c=s.reduce((v,k)=>v+k.practical,0),f=s.reduce((v,k)=>v+k.credit,0),h=s.reduce((v,k)=>v+k.hours,0);return{summary:s,sumTheory:u,sumPractical:c,sumCredit:f,sumHours:h}},eg=(e,a,t,l,r)=>{let s=a.filter(f=>r(f)===e),u={};s.forEach(f=>{let h=(t[f.classId]||[]).find(N=>N.id===f.subjectId),v=l.find(N=>N.id===f.classId),k=f.subjectId||(f.subjectName?`ext_${f.subjectName}`:"none"),I=f.isFixed?`fx_${f.label}_${f.classId}`:`${k}_${f.classId}`;u[I]||(u[I]={id:I,code:h?.code||"",name:(f.isFixed?f.label:h?.name||f.subjectName)||"\u0E44\u0E21\u0E48\u0E23\u0E30\u0E1A\u0E38\u0E27\u0E34\u0E0A\u0E32",className:v?.name||"",theory:Number(h?.theory)||0,practical:Number(h?.practical)||0,credit:Number(h?.credit)||0,colorKey:h?.colorKey,external:!h&&!!f.subjectName,hours:0}),u[I].hours+=1});let c=Object.values(u).sort((f,h)=>f.className.localeCompare(h.className,"th"));return{summary:c,sumTheory:c.reduce((f,h)=>f+h.theory,0),sumPractical:c.reduce((f,h)=>f+h.practical,0),sumCredit:c.reduce((f,h)=>f+h.credit,0),sumHours:c.reduce((f,h)=>f+h.hours,0)}},le=[{key:"\u0E1F\u0E49\u0E32",bg:"#DDE8FB",line:"#8FB3E8",text:"#12376E"},{key:"\u0E40\u0E02\u0E35\u0E22\u0E27",bg:"#DCEFE3",line:"#8CC7A6",text:"#0F5136"},{key:"\u0E2A\u0E49\u0E21",bg:"#FBE7D3",line:"#EDB27B",text:"#7A3F07"},{key:"\u0E21\u0E48\u0E27\u0E07",bg:"#E7E0F5",line:"#B49FE0",text:"#402A73"},{key:"\u0E41\u0E14\u0E07",bg:"#F9DEDF",line:"#E79CA1",text:"#7A1620"},{key:"\u0E1F\u0E49\u0E32\u0E19\u0E49\u0E33\u0E17\u0E30\u0E40\u0E25",bg:"#D6EDEE",line:"#84C4C7",text:"#0D4C50"},{key:"\u0E40\u0E2B\u0E25\u0E37\u0E2D\u0E07",bg:"#F7EDCC",line:"#DFC777",text:"#6B4E06"},{key:"\u0E0A\u0E21\u0E1E\u0E39",bg:"#F8E0EC",line:"#E9A3C4",text:"#75204B"}],kv=e=>le.find(a=>a.key===e)||le[0],wv=e=>{if(!e||!e.level)return null;let a=e.level==="\u0E1B\u0E27\u0E2A.",t=a?2:3,l=Math.min(Math.max(Number(e.year)||1,1),t),r=t>1?(l-1)/(t-1):0,s=a?213:350,u=a?60:56,c=93-r*21,f=46-r*24;return{bg:`hsl(${s} ${u}% ${c}%)`,accent:`hsl(${s} ${Math.min(u+6,72)}% ${f}%)`}},Ur=1122,Zi=793,Le="'TH Sarabun New','TH SarabunPSK','Sarabun','Leelawadee UI','Noto Sans Thai',Tahoma,sans-serif",bv=e=>e.replace(/[\/\\:*?"<>|]/g,"-").replace(/\s+/g," ").trim(),Pv=e=>String(e).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;"),ag=`
-  @page{ size:${Ur}px ${Zi}px; margin:0; }
+"use strict";
+var __hooks = React;
+var useState = React.useState, useEffect = React.useEffect, useRef = React.useRef;
+// Auto-generated inline Lucide icon components (from lucide-static, ISC license)
+// Avoids any runtime dependency on a lucide-react CDN bundle.
+function makeIcon(inner) {
+  return React.forwardRef(function LucideIcon(props, ref) {
+    var size = props.size || 24;
+    var color = props.color || 'currentColor';
+    var strokeWidth = props.strokeWidth || 2;
+    var rest = {};
+    for (var k in props) {
+      if (k === 'size' || k === 'color' || k === 'strokeWidth') continue;
+      rest[k] = props[k];
+    }
+    return React.createElement('svg', Object.assign({
+      ref: ref,
+      xmlns: 'http://www.w3.org/2000/svg',
+      width: size,
+      height: size,
+      viewBox: '0 0 24 24',
+      fill: 'none',
+      stroke: color,
+      strokeWidth: strokeWidth,
+      strokeLinecap: 'round',
+      strokeLinejoin: 'round',
+      dangerouslySetInnerHTML: { __html: inner }
+    }, rest));
+  });
+}
+
+var BookOpen = makeIcon(`<path d="M12 5v16" />
+  <path d="M20.001 19A2 2 0 0022 17V5a2 2 0 00-1.999-2L16 3.002A5 5 0 0012 5a5 5 0 00-4-2H4a2 2 0 00-2 2v12a2 2 0 001.999 2H8a5 5 0 014 2 5 5 0 014-2z" />`);
+var User = makeIcon(`<path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+  <circle cx="12" cy="7" r="4" />`);
+var DoorOpen = makeIcon(`<path d="M10 21H2" />
+  <path d="M10 3H7a2 2 0 00-2 2v16" />
+  <path d="M14 12h.01" />
+  <path d="M19 21V5a2 2 0 00-1.675-1.974l-6.163-1.013A1 1 0 0010 3v18a1 1 0 001.124.992z" />
+  <path d="M22 21h-3" />`);
+var ShieldCheck = makeIcon(`<path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" />
+  <path d="m9 12 2 2 4-4" />`);
+var ChevronDown = makeIcon(`<path d="m6 9 6 6 6-6" />`);
+var AlertCircle = makeIcon(`<circle cx="12" cy="12" r="10" />
+  <line x1="12" x2="12" y1="8" y2="12" />
+  <line x1="12" x2="12.01" y1="16" y2="16" />`);
+var X = makeIcon(`<path d="M18 6 6 18" />
+  <path d="m6 6 12 12" />`);
+var Check = makeIcon(`<path d="M20 6 9 17l-5-5" />`);
+var Calendar = makeIcon(`<path d="M8 2v3" />
+  <path d="M16 2v3" />
+  <rect x="3" y="3" width="18" height="18" rx="2" />
+  <path d="M3 9h18" />`);
+var Trash2 = makeIcon(`<path d="M10 11v6" />
+  <path d="M14 11v6" />
+  <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6" />
+  <path d="M3 6h18" />
+  <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />`);
+var Settings = makeIcon(`<path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915" />
+  <circle cx="12" cy="12" r="3" />`);
+var ArrowRight = makeIcon(`<path d="M5 12h14" />
+  <path d="m12 5 7 7-7 7" />`);
+var Plus = makeIcon(`<path d="M5 12h14" />
+  <path d="M12 5v14" />`);
+var Upload = makeIcon(`<path d="M12 3v12" />
+  <path d="m17 8-5-5-5 5" />
+  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />`);
+var Download = makeIcon(`<path d="M12 15V3" />
+  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+  <path d="m7 10 5 5 5-5" />`);
+var FileSpreadsheet = makeIcon(`<path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z" />
+  <path d="M14 2v5a1 1 0 0 0 1 1h5" />
+  <path d="M8 13h2" />
+  <path d="M14 13h2" />
+  <path d="M8 17h2" />
+  <path d="M14 17h2" />`);
+var Copy = makeIcon(`<rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
+  <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />`);
+var Save = makeIcon(`<path d="M15.2 3a2 2 0 0 1 1.4.6l3.8 3.8a2 2 0 0 1 .6 1.4V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z" />
+  <path d="M17 21v-7a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v7" />
+  <path d="M7 3v4a1 1 0 0 0 1 1h7" />`);
+var FolderOpen = makeIcon(`<path d="m6 14 1.5-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.54 6a2 2 0 0 1-1.95 1.5H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H18a2 2 0 0 1 2 2v2" />`);
+var RefreshCw = makeIcon(`<path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8" />
+  <path d="M21 3v5h-5" />
+  <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16" />
+  <path d="M8 16H3v5" />`);
+var Clock = makeIcon(`<circle cx="12" cy="12" r="10" />
+  <path d="M12 6v6l4 2" />`);
+var Users = makeIcon(`<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+  <path d="M16 3.128a4 4 0 0 1 0 7.744" />
+  <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+  <circle cx="9" cy="7" r="4" />`);
+var Printer = makeIcon(`<path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" />
+  <path d="M6 9V3a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v6" />
+  <rect x="6" y="14" width="12" height="8" rx="1" />`);
+var Undo2 = makeIcon(`<path d="M9 14 4 9l5-5" />
+  <path d="M4 9h10.5a5.5 5.5 0 0 1 5.5 5.5a5.5 5.5 0 0 1-5.5 5.5H11" />`);
+var Edit2 = makeIcon(`<path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z" />`);
+var Loader2 = makeIcon(`<path d="M21 12a9 9 0 1 1-6.219-8.56" />`);
+var PanelRightClose = makeIcon(`<rect width="18" height="18" x="3" y="3" rx="2" />
+  <path d="M15 3v18" />
+  <path d="m8 9 3 3-3 3" />`);
+var PanelRightOpen = makeIcon(`<rect width="18" height="18" x="3" y="3" rx="2" />
+  <path d="M15 3v18" />
+  <path d="m10 15-3-3 3-3" />`);
+var GripVertical = makeIcon(`<circle cx="9" cy="12" r="1" />
+  <circle cx="9" cy="5" r="1" />
+  <circle cx="9" cy="19" r="1" />
+  <circle cx="15" cy="12" r="1" />
+  <circle cx="15" cy="5" r="1" />
+  <circle cx="15" cy="19" r="1" />`);
+// ==========================================
+// ข้อมูลจำลองและโครงสร้างเริ่มต้น
+// ==========================================
+const DAYS = ['จันทร์', 'อังคาร', 'พุธ', 'พฤหัสบดี', 'ศุกร์'];
+const DAY_SHORT = {
+  'จันทร์': 'จ',
+  'อังคาร': 'อ',
+  'พุธ': 'พ',
+  'พฤหัสบดี': 'พฤ',
+  'ศุกร์': 'ศ'
+};
+const YEARS = Array.from({
+  length: 12
+}, (_, i) => 2569 + i);
+const PERIODS = Array.from({
+  length: 11
+}, (_, i) => {
+  const num = i + 1;
+  const pad = n => n.toString().padStart(2, '0');
+  const time = `${pad(8 + i)}:20-\n${pad(9 + i)}:20`;
+  return {
+    id: num,
+    time,
+    start: `${pad(8 + i)}:20`,
+    end: `${pad(9 + i)}:20`,
+    rawTime: `${pad(8 + i)}:20 - ${pad(9 + i)}:20`
+  };
+});
+const INITIAL_SUBJECTS = [];
+const INITIAL_TEACHERS_DATA = [];
+const INITIAL_ROOMS = [];
+
+/**
+ * แปลงข้อมูลเก่าที่เก็บห้องเป็นข้อความอิสระ ให้เป็นทะเบียนห้องที่อ้างอิงด้วยรหัส
+ *
+ * ของเดิมพิมพ์ชื่อห้องลงไปตรงๆ ในแต่ละคาบ ระบบจึงเทียบไม่ได้ว่าห้องชนกันหรือไม่
+ * และพิมพ์ "114" กับ "114 " (มีเว้นวรรค) จะกลายเป็นคนละห้อง
+ * ฟังก์ชันนี้รวบชื่อห้องทั้งหมดที่เคยใช้มาสร้างเป็นทะเบียน แล้วชี้ทุกคาบไปที่รหัสห้อง
+ */
+const migrateRooms = parsed => {
+  const rooms = Array.isArray(parsed.rooms) ? parsed.rooms.map(r => ({
+    ...r
+  })) : [];
+  const byName = new Map(rooms.map(r => [String(r.name).trim(), r.id]));
+  let seq = 0;
+  const ensure = raw => {
+    const name = String(raw ?? '').trim();
+    if (!name) return null;
+    if (byName.has(name)) return byName.get(name);
+    const id = `r_mig_${Date.now()}_${seq++}`;
+    byName.set(name, id);
+    rooms.push({
+      id,
+      name,
+      note: ''
+    });
+    return id;
+  };
+  const teachers = (parsed.teachers || []).map(t => ({
+    ...t,
+    roomId: t.roomId || ensure(t.room)
+  }));
+  const schedule = (parsed.schedule || []).map(s => ({
+    ...s,
+    roomId: s.roomId || ensure(s.room)
+  }));
+
+  // กันรหัสห้องกำพร้า: ไฟล์สำรองบางไฟล์อาจอ้างห้องที่ไม่มีในทะเบียนแล้ว
+  // ถ้าปล่อยไว้ ชื่อห้องจะแสดงเป็นค่าว่างและผู้ใช้จะงงว่าทำไมเตือนห้องชนโดยไม่บอกชื่อ
+  const valid = new Set(rooms.map(r => r.id));
+  const clean = rid => rid && valid.has(rid) ? rid : null;
+  return {
+    rooms,
+    teachers: teachers.map(t => ({
+      ...t,
+      roomId: clean(t.roomId)
+    })),
+    schedule: schedule.map(s => ({
+      ...s,
+      roomId: clean(s.roomId),
+      roomName: s.roomName || null
+    }))
+  };
+};
+
+// ชื่อสาขาตามระดับชั้น ปวช. เรียก "ช่างไฟฟ้า" ปวส. เรียก "ไฟฟ้า"
+const MAJOR_BY_LEVEL = {
+  'ปวช.': 'ช่างไฟฟ้า',
+  'ปวส.': 'ไฟฟ้า'
+};
+const MAX_ROOM_NO = 20;
+
+/**
+ * สร้างตัวเลือกให้ช่องดรอปดาวน์ โดยรวมค่าปัจจุบันเข้าไปด้วยเสมอ
+ *
+ * ถ้าค่าที่เก็บไว้ไม่มีในรายการตัวเลือก เบราว์เซอร์จะแสดงเป็นค่าแรกหรือช่องว่าง
+ * ผู้ใช้จึงเห็นเลขไม่ตรงกับข้อมูลจริง พอกดแก้อะไรสักอย่างชื่อห้องก็เพี้ยน
+ * ดูเหมือน "แก้แล้วไม่เซฟ" ทั้งที่จริงคือแสดงผลผิดมาตั้งแต่ต้น
+ */
+const numOptions = (max, current) => {
+  const list = Array.from({
+    length: max
+  }, (_, i) => i + 1);
+  const cur = Number(current);
+  if (cur && !list.includes(cur)) list.push(cur);
+  return list.sort((a, b) => a - b);
+};
+const yearOptions = (level, current) => numOptions(level === 'ปวส.' ? 2 : 3, current);
+const DEFAULT_MAJORS = Object.values(MAJOR_BY_LEVEL);
+const INITIAL_CLASSES = [{
+  id: 'c1',
+  name: 'ช่างไฟฟ้า ปวช. 1/1',
+  major: 'ช่างไฟฟ้า',
+  level: 'ปวช.',
+  year: 1,
+  room: 1,
+  studentCount: 30,
+  advisor: 'ครูอดิศร',
+  lunchPeriod: 5
+}, {
+  id: 'c2',
+  name: 'ไฟฟ้า ปวส. 1/1',
+  major: 'ไฟฟ้า',
+  level: 'ปวส.',
+  year: 1,
+  room: 1,
+  studentCount: 25,
+  advisor: 'ครูอดิศักดิ์',
+  lunchPeriod: 4
+}];
+const DATA_KEY = 'timetable-data';
+const UI_KEY = 'timetable-ui-state';
+const HISTORY_KEY = 'timetable-history';
+
+// เก็บประวัติลงเครื่องแค่ส่วนหนึ่ง เพราะแต่ละขั้นคือสำเนาตารางทั้งชุด
+// ถ้าเก็บครบ 60 ขั้นอาจเกินโควตาที่เก็บได้ จึงเก็บเท่าที่จำเป็นต่อการกู้คืน
+const HISTORY_PERSIST = 12;
+const HISTORY_MAX_BYTES = 2 * 1024 * 1024;
+
+// ยังไม่เลือกปีการศึกษา ผู้ใช้ต้องเลือกเองก่อนเริ่มจัดตาราง
+// ป้องกันการเผลอจัดตารางทั้งภาคเรียนแล้วพบว่าปีการศึกษาผิด
+const INITIAL_CONFIG = {
+  year: '',
+  term: 1
+};
+
+// ==========================================
+// Helper Functions
+// ==========================================
+const calculateClassSummary = (classId, subjects) => {
+  const summary = subjects || [];
+  const sumTheory = summary.reduce((sum, s) => sum + Number(s.theory || 0), 0);
+  const sumPractical = summary.reduce((sum, s) => sum + Number(s.practical || 0), 0);
+  const sumCredit = summary.reduce((sum, s) => sum + Number(s.credit || 0), 0);
+  const sumHours = sumTheory + sumPractical;
+  return {
+    classId,
+    summary,
+    sumTheory,
+    sumPractical,
+    sumCredit,
+    sumHours
+  };
+};
+const calculateTeacherSummary = (teacherId, currentSchedule, allClassSubjects) => {
+  const tSlots = currentSchedule.filter(s => !s.isManualTeacher && s.teacherId === teacherId);
+  const summaryMap = {};
+  tSlots.forEach(slot => {
+    const subj = (allClassSubjects[slot.classId] || []).find(s => s.id === slot.subjectId);
+    // วิชานอกแผนก (พิมพ์เองแบบไม่ผูกรหัสวิชา) ต้องนับรวมในชั่วโมงสอนด้วย
+    // ไม่งั้นชั่วโมงสอนรวมของครูจะนับขาด ทั้งที่สอนจริงอยู่
+    const entry = subj ? {
+      key: `${subj.code || ''}_${subj.name}`,
+      code: subj.code,
+      name: subj.name,
+      theory: Number(subj.theory) || 0,
+      practical: Number(subj.practical) || 0,
+      credit: Number(subj.credit) || 0
+    } : slot.subjectName ? {
+      key: `ext_${slot.subjectName}`,
+      code: '',
+      name: slot.subjectName,
+      theory: 0,
+      practical: 0,
+      credit: 0,
+      external: true
+    } : null;
+    if (entry) {
+      if (!summaryMap[entry.key]) summaryMap[entry.key] = {
+        ...entry,
+        hours: 0
+      };
+      summaryMap[entry.key].hours += 1;
+    }
+  });
+  const summary = Object.values(summaryMap);
+  const sumTheory = summary.reduce((sum, item) => sum + item.theory, 0);
+  const sumPractical = summary.reduce((sum, item) => sum + item.practical, 0);
+  const sumCredit = summary.reduce((sum, item) => sum + item.credit, 0);
+  const sumHours = summary.reduce((sum, item) => sum + item.hours, 0);
+  return {
+    summary,
+    sumTheory,
+    sumPractical,
+    sumCredit,
+    sumHours
+  };
+};
+
+// ชุดสีประจำวิชา — เลือกให้ต่างเฉดชัดเจนบนพื้นขาว อ่านตัวหนังสือได้ทุกสี
+/**
+ * สรุปการใช้ห้อง — ว่าห้องนี้ถูกใช้เรียนวิชาอะไรบ้าง ห้องเรียนไหน กี่คาบ
+ * ใช้โครงเดียวกับสรุปภาระครู จะได้แสดงในตารางเดิมได้เลย
+ */
+const calculateRoomSummary = (roomId, currentSchedule, allClassSubjects, allClasses, resolveRoom) => {
+  const slots = currentSchedule.filter(s => resolveRoom(s) === roomId);
+  const map = {};
+  slots.forEach(slot => {
+    const subj = (allClassSubjects[slot.classId] || []).find(x => x.id === slot.subjectId);
+    const cls = allClasses.find(c => c.id === slot.classId);
+    // วิชานอกแผนกไม่มีรหัสวิชาผูกไว้ ต้องแยกกลุ่มด้วยชื่อวิชาแทน
+    // ไม่งั้นวิชานอกแผนกต่างกันที่สอนในห้องเดียวกันจะถูกนับรวมเป็นแถวเดียวผิดพลาด
+    const groupKey = slot.subjectId || (slot.subjectName ? `ext_${slot.subjectName}` : 'none');
+    const key = slot.isFixed ? `fx_${slot.label}_${slot.classId}` : `${groupKey}_${slot.classId}`;
+    if (!map[key]) {
+      map[key] = {
+        id: key,
+        code: subj?.code || '',
+        name: (slot.isFixed ? slot.label : subj?.name || slot.subjectName) || 'ไม่ระบุวิชา',
+        className: cls?.name || '',
+        theory: Number(subj?.theory) || 0,
+        practical: Number(subj?.practical) || 0,
+        credit: Number(subj?.credit) || 0,
+        colorKey: subj?.colorKey,
+        external: !subj && !!slot.subjectName,
+        hours: 0
+      };
+    }
+    map[key].hours += 1;
+  });
+  const summary = Object.values(map).sort((a, b) => a.className.localeCompare(b.className, 'th'));
+  return {
+    summary,
+    sumTheory: summary.reduce((a, x) => a + x.theory, 0),
+    sumPractical: summary.reduce((a, x) => a + x.practical, 0),
+    sumCredit: summary.reduce((a, x) => a + x.credit, 0),
+    sumHours: summary.reduce((a, x) => a + x.hours, 0)
+  };
+};
+const SUBJECT_COLORS = [{
+  key: 'ฟ้า',
+  bg: '#DDE8FB',
+  line: '#8FB3E8',
+  text: '#12376E'
+}, {
+  key: 'เขียว',
+  bg: '#DCEFE3',
+  line: '#8CC7A6',
+  text: '#0F5136'
+}, {
+  key: 'ส้ม',
+  bg: '#FBE7D3',
+  line: '#EDB27B',
+  text: '#7A3F07'
+}, {
+  key: 'ม่วง',
+  bg: '#E7E0F5',
+  line: '#B49FE0',
+  text: '#402A73'
+}, {
+  key: 'แดง',
+  bg: '#F9DEDF',
+  line: '#E79CA1',
+  text: '#7A1620'
+}, {
+  key: 'ฟ้าน้ำทะเล',
+  bg: '#D6EDEE',
+  line: '#84C4C7',
+  text: '#0D4C50'
+}, {
+  key: 'เหลือง',
+  bg: '#F7EDCC',
+  line: '#DFC777',
+  text: '#6B4E06'
+}, {
+  key: 'ชมพู',
+  bg: '#F8E0EC',
+  line: '#E9A3C4',
+  text: '#75204B'
+}];
+const colorByKey = key => SUBJECT_COLORS.find(c => c.key === key) || SUBJECT_COLORS[0];
+
+/**
+ * สีแท็บห้องเรียนตามระดับชั้นและชั้นปี — ปวช. ไล่โทนเลือดหมูแดงเข้ม ปวส. ไล่โทนน้ำเงิน
+ * ชั้นปีต้น (1) สีอ่อน ชั้นปีท้าย (สูงสุดของระดับนั้น) สีเข้มที่สุด
+ * ใช้เป็นเส้นขอบบนของแท็บ + สีตัวหนังสือ ไม่ทำเป็นพื้นทึบ เพื่อให้อ่านชื่อห้องได้ชัดเจนทุกสถานะ
+ */
+const classTabColor = item => {
+  if (!item || !item.level) return null;
+  const isPvs = item.level === 'ปวส.';
+  const maxYear = isPvs ? 2 : 3;
+  const y = Math.min(Math.max(Number(item.year) || 1, 1), maxYear);
+  const t = maxYear > 1 ? (y - 1) / (maxYear - 1) : 0; // 0 = ปีแรก (อ่อนสุด), 1 = ปีสุดท้าย (เข้มสุด)
+  const hue = isPvs ? 213 : 350;
+  const sat = isPvs ? 60 : 56;
+  const bgL = 93 - t * 21; // พื้นหลังแท็บตอนยังไม่เลือก: อ่อนไปเข้มตามปี
+  const accentL = 46 - t * 24; // เส้นขอบบน + ตัวหนังสือ: เข้มขึ้นตามปี ให้อ่านออกทุกเฉด
+  return {
+    bg: `hsl(${hue} ${sat}% ${bgL}%)`,
+    accent: `hsl(${hue} ${Math.min(sat + 6, 72)}% ${accentL}%)`
+  };
+};
+
+// ==========================================
+// ระบบพิมพ์ — ขนาดกระดาษ A4 แนวนอนที่ 96 DPI
+// 1122 x 793 px = 297 x 210 mm พอดี
+// ==========================================
+const PAGE_W = 1122;
+const PAGE_H = 793;
+
+/**
+ * ฟอนต์เดียวทั้งระบบ ใช้ที่ติดตั้งในเครื่อง ไม่ดึงจากอินเทอร์เน็ต
+ *
+ * เหตุผลที่ไม่ดึงจากภายนอก: หน้าที่แชร์ออกไปมีนโยบายความปลอดภัยเข้มกว่าในแชท
+ * การดึงฟอนต์หรือสคริปต์จากภายนอกจะถูกบล็อกจนหน้าเว็บไม่ขึ้นเลย
+ * และเครือข่ายในสถานศึกษาหลายแห่งก็บล็อก CDN อยู่แล้ว
+ *
+ * เหตุผลที่ไม่ใช้ฟอนต์ monospace แยกสำหรับตัวเลข: ฟอนต์ monospace ไม่มีอักษรไทย
+ * ข้อความผสมอย่าง "2569 · ภาค 2" จะได้เลขฟอนต์หนึ่งกับคำไทยอีกฟอนต์หนึ่ง ดูไม่เข้ากัน
+ * จึงใช้ฟอนต์เดียวแล้วเปิดคุณสมบัติเลขความกว้างเท่ากันแทน เพื่อให้คอลัมน์ตัวเลขยังเรียงตรง
+ *
+ * ลำดับเริ่มจาก TH Sarabun New ซึ่งเป็นฟอนต์มาตรฐานราชการ
+ * ทำให้เอกสารที่พิมพ์ออกมาหน้าตาตรงกับเอกสารอื่นของแผนก
+ */
+const PRINT_FONT = "'TH Sarabun New','TH SarabunPSK','Sarabun','Leelawadee UI','Noto Sans Thai',Tahoma,sans-serif";
+
+// ล้างอักขระที่ใช้ตั้งชื่อไฟล์ไม่ได้ใน Windows/macOS
+const safeFilename = name => name.replace(/[\/\\:*?"<>|]/g, '-').replace(/\s+/g, ' ').trim();
+
+// หนีอักขระก่อนนำไปประกอบเป็นไฟล์ HTML
+const escapeHtml = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+
+/**
+ * CSS สำหรับสั่งพิมพ์ ใช้ร่วมกันทั้งการพิมพ์ในแอปและไฟล์ที่ดาวน์โหลดออกไป
+ * เพื่อให้ผลลัพธ์เหมือนกันทั้งสองทาง
+ */
+const PRINT_PAGE_CSS = `
+  @page{ size:${PAGE_W}px ${PAGE_H}px; margin:0; }
   .pdf-page{
     box-shadow:none !important; margin:0 !important; border:0 !important;
-    width:${Ur}px !important; height:${Zi}px !important;
+    width:${PAGE_W}px !important; height:${PAGE_H}px !important;
     overflow:hidden; background:#fff;
     font-variant-numeric:tabular-nums; font-feature-settings:'tnum' 1;
     page-break-after:always; break-after:page;
     page-break-inside:avoid; break-inside:avoid;
   }
   .pdf-page:last-child{ page-break-after:auto; break-after:auto; }
-`,Ll=(e,a=0)=>{if(!e)return le[0];if(e.colorKey)return kv(e.colorKey);let t=e.color||"";return t.includes("blue")?le[0]:t.includes("green")?le[1]:t.includes("orange")?le[2]:t.includes("purple")?le[3]:t.includes("red")?le[4]:t.includes("teal")?le[5]:t.includes("yellow")?le[6]:t.includes("pink")?le[7]:le[a%le.length]},Nv={key:"\u0E19\u0E2D\u0E01\u0E41\u0E1C\u0E19\u0E01",bg:"#E7E9EF",line:"#7C8AA6",text:"#33415C"},tg=({required:e,placed:a})=>{let t=Math.max(0,Number(e)||0),l=Math.max(0,Number(a)||0),r=Math.max(0,l-t);return o.default.createElement("div",{className:"tick-rail",title:`\u0E08\u0E31\u0E14\u0E41\u0E25\u0E49\u0E27 ${l} \u0E08\u0E32\u0E01 ${t} \u0E04\u0E32\u0E1A`},Array.from({length:t}).map((s,u)=>o.default.createElement("span",{key:u,className:`tick ${u<l?"tick-on":""}`})),Array.from({length:r}).map((s,u)=>o.default.createElement("span",{key:`o${u}`,className:"tick tick-over"})),t===0&&r===0&&o.default.createElement("span",{className:"tick-none"},"\u2014"))},Fv=({value:e,onChange:a,options:t})=>o.default.createElement("div",{className:"seg"},t.map(l=>o.default.createElement("button",{key:l.value,onClick:()=>a(l.value),className:`seg-btn ${e===l.value?"seg-on":""}`},l.icon,l.label)));function Dv(){let[e,a]=(0,o.useState)(!1),[t,l]=(0,o.useState)(!1),[r,s]=(0,o.useState)("home"),[u,c]=(0,o.useState)(xl),[f,h]=(0,o.useState)({c1:$i,c2:[]}),[v,k]=(0,o.useState)(Vi),[I,N]=(0,o.useState)(Gi),[w,M]=(0,o.useState)(Xi),[q,x]=(0,o.useState)([]),[m,L]=(0,o.useState)(""),[b,E]=(0,o.useState)(""),[z,H]=(0,o.useState)(""),[F,de]=(0,o.useState)("student"),[j,ga]=(0,o.useState)(!0),[xo,Ri]=(0,o.useState)(""),[qr,yl]=(0,o.useState)(!1),[Hr,Mt]=(0,o.useState)(!1),[_r,Il]=(0,o.useState)(!1),[Wr,Bt]=(0,o.useState)(!1),[jr,Et]=(0,o.useState)(!1),[Cl,Lo]=(0,o.useState)(null),[$r,vo]=(0,o.useState)(!1),[ae,tt]=(0,o.useState)(null),[yo,ot]=(0,o.useState)(""),[lt,Io]=(0,o.useState)(!1),[qs,Ot]=(0,o.useState)(""),[za,Hs]=(0,o.useState)(!1),[ef,Vr]=(0,o.useState)(""),[Ve,Co]=(0,o.useState)({code:"",name:"",theory:0,practical:0,credit:0}),[rt,Sl]=(0,o.useState)(""),[Re,Gr]=(0,o.useState)(!1),[So,kl]=(0,o.useState)(""),[zt,Ut]=(0,o.useState)(1),[Xr,af]=(0,o.useState)(1),[Kr,ko]=(0,o.useState)(""),[wo,Qr]=(0,o.useState)(!1),[Zr,wl]=(0,o.useState)(""),[bl,_s]=(0,o.useState)(!0),[Yr,tf]=(0,o.useState)(!1),[of,Na]=(0,o.useState)(""),[Ws,lf]=(0,o.useState)(null),[Jr,rf]=(0,o.useState)(""),[Rr,js]=(0,o.useState)(null),[bo,$s]=(0,o.useState)(null),[ge,nf]=(0,o.useState)("none"),[sf,qt]=(0,o.useState)(""),[ze,en]=(0,o.useState)([]),[Po,an]=(0,o.useState)(null),uf=(0,o.useRef)(!0),[Vs,Gs]=(0,o.useState)("idle"),Ht=(0,o.useRef)(null),Pl=(0,o.useRef)(null),[Ua,nt]=(0,o.useState)({isOpen:!1,message:""}),[Ce,Xs]=(0,o.useState)(null),st=(0,o.useRef)(null),Ks=()=>{st.current&&clearTimeout(st.current),st.current=null,Xs(null)},df=n=>{st.current&&clearTimeout(st.current),Xs(n),st.current=setTimeout(()=>Xs(null),6e3)},[De,Nl]=(0,o.useState)({isOpen:!1,action:null,payload:null,title:"",message:"",confirmText:"\u0E22\u0E37\u0E19\u0E22\u0E31\u0E19",cancelText:"\u0E22\u0E01\u0E40\u0E25\u0E34\u0E01",isDestructive:!0}),[G,_t]=(0,o.useState)({major:vl["\u0E1B\u0E27\u0E0A."],level:"\u0E1B\u0E27\u0E0A.",year:1,room:1,studentCount:"",advisor:""}),[Wt,Qs]=(0,o.useState)({name:"",roomId:""}),[No,Zs]=(0,o.useState)({name:"",note:""}),[Fl,Ys]=(0,o.useState)(null),[Fo,Js]=(0,o.useState)({name:"",note:""}),[re,jt]=(0,o.useState)({code:"",name:"",theory:0,practical:0,credit:0,colorKey:""}),[Dl,Rs]=(0,o.useState)(null),[$t,eu]=(0,o.useState)({name:"",roomId:""}),[qa,au]=(0,o.useState)(""),[Tl,tu]=(0,o.useState)(null),[ve,Al]=(0,o.useState)({code:"",name:"",theory:0,practical:0,credit:0,colorKey:""}),Ue=u.filter(n=>!n.external),Te=u.find(n=>n.id===m)||Ue[0]||{},tn=Te.lunchPeriod||5,Ha=v.find(n=>n.id===b)||{},_a=I.find(n=>n.id===z)||{},rg=n=>I.find(d=>d.id===n),Ge=n=>rg(n)?.name||"",ea=I.filter(n=>!n.external),ut=n=>n?n.roomId?n.roomId:n.isManualTeacher||!n.teacherId?null:v.find(d=>d.id===n.teacherId)?.roomId||null:null,ou=n=>Ge(ut(n))||n&&n.roomName||"",Ml=n=>{if(!n)return null;if(n.subjectId){let d=(f[n.classId]||[]).find(i=>i.id===n.subjectId);if(d)return{name:d.name,code:d.code||"",pal:Ll(d),external:!1}}return n.subjectName?{name:n.subjectName,code:"",pal:Nv,external:!0}:null},on=qa||m,ln=(f[on]||[]).find(n=>n.id===yo),lu=Number(Ve.theory||0)+Number(Ve.practical||0),Vt=za?lu>0?lu:11:lt?11:ln?Number(ln.theory)+Number(ln.practical):1,rn={summary:[],sumTheory:0,sumPractical:0,sumCredit:0,sumHours:0};F==="student"?rn=Rh(m,f[m]):F==="teacher"?rn=Ki(b,q,f):F==="room"&&(rn=eg(z,q,f,u,ut));let{summary:ru,sumTheory:ng,sumPractical:sg,sumCredit:ug,sumHours:Bl}=rn,Do=(()=>{if(F!=="student")return null;let d=(f[m]||[]).reduce((p,y)=>p+Number(y.theory||0)+Number(y.practical||0),0),i=q.filter(p=>p.classId===m&&p.subjectId).length;return{required:d,placed:i}})();(0,o.useEffect)(()=>{let n=!1;return(async()=>{let d=null;try{let i=await window.storage.get(Os,!1);if(i&&i.value&&!n){let p=JSON.parse(i.value),y=(p.classes||xl).map(S=>({...S,lunchPeriod:S.lunchPeriod||5,level:S.level||"\u0E1B\u0E27\u0E0A.",year:S.year||1,room:S.room||1})),g={};Object.entries(p.classSubjects||{}).forEach(([S,T])=>{g[S]=(T||[]).map((P,A)=>({...P,colorKey:P.colorKey||Ll(P,A).key}))});let C=Zh(p);d=y,c(y),h(g),k(C.teachers),N(C.rooms),M({term:p.config?.term||1,year:p.config?.year||""}),x(C.schedule),an(p.lastSaved||null),l(!0)}}catch{}try{let i=await window.storage.get(zs,!1);if(i&&i.value&&!n){let p=JSON.parse(i.value);p.step&&s(p.step),p.currentTeacherTab&&E(p.currentTeacherTab),p.currentRoomTab&&H(p.currentRoomTab),p.viewMode&&de(p.viewMode),typeof p.panelOpen=="boolean"&&ga(p.panelOpen),p.currentClass?L(p.currentClass):d&&d[0]&&L(d[0].id)}else d&&d[0]&&L(d[0].id)}catch{d&&d[0]&&L(d[0].id)}try{let i=await window.storage.get(Us,!1);if(i&&i.value&&!n){let p=JSON.parse(i.value);Array.isArray(p)&&p.length&&en(p)}}catch{}n||a(!0)})(),()=>{n=!0}},[]),(0,o.useEffect)(()=>{e&&(async()=>{try{await window.storage.set(zs,JSON.stringify({step:r,currentClass:m,currentTeacherTab:b,currentRoomTab:z,viewMode:F,panelOpen:j}),!1)}catch{}})()},[r,m,b,z,F,j,e]),(0,o.useEffect)(()=>{if(e){if(uf.current){uf.current=!1;return}return Gs("saving"),Pl.current&&clearTimeout(Pl.current),Pl.current=setTimeout(()=>{let n=new Date().toLocaleTimeString("th-TH",{hour:"2-digit",minute:"2-digit"}),d={classes:u,classSubjects:f,config:w,schedule:q,teachers:v,rooms:I,lastSaved:n};(async()=>{try{await window.storage.set(Os,JSON.stringify(d),!1),an(n),l(!0),Gs("saved")}catch(i){console.error("Storage save error:",i),Gs("error")}})()},700),()=>{Pl.current&&clearTimeout(Pl.current)}}},[u,f,w,q,v,I,e]),(0,o.useEffect)(()=>{if(e)return Ht.current&&clearTimeout(Ht.current),Ht.current=setTimeout(()=>{(async()=>{try{let n=ze.slice(-Cv),d=JSON.stringify(n),i=n.length;for(;d.length>Sv&&i>1;)i=Math.floor(i/2),d=JSON.stringify(n.slice(-i));await window.storage.set(Us,d,!1)}catch{}})()},1500),()=>{Ht.current&&clearTimeout(Ht.current)}},[ze,e]),(0,o.useEffect)(()=>{F==="teacher"&&v.length>0&&!v.find(n=>n.id===b)&&E(v[0].id),F==="room"&&ea.length>0&&!ea.find(n=>n.id===z)&&H(ea[0].id)},[F,v,b,I,z]),(0,o.useEffect)(()=>{window.scrollTo(0,0)},[r,ge]),(0,o.useEffect)(()=>{let n=d=>{let i=Ua.isOpen||De.isOpen||ae||Hr||qr||_r||Wr||jr||Cl||$r;if((d.ctrlKey||d.metaKey)&&!d.shiftKey&&(d.key==="z"||d.key==="Z")){let p=d.target;!(p&&(p.tagName==="INPUT"||p.tagName==="TEXTAREA"||p.isContentEditable))&&!i&&(d.preventDefault(),yu());return}if(d.key==="Escape"){if(Ua.isOpen)return nt({isOpen:!1,message:""});if(De.isOpen)return Nl(p=>({...p,isOpen:!1}));if(ae)return tt(null);if(Hr)return Wa(Tl,()=>Mt(!1));if(qr)return yl(!1);if(_r)return Wa(Dl,()=>Il(!1));if(Wr)return Bt(!1);if(jr)return Wa(Fl,()=>Et(!1));if(Cl)return Lo(null);if($r)return vo(!1)}};return window.addEventListener("keydown",n),()=>window.removeEventListener("keydown",n)},[Ua.isOpen,De.isOpen,ae,Hr,qr,_r,Wr,jr,Cl,$r,ze,Tl,Dl,Fl]);let J=n=>nt({isOpen:!0,message:n}),Wa=(n,d)=>{if(n){J('\u0E21\u0E35\u0E23\u0E32\u0E22\u0E01\u0E32\u0E23\u0E17\u0E35\u0E48\u0E01\u0E33\u0E25\u0E31\u0E07\u0E41\u0E01\u0E49\u0E44\u0E02\u0E04\u0E49\u0E32\u0E07\u0E2D\u0E22\u0E39\u0E48 \u0E01\u0E14\u0E1B\u0E38\u0E48\u0E21 "\u0E1A\u0E31\u0E19\u0E17\u0E36\u0E01" \u0E2B\u0E23\u0E37\u0E2D "\u0E22\u0E01\u0E40\u0E25\u0E34\u0E01" \u0E43\u0E19\u0E41\u0E16\u0E27\u0E19\u0E31\u0E49\u0E19\u0E01\u0E48\u0E2D\u0E19 \u0E44\u0E21\u0E48\u0E07\u0E31\u0E49\u0E19\u0E01\u0E32\u0E23\u0E41\u0E01\u0E49\u0E44\u0E02\u0E08\u0E30\u0E2B\u0E32\u0E22\u0E44\u0E1B');return}d()},Gt=(n,d,i,p,y="\u0E22\u0E37\u0E19\u0E22\u0E31\u0E19",g="\u0E22\u0E01\u0E40\u0E25\u0E34\u0E01",C=!0)=>{Nl({isOpen:!0,action:n,payload:d,title:i,message:p,confirmText:y,cancelText:g,isDestructive:C})},To=(n,d,i)=>q.find(p=>p.classId===n&&p.day===d&&p.period===i),nu=(n,d,i)=>q.filter(p=>!p.isManualTeacher&&p.teacherId===n&&p.day===d&&p.period===i),su=(n,d,i)=>q.filter(p=>ut(p)===n&&p.day===d&&p.period===i),dg=()=>{let n=[],d=p=>u.find(y=>y.id===p)?.name||"\u0E44\u0E21\u0E48\u0E17\u0E23\u0E32\u0E1A\u0E2B\u0E49\u0E2D\u0E07\u0E40\u0E23\u0E35\u0E22\u0E19";Oa.forEach(p=>{for(let y=1;y<=11;y++){let g=q.filter(P=>P.day===p&&P.period===y),C={};g.forEach(P=>{(C[P.classId]=C[P.classId]||[]).push(P)}),Object.entries(C).forEach(([P,A])=>{if(A.length>1){let B=A.map(_=>_.isFixed?_.label:(f[P]||[]).find(K=>K.id===_.subjectId)?.name||"\u0E44\u0E21\u0E48\u0E17\u0E23\u0E32\u0E1A\u0E27\u0E34\u0E0A\u0E32");n.push({type:"class",day:p,period:y,classId:P,title:`${d(P)} \u0E40\u0E23\u0E35\u0E22\u0E19 ${A.length} \u0E27\u0E34\u0E0A\u0E32\u0E1E\u0E23\u0E49\u0E2D\u0E21\u0E01\u0E31\u0E19`,detail:B.join(" + ")})}});let S={};g.forEach(P=>{if(P.isFixed)return;let A=P.isManualTeacher?`n:${(P.teacherName||"").trim()}`:`t:${P.teacherId||""}`;A==="t:"||A==="n:"||(S[A]=S[A]||[]).push(P)}),Object.entries(S).forEach(([P,A])=>{let B=[...new Set(A.map(_=>_.classId))];if(B.length>1){let _=P.startsWith("n:")?P.slice(2):v.find(K=>K.id===P.slice(2))?.name||"\u0E44\u0E21\u0E48\u0E17\u0E23\u0E32\u0E1A\u0E04\u0E23\u0E39";n.push({type:"teacher",day:p,period:y,classId:B[0],title:`${_} \u0E2A\u0E2D\u0E19 ${B.length} \u0E2B\u0E49\u0E2D\u0E07\u0E1E\u0E23\u0E49\u0E2D\u0E21\u0E01\u0E31\u0E19`,detail:B.map(d).join(" + ")})}});let T={};g.forEach(P=>{let A=ut(P);A&&(T[A]=T[A]||[]).push(P)}),Object.entries(T).forEach(([P,A])=>{let B=[...new Set(A.map(_=>_.classId))];B.length>1&&n.push({type:"room",day:p,period:y,classId:B[0],roomId:P,title:`\u0E2B\u0E49\u0E2D\u0E07 ${Ge(P)} \u0E16\u0E39\u0E01\u0E43\u0E0A\u0E49 ${B.length} \u0E2B\u0E49\u0E2D\u0E07\u0E40\u0E23\u0E35\u0E22\u0E19\u0E1E\u0E23\u0E49\u0E2D\u0E21\u0E01\u0E31\u0E19`,detail:B.map(d).join(" + ")})})}});let i=[];return Ue.forEach(p=>{(f[p.id]||[]).forEach(y=>{let g=Number(y.theory||0)+Number(y.practical||0),C=q.filter(S=>S.classId===p.id&&S.subjectId===y.id).length;g>0&&C!==g&&i.push({type:C<g?"short":"over",classId:p.id,title:`${p.name} \xB7 ${y.name}`,detail:C<g?`\u0E25\u0E07\u0E41\u0E25\u0E49\u0E27 ${C}/${g} \u0E04\u0E32\u0E1A \u0E02\u0E32\u0E14\u0E2D\u0E35\u0E01 ${g-C}`:`\u0E25\u0E07\u0E40\u0E01\u0E34\u0E19\u0E2B\u0E25\u0E31\u0E01\u0E2A\u0E39\u0E15\u0E23 ${C}/${g} \u0E04\u0E32\u0E1A`})})}),{conflicts:n,shortages:i}},ff=60,ig=1200,El=(0,o.useRef)({tag:null,at:0}),Z=(n=null)=>{let d=Date.now();if(n){let i=El.current;if(i.tag===n&&d-i.at<ig){El.current={tag:n,at:d};return}El.current={tag:n,at:d}}else El.current={tag:null,at:0};en(i=>{let p=[...i,{schedule:q,classes:u,classSubjects:f,teachers:v,rooms:I}];return p.length>ff?p.slice(p.length-ff):p})},nn=n=>{if(!n)return"-";let d=n.trim().split(/\s+/);return d.length>1?(d.pop(),d.join(" ")):n.trim()},sn=(n,d)=>q.filter(i=>i.classId===n&&i.subjectId===d).length,uu=(n,d,i,p,y)=>n?q.find(g=>g.classId===p||g.day!==d||g.period!==i||y&&y.has(`${g.classId}|${g.day}|${g.period}`)?!1:ut(g)===n):null,cf=(n,d)=>!n||!d?!1:n.isFixed||d.isFixed?!!(n.isFixed&&d.isFixed&&n.label===d.label):n.subjectId!==d.subjectId||!n.subjectId&&(n.subjectName||"")!==(d.subjectName||"")||!!n.isManualTeacher!=!!d.isManualTeacher?!1:n.isManualTeacher?n.teacherName===d.teacherName:n.teacherId===d.teacherId,du=(n,d,i)=>{let p=To(n,d,i);if(!p)return null;let g=(u.find(B=>B.id===n)||{}).lunchPeriod||5,C=B=>{let _=B-1;return _===g?_-1:_},S=B=>{let _=B+1;return _===g?_+1:_},T=[i],P=C(i);for(;P>=1&&cf(To(n,d,P),p);)T.unshift(P),P=C(P);let A=S(i);for(;A<=11&&cf(To(n,d,A),p);)T.push(A),A=S(A);return{classId:n,day:d,periods:T,slot:p,len:T.length}},pf=(n,d,i)=>{let y=(u.find(_=>_.id===n.classId)||{}).lunchPeriod||5,g=n.len;if(i===y)return{periods:[{period:i,ok:!1,reason:"\u0E04\u0E32\u0E1A\u0E1E\u0E31\u0E01\u0E01\u0E25\u0E32\u0E07\u0E27\u0E31\u0E19"}],allOk:!1,overflow:!1,fitCount:0,need:g};let C=new Set(n.periods.map(_=>`${n.day}|${_}`)),S=new Set(n.periods.map(_=>`${n.classId}|${n.day}|${_}`)),T=[],P=i,A=!1;for(;T.length<g;){if(P>11){A=!0;break}if(P!==y){let _=!0,K="",ne=d===n.day&&C.has(`${d}|${P}`),X=q.find(U=>U.classId===n.classId&&U.day===d&&U.period===P&&!ne);if(X){let U=(f[n.classId]||[]).find($=>$.id===X.subjectId);_=!1,K=`\u0E21\u0E35 ${X.isFixed?X.label:U?.name||X.subjectName||"\u0E27\u0E34\u0E0A\u0E32\u0E2D\u0E37\u0E48\u0E19"} \u0E2D\u0E22\u0E39\u0E48\u0E41\u0E25\u0E49\u0E27`}else if(!n.slot.isFixed){let U=q.find($=>$.day===d&&$.period===P&&$.classId!==n.classId&&(n.slot.isManualTeacher?$.isManualTeacher&&$.teacherName===n.slot.teacherName:!$.isManualTeacher&&$.teacherId===n.slot.teacherId));if(U){let $=u.find(se=>se.id===U.classId);_=!1,K=`\u0E04\u0E23\u0E39\u0E15\u0E34\u0E14\u0E2A\u0E2D\u0E19 ${$?.name||"\u0E2B\u0E49\u0E2D\u0E07\u0E2D\u0E37\u0E48\u0E19"}`}else{let $=ut(n.slot),se=uu($,d,P,n.classId,S);if(se){let qe=u.find(Xt=>Xt.id===se.classId);_=!1,K=`\u0E2B\u0E49\u0E2D\u0E07 ${Ge($)} \u0E16\u0E39\u0E01\u0E43\u0E0A\u0E49\u0E42\u0E14\u0E22 ${qe?.name||"\u0E2B\u0E49\u0E2D\u0E07\u0E2D\u0E37\u0E48\u0E19"}`}}}T.push({period:P,ok:_,reason:K})}P++}let B=T.filter(_=>_.ok).length;return{periods:T,allOk:!A&&T.length===g&&B===g,overflow:A,fitCount:B,need:g}},fg=(n,d,i)=>{let p=pf(n,d,i);if(!p.allOk)return!1;let y=p.periods.map(X=>X.period);if(d===n.day&&y[0]===n.periods[0])return!1;let g=new Set(n.periods.map(X=>`${n.classId}|${n.day}|${X}`)),C=n.periods.map(X=>q.find(U=>U.classId===n.classId&&U.day===n.day&&U.period===X)),S=q.filter(X=>!g.has(`${X.classId}|${X.day}|${X.period}`)),T=C.map((X,U)=>({...X,day:d,period:y[U]})),P=[...S,...T];Z(),x(P);let A=n.slot.isFixed?null:(f[n.classId]||[]).find(X=>X.id===n.slot.subjectId),B=A?.name||n.slot.subjectName,_=u.find(X=>X.id===n.classId),K=y.length>1?`${d} \u0E04\u0E32\u0E1A ${y[0]}-${y[y.length-1]}`:`${d} \u0E04\u0E32\u0E1A ${y[0]}`,ne=null;if(A){let X=Number(A.theory||0)+Number(A.practical||0),U=P.filter(se=>se.classId===n.classId&&se.subjectId===A.id).length,$=Math.max(0,X-U);ne={placed:U,required:X,remain:$}}return df({verb:"\u0E22\u0E49\u0E32\u0E22",name:n.slot.isFixed?n.slot.label:B||"\u0E04\u0E32\u0E1A\u0E40\u0E23\u0E35\u0E22\u0E19",where:K,className:_?.name||"",len:y.length,stat:ne,historyLen:ze.length+1}),!0},Se=(0,o.useRef)(null),mf=(0,o.useRef)(null),un=(0,o.useRef)(!1),iu=(0,o.useRef)([]),dn=(0,o.useRef)([]),Ao=(0,o.useRef)(null),fu=(0,o.useRef)(null),cu=(0,o.useRef)(null),hf=(0,o.useRef)(null),gf=(n,d)=>{let i=Ao.current,p=Se.current;!i||!p||(i.style.transform=`translate3d(${n-p.offX}px, ${d-p.offY}px, 0)`)},pu=()=>{iu.current.forEach(n=>n.classList.remove("drop-ok","drop-bad")),iu.current=[]},cg=(n,d)=>{pu(),!(!n||!d)&&d.periods.forEach(({period:i,ok:p})=>{let y=document.querySelector(`[data-drop-cell][data-day="${n}"][data-period="${i}"]`);y&&(y.classList.add(p?"drop-ok":"drop-bad"),iu.current.push(y))})},xf=n=>{if(!Se.current)return;let i=hf.current,p=Ao.current;if(!i||!p)return;if(!n){i.textContent="\u0E25\u0E32\u0E01\u0E2D\u0E2D\u0E01\u0E19\u0E2D\u0E01\u0E15\u0E32\u0E23\u0E32\u0E07 \xB7 \u0E1B\u0E25\u0E48\u0E2D\u0E22\u0E40\u0E1E\u0E37\u0E48\u0E2D\u0E22\u0E01\u0E40\u0E25\u0E34\u0E01",i.className="ghost-why ghost-why-idle",p.style.boxShadow="0 14px 32px rgba(15,30,61,.3)";return}if(n.allOk){let C=n.periods.map(S=>S.period);i.textContent=C.length>1?`\u0E27\u0E32\u0E07\u0E44\u0E14\u0E49 \xB7 \u0E04\u0E32\u0E1A ${C[0]}-${C[C.length-1]}`:`\u0E27\u0E32\u0E07\u0E44\u0E14\u0E49 \xB7 \u0E04\u0E32\u0E1A ${C[0]}`,i.className="ghost-why ghost-why-ok",p.style.boxShadow="0 14px 32px rgba(217,116,26,.35), 0 0 0 2px var(--accent)";return}let y=n.periods.find(C=>!C.ok),g=n.overflow?" \xB7 \u0E40\u0E25\u0E22\u0E04\u0E32\u0E1A 11":"";i.textContent=`\u0E27\u0E32\u0E07\u0E44\u0E14\u0E49 ${n.fitCount}/${n.need} \u0E04\u0E32\u0E1A${g}`+(y?` \xB7 \u0E04\u0E32\u0E1A ${y.period} ${y.reason}`:""),i.className="ghost-why ghost-why-bad",p.style.boxShadow="0 14px 32px rgba(184,31,45,.35), 0 0 0 2px var(--danger)"},pg=(n,d)=>{let i=document.elementFromPoint(n,d),p=i&&i.closest?i.closest("[data-drop-cell]"):null;if(!p)return null;let y=p.getAttribute("data-day"),g=Number(p.getAttribute("data-period"));return!y||!g?null:{day:y,period:g}},Lf=()=>{let n=Se.current;if(!n||!n.started)return;let d=mf.current;if(d){let y=d.getBoundingClientRect(),g=72,C=20;n.x<y.left+g?d.scrollLeft-=C*Math.min(1,(y.left+g-n.x)/g):n.x>y.right-g&&(d.scrollLeft+=C*Math.min(1,(n.x-(y.right-g))/g))}gf(n.x,n.y);let i=pg(n.x,n.y),p=i?`${i.day}|${i.period}`:"";(p!==n.lastKey||n.needRepaint)&&(n.lastKey=p,n.needRepaint=!1,i?(n.hit=i,n.result=pf(n.block,i.day,i.period),cg(i.day,n.result),xf(n.result)):(n.result=null,n.hit=null,pu(),xf(null))),n.raf=requestAnimationFrame(Lf)},vf=()=>{let n=Se.current;if(!n||n.started)return;n.started=!0,un.current=!0,document.body.classList.add("tt-dragging");let{block:d}=n,i=Ml(d.slot),p=u.find(C=>C.id===d.classId),y=d.slot.isFixed?null:i?i.pal:le[0],g=Ao.current;g&&(g.style.display="flex",g.style.width=`${Math.min(n.rect.width,210)}px`,g.style.background=y?y.bg:"#EEF0F4",g.style.borderLeftColor=y?y.line:"#48597D",g.style.color=y?y.text:"#0F1E3D",fu.current&&(fu.current.textContent=d.slot.isFixed?d.slot.label:i?.name||"\u0E27\u0E34\u0E0A\u0E32"),cu.current&&(cu.current.textContent=`${p?.name||""}${d.len>1?` \xB7 ${d.len} \u0E04\u0E32\u0E1A`:" \xB7 1 \u0E04\u0E32\u0E1A"}`)),gf(n.x,n.y),dn.current=[],d.periods.forEach(C=>{let S=document.querySelector(`[data-cardkey="${d.classId}|${d.day}|${C}"]`);S&&(S.classList.add("card-lifted"),dn.current.push(S))}),n.raf=requestAnimationFrame(Lf)},mu=n=>{let d=Se.current,i=d&&d.handlers;window.removeEventListener("pointermove",i?i.move:hu),window.removeEventListener("pointerup",i?i.up:gu),window.removeEventListener("pointercancel",i?i.cancel:xu),d&&(d.holdTimer&&clearTimeout(d.holdTimer),d.raf&&cancelAnimationFrame(d.raf),d.started&&(document.body.classList.remove("tt-dragging"),pu(),dn.current.forEach(p=>p.classList.remove("card-lifted")),dn.current=[],Ao.current&&(Ao.current.style.display="none"),n&&d.hit&&d.result&&d.result.allOk&&fg(d.block,d.hit.day,d.hit.period),setTimeout(()=>{un.current=!1},0)),Se.current=null)},hu=n=>{let d=Se.current;if(d){if(d.x=n.clientX,d.y=n.clientY,!d.started){let i=Math.hypot(n.clientX-d.startX,n.clientY-d.startY);if(d.isTouch){i>10&&mu(!1);return}if(i<4)return;vf();return}n.cancelable&&n.preventDefault()}},gu=()=>mu(!0),xu=()=>mu(!1),yf=(n,d,i,p)=>{if(n.button!==void 0&&n.button!==0)return;let y=du(d,i,p);if(!y)return;let g=n.currentTarget.getBoundingClientRect(),C=n.pointerType==="touch";Se.current={block:y,rect:g,isTouch:C,started:!1,startX:n.clientX,startY:n.clientY,x:n.clientX,y:n.clientY,offX:Math.min(n.clientX-g.left,180),offY:Math.min(n.clientY-g.top,34),hit:null,result:null,lastKey:"",needRepaint:!0,holdTimer:null,raf:null},Se.current.handlers={move:hu,up:gu,cancel:xu},window.addEventListener("pointermove",hu,{passive:!1}),window.addEventListener("pointerup",gu),window.addEventListener("pointercancel",xu),C&&(Se.current.holdTimer=setTimeout(()=>vf(),220))};(0,o.useEffect)(()=>()=>{let n=Se.current&&Se.current.handlers;n&&(window.removeEventListener("pointermove",n.move),window.removeEventListener("pointerup",n.up),window.removeEventListener("pointercancel",n.cancel)),Se.current&&Se.current.raf&&cancelAnimationFrame(Se.current.raf),Se.current&&Se.current.holdTimer&&clearTimeout(Se.current.holdTimer),document.body.classList.remove("tt-dragging"),st.current&&clearTimeout(st.current),Ht.current&&clearTimeout(Ht.current)},[]),(0,o.useEffect)(()=>{Ce&&Ce.historyLen!==ze.length&&Ks()},[ze.length,Ce]);let Lu=(n,d,i,p,y,g)=>n.map(C=>o.default.createElement("div",{key:C.id,draggable:Ws!==C.id,onDragStart:S=>{js(C.id),S.dataTransfer.effectAllowed="move",S.dataTransfer.setData("text/plain",C.id)},onDragOver:S=>{S.preventDefault(),S.dataTransfer.dropEffect="move"},onDrop:S=>{if(S.preventDefault(),Rr&&Rr!==C.id){let T=n.findIndex(A=>A.id===Rr),P=n.findIndex(A=>A.id===C.id);if(T!==-1&&P!==-1){let A=[...n],[B]=A.splice(T,1);A.splice(P,0,B),Z(),p(A)}}js(null)},onDragEnd:()=>js(null),onClick:()=>{Ws!==C.id&&i(C.id)},onDoubleClick:()=>g?g(C):Ug(C),title:g?"\u0E04\u0E25\u0E34\u0E01\u0E40\u0E1E\u0E37\u0E48\u0E2D\u0E2A\u0E25\u0E31\u0E1A \xB7 \u0E14\u0E31\u0E1A\u0E40\u0E1A\u0E34\u0E25\u0E04\u0E25\u0E34\u0E01\u0E40\u0E1E\u0E37\u0E48\u0E2D\u0E40\u0E1B\u0E34\u0E14\u0E2B\u0E19\u0E49\u0E32\u0E15\u0E31\u0E49\u0E07\u0E04\u0E48\u0E32 \xB7 \u0E25\u0E32\u0E01\u0E40\u0E1E\u0E37\u0E48\u0E2D\u0E40\u0E23\u0E35\u0E22\u0E07\u0E43\u0E2B\u0E21\u0E48":"\u0E04\u0E25\u0E34\u0E01\u0E40\u0E1E\u0E37\u0E48\u0E2D\u0E2A\u0E25\u0E31\u0E1A \xB7 \u0E14\u0E31\u0E1A\u0E40\u0E1A\u0E34\u0E25\u0E04\u0E25\u0E34\u0E01\u0E40\u0E1E\u0E37\u0E48\u0E2D\u0E40\u0E1B\u0E25\u0E35\u0E48\u0E22\u0E19\u0E0A\u0E37\u0E48\u0E2D \xB7 \u0E25\u0E32\u0E01\u0E40\u0E1E\u0E37\u0E48\u0E2D\u0E40\u0E23\u0E35\u0E22\u0E07\u0E43\u0E2B\u0E21\u0E48",className:`sheet-tab ${d===C.id?"sheet-tab-on":""} ${Rr===C.id?"sheet-tab-drag":""}`,style:(()=>{let S=wv(C);return S?{borderTopColor:S.accent,background:d===C.id?void 0:S.bg,color:S.accent,boxShadow:d===C.id?`inset 0 3px 0 ${S.accent}`:void 0}:d===C.id?{boxShadow:`inset 0 3px 0 ${y}`}:void 0})()},Ws===C.id?o.default.createElement("input",{autoFocus:!0,value:Jr,onChange:S=>rf(S.target.value),onBlur:()=>Pf(C.id),onKeyDown:S=>S.key==="Enter"&&Pf(C.id),className:"tab-input"}):o.default.createElement("span",null,C.name))),vu=(n,d)=>{let i=n.summary.length,p=i>20?{pad:"1px 3px",fs:10,fsNum:10.5,clamp:1}:i>14?{pad:"2px 3px",fs:11.5,fsNum:12,clamp:1}:{pad:"4px",fs:13,fsNum:13.5,clamp:2},y=Le;return o.default.createElement("div",{style:{marginTop:"8px"}},o.default.createElement("table",{style:{width:"100%",borderCollapse:"collapse",textAlign:"center",tableLayout:"fixed"}},o.default.createElement("thead",null,o.default.createElement("tr",null,o.default.createElement("th",{style:{border:"1px solid #111",backgroundColor:"#EFF1F4",padding:"6px 4px",fontSize:"13.5px",width:"22%"}},"\u0E23\u0E2B\u0E31\u0E2A\u0E27\u0E34\u0E0A\u0E32"),o.default.createElement("th",{style:{border:"1px solid #111",backgroundColor:"#EFF1F4",padding:"6px 4px",fontSize:"13.5px",width:"44%"}},"\u0E23\u0E32\u0E22\u0E27\u0E34\u0E0A\u0E32"),o.default.createElement("th",{style:{border:"1px solid #111",backgroundColor:"#EFF1F4",padding:"6px 4px",fontSize:"13.5px",width:"8.5%"}},"\u0E17."),o.default.createElement("th",{style:{border:"1px solid #111",backgroundColor:"#EFF1F4",padding:"6px 4px",fontSize:"13.5px",width:"8.5%"}},"\u0E1B."),o.default.createElement("th",{style:{border:"1px solid #111",backgroundColor:"#EFF1F4",padding:"6px 4px",fontSize:"13.5px",width:"8.5%"}},"\u0E19."),o.default.createElement("th",{style:{border:"1px solid #111",backgroundColor:"#EFF1F4",padding:"6px 4px",fontSize:"13.5px",width:"8.5%"}},"\u0E0A\u0E21."))),o.default.createElement("tbody",null,i===0?o.default.createElement("tr",null,o.default.createElement("td",{colSpan:"6",style:{border:"1px solid #111",padding:"16px",fontSize:"14.5px",color:"#6b7280",fontStyle:"italic"}},d?"\u0E44\u0E21\u0E48\u0E21\u0E35\u0E02\u0E49\u0E2D\u0E21\u0E39\u0E25":"\u0E44\u0E21\u0E48\u0E21\u0E35\u0E02\u0E49\u0E2D\u0E21\u0E39\u0E25\u0E2A\u0E2D\u0E19")):n.summary.map((g,C)=>{let S="white",T="#111",P=g.hours;if(d){let A=Number(g.theory)+Number(g.practical),B=sn(n.classId,g.id);P=`${B}/${A}`,S="#F8D0D3",T="#8C1620",B>=A?(S="#C9EAD9",T="#0E5A42"):B>0&&(S="#FBE7AE",T="#7A4E06")}return o.default.createElement("tr",{key:g.id||C,style:{backgroundColor:S,WebkitPrintColorAdjust:"exact",printColorAdjust:"exact"}},o.default.createElement("td",{style:{border:"1px solid #111",padding:p.pad,fontSize:`${p.fs}px`,fontFamily:y}},g.code||"-"),o.default.createElement("td",{style:{border:"1px solid #111",padding:p.pad,fontSize:`${p.fs}px`,textAlign:"left",fontWeight:"bold"}},o.default.createElement("div",{style:{display:"-webkit-box",WebkitLineClamp:p.clamp,WebkitBoxOrient:"vertical",overflow:"hidden"}},g.name)),o.default.createElement("td",{style:{border:"1px solid #111",padding:p.pad,fontSize:`${p.fsNum}px`,fontFamily:y}},g.theory),o.default.createElement("td",{style:{border:"1px solid #111",padding:p.pad,fontSize:`${p.fsNum}px`,fontFamily:y}},g.practical),o.default.createElement("td",{style:{border:"1px solid #111",padding:p.pad,fontSize:`${p.fsNum}px`,fontFamily:y}},g.credit),o.default.createElement("td",{style:{border:"1px solid #111",padding:p.pad,fontSize:`${p.fsNum}px`,fontWeight:"bold",fontFamily:y,color:T}},P))})),i>0&&o.default.createElement("tfoot",null,o.default.createElement("tr",null,o.default.createElement("td",{colSpan:"2",style:{border:"1px solid #111",backgroundColor:"#EFF1F4",padding:"5px",fontSize:"13px",fontWeight:"bold",textAlign:"right"}},"\u0E23\u0E27\u0E21\u0E17\u0E31\u0E49\u0E07\u0E2A\u0E34\u0E49\u0E19"),o.default.createElement("td",{style:{border:"1px solid #111",backgroundColor:"#EFF1F4",padding:"5px",fontSize:"13px",fontWeight:"bold",fontFamily:y}},n.sumTheory),o.default.createElement("td",{style:{border:"1px solid #111",backgroundColor:"#EFF1F4",padding:"5px",fontSize:"13px",fontWeight:"bold",fontFamily:y}},n.sumPractical),o.default.createElement("td",{style:{border:"1px solid #111",backgroundColor:"#EFF1F4",padding:"5px",fontSize:"13px",fontWeight:"bold",fontFamily:y}},n.sumCredit),o.default.createElement("td",{style:{border:"1px solid #111",backgroundColor:"#EFF1F4",padding:"5px",fontSize:"13px",fontWeight:"bold",fontFamily:y}},n.sumHours)))))},If=()=>{let{action:n,payload:d}=De;if(Nl(i=>({...i,isOpen:!1})),n==="DELETE_CLASS"){Z();let i=u.filter(p=>p.id!==d);c(i),m===d&&L(i[0]?.id||""),x(p=>p.filter(y=>y.classId!==d))}else if(n==="CLEAR_CURRENT_CLASS")Z(),x(i=>i.filter(p=>p.classId!==m||p.isFixed));else if(n==="CLEAR_ALL_DATA")Z(),(async()=>{try{await window.storage.delete(Os,!1)}catch{}try{await window.storage.delete(zs,!1)}catch{}try{await window.storage.delete(Us,!1)}catch{}})(),c(xl),h({c1:$i,c2:[]}),M(Xi),x([]),k(Vi),N(Gi),an(null),l(!1),Bt(!1),s("home");else if(n==="RESET_FROM_HOME"){(async()=>{try{await window.storage.delete(Os,!1)}catch{}try{await window.storage.delete(zs,!1)}catch{}try{await window.storage.delete(Us,!1)}catch{}})(),c(xl),h({c1:$i,c2:[]}),M(Xi),k(Vi),N(Gi);let i=[];xl.forEach(p=>{i.push({classId:p.id,day:"\u0E1E\u0E38\u0E18",period:1,isFixed:!0,label:"\u0E01\u0E34\u0E08\u0E01\u0E23\u0E23\u0E21"}),i.push({classId:p.id,day:"\u0E1E\u0E38\u0E18",period:2,isFixed:!0,label:"\u0E01\u0E34\u0E08\u0E01\u0E23\u0E23\u0E21"})}),x(i),en([]),an(null),l(!1),L(xl[0].id),s("timetable")}else n==="DELETE_ROOM"?(Z(),N(I.filter(i=>i.id!==d)),x(i=>i.map(p=>p.roomId===d?{...p,roomId:null}:p)),k(i=>i.map(p=>p.roomId===d?{...p,roomId:null}:p))):n==="DELETE_TEACHER"?(Z(),k(v.filter(i=>i.id!==d))):n==="OPEN_SUBJECT_MODAL"&&Mt(!0)},mg=()=>{if(!w.year){J("\u0E40\u0E25\u0E37\u0E2D\u0E01\u0E1B\u0E35\u0E01\u0E32\u0E23\u0E28\u0E36\u0E01\u0E29\u0E32\u0E01\u0E48\u0E2D\u0E19\u0E40\u0E23\u0E34\u0E48\u0E21\u0E08\u0E31\u0E14\u0E15\u0E32\u0E23\u0E32\u0E07");return}if(q.length===0){let n=[];u.forEach(d=>{n.push({classId:d.id,day:"\u0E1E\u0E38\u0E18",period:1,isFixed:!0,label:"\u0E01\u0E34\u0E08\u0E01\u0E23\u0E23\u0E21"}),n.push({classId:d.id,day:"\u0E1E\u0E38\u0E18",period:2,isFixed:!0,label:"\u0E01\u0E34\u0E08\u0E01\u0E23\u0E23\u0E21"})}),x(n)}L(Ue[0]?.id||""),s("timetable")},yu=()=>{if(ze.length===0)return;El.current={tag:null,at:0};let n=ze[ze.length-1];x(n.schedule),c(n.classes),h(n.classSubjects),k(n.teachers),n.rooms&&N(n.rooms),en(d=>d.slice(0,-1))},hg=()=>{let n=u.find(d=>d.id===m)?.name||"";Gt("CLEAR_CURRENT_CLASS",null,"\u0E25\u0E49\u0E32\u0E07\u0E15\u0E32\u0E23\u0E32\u0E07\u0E2B\u0E49\u0E2D\u0E07\u0E19\u0E35\u0E49",`\u0E04\u0E32\u0E1A\u0E40\u0E23\u0E35\u0E22\u0E19\u0E17\u0E31\u0E49\u0E07\u0E2B\u0E21\u0E14\u0E02\u0E2D\u0E07\u0E2B\u0E49\u0E2D\u0E07 "${n}" \u0E08\u0E30\u0E16\u0E39\u0E01\u0E25\u0E1A\u0E2D\u0E2D\u0E01\u0E08\u0E32\u0E01\u0E15\u0E32\u0E23\u0E32\u0E07 \u0E23\u0E32\u0E22\u0E27\u0E34\u0E0A\u0E32\u0E41\u0E25\u0E30\u0E02\u0E49\u0E2D\u0E21\u0E39\u0E25\u0E2B\u0E49\u0E2D\u0E07\u0E22\u0E31\u0E07\u0E2D\u0E22\u0E39\u0E48\u0E04\u0E23\u0E1A`,"\u0E25\u0E49\u0E32\u0E07\u0E15\u0E32\u0E23\u0E32\u0E07")},gg=()=>{Gt("CLEAR_ALL_DATA",null,"\u0E25\u0E49\u0E32\u0E07\u0E02\u0E49\u0E2D\u0E21\u0E39\u0E25\u0E17\u0E31\u0E49\u0E07\u0E2B\u0E21\u0E14","\u0E2B\u0E49\u0E2D\u0E07\u0E40\u0E23\u0E35\u0E22\u0E19 \u0E23\u0E32\u0E22\u0E27\u0E34\u0E0A\u0E32 \u0E04\u0E23\u0E39\u0E1C\u0E39\u0E49\u0E2A\u0E2D\u0E19 \u0E41\u0E25\u0E30\u0E15\u0E32\u0E23\u0E32\u0E07\u0E17\u0E31\u0E49\u0E07\u0E2B\u0E21\u0E14\u0E08\u0E30\u0E16\u0E39\u0E01\u0E25\u0E1A\u0E41\u0E25\u0E30\u0E01\u0E25\u0E31\u0E1A\u0E44\u0E1B\u0E40\u0E1B\u0E47\u0E19\u0E04\u0E48\u0E32\u0E40\u0E23\u0E34\u0E48\u0E21\u0E15\u0E49\u0E19 \u0E2A\u0E33\u0E23\u0E2D\u0E07\u0E02\u0E49\u0E2D\u0E21\u0E39\u0E25\u0E40\u0E1B\u0E47\u0E19\u0E44\u0E1F\u0E25\u0E4C\u0E44\u0E27\u0E49\u0E01\u0E48\u0E2D\u0E19\u0E2B\u0E32\u0E01\u0E22\u0E31\u0E07\u0E15\u0E49\u0E2D\u0E07\u0E01\u0E32\u0E23\u0E43\u0E0A\u0E49","\u0E25\u0E49\u0E32\u0E07\u0E17\u0E31\u0E49\u0E07\u0E2B\u0E21\u0E14")},xg=()=>{let n={classes:u,classSubjects:f,config:w,schedule:q,teachers:v,rooms:I,version:"2.1"},d=new Blob([JSON.stringify(n,null,2)],{type:"application/json"}),i=URL.createObjectURL(d),p=document.createElement("a");p.setAttribute("href",i),p.setAttribute("download",`\u0E15\u0E32\u0E23\u0E32\u0E07\u0E40\u0E23\u0E35\u0E22\u0E19_\u0E2A\u0E33\u0E23\u0E2D\u0E07_${w.year}_\u0E20\u0E32\u0E04${w.term}.json`),document.body.appendChild(p),p.click(),document.body.removeChild(p),URL.revokeObjectURL(i)},Iu=(n,d=!1)=>{let i=n.target.files[0];if(!i)return;let p=new FileReader;p.onload=y=>{try{let g=JSON.parse(y.target.result);if(g.classes&&g.config){let C=g.classes.map(B=>({...B,lunchPeriod:B.lunchPeriod||5,level:B.level||"\u0E1B\u0E27\u0E0A.",year:B.year||1,room:B.room||1})),S={};Object.entries(g.classSubjects||{}).forEach(([B,_])=>{S[B]=(_||[]).map((K,ne)=>({...K,colorKey:K.colorKey||Ll(K,ne).key}))});let T=g.config.year||"",P=Zh(g);Z(),c(C),h(S),k(P.teachers),N(P.rooms),M({term:g.config.term||1,year:T}),x(P.schedule),l(!0),L(C[0]?.id||""),E((g.teachers||[])[0]?.id||"");let A=`${C.length} \u0E2B\u0E49\u0E2D\u0E07 \xB7 ${(g.teachers||[]).length} \u0E04\u0E23\u0E39 \xB7 ${(g.schedule||[]).filter(B=>B.subjectId).length} \u0E04\u0E32\u0E1A`;d&&T!==""?s("timetable"):J(d?`\u0E19\u0E33\u0E40\u0E02\u0E49\u0E32\u0E02\u0E49\u0E2D\u0E21\u0E39\u0E25\u0E41\u0E25\u0E49\u0E27 (${A})
+`;
 
-\u0E44\u0E1F\u0E25\u0E4C\u0E19\u0E35\u0E49\u0E44\u0E21\u0E48\u0E44\u0E14\u0E49\u0E23\u0E30\u0E1A\u0E38\u0E1B\u0E35\u0E01\u0E32\u0E23\u0E28\u0E36\u0E01\u0E29\u0E32 \u0E40\u0E25\u0E37\u0E2D\u0E01\u0E1B\u0E35\u0E01\u0E32\u0E23\u0E28\u0E36\u0E01\u0E29\u0E32\u0E01\u0E48\u0E2D\u0E19\u0E40\u0E23\u0E34\u0E48\u0E21\u0E08\u0E31\u0E14\u0E15\u0E32\u0E23\u0E32\u0E07`:`\u0E01\u0E39\u0E49\u0E04\u0E37\u0E19\u0E02\u0E49\u0E2D\u0E21\u0E39\u0E25\u0E40\u0E23\u0E35\u0E22\u0E1A\u0E23\u0E49\u0E2D\u0E22\u0E41\u0E25\u0E49\u0E27 (${A})`)}else J("\u0E44\u0E1F\u0E25\u0E4C\u0E19\u0E35\u0E49\u0E44\u0E21\u0E48\u0E43\u0E0A\u0E48\u0E44\u0E1F\u0E25\u0E4C\u0E2A\u0E33\u0E23\u0E2D\u0E07\u0E02\u0E2D\u0E07\u0E23\u0E30\u0E1A\u0E1A \u0E40\u0E25\u0E37\u0E2D\u0E01\u0E44\u0E1F\u0E25\u0E4C .json \u0E17\u0E35\u0E48\u0E44\u0E14\u0E49\u0E08\u0E32\u0E01\u0E1B\u0E38\u0E48\u0E21\u0E2A\u0E33\u0E23\u0E2D\u0E07\u0E02\u0E49\u0E2D\u0E21\u0E39\u0E25")}catch{J("\u0E2D\u0E48\u0E32\u0E19\u0E44\u0E1F\u0E25\u0E4C\u0E44\u0E21\u0E48\u0E2A\u0E33\u0E40\u0E23\u0E47\u0E08 \u0E44\u0E1F\u0E25\u0E4C\u0E2D\u0E32\u0E08\u0E40\u0E2A\u0E35\u0E22\u0E2B\u0E32\u0E22\u0E2B\u0E23\u0E37\u0E2D\u0E44\u0E21\u0E48\u0E43\u0E0A\u0E48\u0E23\u0E39\u0E1B\u0E41\u0E1A\u0E1A JSON")}n.target.value=null},p.readAsText(i)},Mo=n=>{if(n==="teacher_current"&&!Ha.id){J("\u0E22\u0E31\u0E07\u0E44\u0E21\u0E48\u0E44\u0E14\u0E49\u0E40\u0E25\u0E37\u0E2D\u0E01\u0E04\u0E23\u0E39\u0E1C\u0E39\u0E49\u0E2A\u0E2D\u0E19 \u0E40\u0E1E\u0E34\u0E48\u0E21\u0E23\u0E32\u0E22\u0E0A\u0E37\u0E48\u0E2D\u0E04\u0E23\u0E39\u0E41\u0E25\u0E49\u0E27\u0E40\u0E25\u0E37\u0E2D\u0E01\u0E41\u0E17\u0E47\u0E1A\u0E04\u0E23\u0E39\u0E17\u0E35\u0E48\u0E15\u0E49\u0E2D\u0E07\u0E01\u0E32\u0E23\u0E01\u0E48\u0E2D\u0E19\u0E2A\u0E31\u0E48\u0E07\u0E1E\u0E34\u0E21\u0E1E\u0E4C");return}if(n==="room_current"&&!_a.id){J("\u0E22\u0E31\u0E07\u0E44\u0E21\u0E48\u0E44\u0E14\u0E49\u0E40\u0E25\u0E37\u0E2D\u0E01\u0E2B\u0E49\u0E2D\u0E07 \u0E40\u0E1E\u0E34\u0E48\u0E21\u0E2B\u0E49\u0E2D\u0E07\u0E43\u0E19\u0E17\u0E30\u0E40\u0E1A\u0E35\u0E22\u0E19\u0E41\u0E25\u0E49\u0E27\u0E40\u0E25\u0E37\u0E2D\u0E01\u0E41\u0E17\u0E47\u0E1A\u0E2B\u0E49\u0E2D\u0E07\u0E17\u0E35\u0E48\u0E15\u0E49\u0E2D\u0E07\u0E01\u0E32\u0E23\u0E01\u0E48\u0E2D\u0E19\u0E2A\u0E31\u0E48\u0E07\u0E1E\u0E34\u0E21\u0E1E\u0E4C");return}if(n==="room_all"&&ea.length===0){J(I.length>0?"\u0E2B\u0E49\u0E2D\u0E07\u0E17\u0E31\u0E49\u0E07\u0E2B\u0E21\u0E14\u0E43\u0E19\u0E17\u0E30\u0E40\u0E1A\u0E35\u0E22\u0E19\u0E15\u0E2D\u0E19\u0E19\u0E35\u0E49\u0E40\u0E1B\u0E47\u0E19\u0E2B\u0E49\u0E2D\u0E07\u0E19\u0E2D\u0E01\u0E41\u0E1C\u0E19\u0E01 \u0E0B\u0E36\u0E48\u0E07\u0E44\u0E21\u0E48\u0E23\u0E27\u0E21\u0E43\u0E19\u0E15\u0E32\u0E23\u0E32\u0E07\u0E19\u0E35\u0E49 \u0E40\u0E1E\u0E34\u0E48\u0E21\u0E2B\u0E49\u0E2D\u0E07\u0E02\u0E2D\u0E07\u0E41\u0E1C\u0E19\u0E01\u0E01\u0E48\u0E2D\u0E19\u0E2A\u0E31\u0E48\u0E07\u0E1E\u0E34\u0E21\u0E1E\u0E4C":"\u0E22\u0E31\u0E07\u0E44\u0E21\u0E48\u0E21\u0E35\u0E2B\u0E49\u0E2D\u0E07\u0E43\u0E19\u0E17\u0E30\u0E40\u0E1A\u0E35\u0E22\u0E19 \u0E40\u0E1E\u0E34\u0E48\u0E21\u0E2B\u0E49\u0E2D\u0E07\u0E01\u0E48\u0E2D\u0E19\u0E2A\u0E31\u0E48\u0E07\u0E1E\u0E34\u0E21\u0E1E\u0E4C\u0E15\u0E32\u0E23\u0E32\u0E07\u0E01\u0E32\u0E23\u0E43\u0E0A\u0E49\u0E2B\u0E49\u0E2D\u0E07");return}if(n==="teacher_all"&&v.length===0){J("\u0E22\u0E31\u0E07\u0E44\u0E21\u0E48\u0E21\u0E35\u0E04\u0E23\u0E39\u0E1C\u0E39\u0E49\u0E2A\u0E2D\u0E19\u0E43\u0E19\u0E23\u0E30\u0E1A\u0E1A \u0E40\u0E1E\u0E34\u0E48\u0E21\u0E23\u0E32\u0E22\u0E0A\u0E37\u0E48\u0E2D\u0E04\u0E23\u0E39\u0E01\u0E48\u0E2D\u0E19\u0E2A\u0E31\u0E48\u0E07\u0E1E\u0E34\u0E21\u0E1E\u0E4C\u0E15\u0E32\u0E23\u0E32\u0E07\u0E2A\u0E2D\u0E19");return}qt(""),Bt(!1),nf(n)},Cf=()=>ge==="current"?`\u0E15\u0E32\u0E23\u0E32\u0E07\u0E40\u0E23\u0E35\u0E22\u0E19 ${Te.name||""}`:ge==="teacher_current"?`\u0E15\u0E32\u0E23\u0E32\u0E07\u0E2A\u0E2D\u0E19 ${Ha?.name||"\u0E04\u0E23\u0E39\u0E1C\u0E39\u0E49\u0E2A\u0E2D\u0E19"}`:ge==="teacher_all"?"\u0E15\u0E32\u0E23\u0E32\u0E07\u0E2A\u0E2D\u0E19 \u0E04\u0E23\u0E39\u0E17\u0E38\u0E01\u0E04\u0E19":ge==="room_current"?`\u0E15\u0E32\u0E23\u0E32\u0E07\u0E01\u0E32\u0E23\u0E43\u0E0A\u0E49\u0E2B\u0E49\u0E2D\u0E07 ${_a?.name||""}`:ge==="room_all"?"\u0E15\u0E32\u0E23\u0E32\u0E07\u0E01\u0E32\u0E23\u0E43\u0E0A\u0E49\u0E2B\u0E49\u0E2D\u0E07 \u0E17\u0E38\u0E01\u0E2B\u0E49\u0E2D\u0E07":"\u0E15\u0E32\u0E23\u0E32\u0E07\u0E40\u0E23\u0E35\u0E22\u0E19 \u0E17\u0E38\u0E01\u0E2B\u0E49\u0E2D\u0E07",Sf=n=>`${bv(Cf())} ${w.year}-${w.term}.${n}`,kf=()=>{let n=document.getElementById("pdf-render-area");if(!n)throw new Error("NODOM");if(n.querySelectorAll(".pdf-page").length===0)throw new Error("NOPAGE");let i=Cf();return`<!DOCTYPE html>
+// รองรับข้อมูลเก่าที่เก็บสีเป็น class ของ tailwind
+const normalizeSubjectColor = (subject, fallbackIndex = 0) => {
+  if (!subject) return SUBJECT_COLORS[0];
+  if (subject.colorKey) return colorByKey(subject.colorKey);
+  const legacy = subject.color || '';
+  if (legacy.includes('blue')) return SUBJECT_COLORS[0];
+  if (legacy.includes('green')) return SUBJECT_COLORS[1];
+  if (legacy.includes('orange')) return SUBJECT_COLORS[2];
+  if (legacy.includes('purple')) return SUBJECT_COLORS[3];
+  if (legacy.includes('red')) return SUBJECT_COLORS[4];
+  if (legacy.includes('teal')) return SUBJECT_COLORS[5];
+  if (legacy.includes('yellow')) return SUBJECT_COLORS[6];
+  if (legacy.includes('pink')) return SUBJECT_COLORS[7];
+  return SUBJECT_COLORS[fallbackIndex % SUBJECT_COLORS.length];
+};
+
+// สีกลางสำหรับวิชานอกแผนก (พิมพ์ชื่อเอง ไม่ผูกกับรายวิชาในหลักสูตร) — เทาให้ต่างจากสีวิชาปกติชัดเจน
+const EXTERNAL_SUBJECT_PAL = {
+  key: 'นอกแผนก',
+  bg: '#E7E9EF',
+  line: '#7C8AA6',
+  text: '#33415C'
+};
+
+// ==========================================
+// ชิ้นส่วน UI ที่ใช้ซ้ำ
+// ==========================================
+
+// แถบขีดนับคาบ — 1 ขีด = 1 คาบตามหลักสูตร ขีดทึบ = จัดลงตารางแล้ว
+const TickRail = ({
+  required,
+  placed
+}) => {
+  const req = Math.max(0, Number(required) || 0);
+  const done = Math.max(0, Number(placed) || 0);
+  const over = Math.max(0, done - req);
+  return /*#__PURE__*/React.createElement("div", {
+    className: "tick-rail",
+    title: `จัดแล้ว ${done} จาก ${req} คาบ`
+  }, Array.from({
+    length: req
+  }).map((_, i) => /*#__PURE__*/React.createElement("span", {
+    key: i,
+    className: `tick ${i < done ? 'tick-on' : ''}`
+  })), Array.from({
+    length: over
+  }).map((_, i) => /*#__PURE__*/React.createElement("span", {
+    key: `o${i}`,
+    className: "tick tick-over"
+  })), req === 0 && over === 0 && /*#__PURE__*/React.createElement("span", {
+    className: "tick-none"
+  }, "—"));
+};
+const Segmented = ({
+  value,
+  onChange,
+  options
+}) => /*#__PURE__*/React.createElement("div", {
+  className: "seg"
+}, options.map(o => /*#__PURE__*/React.createElement("button", {
+  key: o.value,
+  onClick: () => onChange(o.value),
+  className: `seg-btn ${value === o.value ? 'seg-on' : ''}`
+}, o.icon, o.label)));
+function TimetableApp() {
+  // ==========================================
+  // 1. State
+  // ==========================================
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [hasSavedData, setHasSavedData] = useState(false);
+  const [step, setStep] = useState('home');
+  const [classes, setClasses] = useState(INITIAL_CLASSES);
+  const [classSubjects, setClassSubjects] = useState({
+    'c1': INITIAL_SUBJECTS,
+    'c2': []
+  });
+  const [teachers, setTeachers] = useState(INITIAL_TEACHERS_DATA);
+  const [rooms, setRooms] = useState(INITIAL_ROOMS);
+  const [config, setConfig] = useState(INITIAL_CONFIG);
+  const [schedule, setSchedule] = useState([]);
+  const [currentClass, setCurrentClass] = useState('');
+  const [currentTeacherTab, setCurrentTeacherTab] = useState('');
+  const [currentRoomTab, setCurrentRoomTab] = useState('');
+  const [viewMode, setViewMode] = useState('student');
+  const [panelOpen, setPanelOpen] = useState(true);
+  const [copySourceClassId, setCopySourceClassId] = useState('');
+  const [isClassModalOpen, setIsClassModalOpen] = useState(false);
+  const [isSubjectModalOpen, setIsSubjectModalOpen] = useState(false);
+  const [isTeacherModalOpen, setIsTeacherModalOpen] = useState(false);
+  const [isDataModalOpen, setIsDataModalOpen] = useState(false);
+  const [isRoomModalOpen, setIsRoomModalOpen] = useState(false);
+  const [auditResult, setAuditResult] = useState(null);
+  const [isTermModalOpen, setIsTermModalOpen] = useState(false);
+  const [editingSlot, setEditingSlot] = useState(null);
+  const [selectedSubject, setSelectedSubject] = useState('');
+  const [isManualSubject, setIsManualSubject] = useState(false); // วิชานอกแผนก พิมพ์ชื่อเอง ไม่ผูกกับหลักสูตร
+  const [manualSubjectName, setManualSubjectName] = useState('');
+  // กลุ่มนักเรียนนอกแผนก (มาเรียนกับครูในแผนกเราเป็นครั้งคราว) — ต่างจาก isManualSubject ตรงที่ต้องสร้าง "ห้องเรียน" เสมือนขึ้นมาด้วย
+  // เพราะระบบทั้งหมดผูกกับ classId เป็นหลัก จึงต้องมีห้องเรียนจริงให้ยึดแม้จะเป็นห้องนอกแผนก
+  const [isManualClass, setIsManualClass] = useState(false);
+  const [manualClassName, setManualClassName] = useState('');
+  const [extSubjectForm, setExtSubjectForm] = useState({
+    code: '',
+    name: '',
+    theory: 0,
+    practical: 0,
+    credit: 0
+  });
+  const [selectedTeacher, setSelectedTeacher] = useState('');
+  const [isManualTeacher, setIsManualTeacher] = useState(false);
+  const [manualTeacherName, setManualTeacherName] = useState('');
+  const [selectedDuration, setSelectedDuration] = useState(1);
+  const [deleteCount, setDeleteCount] = useState(1); // จำนวนคาบที่จะลบ ตั้งค่าตอนเปิดหน้าต่าง
+  const [customRoomId, setCustomRoomId] = useState('');
+  const [isManualRoom, setIsManualRoom] = useState(false); // ห้องนอกแผนก พิมพ์ชื่อเอง
+  const [manualRoomName, setManualRoomName] = useState('');
+  const [saveRoomToRegistry, setSaveRoomToRegistry] = useState(true);
+  const [allowOverlap, setAllowOverlap] = useState(false);
+  const [errorMsg, setErrorMsg] = useState('');
+  const [editingTabId, setEditingTabId] = useState(null);
+  const [editTabName, setEditTabName] = useState('');
+  const [draggedTabId, setDraggedTabId] = useState(null);
+  const [draggedSubjectId, setDraggedSubjectId] = useState(null); // ตัวจับว่ากำลังลากรายวิชาไหนอยู่ ในหน้าต่างจัดการวิชา
+
+  const [printMode, setPrintMode] = useState('none');
+  const [pdfError, setPdfError] = useState('');
+  const [history, setHistory] = useState([]);
+  const [lastSavedTime, setLastSavedTime] = useState(null);
+  const isFirstSaveRender = useRef(true);
+  const [saveStatus, setSaveStatus] = useState('idle');
+  const historyPersistRef = useRef(null);
+  const saveTimeoutRef = useRef(null);
+  const [alertDialog, setAlertDialog] = useState({
+    isOpen: false,
+    message: ''
+  });
+
+  // แถบแจ้งผลการย้ายคาบ พร้อมปุ่มย้อนกลับ
+  const [toast, setToast] = useState(null);
+  const toastTimerRef = useRef(null);
+  const dismissToast = () => {
+    if (toastTimerRef.current) clearTimeout(toastTimerRef.current);
+    toastTimerRef.current = null;
+    setToast(null);
+  };
+  const showToast = t => {
+    if (toastTimerRef.current) clearTimeout(toastTimerRef.current);
+    setToast(t);
+    toastTimerRef.current = setTimeout(() => setToast(null), 6000);
+  };
+  const [confirmDialog, setConfirmDialog] = useState({
+    isOpen: false,
+    action: null,
+    payload: null,
+    title: '',
+    message: '',
+    confirmText: 'ยืนยัน',
+    cancelText: 'ยกเลิก',
+    isDestructive: true
+  });
+  const [newClassForm, setNewClassForm] = useState({
+    major: MAJOR_BY_LEVEL['ปวช.'],
+    level: 'ปวช.',
+    year: 1,
+    room: 1,
+    studentCount: '',
+    advisor: ''
+  });
+  const [newTeacherForm, setNewTeacherForm] = useState({
+    name: '',
+    roomId: ''
+  });
+  const [newRoomForm, setNewRoomForm] = useState({
+    name: '',
+    note: ''
+  });
+  const [editingRoomId, setEditingRoomId] = useState(null);
+  const [editRoomForm, setEditRoomForm] = useState({
+    name: '',
+    note: ''
+  });
+  const [newSubjectForm, setNewSubjectForm] = useState({
+    code: '',
+    name: '',
+    theory: 0,
+    practical: 0,
+    credit: 0,
+    colorKey: ''
+  });
+  const [editingTeacherId, setEditingTeacherId] = useState(null);
+  const [editTeacherForm, setEditTeacherForm] = useState({
+    name: '',
+    roomId: ''
+  });
+  const [modalClassId, setModalClassId] = useState('');
+  const [editingSubjectId, setEditingSubjectId] = useState(null);
+  const [editSubjectForm, setEditSubjectForm] = useState({
+    code: '',
+    name: '',
+    theory: 0,
+    practical: 0,
+    credit: 0,
+    colorKey: ''
+  });
+
+  // ==========================================
+  // 2. Derived State
+  // ==========================================
+  // ห้องเรียนของแผนกเท่านั้น ไม่รวมกลุ่มนักเรียนนอกแผนกที่มาเรียนกับครูเป็นครั้งคราว
+  // ใช้แทน `classes` ในจุดที่ต้องแสดง "ห้องเรียนของเราจริงๆ" เช่น แท็บ, สถิติหน้าแรก, พิมพ์ตารางทุกห้อง
+  // ต้องประกาศก่อน activeClassObj เพราะถูกใช้ในบรรทัดถัดไปทันที
+  const deptClasses = classes.filter(c => !c.external);
+  const activeClassObj = classes.find(c => c.id === currentClass) || deptClasses[0] || {};
+  const activeLunchPeriod = activeClassObj.lunchPeriod || 5;
+  const activeTeacherObj = teachers.find(t => t.id === currentTeacherTab) || {};
+  const activeRoomObj = rooms.find(r => r.id === currentRoomTab) || {};
+
+  // ==========================================
+  // ทะเบียนห้อง
+  // ==========================================
+  const roomById = id => rooms.find(r => r.id === id);
+  const roomLabel = id => roomById(id)?.name || '';
+
+  // ห้องของแผนก ใช้เป็นแท็บในมุมมองตารางห้อง
+  // ห้องนอกแผนกไม่นับ เพราะเป็นห้องที่แผนกอื่นดูแล เราไม่รู้ตารางเต็มของเขา
+  const deptRooms = rooms.filter(r => !r.external);
+
+  // ห้องที่คาบนี้ใช้จริง ถ้าคาบไม่ได้ระบุ ให้ถือว่าใช้ห้องประจำของครู
+  const slotRoomId = slot => {
+    if (!slot) return null;
+    if (slot.roomId) return slot.roomId;
+    if (slot.isManualTeacher || !slot.teacherId) return null;
+    return teachers.find(t => t.id === slot.teacherId)?.roomId || null;
+  };
+
+  // ชื่อห้องที่จะแสดงบนตารางและเอกสาร รองรับทั้งห้องในทะเบียนและห้องที่พิมพ์เอง
+  const slotRoomText = slot => roomLabel(slotRoomId(slot)) || slot && slot.roomName || '';
+
+  /**
+   * ข้อมูลวิชาของคาบนี้ รองรับทั้งวิชาในหลักสูตร (ผูก subjectId) และวิชานอกแผนกที่พิมพ์เอง (subjectName)
+   * ใช้แทนที่การ .find() ในหลักสูตรตรงๆ ทุกจุดที่ต้องแสดงชื่อ/รหัส/สีของวิชาบนคาบ
+   */
+  const slotSubjectInfo = slot => {
+    if (!slot) return null;
+    if (slot.subjectId) {
+      const s = (classSubjects[slot.classId] || []).find(x => x.id === slot.subjectId);
+      if (s) return {
+        name: s.name,
+        code: s.code || '',
+        pal: normalizeSubjectColor(s),
+        external: false
+      };
+    }
+    if (slot.subjectName) return {
+      name: slot.subjectName,
+      code: '',
+      pal: EXTERNAL_SUBJECT_PAL,
+      external: true
+    };
+    return null;
+  };
+  const activeModalClassId = modalClassId || currentClass;
+  const currentSubjectObj = (classSubjects[activeModalClassId] || []).find(s => s.id === selectedSubject);
+  // วิชานอกแผนกไม่มีจำนวนคาบตามหลักสูตรผูกไว้ ให้เลือกได้อิสระสูงสุดเท่าคาบทั้งวัน
+  // วิชานอกแผนก/กลุ่มนอกแผนก ไม่มีจำนวนคาบตามหลักสูตรผูกไว้แน่นอน — ให้เลือกได้อิสระตามที่กรอก หรือเต็มวันถ้ายังไม่กรอก
+  const extManualHours = Number(extSubjectForm.theory || 0) + Number(extSubjectForm.practical || 0);
+  const maxDuration = isManualClass ? extManualHours > 0 ? extManualHours : 11 : isManualSubject ? 11 : currentSubjectObj ? Number(currentSubjectObj.theory) + Number(currentSubjectObj.practical) : 1;
+  let sidebarData = {
+    summary: [],
+    sumTheory: 0,
+    sumPractical: 0,
+    sumCredit: 0,
+    sumHours: 0
+  };
+  if (viewMode === 'student') {
+    sidebarData = calculateClassSummary(currentClass, classSubjects[currentClass]);
+  } else if (viewMode === 'teacher') {
+    sidebarData = calculateTeacherSummary(currentTeacherTab, schedule, classSubjects);
+  } else if (viewMode === 'room') {
+    sidebarData = calculateRoomSummary(currentRoomTab, schedule, classSubjects, classes, slotRoomId);
+  }
+  const {
+    summary: sidebarSummary,
+    sumTheory,
+    sumPractical,
+    sumCredit,
+    sumHours
+  } = sidebarData;
+
+  // ความคืบหน้าการจัดตารางของห้องปัจจุบัน
+  const classProgress = (() => {
+    if (viewMode !== 'student') return null;
+    const subs = classSubjects[currentClass] || [];
+    const required = subs.reduce((a, s) => a + Number(s.theory || 0) + Number(s.practical || 0), 0);
+    const placed = schedule.filter(s => s.classId === currentClass && s.subjectId).length;
+    return {
+      required,
+      placed
+    };
+  })();
+
+  // ==========================================
+  // 3. Effects
+  // ==========================================
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      let loadedClasses = null;
+      try {
+        const res = await window.storage.get(DATA_KEY, false);
+        if (res && res.value && !cancelled) {
+          const parsed = JSON.parse(res.value);
+          const migratedClasses = (parsed.classes || INITIAL_CLASSES).map(c => ({
+            ...c,
+            lunchPeriod: c.lunchPeriod || 5,
+            level: c.level || 'ปวช.',
+            year: c.year || 1,
+            room: c.room || 1
+          }));
+          // แปลงสีวิชาแบบเก่าให้เป็นระบบสีใหม่
+          const migratedSubjects = {};
+          Object.entries(parsed.classSubjects || {}).forEach(([cid, list]) => {
+            migratedSubjects[cid] = (list || []).map((s, i) => ({
+              ...s,
+              colorKey: s.colorKey || normalizeSubjectColor(s, i).key
+            }));
+          });
+          // แปลงห้องที่เคยเก็บเป็นข้อความอิสระ ให้เป็นทะเบียนห้องที่เทียบกันได้
+          const mig = migrateRooms(parsed);
+          loadedClasses = migratedClasses;
+          setClasses(migratedClasses);
+          setClassSubjects(migratedSubjects);
+          setTeachers(mig.teachers);
+          setRooms(mig.rooms);
+          setConfig({
+            term: parsed.config?.term || 1,
+            year: parsed.config?.year || ''
+          });
+          setSchedule(mig.schedule);
+          setLastSavedTime(parsed.lastSaved || null);
+          setHasSavedData(true);
+        }
+      } catch (e) {/* ยังไม่เคยบันทึก */}
+      try {
+        const uiRes = await window.storage.get(UI_KEY, false);
+        if (uiRes && uiRes.value && !cancelled) {
+          const uiParsed = JSON.parse(uiRes.value);
+          if (uiParsed.step) setStep(uiParsed.step);
+          if (uiParsed.currentTeacherTab) setCurrentTeacherTab(uiParsed.currentTeacherTab);
+          if (uiParsed.currentRoomTab) setCurrentRoomTab(uiParsed.currentRoomTab);
+          if (uiParsed.viewMode) setViewMode(uiParsed.viewMode);
+          if (typeof uiParsed.panelOpen === 'boolean') setPanelOpen(uiParsed.panelOpen);
+          if (uiParsed.currentClass) setCurrentClass(uiParsed.currentClass);else if (loadedClasses && loadedClasses[0]) setCurrentClass(loadedClasses[0].id);
+        } else if (loadedClasses && loadedClasses[0]) {
+          setCurrentClass(loadedClasses[0].id);
+        }
+      } catch (e) {
+        if (loadedClasses && loadedClasses[0]) setCurrentClass(loadedClasses[0].id);
+      }
+
+      // กู้ประวัติย้อนกลับที่เก็บไว้ ให้ยังกดย้อนได้แม้เพิ่งรีเฟรชหน้า
+      try {
+        const h = await window.storage.get(HISTORY_KEY, false);
+        if (h && h.value && !cancelled) {
+          const arr = JSON.parse(h.value);
+          if (Array.isArray(arr) && arr.length) setHistory(arr);
+        }
+      } catch (e) {/* ไม่มีประวัติเก็บไว้ */}
+      if (!cancelled) setIsLoaded(true);
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+  useEffect(() => {
+    if (!isLoaded) return;
+    (async () => {
+      try {
+        await window.storage.set(UI_KEY, JSON.stringify({
+          step,
+          currentClass,
+          currentTeacherTab,
+          currentRoomTab,
+          viewMode,
+          panelOpen
+        }), false);
+      } catch (e) {/* เงียบ */}
+    })();
+  }, [step, currentClass, currentTeacherTab, currentRoomTab, viewMode, panelOpen, isLoaded]);
+  useEffect(() => {
+    if (!isLoaded) return;
+    if (isFirstSaveRender.current) {
+      isFirstSaveRender.current = false;
+      return;
+    }
+    setSaveStatus('saving');
+    if (saveTimeoutRef.current) clearTimeout(saveTimeoutRef.current);
+    saveTimeoutRef.current = setTimeout(() => {
+      const now = new Date().toLocaleTimeString('th-TH', {
+        hour: '2-digit',
+        minute: '2-digit'
+      });
+      const dataToSave = {
+        classes,
+        classSubjects,
+        config,
+        schedule,
+        teachers,
+        rooms,
+        lastSaved: now
+      };
+      (async () => {
+        try {
+          await window.storage.set(DATA_KEY, JSON.stringify(dataToSave), false);
+          setLastSavedTime(now);
+          setHasSavedData(true);
+          setSaveStatus('saved');
+        } catch (e) {
+          console.error('Storage save error:', e);
+          setSaveStatus('error');
+        }
+      })();
+    }, 700);
+    return () => {
+      if (saveTimeoutRef.current) clearTimeout(saveTimeoutRef.current);
+    };
+  }, [classes, classSubjects, config, schedule, teachers, rooms, isLoaded]);
+
+  /**
+   * เก็บประวัติย้อนกลับลงเครื่อง
+   *
+   * เดิมประวัติอยู่ในหน่วยความจำอย่างเดียว แต่บันทึกอัตโนมัติเขียนทับทันที
+   * เผลอลบแล้วรีเฟรชจึงกู้ไม่ได้เลย ซึ่งเป็นความเสี่ยงสูงสุดที่เหลืออยู่
+   * เก็บย้อนหลัง 12 ขั้นก็พอกู้จากความผิดพลาดทั่วไปได้ โดยไม่กินที่มากเกิน
+   */
+  useEffect(() => {
+    if (!isLoaded) return;
+    if (historyPersistRef.current) clearTimeout(historyPersistRef.current);
+    historyPersistRef.current = setTimeout(() => {
+      (async () => {
+        try {
+          const slice = history.slice(-HISTORY_PERSIST);
+          let payload = JSON.stringify(slice);
+          // ถ้าใหญ่เกินไป ตัดขั้นเก่าออกจนพอดี ดีกว่าบันทึกไม่สำเร็จแล้วไม่เหลืออะไรเลย
+          let n = slice.length;
+          while (payload.length > HISTORY_MAX_BYTES && n > 1) {
+            n = Math.floor(n / 2);
+            payload = JSON.stringify(slice.slice(-n));
+          }
+          await window.storage.set(HISTORY_KEY, payload, false);
+        } catch (e) {/* เก็บไม่ได้ก็ไม่เป็นไร ยังใช้ประวัติในหน่วยความจำได้ */}
+      })();
+    }, 1500);
+    return () => {
+      if (historyPersistRef.current) clearTimeout(historyPersistRef.current);
+    };
+  }, [history, isLoaded]);
+  useEffect(() => {
+    if (viewMode === 'teacher' && teachers.length > 0 && !teachers.find(t => t.id === currentTeacherTab)) {
+      setCurrentTeacherTab(teachers[0].id);
+    }
+    if (viewMode === 'room' && deptRooms.length > 0 && !deptRooms.find(r => r.id === currentRoomTab)) {
+      setCurrentRoomTab(deptRooms[0].id);
+    }
+  }, [viewMode, teachers, currentTeacherTab, rooms, currentRoomTab]);
+
+  /**
+   * รีเซ็ตตำแหน่งเลื่อนหน้าจอกลับขึ้นบนสุดทุกครั้งที่สลับ "หน้า"
+   *
+   * แอปนี้ไม่ได้ใช้ routing จริง แต่สลับเนื้อหาด้วย step/printMode ในคอมโพเนนต์เดียว
+   * เบราว์เซอร์จึงไม่รีเซ็ตตำแหน่งเลื่อนให้อัตโนมัติเหมือนตอนโหลดหน้าใหม่จริงๆ
+   * ถ้าเลื่อนดูหน้าตัวอย่างก่อนพิมพ์ (ซึ่งยาวมากเพราะซ้อนหลายแผ่นกระดาษ) จนสุดท้าย
+   * แล้วกด "กลับหน้าแรก" ตำแหน่งเลื่อนจะค้างอยู่ต่ำ ทำให้หน้าแรกซึ่งสั้นกว่ามาก
+   * ดูเหมือนไม่อยู่กึ่งกลางจอ ทั้งที่จริงอยู่กึ่งกลางอยู่แล้วแค่เลื่อนไม่ถึง
+   */
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [step, printMode]);
+
+  // ปิดหน้าต่างด้วยปุ่ม Esc และย้อนกลับด้วย Ctrl+Z
+  useEffect(() => {
+    const onKey = e => {
+      const anyModalOpen = alertDialog.isOpen || confirmDialog.isOpen || editingSlot || isSubjectModalOpen || isClassModalOpen || isTeacherModalOpen || isDataModalOpen || isRoomModalOpen || auditResult || isTermModalOpen;
+
+      // Ctrl+Z ย้อนกลับ แต่ต้องไม่แย่งการทำงานปกติของช่องพิมพ์
+      // (ในช่องพิมพ์ Ctrl+Z ควรย้อนตัวอักษร ไม่ใช่ย้อนการจัดตาราง)
+      if ((e.ctrlKey || e.metaKey) && !e.shiftKey && (e.key === 'z' || e.key === 'Z')) {
+        const el = e.target;
+        const inField = el && (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA' || el.isContentEditable);
+        if (!inField && !anyModalOpen) {
+          e.preventDefault();
+          handleUndo();
+        }
+        return;
+      }
+      if (e.key !== 'Escape') return;
+      if (alertDialog.isOpen) return setAlertDialog({
+        isOpen: false,
+        message: ''
+      });
+      if (confirmDialog.isOpen) return setConfirmDialog(prev => ({
+        ...prev,
+        isOpen: false
+      }));
+      if (editingSlot) return setEditingSlot(null);
+      if (isSubjectModalOpen) return safeCloseModal(editingSubjectId, () => setIsSubjectModalOpen(false));
+      if (isClassModalOpen) return setIsClassModalOpen(false);
+      if (isTeacherModalOpen) return safeCloseModal(editingTeacherId, () => setIsTeacherModalOpen(false));
+      if (isDataModalOpen) return setIsDataModalOpen(false);
+      if (isRoomModalOpen) return safeCloseModal(editingRoomId, () => setIsRoomModalOpen(false));
+      if (auditResult) return setAuditResult(null);
+      if (isTermModalOpen) return setIsTermModalOpen(false);
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+    // ต้องมี history ด้วย ไม่งั้นตัวจัดการปุ่มจะจับภาพประวัติค้างไว้ แล้ว Ctrl+Z จะย้อนไปผิดขั้น
+    // ต้องมี editingSubjectId/editingTeacherId/editingRoomId ด้วย เพราะ safeCloseModal ใช้ค่าล่าสุดเช็คฉบับร่างค้าง
+  }, [alertDialog.isOpen, confirmDialog.isOpen, editingSlot, isSubjectModalOpen, isClassModalOpen, isTeacherModalOpen, isDataModalOpen, isRoomModalOpen, auditResult, isTermModalOpen, history, editingSubjectId, editingTeacherId, editingRoomId]);
+
+  // ไม่มีการโหลดฟอนต์หรือสคริปต์จากภายนอกอีกต่อไป
+  // แอปทำงานได้เต็มรูปแบบแม้ไม่มีอินเทอร์เน็ต
+
+  // ==========================================
+  // 4. Helpers
+  // ==========================================
+  const customAlert = message => setAlertDialog({
+    isOpen: true,
+    message
+  });
+
+  /**
+   * ปิดหน้าต่างแบบปลอดภัย — เช็คก่อนว่ามีฉบับร่างที่ยังไม่กดบันทึกค้างอยู่ไหม
+   *
+   * ปัญหาเดิม: การแก้ไขรายการในทะเบียน (วิชา/ครู/ห้อง) เก็บไว้ในฉบับร่างชั่วคราว
+   * ต้องกดปุ่ม "บันทึก" เล็กๆ ในแถวนั้นก่อนจึงจะเขียนลงระบบจริง
+   * แต่ปุ่ม X และ Esc ไม่เคยเช็คเลยว่ามีฉบับร่างค้างอยู่หรือไม่ ปิดแล้วข้อมูลหายเงียบๆ ทันที
+   * ฟังก์ชันนี้กันไว้: ถ้ามีฉบับร่างค้าง จะไม่ปิดหน้าต่าง แต่แจ้งเตือนให้กดบันทึกหรือยกเลิกก่อน
+   */
+  const safeCloseModal = (isEditingId, closeFn) => {
+    if (isEditingId) {
+      customAlert('มีรายการที่กำลังแก้ไขค้างอยู่ กดปุ่ม "บันทึก" หรือ "ยกเลิก" ในแถวนั้นก่อน ไม่งั้นการแก้ไขจะหายไป');
+      return;
+    }
+    closeFn();
+  };
+  const requestConfirm = (action, payload, title, message, confirmText = 'ยืนยัน', cancelText = 'ยกเลิก', isDestructive = true) => {
+    setConfirmDialog({
+      isOpen: true,
+      action,
+      payload,
+      title,
+      message,
+      confirmText,
+      cancelText,
+      isDestructive
+    });
+  };
+  const getSlotData = (classId, day, period) => schedule.find(s => s.classId === classId && s.day === day && s.period === period);
+  const getSlotsForTeacher = (teacherId, day, period) => schedule.filter(s => !s.isManualTeacher && s.teacherId === teacherId && s.day === day && s.period === period);
+  const getSlotsForRoom = (roomId, day, period) => schedule.filter(s => slotRoomId(s) === roomId && s.day === day && s.period === period);
+
+  /**
+   * สแกนทั้งตารางหาปัญหาที่มีอยู่แล้ว
+   *
+   * ระบบเตือนเฉพาะตอนวางคาบใหม่ แต่ตารางที่นำเข้าจากไฟล์เก่า
+   * หรือที่เคยติ๊ก "ให้สอนซ้อนเวลาได้" ไว้ ไม่มีทางรู้ว่ามีปัญหาค้างอยู่กี่จุด
+   * โดยเฉพาะห้องชน ซึ่งระบบเดิมไม่เคยตรวจเลย ตารางเก่าจึงอาจมีอยู่โดยไม่รู้ตัว
+   */
+  const auditSchedule = () => {
+    const issues = [];
+    const clsName = id => classes.find(c => c.id === id)?.name || 'ไม่ทราบห้องเรียน';
+    DAYS.forEach(day => {
+      for (let period = 1; period <= 11; period++) {
+        const at = schedule.filter(s => s.day === day && s.period === period);
+
+        // ห้องเรียนเดียวกันมีสองวิชาในคาบเดียวกัน
+        const byClass = {};
+        at.forEach(s => {
+          (byClass[s.classId] = byClass[s.classId] || []).push(s);
+        });
+        Object.entries(byClass).forEach(([cid, list]) => {
+          if (list.length > 1) {
+            const names = list.map(x => x.isFixed ? x.label : (classSubjects[cid] || []).find(y => y.id === x.subjectId)?.name || 'ไม่ทราบวิชา');
+            issues.push({
+              type: 'class',
+              day,
+              period,
+              classId: cid,
+              title: `${clsName(cid)} เรียน ${list.length} วิชาพร้อมกัน`,
+              detail: names.join(' + ')
+            });
+          }
+        });
+
+        // ครูคนเดียวสอนหลายห้องเรียนพร้อมกัน
+        const byTeacher = {};
+        at.forEach(s => {
+          if (s.isFixed) return;
+          const key = s.isManualTeacher ? `n:${(s.teacherName || '').trim()}` : `t:${s.teacherId || ''}`;
+          if (key === 't:' || key === 'n:') return;
+          (byTeacher[key] = byTeacher[key] || []).push(s);
+        });
+        Object.entries(byTeacher).forEach(([key, list]) => {
+          const uniq = [...new Set(list.map(x => x.classId))];
+          if (uniq.length > 1) {
+            const nm = key.startsWith('n:') ? key.slice(2) : teachers.find(t => t.id === key.slice(2))?.name || 'ไม่ทราบครู';
+            issues.push({
+              type: 'teacher',
+              day,
+              period,
+              classId: uniq[0],
+              title: `${nm} สอน ${uniq.length} ห้องพร้อมกัน`,
+              detail: uniq.map(clsName).join(' + ')
+            });
+          }
+        });
+
+        // ห้องเดียวถูกใช้โดยหลายห้องเรียนพร้อมกัน
+        const byRoom = {};
+        at.forEach(s => {
+          const rid = slotRoomId(s);
+          if (!rid) return;
+          (byRoom[rid] = byRoom[rid] || []).push(s);
+        });
+        Object.entries(byRoom).forEach(([rid, list]) => {
+          const uniq = [...new Set(list.map(x => x.classId))];
+          if (uniq.length > 1) {
+            issues.push({
+              type: 'room',
+              day,
+              period,
+              classId: uniq[0],
+              roomId: rid,
+              title: `ห้อง ${roomLabel(rid)} ถูกใช้ ${uniq.length} ห้องเรียนพร้อมกัน`,
+              detail: uniq.map(clsName).join(' + ')
+            });
+          }
+        });
+      }
+    });
+
+    // วิชาที่ลงตารางไม่ครบหรือเกินหลักสูตร
+    const shortages = [];
+    deptClasses.forEach(c => {
+      (classSubjects[c.id] || []).forEach(sub => {
+        const required = Number(sub.theory || 0) + Number(sub.practical || 0);
+        const placed = schedule.filter(s => s.classId === c.id && s.subjectId === sub.id).length;
+        if (required > 0 && placed !== required) {
+          shortages.push({
+            type: placed < required ? 'short' : 'over',
+            classId: c.id,
+            title: `${c.name} · ${sub.name}`,
+            detail: placed < required ? `ลงแล้ว ${placed}/${required} คาบ ขาดอีก ${required - placed}` : `ลงเกินหลักสูตร ${placed}/${required} คาบ`
+          });
+        }
+      });
+    });
+    return {
+      conflicts: issues,
+      shortages
+    };
+  };
+
+  /**
+   * บันทึกสถานะก่อนแก้ไข เพื่อให้ย้อนกลับได้
+   *
+   * ปัญหาเดิม: ช่องพิมพ์อย่างสาขางานหรือจำนวนนักเรียนเรียกฟังก์ชันนี้ทุกตัวอักษร
+   * พิมพ์ "ช่างไฟฟ้ากำลัง" ครั้งเดียวกินประวัติไป 13 ขั้นจากทั้งหมด 20 ขั้น
+   * ประวัติการวางคาบที่มีค่าจริงถูกดันหายหมด ปุ่มย้อนกลับจึงใช้ไม่ได้
+   *
+   * วิธีแก้: ส่ง tag มาด้วยสำหรับช่องพิมพ์ ถ้าเป็น tag เดิมและพิมพ์ต่อเนื่องกัน
+   * จะไม่บันทึกขั้นใหม่ เพราะขั้นที่บันทึกไว้ตอนเริ่มพิมพ์คือสถานะก่อนแก้อยู่แล้ว
+   * ผลคือการพิมพ์รวดเดียวในช่องหนึ่ง = ย้อนกลับ 1 ครั้ง เหมือนโปรแกรมแก้ข้อความทั่วไป
+   * หยุดพิมพ์เกิน 1.2 วินาที หรือย้ายไปช่องอื่น จะเริ่มนับเป็นขั้นใหม่
+   */
+  const HISTORY_LIMIT = 60;
+  const TYPING_GAP_MS = 1200;
+  const lastEditRef = useRef({
+    tag: null,
+    at: 0
+  });
+  const saveHistory = (tag = null) => {
+    const now = Date.now();
+    if (tag) {
+      const last = lastEditRef.current;
+      if (last.tag === tag && now - last.at < TYPING_GAP_MS) {
+        lastEditRef.current = {
+          tag,
+          at: now
+        };
+        return;
+      }
+      lastEditRef.current = {
+        tag,
+        at: now
+      };
+    } else {
+      // การกดปุ่มถือเป็นการกระทำเดี่ยว ตัดการรวมของช่องพิมพ์ที่ค้างอยู่
+      lastEditRef.current = {
+        tag: null,
+        at: 0
+      };
+    }
+    setHistory(prev => {
+      const next = [...prev, {
+        schedule,
+        classes,
+        classSubjects,
+        teachers,
+        rooms
+      }];
+      return next.length > HISTORY_LIMIT ? next.slice(next.length - HISTORY_LIMIT) : next;
+    });
+  };
+  const getFirstName = fullName => {
+    if (!fullName) return '-';
+    const parts = fullName.trim().split(/\s+/);
+    if (parts.length > 1) {
+      parts.pop();
+      return parts.join(' ');
+    }
+    return fullName.trim();
+  };
+  const placedHoursFor = (classId, subjectId) => schedule.filter(s => s.classId === classId && s.subjectId === subjectId).length;
+
+  /**
+   * หาว่ามีห้องอื่นใช้ห้องนี้อยู่ในคาบเดียวกันหรือไม่
+   *
+   * นี่คือข้อจำกัดที่บีบที่สุดของแผนกช่าง เพราะห้องปฏิบัติการมีจำกัด
+   * ระบบเดิมเช็คแต่ครูชน ไม่เคยเช็คห้องเลย จึงลงสองห้องเรียนในโรงฝึกเดียวกันได้
+   */
+  const roomClashAt = (roomId, day, period, exceptClassId, exceptKeys) => {
+    if (!roomId) return null;
+    return schedule.find(s => {
+      if (s.classId === exceptClassId) return false;
+      if (s.day !== day || s.period !== period) return false;
+      if (exceptKeys && exceptKeys.has(`${s.classId}|${s.day}|${s.period}`)) return false;
+      return slotRoomId(s) === roomId;
+    });
+  };
+
+  // ==========================================
+  // ลากย้ายคาบ — ตรรกะ
+  // ==========================================
+
+  // สองคาบนี้เป็นวิชาเดียวกันที่วางต่อเนื่องกันหรือไม่
+  const sameBlockSlot = (a, b) => {
+    if (!a || !b) return false;
+    if (a.isFixed || b.isFixed) return !!(a.isFixed && b.isFixed && a.label === b.label);
+    if (a.subjectId !== b.subjectId) return false;
+    // วิชานอกแผนกไม่มีรหัสผูกไว้ (subjectId เป็น null ทั้งคู่) ต้องเทียบชื่อเพิ่ม
+    // ไม่งั้นวิชานอกแผนกคนละวิชาที่วางติดกันจะถูกมองเป็นบล็อกเดียวกัน
+    if (!a.subjectId && (a.subjectName || '') !== (b.subjectName || '')) return false;
+    if (!!a.isManualTeacher !== !!b.isManualTeacher) return false;
+    return a.isManualTeacher ? a.teacherName === b.teacherName : a.teacherId === b.teacherId;
+  };
+
+  /**
+   * หาบล็อกคาบติดกันที่ครอบคลุมช่องนี้
+   * วิชา 3 คาบติดกันถือเป็นก้อนเดียว ลากทีเดียวย้ายทั้งก้อน
+   * เพราะตอนวางผู้ใช้ตั้งใจให้ติดกัน การย้ายทีละคาบจะทำให้ก้อนขาด
+   *
+   * ต้องข้ามคาบพักกลางวันด้วย เพราะวิชา 3 คาบอาจถูกวางเป็นคาบ 4, 6, 7
+   * (คร่อมคาบพักที่ 5) ถ้าไม่ข้าม จะถูกมองเป็นสองก้อนแยกกันแล้วย้ายไม่ครบ
+   */
+  const getBlockAt = (classId, day, period) => {
+    const slot = getSlotData(classId, day, period);
+    if (!slot) return null;
+    const cObj = classes.find(c => c.id === classId) || {};
+    const lunch = cObj.lunchPeriod || 5;
+    const stepBack = p => {
+      const q = p - 1;
+      return q === lunch ? q - 1 : q;
+    };
+    const stepFwd = p => {
+      const q = p + 1;
+      return q === lunch ? q + 1 : q;
+    };
+    const periods = [period];
+    let a = stepBack(period);
+    while (a >= 1 && sameBlockSlot(getSlotData(classId, day, a), slot)) {
+      periods.unshift(a);
+      a = stepBack(a);
+    }
+    let b = stepFwd(period);
+    while (b <= 11 && sameBlockSlot(getSlotData(classId, day, b), slot)) {
+      periods.push(b);
+      b = stepFwd(b);
+    }
+    return {
+      classId,
+      day,
+      periods,
+      slot,
+      len: periods.length
+    };
+  };
+
+  /**
+   * ตรวจปลายทางแบบ "รายคาบ"
+   * ของเดิมบอกแค่ผ่าน/ไม่ผ่านทั้งก้อน ทำให้เห็นแค่ช่องเดียวว่าแดง
+   * ไม่รู้ว่าอีก 3 คาบที่เหลือชนหรือว่าง ต้องลองขยับไปเรื่อยๆ
+   * แบบใหม่คืนสถานะทุกคาบ จึงระบายสีบอกได้ว่าคาบไหนว่าง คาบไหนชน และชนเพราะอะไร
+   */
+  const evaluateDrop = (block, day, startPeriod) => {
+    const cObj = classes.find(c => c.id === block.classId) || {};
+    const lunch = cObj.lunchPeriod || 5;
+    const need = block.len;
+    if (startPeriod === lunch) {
+      return {
+        periods: [{
+          period: startPeriod,
+          ok: false,
+          reason: 'คาบพักกลางวัน'
+        }],
+        allOk: false,
+        overflow: false,
+        fitCount: 0,
+        need
+      };
+    }
+
+    // คาบของบล็อกที่กำลังลากไม่ถือว่าชนกับตัวเอง
+    const moving = new Set(block.periods.map(p => `${block.day}|${p}`));
+    const movingKeys = new Set(block.periods.map(p => `${block.classId}|${block.day}|${p}`));
+    const out = [];
+    let p = startPeriod,
+      overflow = false;
+    while (out.length < need) {
+      if (p > 11) {
+        overflow = true;
+        break;
+      }
+      if (p !== lunch) {
+        let ok = true,
+          reason = '';
+        const selfMove = day === block.day && moving.has(`${day}|${p}`);
+        const occupied = schedule.find(s => s.classId === block.classId && s.day === day && s.period === p && !selfMove);
+        if (occupied) {
+          const subj = (classSubjects[block.classId] || []).find(x => x.id === occupied.subjectId);
+          ok = false;
+          reason = `มี ${occupied.isFixed ? occupied.label : subj?.name || occupied.subjectName || 'วิชาอื่น'} อยู่แล้ว`;
+        } else if (!block.slot.isFixed) {
+          const busy = schedule.find(s => s.day === day && s.period === p && s.classId !== block.classId && (block.slot.isManualTeacher ? s.isManualTeacher && s.teacherName === block.slot.teacherName : !s.isManualTeacher && s.teacherId === block.slot.teacherId));
+          if (busy) {
+            const bc = classes.find(c => c.id === busy.classId);
+            ok = false;
+            reason = `ครูติดสอน ${bc?.name || 'ห้องอื่น'}`;
+          } else {
+            // ห้องปฏิบัติการชนกัน — ข้อจำกัดที่บีบที่สุดของแผนกช่าง
+            const rid = slotRoomId(block.slot);
+            const rc = roomClashAt(rid, day, p, block.classId, movingKeys);
+            if (rc) {
+              const rcCls = classes.find(c => c.id === rc.classId);
+              ok = false;
+              reason = `ห้อง ${roomLabel(rid)} ถูกใช้โดย ${rcCls?.name || 'ห้องอื่น'}`;
+            }
+          }
+        }
+        out.push({
+          period: p,
+          ok,
+          reason
+        });
+      }
+      p++;
+    }
+    const fitCount = out.filter(x => x.ok).length;
+    return {
+      periods: out,
+      allOk: !overflow && out.length === need && fitCount === need,
+      overflow,
+      fitCount,
+      need
+    };
+  };
+  const commitDrop = (block, day, startPeriod) => {
+    const v = evaluateDrop(block, day, startPeriod);
+    if (!v.allOk) return false;
+    const target = v.periods.map(x => x.period);
+    if (day === block.day && target[0] === block.periods[0]) return false; // วางที่เดิม ไม่ต้องทำอะไร
+
+    const movingKeys = new Set(block.periods.map(p => `${block.classId}|${block.day}|${p}`));
+    const originals = block.periods.map(p => schedule.find(s => s.classId === block.classId && s.day === block.day && s.period === p));
+    const kept = schedule.filter(s => !movingKeys.has(`${s.classId}|${s.day}|${s.period}`));
+    const moved = originals.map((orig, i) => ({
+      ...orig,
+      day,
+      period: target[i]
+    }));
+    const nextSchedule = [...kept, ...moved];
+    saveHistory();
+    setSchedule(nextSchedule);
+
+    // สรุปผลขึ้นแถบแจ้งมุมล่าง พร้อมสถานะว่าวิชานี้ยังขาดอีกกี่คาบ
+    const subj = block.slot.isFixed ? null : (classSubjects[block.classId] || []).find(x => x.id === block.slot.subjectId);
+    const subjName = subj?.name || block.slot.subjectName;
+    const cls = classes.find(c => c.id === block.classId);
+    const where = target.length > 1 ? `${day} คาบ ${target[0]}-${target[target.length - 1]}` : `${day} คาบ ${target[0]}`;
+    let stat = null;
+    if (subj) {
+      const required = Number(subj.theory || 0) + Number(subj.practical || 0);
+      // นับจากตารางชุดใหม่ ไม่ใช่ชุดเดิมที่ยังไม่อัปเดต
+      const placed = nextSchedule.filter(s => s.classId === block.classId && s.subjectId === subj.id).length;
+      const remain = Math.max(0, required - placed);
+      stat = {
+        placed,
+        required,
+        remain
+      };
+    }
+    showToast({
+      verb: 'ย้าย',
+      name: block.slot.isFixed ? block.slot.label : subjName || 'คาบเรียน',
+      where,
+      className: cls?.name || '',
+      len: target.length,
+      stat,
+      // จำความยาวประวัติไว้ ถ้ามีการแก้ไขอื่นแทรกเข้ามา ต้องซ่อนแถบนี้ทิ้ง
+      // ไม่งั้นปุ่มย้อนกลับจะไปย้อนการแก้ไขอันใหม่แทนการย้ายครั้งนี้
+      historyLen: history.length + 1
+    });
+    return true;
+  };
+
+  // ==========================================
+  // ลากย้ายคาบ — การควบคุมด้วยเมาส์และนิ้ว
+  //
+  // หลักการสำคัญ: ระหว่างลาก "ห้ามให้ React วาดใหม่แม้แต่ครั้งเดียว"
+  // ของเดิมสั่ง setState ทุกครั้งที่เมาส์ข้ามช่อง ทำให้ต้องคำนวณตาราง 55 ช่อง
+  // และตารางสรุปด้านขวาใหม่ทั้งหมด จึงหน่วงจนวางผิดช่อง
+  // แบบใหม่แตะ DOM ตรงๆ ทั้งเงา ทั้งสีช่องปลายทาง ทั้งข้อความบอกเหตุผล
+  // แล้วรวมงานทั้งหมดไว้ในจังหวะวาดภาพเดียว (requestAnimationFrame)
+  // ==========================================
+  const gestureRef = useRef(null);
+  const gridRef = useRef(null);
+  const suppressClickRef = useRef(false);
+  const litCellsRef = useRef([]); // ช่องที่กำลังระบายสีอยู่
+  const liftedCardsRef = useRef([]); // การ์ดต้นทางที่กำลังยก
+
+  // เงาที่ลอยตามเมาส์ ติดตั้งไว้ตลอดเวลาแล้วซ่อนไว้
+  // เพื่อไม่ต้องให้ React สร้างใหม่ตอนเริ่มลาก ซึ่งจะสะดุดพอดีจังหวะที่ผู้ใช้เริ่มขยับ
+  const ghostRef = useRef(null);
+  const ghostNameRef = useRef(null);
+  const ghostSubRef = useRef(null);
+  const ghostWhyRef = useRef(null);
+  const setGhostPos = (x, y) => {
+    const g = ghostRef.current,
+      gs = gestureRef.current;
+    if (!g || !gs) return;
+    g.style.transform = `translate3d(${x - gs.offX}px, ${y - gs.offY}px, 0)`;
+  };
+  const clearCellPaint = () => {
+    litCellsRef.current.forEach(el => el.classList.remove('drop-ok', 'drop-bad'));
+    litCellsRef.current = [];
+  };
+
+  // ระบายสีช่องปลายทางทีละคาบ เขียว/ส้ม = ว่าง แดง = ชน
+  const paintCells = (day, result) => {
+    clearCellPaint();
+    if (!day || !result) return;
+    result.periods.forEach(({
+      period,
+      ok
+    }) => {
+      const el = document.querySelector(`[data-drop-cell][data-day="${day}"][data-period="${period}"]`);
+      if (!el) return;
+      el.classList.add(ok ? 'drop-ok' : 'drop-bad');
+      litCellsRef.current.push(el);
+    });
+  };
+  const setGhostText = result => {
+    const gs = gestureRef.current;
+    if (!gs) return;
+    const why = ghostWhyRef.current;
+    const g = ghostRef.current;
+    if (!why || !g) return;
+    if (!result) {
+      why.textContent = 'ลากออกนอกตาราง · ปล่อยเพื่อยกเลิก';
+      why.className = 'ghost-why ghost-why-idle';
+      g.style.boxShadow = '0 14px 32px rgba(15,30,61,.3)';
+      return;
+    }
+    if (result.allOk) {
+      const ps = result.periods.map(x => x.period);
+      why.textContent = ps.length > 1 ? `วางได้ · คาบ ${ps[0]}-${ps[ps.length - 1]}` : `วางได้ · คาบ ${ps[0]}`;
+      why.className = 'ghost-why ghost-why-ok';
+      g.style.boxShadow = '0 14px 32px rgba(217,116,26,.35), 0 0 0 2px var(--accent)';
+      return;
+    }
+    const firstBad = result.periods.find(x => !x.ok);
+    const over = result.overflow ? ' · เลยคาบ 11' : '';
+    why.textContent = `วางได้ ${result.fitCount}/${result.need} คาบ${over}` + (firstBad ? ` · คาบ ${firstBad.period} ${firstBad.reason}` : '');
+    why.className = 'ghost-why ghost-why-bad';
+    g.style.boxShadow = '0 14px 32px rgba(184,31,45,.35), 0 0 0 2px var(--danger)';
+  };
+  const hitTest = (x, y) => {
+    const el = document.elementFromPoint(x, y);
+    const cell = el && el.closest ? el.closest('[data-drop-cell]') : null;
+    if (!cell) return null;
+    const day = cell.getAttribute('data-day');
+    const period = Number(cell.getAttribute('data-period'));
+    if (!day || !period) return null;
+    return {
+      day,
+      period
+    };
+  };
+
+  /**
+   * งานทั้งหมดของการลากรวมอยู่ในจังหวะวาดภาพเดียว
+   * เมาส์อาจส่ง event มาถี่กว่าจอรีเฟรช ถ้าทำงานทุก event จะเสียแรงเปล่า
+   * เก็บพิกัดล่าสุดไว้แล้วประมวลผลรอบละครั้งพอดีกับจังหวะจอ
+   */
+  const dragTick = () => {
+    const gs = gestureRef.current;
+    if (!gs || !gs.started) return;
+
+    // เลื่อนตารางอัตโนมัติเมื่อลากไปชิดขอบ
+    const wrap = gridRef.current;
+    if (wrap) {
+      const r = wrap.getBoundingClientRect();
+      const EDGE = 72,
+        SPEED = 20;
+      if (gs.x < r.left + EDGE) wrap.scrollLeft -= SPEED * Math.min(1, (r.left + EDGE - gs.x) / EDGE);else if (gs.x > r.right - EDGE) wrap.scrollLeft += SPEED * Math.min(1, (gs.x - (r.right - EDGE)) / EDGE);
+    }
+    setGhostPos(gs.x, gs.y);
+    const hit = hitTest(gs.x, gs.y);
+    const key = hit ? `${hit.day}|${hit.period}` : '';
+    // ระบายสีใหม่เฉพาะตอนเปลี่ยนช่อง หรือหลังเลื่อนตารางซึ่งทำให้ตำแหน่งช่องขยับ
+    if (key !== gs.lastKey || gs.needRepaint) {
+      gs.lastKey = key;
+      gs.needRepaint = false;
+      if (!hit) {
+        gs.result = null;
+        gs.hit = null;
+        clearCellPaint();
+        setGhostText(null);
+      } else {
+        gs.hit = hit;
+        gs.result = evaluateDrop(gs.block, hit.day, hit.period);
+        paintCells(hit.day, gs.result);
+        setGhostText(gs.result);
+      }
+    }
+    gs.raf = requestAnimationFrame(dragTick);
+  };
+  const startDrag = () => {
+    const gs = gestureRef.current;
+    if (!gs || gs.started) return;
+    gs.started = true;
+    suppressClickRef.current = true;
+    document.body.classList.add('tt-dragging');
+    const {
+      block
+    } = gs;
+    const subjInfoForGhost = slotSubjectInfo(block.slot);
+    const cls = classes.find(c => c.id === block.classId);
+    const pal = block.slot.isFixed ? null : subjInfoForGhost ? subjInfoForGhost.pal : SUBJECT_COLORS[0];
+
+    // ตั้งค่าเงาด้วย DOM ตรงๆ ไม่ผ่าน React
+    const g = ghostRef.current;
+    if (g) {
+      g.style.display = 'flex';
+      g.style.width = `${Math.min(gs.rect.width, 210)}px`;
+      g.style.background = pal ? pal.bg : '#EEF0F4';
+      g.style.borderLeftColor = pal ? pal.line : '#48597D';
+      g.style.color = pal ? pal.text : '#0F1E3D';
+      if (ghostNameRef.current) ghostNameRef.current.textContent = block.slot.isFixed ? block.slot.label : subjInfoForGhost?.name || 'วิชา';
+      if (ghostSubRef.current) ghostSubRef.current.textContent = `${cls?.name || ''}${block.len > 1 ? ` · ${block.len} คาบ` : ' · 1 คาบ'}`;
+    }
+    setGhostPos(gs.x, gs.y);
+
+    // ทำให้การ์ดต้นทางจางลง เพื่อให้เห็นว่าเดิมอยู่ตรงไหน
+    liftedCardsRef.current = [];
+    block.periods.forEach(p => {
+      const el = document.querySelector(`[data-cardkey="${block.classId}|${block.day}|${p}"]`);
+      if (el) {
+        el.classList.add('card-lifted');
+        liftedCardsRef.current.push(el);
+      }
+    });
+    gs.raf = requestAnimationFrame(dragTick);
+  };
+  const endDrag = commit => {
+    const gs = gestureRef.current;
+    const h = gs && gs.handlers;
+    window.removeEventListener('pointermove', h ? h.move : onPointerMove);
+    window.removeEventListener('pointerup', h ? h.up : onPointerUp);
+    window.removeEventListener('pointercancel', h ? h.cancel : onPointerCancel);
+    if (!gs) return;
+    if (gs.holdTimer) clearTimeout(gs.holdTimer);
+    if (gs.raf) cancelAnimationFrame(gs.raf);
+    if (gs.started) {
+      document.body.classList.remove('tt-dragging');
+      clearCellPaint();
+      liftedCardsRef.current.forEach(el => el.classList.remove('card-lifted'));
+      liftedCardsRef.current = [];
+      if (ghostRef.current) ghostRef.current.style.display = 'none';
+      if (commit && gs.hit && gs.result && gs.result.allOk) {
+        commitDrop(gs.block, gs.hit.day, gs.hit.period);
+      }
+      setTimeout(() => {
+        suppressClickRef.current = false;
+      }, 0);
+    }
+    gestureRef.current = null;
+  };
+  const onPointerMove = e => {
+    const gs = gestureRef.current;
+    if (!gs) return;
+    gs.x = e.clientX;
+    gs.y = e.clientY;
+    if (!gs.started) {
+      const dist = Math.hypot(e.clientX - gs.startX, e.clientY - gs.startY);
+      if (gs.isTouch) {
+        // บนจอสัมผัส ถ้าขยับก่อนกดค้างครบ ถือว่าตั้งใจปัดเลื่อนตาราง ไม่ใช่ลากคาบ
+        if (dist > 10) endDrag(false);
+        return;
+      }
+      if (dist < 4) return; // กันมือสั่นตอนคลิกธรรมดา
+      startDrag();
+      return;
+    }
+    // ไม่ทำอะไรต่อที่นี่ ปล่อยให้ dragTick จัดการในจังหวะวาดภาพ
+    if (e.cancelable) e.preventDefault();
+  };
+  const onPointerUp = () => endDrag(true);
+  const onPointerCancel = () => endDrag(false);
+  const onCardPointerDown = (e, classId, day, period) => {
+    if (e.button !== undefined && e.button !== 0) return; // เฉพาะปุ่มซ้าย
+    const block = getBlockAt(classId, day, period);
+    if (!block) return;
+    const rect = e.currentTarget.getBoundingClientRect();
+    const isTouch = e.pointerType === 'touch';
+    gestureRef.current = {
+      block,
+      rect,
+      isTouch,
+      started: false,
+      startX: e.clientX,
+      startY: e.clientY,
+      x: e.clientX,
+      y: e.clientY,
+      offX: Math.min(e.clientX - rect.left, 180),
+      offY: Math.min(e.clientY - rect.top, 34),
+      hit: null,
+      result: null,
+      lastKey: '',
+      needRepaint: true,
+      holdTimer: null,
+      raf: null
+    };
+
+    // เก็บฟังก์ชันชุดที่ลงทะเบียนจริงไว้ด้วย
+    // เพราะฟังก์ชันถูกสร้างใหม่ทุกครั้งที่วาดหน้าจอ ถ้าถอดด้วยตัวอื่นจะถอดไม่ออก
+    gestureRef.current.handlers = {
+      move: onPointerMove,
+      up: onPointerUp,
+      cancel: onPointerCancel
+    };
+    window.addEventListener('pointermove', onPointerMove, {
+      passive: false
+    });
+    window.addEventListener('pointerup', onPointerUp);
+    window.addEventListener('pointercancel', onPointerCancel);
+
+    // บนจอสัมผัสต้องกดค้างก่อนจึงเริ่มลาก เพื่อให้ปัดนิ้วเลื่อนตารางได้ตามปกติ
+    if (isTouch) gestureRef.current.holdTimer = setTimeout(() => startDrag(), 220);
+  };
+
+  // เก็บกวาดให้เรียบร้อยหากผู้ใช้ปิดหน้าไปกลางคัน
+  useEffect(() => () => {
+    // ต้องถอดด้วยฟังก์ชันชุดเดียวกับที่ลงทะเบียนไว้ ไม่ใช่ชุดจากการวาดรอบแรก
+    const h = gestureRef.current && gestureRef.current.handlers;
+    if (h) {
+      window.removeEventListener('pointermove', h.move);
+      window.removeEventListener('pointerup', h.up);
+      window.removeEventListener('pointercancel', h.cancel);
+    }
+    if (gestureRef.current && gestureRef.current.raf) cancelAnimationFrame(gestureRef.current.raf);
+    if (gestureRef.current && gestureRef.current.holdTimer) clearTimeout(gestureRef.current.holdTimer);
+    document.body.classList.remove('tt-dragging');
+    if (toastTimerRef.current) clearTimeout(toastTimerRef.current);
+    if (historyPersistRef.current) clearTimeout(historyPersistRef.current);
+  }, []);
+
+  /**
+   * ซ่อนแถบแจ้งทิ้งทันทีที่ประวัติเปลี่ยนไปจากตอนที่แจ้ง
+   *
+   * เหตุผล: ปุ่มย้อนกลับบนแถบใช้ระบบย้อนกลับตัวเดียวกับปุ่มบนแถบบน
+   * ซึ่งย้อนได้แค่การแก้ไขล่าสุด ถ้าผู้ใช้ไปทำอะไรอย่างอื่นต่อ
+   * แล้วย้อนกลับมากดปุ่มบนแถบนี้ จะกลายเป็นย้อนการแก้ไขอันใหม่ผิดตัว
+   */
+  useEffect(() => {
+    if (toast && toast.historyLen !== history.length) dismissToast();
+  }, [history.length, toast]);
+
+  // ==========================================
+  // 5. Tabs (แผ่นงานแบบสมุดบัญชี)
+  // ==========================================
+  const renderTabs = (items, currentTabId, setCurrentTabId, setItems, accentVar, onDouble) => {
+    return items.map(item => /*#__PURE__*/React.createElement("div", {
+      key: item.id,
+      draggable: editingTabId !== item.id,
+      onDragStart: e => {
+        setDraggedTabId(item.id);
+        e.dataTransfer.effectAllowed = 'move';
+        e.dataTransfer.setData('text/plain', item.id);
+      },
+      onDragOver: e => {
+        e.preventDefault();
+        e.dataTransfer.dropEffect = 'move';
+      },
+      onDrop: e => {
+        e.preventDefault();
+        if (draggedTabId && draggedTabId !== item.id) {
+          const dIdx = items.findIndex(i => i.id === draggedTabId);
+          const tIdx = items.findIndex(i => i.id === item.id);
+          if (dIdx !== -1 && tIdx !== -1) {
+            const arr = [...items];
+            const [moved] = arr.splice(dIdx, 1);
+            arr.splice(tIdx, 0, moved);
+            saveHistory();
+            setItems(arr);
+          }
+        }
+        setDraggedTabId(null);
+      },
+      onDragEnd: () => setDraggedTabId(null),
+      onClick: () => {
+        if (editingTabId !== item.id) setCurrentTabId(item.id);
+      },
+      onDoubleClick: () => onDouble ? onDouble(item) : handleTabDoubleClick(item),
+      title: onDouble ? 'คลิกเพื่อสลับ · ดับเบิลคลิกเพื่อเปิดหน้าตั้งค่า · ลากเพื่อเรียงใหม่' : 'คลิกเพื่อสลับ · ดับเบิลคลิกเพื่อเปลี่ยนชื่อ · ลากเพื่อเรียงใหม่',
+      className: `sheet-tab ${currentTabId === item.id ? 'sheet-tab-on' : ''} ${draggedTabId === item.id ? 'sheet-tab-drag' : ''}`,
+      style: (() => {
+        const pal = classTabColor(item);
+        if (pal) {
+          // แท็บห้องเรียน: สีตามระดับชั้น/ปี — พื้นอ่อนตอนไม่ได้เลือก ขาวตอนเลือก แต่เส้นขอบบน+ตัวหนังสือคงสีเดิมเสมอ
+          return {
+            borderTopColor: pal.accent,
+            background: currentTabId === item.id ? undefined : pal.bg,
+            color: pal.accent,
+            boxShadow: currentTabId === item.id ? `inset 0 3px 0 ${pal.accent}` : undefined
+          };
+        }
+        return currentTabId === item.id ? {
+          boxShadow: `inset 0 3px 0 ${accentVar}`
+        } : undefined;
+      })()
+    }, editingTabId === item.id ? /*#__PURE__*/React.createElement("input", {
+      autoFocus: true,
+      value: editTabName,
+      onChange: e => setEditTabName(e.target.value),
+      onBlur: () => saveTabName(item.id),
+      onKeyDown: e => e.key === 'Enter' && saveTabName(item.id),
+      className: "tab-input"
+    }) : /*#__PURE__*/React.createElement("span", null, item.name)));
+  };
+
+  // ==========================================
+  // 6. ตารางสรุปในไฟล์ PDF
+  // ==========================================
+  const renderPDFSummaryTable = (summaryData, isStudentMode) => {
+    // พื้นที่คอลัมน์ขวาจำกัด ถ้ารายวิชาเยอะต้องย่อขนาดลง
+    // ไม่งั้นแถวท้ายๆ จะถูก overflow:hidden ตัดหายไปโดยผู้ใช้ไม่รู้ตัว
+    const n = summaryData.summary.length;
+    const d = n > 20 ? {
+      pad: '1px 3px',
+      fs: 10,
+      fsNum: 10.5,
+      clamp: 1
+    } : n > 14 ? {
+      pad: '2px 3px',
+      fs: 11.5,
+      fsNum: 12,
+      clamp: 1
+    } : {
+      pad: '4px',
+      fs: 13,
+      fsNum: 13.5,
+      clamp: 2
+    };
+    const mono = PRINT_FONT;
+    return /*#__PURE__*/React.createElement("div", {
+      style: {
+        marginTop: '8px'
+      }
+    }, /*#__PURE__*/React.createElement("table", {
+      style: {
+        width: '100%',
+        borderCollapse: 'collapse',
+        textAlign: 'center',
+        tableLayout: 'fixed'
+      }
+    }, /*#__PURE__*/React.createElement("thead", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", {
+      style: {
+        border: '1px solid #111',
+        backgroundColor: '#EFF1F4',
+        padding: '6px 4px',
+        fontSize: '13.5px',
+        width: '22%'
+      }
+    }, "รหัสวิชา"), /*#__PURE__*/React.createElement("th", {
+      style: {
+        border: '1px solid #111',
+        backgroundColor: '#EFF1F4',
+        padding: '6px 4px',
+        fontSize: '13.5px',
+        width: '44%'
+      }
+    }, "รายวิชา"), /*#__PURE__*/React.createElement("th", {
+      style: {
+        border: '1px solid #111',
+        backgroundColor: '#EFF1F4',
+        padding: '6px 4px',
+        fontSize: '13.5px',
+        width: '8.5%'
+      }
+    }, "ท."), /*#__PURE__*/React.createElement("th", {
+      style: {
+        border: '1px solid #111',
+        backgroundColor: '#EFF1F4',
+        padding: '6px 4px',
+        fontSize: '13.5px',
+        width: '8.5%'
+      }
+    }, "ป."), /*#__PURE__*/React.createElement("th", {
+      style: {
+        border: '1px solid #111',
+        backgroundColor: '#EFF1F4',
+        padding: '6px 4px',
+        fontSize: '13.5px',
+        width: '8.5%'
+      }
+    }, "น."), /*#__PURE__*/React.createElement("th", {
+      style: {
+        border: '1px solid #111',
+        backgroundColor: '#EFF1F4',
+        padding: '6px 4px',
+        fontSize: '13.5px',
+        width: '8.5%'
+      }
+    }, "ชม."))), /*#__PURE__*/React.createElement("tbody", null, n === 0 ? /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", {
+      colSpan: "6",
+      style: {
+        border: '1px solid #111',
+        padding: '16px',
+        fontSize: '14.5px',
+        color: '#6b7280',
+        fontStyle: 'italic'
+      }
+    }, isStudentMode ? 'ไม่มีข้อมูล' : 'ไม่มีข้อมูลสอน')) : summaryData.summary.map((s, idx) => {
+      // สีพาสเทลจางเกินไปจนมองไม่ออกว่าคือสีอะไร ทั้งในหน้าตัวอย่างและตอนพิมพ์จริง
+      // เข้มขึ้นให้เห็นชัด และใส่สีตัวหนังสือกำกับที่ตัวเลขด้วย
+      // เพราะเบราว์เซอร์มักตัดสีพื้นหลังออกตอนพิมพ์ (ปิด "Background graphics" เป็นค่าเริ่มต้น)
+      // แต่สีตัวหนังสือพิมพ์ออกมาได้เสมอไม่ว่าตั้งค่าอย่างไร จึงเป็นตัวช่วยสำรองที่เชื่อถือได้กว่า
+      let bgColor = 'white';
+      let textColor = '#111';
+      let hoursDisplay = s.hours;
+      if (isStudentMode) {
+        const reqHrs = Number(s.theory) + Number(s.practical);
+        const schHrs = placedHoursFor(summaryData.classId, s.id);
+        hoursDisplay = `${schHrs}/${reqHrs}`;
+        bgColor = '#F8D0D3';
+        textColor = '#8C1620';
+        if (schHrs >= reqHrs) {
+          bgColor = '#C9EAD9';
+          textColor = '#0E5A42';
+        } else if (schHrs > 0) {
+          bgColor = '#FBE7AE';
+          textColor = '#7A4E06';
+        }
+      }
+      return /*#__PURE__*/React.createElement("tr", {
+        key: s.id || idx,
+        style: {
+          backgroundColor: bgColor,
+          WebkitPrintColorAdjust: 'exact',
+          printColorAdjust: 'exact'
+        }
+      }, /*#__PURE__*/React.createElement("td", {
+        style: {
+          border: '1px solid #111',
+          padding: d.pad,
+          fontSize: `${d.fs}px`,
+          fontFamily: mono
+        }
+      }, s.code || '-'), /*#__PURE__*/React.createElement("td", {
+        style: {
+          border: '1px solid #111',
+          padding: d.pad,
+          fontSize: `${d.fs}px`,
+          textAlign: 'left',
+          fontWeight: 'bold'
+        }
+      }, /*#__PURE__*/React.createElement("div", {
+        style: {
+          display: '-webkit-box',
+          WebkitLineClamp: d.clamp,
+          WebkitBoxOrient: 'vertical',
+          overflow: 'hidden'
+        }
+      }, s.name)), /*#__PURE__*/React.createElement("td", {
+        style: {
+          border: '1px solid #111',
+          padding: d.pad,
+          fontSize: `${d.fsNum}px`,
+          fontFamily: mono
+        }
+      }, s.theory), /*#__PURE__*/React.createElement("td", {
+        style: {
+          border: '1px solid #111',
+          padding: d.pad,
+          fontSize: `${d.fsNum}px`,
+          fontFamily: mono
+        }
+      }, s.practical), /*#__PURE__*/React.createElement("td", {
+        style: {
+          border: '1px solid #111',
+          padding: d.pad,
+          fontSize: `${d.fsNum}px`,
+          fontFamily: mono
+        }
+      }, s.credit), /*#__PURE__*/React.createElement("td", {
+        style: {
+          border: '1px solid #111',
+          padding: d.pad,
+          fontSize: `${d.fsNum}px`,
+          fontWeight: 'bold',
+          fontFamily: mono,
+          color: textColor
+        }
+      }, hoursDisplay));
+    })), n > 0 && /*#__PURE__*/React.createElement("tfoot", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", {
+      colSpan: "2",
+      style: {
+        border: '1px solid #111',
+        backgroundColor: '#EFF1F4',
+        padding: '5px',
+        fontSize: '13px',
+        fontWeight: 'bold',
+        textAlign: 'right'
+      }
+    }, "รวมทั้งสิ้น"), /*#__PURE__*/React.createElement("td", {
+      style: {
+        border: '1px solid #111',
+        backgroundColor: '#EFF1F4',
+        padding: '5px',
+        fontSize: '13px',
+        fontWeight: 'bold',
+        fontFamily: mono
+      }
+    }, summaryData.sumTheory), /*#__PURE__*/React.createElement("td", {
+      style: {
+        border: '1px solid #111',
+        backgroundColor: '#EFF1F4',
+        padding: '5px',
+        fontSize: '13px',
+        fontWeight: 'bold',
+        fontFamily: mono
+      }
+    }, summaryData.sumPractical), /*#__PURE__*/React.createElement("td", {
+      style: {
+        border: '1px solid #111',
+        backgroundColor: '#EFF1F4',
+        padding: '5px',
+        fontSize: '13px',
+        fontWeight: 'bold',
+        fontFamily: mono
+      }
+    }, summaryData.sumCredit), /*#__PURE__*/React.createElement("td", {
+      style: {
+        border: '1px solid #111',
+        backgroundColor: '#EFF1F4',
+        padding: '5px',
+        fontSize: '13px',
+        fontWeight: 'bold',
+        fontFamily: mono
+      }
+    }, summaryData.sumHours)))));
+  };
+
+  // ==========================================
+  // 7. Action Handlers
+  // ==========================================
+  const executeConfirm = () => {
+    const {
+      action,
+      payload
+    } = confirmDialog;
+    setConfirmDialog(prev => ({
+      ...prev,
+      isOpen: false
+    }));
+    if (action === 'DELETE_CLASS') {
+      saveHistory();
+      const remaining = classes.filter(c => c.id !== payload);
+      setClasses(remaining);
+      if (currentClass === payload) setCurrentClass(remaining[0]?.id || '');
+      setSchedule(prev => prev.filter(s => s.classId !== payload));
+    } else if (action === 'CLEAR_CURRENT_CLASS') {
+      saveHistory();
+      setSchedule(prev => prev.filter(s => s.classId !== currentClass || s.isFixed));
+    } else if (action === 'CLEAR_ALL_DATA') {
+      saveHistory();
+      (async () => {
+        try {
+          await window.storage.delete(DATA_KEY, false);
+        } catch (e) {}
+        try {
+          await window.storage.delete(UI_KEY, false);
+        } catch (e) {}
+        try {
+          await window.storage.delete(HISTORY_KEY, false);
+        } catch (e) {}
+      })();
+      setClasses(INITIAL_CLASSES);
+      setClassSubjects({
+        'c1': INITIAL_SUBJECTS,
+        'c2': []
+      });
+      setConfig(INITIAL_CONFIG);
+      setSchedule([]);
+      setTeachers(INITIAL_TEACHERS_DATA);
+      setRooms(INITIAL_ROOMS);
+      setLastSavedTime(null);
+      setHasSavedData(false);
+      setIsDataModalOpen(false);
+      setStep('home');
+    } else if (action === 'RESET_FROM_HOME') {
+      (async () => {
+        try {
+          await window.storage.delete(DATA_KEY, false);
+        } catch (e) {}
+        try {
+          await window.storage.delete(UI_KEY, false);
+        } catch (e) {}
+        try {
+          await window.storage.delete(HISTORY_KEY, false);
+        } catch (e) {}
+      })();
+      setClasses(INITIAL_CLASSES);
+      setClassSubjects({
+        'c1': INITIAL_SUBJECTS,
+        'c2': []
+      });
+      setConfig(INITIAL_CONFIG);
+      setTeachers(INITIAL_TEACHERS_DATA);
+      setRooms(INITIAL_ROOMS);
+      const init = [];
+      INITIAL_CLASSES.forEach(c => {
+        init.push({
+          classId: c.id,
+          day: 'พุธ',
+          period: 1,
+          isFixed: true,
+          label: 'กิจกรรม'
+        });
+        init.push({
+          classId: c.id,
+          day: 'พุธ',
+          period: 2,
+          isFixed: true,
+          label: 'กิจกรรม'
+        });
+      });
+      setSchedule(init);
+      setHistory([]);
+      setLastSavedTime(null);
+      setHasSavedData(false);
+      setCurrentClass(INITIAL_CLASSES[0].id);
+      setStep('timetable');
+    } else if (action === 'DELETE_ROOM') {
+      saveHistory();
+      setRooms(rooms.filter(r => r.id !== payload));
+      // คาบและครูที่อ้างห้องนี้ ให้กลายเป็นไม่ระบุห้อง ไม่ให้เหลือรหัสห้องที่ชี้ไปที่ว่าง
+      setSchedule(prev => prev.map(s => s.roomId === payload ? {
+        ...s,
+        roomId: null
+      } : s));
+      setTeachers(prev => prev.map(t => t.roomId === payload ? {
+        ...t,
+        roomId: null
+      } : t));
+    } else if (action === 'DELETE_TEACHER') {
+      saveHistory();
+      setTeachers(teachers.filter(t => t.id !== payload));
+    } else if (action === 'OPEN_SUBJECT_MODAL') {
+      setIsSubjectModalOpen(true);
+    }
+  };
+  const handleStart = () => {
+    if (!config.year) {
+      customAlert('เลือกปีการศึกษาก่อนเริ่มจัดตาราง');
+      return;
+    }
+    if (schedule.length === 0) {
+      const init = [];
+      classes.forEach(c => {
+        init.push({
+          classId: c.id,
+          day: 'พุธ',
+          period: 1,
+          isFixed: true,
+          label: 'กิจกรรม'
+        });
+        init.push({
+          classId: c.id,
+          day: 'พุธ',
+          period: 2,
+          isFixed: true,
+          label: 'กิจกรรม'
+        });
+      });
+      setSchedule(init);
+    }
+    setCurrentClass(deptClasses[0]?.id || '');
+    setStep('timetable');
+  };
+  const handleUndo = () => {
+    if (history.length === 0) return;
+    // ตัดการรวมการพิมพ์ที่ค้างอยู่ ไม่งั้นการพิมพ์ครั้งถัดไปจะไปรวมกับขั้นที่เพิ่งย้อนกลับไปแล้ว
+    lastEditRef.current = {
+      tag: null,
+      at: 0
+    };
+    const last = history[history.length - 1];
+    setSchedule(last.schedule);
+    setClasses(last.classes);
+    setClassSubjects(last.classSubjects);
+    setTeachers(last.teachers);
+    if (last.rooms) setRooms(last.rooms);
+    setHistory(prev => prev.slice(0, -1));
+  };
+  const handleClearCurrentClass = () => {
+    const name = classes.find(c => c.id === currentClass)?.name || '';
+    requestConfirm('CLEAR_CURRENT_CLASS', null, 'ล้างตารางห้องนี้', `คาบเรียนทั้งหมดของห้อง "${name}" จะถูกลบออกจากตาราง รายวิชาและข้อมูลห้องยังอยู่ครบ`, 'ล้างตาราง');
+  };
+  const handleClearAllData = () => {
+    requestConfirm('CLEAR_ALL_DATA', null, 'ล้างข้อมูลทั้งหมด', 'ห้องเรียน รายวิชา ครูผู้สอน และตารางทั้งหมดจะถูกลบและกลับไปเป็นค่าเริ่มต้น สำรองข้อมูลเป็นไฟล์ไว้ก่อนหากยังต้องการใช้', 'ล้างทั้งหมด');
+  };
+  const exportBackup = () => {
+    const data = {
+      classes,
+      classSubjects,
+      config,
+      schedule,
+      teachers,
+      rooms,
+      version: '2.1'
+    };
+    const blob = new Blob([JSON.stringify(data, null, 2)], {
+      type: 'application/json'
+    });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.setAttribute("href", url);
+    a.setAttribute("download", `ตารางเรียน_สำรอง_${config.year}_ภาค${config.term}.json`);
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  };
+  const importBackup = (e, openAfter = false) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = ev => {
+      try {
+        const parsed = JSON.parse(ev.target.result);
+        if (parsed.classes && parsed.config) {
+          const migrated = parsed.classes.map(c => ({
+            ...c,
+            lunchPeriod: c.lunchPeriod || 5,
+            level: c.level || 'ปวช.',
+            year: c.year || 1,
+            room: c.room || 1
+          }));
+          const migSubs = {};
+          Object.entries(parsed.classSubjects || {}).forEach(([cid, list]) => {
+            migSubs[cid] = (list || []).map((s, i) => ({
+              ...s,
+              colorKey: s.colorKey || normalizeSubjectColor(s, i).key
+            }));
+          });
+          const importedYear = parsed.config.year || '';
+          const mig = migrateRooms(parsed);
+          saveHistory();
+          setClasses(migrated);
+          setClassSubjects(migSubs);
+          setTeachers(mig.teachers);
+          setRooms(mig.rooms);
+          setConfig({
+            term: parsed.config.term || 1,
+            year: importedYear
+          });
+          setSchedule(mig.schedule);
+          setHasSavedData(true);
+          // ห้องที่เลือกไว้เดิมอาจไม่มีอยู่ในไฟล์ที่นำเข้า ต้องชี้ไปห้องแรกของไฟล์ใหม่
+          setCurrentClass(migrated[0]?.id || '');
+          setCurrentTeacherTab((parsed.teachers || [])[0]?.id || '');
+          const count = `${migrated.length} ห้อง · ${(parsed.teachers || []).length} ครู · ${(parsed.schedule || []).filter(s => s.subjectId).length} คาบ`;
+          if (openAfter && importedYear !== '') {
+            setStep('timetable');
+          } else if (openAfter) {
+            customAlert(`นำเข้าข้อมูลแล้ว (${count})\n\nไฟล์นี้ไม่ได้ระบุปีการศึกษา เลือกปีการศึกษาก่อนเริ่มจัดตาราง`);
+          } else {
+            customAlert(`กู้คืนข้อมูลเรียบร้อยแล้ว (${count})`);
+          }
+        } else {
+          customAlert('ไฟล์นี้ไม่ใช่ไฟล์สำรองของระบบ เลือกไฟล์ .json ที่ได้จากปุ่มสำรองข้อมูล');
+        }
+      } catch (err) {
+        customAlert('อ่านไฟล์ไม่สำเร็จ ไฟล์อาจเสียหายหรือไม่ใช่รูปแบบ JSON');
+      }
+      e.target.value = null;
+    };
+    reader.readAsText(file);
+  };
+  const handleExportPDF = mode => {
+    // กันกรณีสั่งพิมพ์ตารางสอนขณะที่ยังไม่มีครูในระบบ ซึ่งจะได้ไฟล์เปล่า
+    if (mode === 'teacher_current' && !activeTeacherObj.id) {
+      customAlert('ยังไม่ได้เลือกครูผู้สอน เพิ่มรายชื่อครูแล้วเลือกแท็บครูที่ต้องการก่อนสั่งพิมพ์');
+      return;
+    }
+    if (mode === 'room_current' && !activeRoomObj.id) {
+      customAlert('ยังไม่ได้เลือกห้อง เพิ่มห้องในทะเบียนแล้วเลือกแท็บห้องที่ต้องการก่อนสั่งพิมพ์');
+      return;
+    }
+    if (mode === 'room_all' && deptRooms.length === 0) {
+      customAlert(rooms.length > 0 ? 'ห้องทั้งหมดในทะเบียนตอนนี้เป็นห้องนอกแผนก ซึ่งไม่รวมในตารางนี้ เพิ่มห้องของแผนกก่อนสั่งพิมพ์' : 'ยังไม่มีห้องในทะเบียน เพิ่มห้องก่อนสั่งพิมพ์ตารางการใช้ห้อง');
+      return;
+    }
+    if (mode === 'teacher_all' && teachers.length === 0) {
+      customAlert('ยังไม่มีครูผู้สอนในระบบ เพิ่มรายชื่อครูก่อนสั่งพิมพ์ตารางสอน');
+      return;
+    }
+    setPdfError('');
+    setIsDataModalOpen(false);
+    setPrintMode(mode);
+  };
+  const pdfTitle = () => {
+    if (printMode === 'current') return `ตารางเรียน ${activeClassObj.name || ''}`;
+    if (printMode === 'teacher_current') return `ตารางสอน ${activeTeacherObj?.name || 'ครูผู้สอน'}`;
+    if (printMode === 'teacher_all') return 'ตารางสอน ครูทุกคน';
+    if (printMode === 'room_current') return `ตารางการใช้ห้อง ${activeRoomObj?.name || ''}`;
+    if (printMode === 'room_all') return 'ตารางการใช้ห้อง ทุกห้อง';
+    return 'ตารางเรียน ทุกห้อง';
+  };
+  const pdfFilename = ext => `${safeFilename(pdfTitle())} ${config.year}-${config.term}.${ext}`;
+
+  /**
+   * ประกอบเอกสาร HTML ที่พิมพ์ได้ในตัวเอง จากเนื้อหาในหน้าตัวอย่างที่เห็นอยู่
+   * ใช้ร่วมกันทั้งสองปุ่ม เพื่อให้ผลลัพธ์ตรงกันเสมอ ไม่ต้องดูแลสองชุด
+   */
+  const buildPrintableHtml = () => {
+    const src = document.getElementById('pdf-render-area');
+    if (!src) throw new Error('NODOM');
+    const pages = src.querySelectorAll('.pdf-page');
+    if (pages.length === 0) throw new Error('NOPAGE');
+    const title = pdfTitle();
+    return `<!DOCTYPE html>
 <html lang="th">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>${Pv(i)} ${w.year}-${w.term}</title>
+<title>${escapeHtml(title)} ${config.year}-${config.term}</title>
 <style>
   html,body{ margin:0; padding:0; background:#e9ecf1; }
   html{ -webkit-print-color-adjust:exact; print-color-adjust:exact; color-adjust:exact; }
-  body,body *{ font-family:${Le}; box-sizing:border-box; -webkit-print-color-adjust:exact; print-color-adjust:exact; color-adjust:exact; }
+  body,body *{ font-family:${PRINT_FONT}; box-sizing:border-box; -webkit-print-color-adjust:exact; print-color-adjust:exact; color-adjust:exact; }
   .sheet{ display:flex; flex-direction:column; align-items:center; gap:20px; padding:20px 0; }
   .pdf-page{ background:#fff; box-shadow:0 6px 20px rgba(15,30,61,.18); }
   .bar{
@@ -40,7 +2252,7 @@ ${l(9+a)}:20`;return{id:t,time:r,start:`${l(8+a)}:20`,end:`${l(9+a)}:20`,rawTime
     background:#fff; color:#0F1E3D; border-radius:4px; padding:1px 7px;
     font-size:13px; font-weight:700;
   }
-${ag}
+${PRINT_PAGE_CSS}
   @media print{
     html,body{ background:#fff; -webkit-print-color-adjust:exact !important; print-color-adjust:exact !important; }
     * { -webkit-print-color-adjust:exact !important; print-color-adjust:exact !important; }
@@ -51,25 +2263,1721 @@ ${ag}
 </head>
 <body>
 <div class="bar">
-  \u0E01\u0E14 <kbd>Ctrl</kbd> + <kbd>P</kbd> (\u0E40\u0E04\u0E23\u0E37\u0E48\u0E2D\u0E07 Mac \u0E43\u0E0A\u0E49 <kbd>&#8984;</kbd> + <kbd>P</kbd>) \u0E41\u0E25\u0E49\u0E27\u0E40\u0E25\u0E37\u0E2D\u0E01\u0E1B\u0E25\u0E32\u0E22\u0E17\u0E32\u0E07\u0E40\u0E1B\u0E47\u0E19 <b>\u0E1A\u0E31\u0E19\u0E17\u0E36\u0E01\u0E40\u0E1B\u0E47\u0E19 PDF</b>
-  &nbsp;\xB7&nbsp; \u0E15\u0E31\u0E49\u0E07\u0E01\u0E23\u0E30\u0E14\u0E32\u0E29 <b>A4 \u0E41\u0E19\u0E27\u0E19\u0E2D\u0E19</b> \u0E41\u0E25\u0E30\u0E02\u0E2D\u0E1A\u0E01\u0E23\u0E30\u0E14\u0E32\u0E29\u0E40\u0E1B\u0E47\u0E19 <b>\u0E44\u0E21\u0E48\u0E21\u0E35</b> &nbsp;\xB7&nbsp; \u0E41\u0E16\u0E1A\u0E19\u0E35\u0E49\u0E08\u0E30\u0E44\u0E21\u0E48\u0E15\u0E34\u0E14\u0E44\u0E1B\u0E43\u0E19\u0E44\u0E1F\u0E25\u0E4C
+  กด <kbd>Ctrl</kbd> + <kbd>P</kbd> (เครื่อง Mac ใช้ <kbd>&#8984;</kbd> + <kbd>P</kbd>) แล้วเลือกปลายทางเป็น <b>บันทึกเป็น PDF</b>
+  &nbsp;·&nbsp; ตั้งกระดาษ <b>A4 แนวนอน</b> และขอบกระดาษเป็น <b>ไม่มี</b> &nbsp;·&nbsp; แถบนี้จะไม่ติดไปในไฟล์
 </div>
 <div class="sheet">
-${n.innerHTML}
+${src.innerHTML}
 </div>
 <script>
 window.addEventListener('load', function(){ setTimeout(function(){ try{ window.print(); }catch(e){} }, 500); });
 <\/script>
 </body>
-</html>`},Lg=()=>{qt("");try{let n=kf(),d=new Blob(["\uFEFF"+n],{type:"text/html;charset=utf-8"}),i=URL.createObjectURL(d);if(!window.open(i,"_blank")){let y=document.createElement("a");y.href=i,y.download=Sf("html"),document.body.appendChild(y),y.click(),document.body.removeChild(y),qt("\u0E40\u0E1A\u0E23\u0E32\u0E27\u0E4C\u0E40\u0E0B\u0E2D\u0E23\u0E4C\u0E1A\u0E25\u0E47\u0E2D\u0E01\u0E01\u0E32\u0E23\u0E40\u0E1B\u0E34\u0E14\u0E41\u0E17\u0E47\u0E1A\u0E43\u0E2B\u0E21\u0E48 \u0E08\u0E36\u0E07\u0E14\u0E32\u0E27\u0E19\u0E4C\u0E42\u0E2B\u0E25\u0E14\u0E44\u0E1F\u0E25\u0E4C\u0E43\u0E2B\u0E49\u0E41\u0E17\u0E19 \u0E40\u0E1B\u0E34\u0E14\u0E44\u0E1F\u0E25\u0E4C\u0E17\u0E35\u0E48\u0E14\u0E32\u0E27\u0E19\u0E4C\u0E42\u0E2B\u0E25\u0E14\u0E41\u0E25\u0E49\u0E27\u0E40\u0E1A\u0E23\u0E32\u0E27\u0E4C\u0E40\u0E0B\u0E2D\u0E23\u0E4C\u0E08\u0E30\u0E40\u0E1B\u0E34\u0E14\u0E2B\u0E19\u0E49\u0E32\u0E15\u0E48\u0E32\u0E07\u0E1E\u0E34\u0E21\u0E1E\u0E4C\u0E43\u0E2B\u0E49\u0E40\u0E2D\u0E07")}setTimeout(()=>URL.revokeObjectURL(i),6e4)}catch(n){console.error("Print error:",n);let d=n&&n.message;qt(d==="NODOM"||d==="NOPAGE"?"\u0E44\u0E21\u0E48\u0E1E\u0E1A\u0E2B\u0E19\u0E49\u0E32\u0E15\u0E32\u0E23\u0E32\u0E07\u0E2A\u0E33\u0E2B\u0E23\u0E31\u0E1A\u0E2A\u0E23\u0E49\u0E32\u0E07\u0E44\u0E1F\u0E25\u0E4C \u0E01\u0E14\u0E01\u0E25\u0E31\u0E1A\u0E44\u0E1B\u0E41\u0E01\u0E49\u0E15\u0E32\u0E23\u0E32\u0E07\u0E41\u0E25\u0E49\u0E27\u0E2A\u0E31\u0E48\u0E07\u0E1E\u0E34\u0E21\u0E1E\u0E4C\u0E2D\u0E35\u0E01\u0E04\u0E23\u0E31\u0E49\u0E07":"\u0E2A\u0E31\u0E48\u0E07\u0E1E\u0E34\u0E21\u0E1E\u0E4C\u0E44\u0E21\u0E48\u0E2A\u0E33\u0E40\u0E23\u0E47\u0E08 \u0E25\u0E2D\u0E07\u0E43\u0E0A\u0E49\u0E1B\u0E38\u0E48\u0E21\u0E14\u0E32\u0E27\u0E19\u0E4C\u0E42\u0E2B\u0E25\u0E14\u0E44\u0E1F\u0E25\u0E4C\u0E2A\u0E33\u0E2B\u0E23\u0E31\u0E1A\u0E1E\u0E34\u0E21\u0E1E\u0E4C\u0E41\u0E17\u0E19")}},vg=()=>{qt("");try{let n=kf(),d=new Blob(["\uFEFF"+n],{type:"text/html;charset=utf-8"}),i=URL.createObjectURL(d),p=document.createElement("a");p.href=i,p.download=Sf("html"),document.body.appendChild(p),p.click(),document.body.removeChild(p),URL.revokeObjectURL(i)}catch(n){console.error("Print file error:",n);let d=n&&n.message;qt(d==="NODOM"||d==="NOPAGE"?"\u0E44\u0E21\u0E48\u0E1E\u0E1A\u0E2B\u0E19\u0E49\u0E32\u0E15\u0E32\u0E23\u0E32\u0E07\u0E2A\u0E33\u0E2B\u0E23\u0E31\u0E1A\u0E2A\u0E23\u0E49\u0E32\u0E07\u0E44\u0E1F\u0E25\u0E4C \u0E01\u0E14\u0E01\u0E25\u0E31\u0E1A\u0E44\u0E1B\u0E41\u0E01\u0E49\u0E15\u0E32\u0E23\u0E32\u0E07\u0E41\u0E25\u0E49\u0E27\u0E2A\u0E31\u0E48\u0E07\u0E1E\u0E34\u0E21\u0E1E\u0E4C\u0E2D\u0E35\u0E01\u0E04\u0E23\u0E31\u0E49\u0E07":"\u0E2A\u0E23\u0E49\u0E32\u0E07\u0E44\u0E1F\u0E25\u0E4C\u0E2A\u0E33\u0E2B\u0E23\u0E31\u0E1A\u0E1E\u0E34\u0E21\u0E1E\u0E4C\u0E44\u0E21\u0E48\u0E2A\u0E33\u0E40\u0E23\u0E47\u0E08 \u0E25\u0E2D\u0E07\u0E23\u0E35\u0E40\u0E1F\u0E23\u0E0A\u0E2B\u0E19\u0E49\u0E32\u0E19\u0E35\u0E49\u0E41\u0E25\u0E49\u0E27\u0E17\u0E33\u0E2D\u0E35\u0E01\u0E04\u0E23\u0E31\u0E49\u0E07")}},Cu=(n,d)=>{if(F==="student"&&d===tn)return;let i=null,p="";if(F==="student"){if(i=To(m,n,d),p=m,(f[m]||[]).length===0){Gt("OPEN_SUBJECT_MODAL",null,"\u0E2B\u0E49\u0E2D\u0E07\u0E19\u0E35\u0E49\u0E22\u0E31\u0E07\u0E44\u0E21\u0E48\u0E21\u0E35\u0E23\u0E32\u0E22\u0E27\u0E34\u0E0A\u0E32",`\u0E25\u0E07\u0E23\u0E32\u0E22\u0E27\u0E34\u0E0A\u0E32\u0E43\u0E2B\u0E49\u0E2B\u0E49\u0E2D\u0E07 ${Te.name} \u0E01\u0E48\u0E2D\u0E19\u0E08\u0E36\u0E07\u0E08\u0E30\u0E08\u0E31\u0E14\u0E15\u0E32\u0E23\u0E32\u0E07\u0E44\u0E14\u0E49 \u0E40\u0E1E\u0E34\u0E48\u0E21\u0E40\u0E2D\u0E07\u0E17\u0E35\u0E25\u0E30\u0E27\u0E34\u0E0A\u0E32 \u0E19\u0E33\u0E40\u0E02\u0E49\u0E32\u0E08\u0E32\u0E01 CSV \u0E2B\u0E23\u0E37\u0E2D\u0E04\u0E31\u0E14\u0E25\u0E2D\u0E01\u0E41\u0E1C\u0E19\u0E01\u0E32\u0E23\u0E40\u0E23\u0E35\u0E22\u0E19\u0E08\u0E32\u0E01\u0E2B\u0E49\u0E2D\u0E07\u0E2D\u0E37\u0E48\u0E19\u0E01\u0E47\u0E44\u0E14\u0E49`,"\u0E40\u0E1B\u0E34\u0E14\u0E2B\u0E19\u0E49\u0E32\u0E08\u0E31\u0E14\u0E01\u0E32\u0E23\u0E27\u0E34\u0E0A\u0E32","\u0E1B\u0E34\u0E14",!1);return}}else i=(F==="teacher"?nu(b,n,d):su(z,n,d))[0],p=i?i.classId:"";tt({day:n,period:d}),Na(""),Ut(1),tf(!1),au(p);let y=p?u.find(C=>C.id===p):null;y?.external?(Hs(!0),Vr(y.name)):(Hs(!1),Vr("")),Co({code:"",name:"",theory:0,practical:0,credit:0});let g=p?du(p,n,d):null;if(af(g?g.periods.filter(C=>C>=d).length:1),i&&!i.isFixed){if(y?.external){let S=(f[p]||[]).find(T=>T.id===i.subjectId);S&&Co({code:S.code||"",name:S.name||"",theory:S.theory??0,practical:S.practical??0,credit:S.credit??0}),ot(i.subjectId),Io(!1),Ot("")}else i.subjectName?(Io(!0),Ot(i.subjectName),ot("")):(Io(!1),Ot(""),ot(i.subjectId));i.isManualTeacher?(Gr(!0),kl(i.teacherName||""),Sl("")):(Gr(!1),Sl(i.teacherId||""),kl(""));let C=v.find(S=>S.id===i.teacherId);i.roomName?(Qr(!0),wl(i.roomName),ko("")):(Qr(!1),wl(""),ko(i.roomId||C?.roomId||"")),_s(!0)}else ot(""),Io(!1),Ot(""),Sl(F==="teacher"?b:""),Gr(!1),kl(""),ko(F==="room"?z:""),Qr(!1),wl(""),_s(!0)},yg=()=>{let n=qa||m,d=null;if(za){let U=ef.trim();if(!U){Na('\u0E01\u0E23\u0E2D\u0E01\u0E0A\u0E37\u0E48\u0E2D\u0E01\u0E25\u0E38\u0E48\u0E21\u0E19\u0E31\u0E01\u0E40\u0E23\u0E35\u0E22\u0E19\u0E19\u0E2D\u0E01\u0E41\u0E1C\u0E19\u0E01 \u0E2B\u0E23\u0E37\u0E2D\u0E40\u0E2D\u0E32\u0E40\u0E04\u0E23\u0E37\u0E48\u0E2D\u0E07\u0E2B\u0E21\u0E32\u0E22\u0E16\u0E39\u0E01\u0E2D\u0E2D\u0E01\u0E08\u0E32\u0E01 "\u0E01\u0E25\u0E38\u0E48\u0E21\u0E19\u0E2D\u0E01\u0E41\u0E1C\u0E19\u0E01" \u0E41\u0E25\u0E49\u0E27\u0E40\u0E25\u0E37\u0E2D\u0E01\u0E2B\u0E49\u0E2D\u0E07\u0E40\u0E23\u0E35\u0E22\u0E19\u0E02\u0E2D\u0E07\u0E41\u0E1C\u0E19\u0E01');return}let $=u.find(se=>se.external&&se.name.trim().toLowerCase()===U.toLowerCase());$?n=$.id:(d={id:`c_ext_${Date.now()}`,name:U,external:!0,level:"",year:"",room:"",studentCount:"",advisor:"",lunchPeriod:5},n=d.id)}let i=za?!!Ve.name.trim():lt?!!qs.trim():!!yo;if(!n||!i||!Re&&!rt||Re&&!So.trim()||!zt){Na("\u0E01\u0E23\u0E2D\u0E01\u0E2B\u0E49\u0E2D\u0E07\u0E40\u0E23\u0E35\u0E22\u0E19 \u0E27\u0E34\u0E0A\u0E32 \u0E04\u0E23\u0E39\u0E1C\u0E39\u0E49\u0E2A\u0E2D\u0E19 \u0E41\u0E25\u0E30\u0E08\u0E33\u0E19\u0E27\u0E19\u0E04\u0E32\u0E1A\u0E43\u0E2B\u0E49\u0E04\u0E23\u0E1A\u0E01\u0E48\u0E2D\u0E19\u0E1A\u0E31\u0E19\u0E17\u0E36\u0E01");return}let p=null,y=null,g=null;if(za){let U=f[n]||[],$=Ve.name.trim(),se=Ve.code.trim(),qe=U.find(Xt=>Xt.name.trim().toLowerCase()===$.toLowerCase()&&(Xt.code||"").trim()===se);qe?p=qe.id:(g={id:`s_ext_${Date.now()}`,code:se,name:$,theory:Number(Ve.theory)||0,practical:Number(Ve.practical)||0,credit:Number(Ve.credit)||0,colorKey:le[U.length%le.length].key},p=g.id)}else if(lt)y=qs.trim();else{p=yo;let U=(f[n]||[]).find(qe=>qe.id===yo),$=Number(U.theory)===0&&Number(U.practical)===2&&Number(U.credit)===0;if(U.name.includes("\u0E01\u0E34\u0E08\u0E01\u0E23\u0E23\u0E21")&&!$){Na("\u0E27\u0E34\u0E0A\u0E32\u0E01\u0E34\u0E08\u0E01\u0E23\u0E23\u0E21\u0E15\u0E49\u0E2D\u0E07\u0E01\u0E33\u0E2B\u0E19\u0E14\u0E40\u0E1B\u0E47\u0E19 \u0E17=0 \u0E1B=2 \u0E19=0 \u0E08\u0E36\u0E07\u0E08\u0E30\u0E25\u0E07\u0E15\u0E32\u0E23\u0E32\u0E07\u0E44\u0E14\u0E49 \u0E41\u0E01\u0E49\u0E17\u0E35\u0E48\u0E2B\u0E19\u0E49\u0E32\u0E08\u0E31\u0E14\u0E01\u0E32\u0E23\u0E27\u0E34\u0E0A\u0E32\u0E01\u0E48\u0E2D\u0E19");return}if($&&zt!==2){Na("\u0E27\u0E34\u0E0A\u0E32\u0E01\u0E34\u0E08\u0E01\u0E23\u0E23\u0E21\u0E15\u0E49\u0E2D\u0E07\u0E25\u0E07 2 \u0E04\u0E32\u0E1A\u0E15\u0E34\u0E14\u0E01\u0E31\u0E19\u0E40\u0E2A\u0E21\u0E2D");return}}let C=[],S=ae.period,T=0,A=(u.find(U=>U.id===n)||d||{}).lunchPeriod||5;for(;T<zt;){if(S>11){Na(`\u0E25\u0E07 ${zt} \u0E04\u0E32\u0E1A\u0E15\u0E34\u0E14\u0E01\u0E31\u0E19\u0E08\u0E32\u0E01\u0E08\u0E38\u0E14\u0E19\u0E35\u0E49\u0E44\u0E21\u0E48\u0E44\u0E14\u0E49 \u0E40\u0E1E\u0E23\u0E32\u0E30\u0E40\u0E25\u0E22\u0E04\u0E32\u0E1A 11 \u0E0B\u0E36\u0E48\u0E07\u0E40\u0E1B\u0E47\u0E19\u0E04\u0E32\u0E1A\u0E2A\u0E38\u0E14\u0E17\u0E49\u0E32\u0E22\u0E02\u0E2D\u0E07\u0E27\u0E31\u0E19`);return}S!==A&&(C.push(S),T++),S++}for(let U of C){let $=q.filter(pe=>pe.day===ae.day&&pe.period===U&&pe.classId!==n&&(Re?pe.isManualTeacher&&pe.teacherName===So.trim():!pe.isManualTeacher&&pe.teacherId===rt)),se=q.filter(pe=>pe.day===ae.day&&pe.period===U&&pe.classId===n&&(lt?pe.subjectId||pe.subjectName!==y:pe.subjectId!==p));if($.length>0&&!Yr){let pe=u.find(Su=>Su.id===$[0].classId);Na(`\u0E04\u0E32\u0E1A ${U} \u0E04\u0E23\u0E39\u0E17\u0E48\u0E32\u0E19\u0E19\u0E35\u0E49\u0E15\u0E34\u0E14\u0E2A\u0E2D\u0E19\u0E2B\u0E49\u0E2D\u0E07 "${pe?.name}" \u0E2D\u0E22\u0E39\u0E48\u0E41\u0E25\u0E49\u0E27 \u0E40\u0E25\u0E37\u0E2D\u0E01\u0E40\u0E27\u0E25\u0E32\u0E2D\u0E37\u0E48\u0E19 \u0E2B\u0E23\u0E37\u0E2D\u0E15\u0E34\u0E4A\u0E01 "\u0E43\u0E2B\u0E49\u0E2A\u0E2D\u0E19\u0E0B\u0E49\u0E2D\u0E19\u0E40\u0E27\u0E25\u0E32\u0E44\u0E14\u0E49" \u0E14\u0E49\u0E32\u0E19\u0E25\u0E48\u0E32\u0E07\u0E2B\u0E32\u0E01\u0E15\u0E31\u0E49\u0E07\u0E43\u0E08`);return}if(se.length>0&&!Yr){Na(`\u0E04\u0E32\u0E1A ${U} \u0E2B\u0E49\u0E2D\u0E07\u0E19\u0E35\u0E49\u0E21\u0E35\u0E27\u0E34\u0E0A\u0E32\u0E2D\u0E37\u0E48\u0E19\u0E40\u0E23\u0E35\u0E22\u0E19\u0E2D\u0E22\u0E39\u0E48\u0E41\u0E25\u0E49\u0E27 \u0E40\u0E25\u0E37\u0E2D\u0E01\u0E40\u0E27\u0E25\u0E32\u0E2D\u0E37\u0E48\u0E19 \u0E2B\u0E23\u0E37\u0E2D\u0E15\u0E34\u0E4A\u0E01 "\u0E43\u0E2B\u0E49\u0E2A\u0E2D\u0E19\u0E0B\u0E49\u0E2D\u0E19\u0E40\u0E27\u0E25\u0E32\u0E44\u0E14\u0E49" \u0E2B\u0E32\u0E01\u0E15\u0E31\u0E49\u0E07\u0E43\u0E08\u0E17\u0E31\u0E1A`);return}let qe=wo?bl&&I.find(pe=>pe.name.trim().toLowerCase()===Zr.trim().toLowerCase())?.id||null:Kr||(Re?null:v.find(pe=>pe.id===rt)?.roomId)||null,Xt=uu(qe,ae.day,U,n);if(Xt&&!Yr){let pe=u.find(Su=>Su.id===Xt.classId);Na(`\u0E04\u0E32\u0E1A ${U} \u0E2B\u0E49\u0E2D\u0E07 "${Ge(qe)}" \u0E16\u0E39\u0E01\u0E43\u0E0A\u0E49\u0E42\u0E14\u0E22 "${pe?.name||"\u0E2B\u0E49\u0E2D\u0E07\u0E40\u0E23\u0E35\u0E22\u0E19\u0E2D\u0E37\u0E48\u0E19"}" \u0E2D\u0E22\u0E39\u0E48\u0E41\u0E25\u0E49\u0E27 \u0E40\u0E25\u0E37\u0E2D\u0E01\u0E2B\u0E49\u0E2D\u0E07\u0E2D\u0E37\u0E48\u0E19 \u0E40\u0E1B\u0E25\u0E35\u0E48\u0E22\u0E19\u0E40\u0E27\u0E25\u0E32 \u0E2B\u0E23\u0E37\u0E2D\u0E15\u0E34\u0E4A\u0E01 "\u0E43\u0E2B\u0E49\u0E2A\u0E2D\u0E19\u0E0B\u0E49\u0E2D\u0E19\u0E40\u0E27\u0E25\u0E32\u0E44\u0E14\u0E49" \u0E2B\u0E32\u0E01\u0E43\u0E0A\u0E49\u0E2B\u0E49\u0E2D\u0E07\u0E23\u0E48\u0E27\u0E21\u0E01\u0E31\u0E19\u0E08\u0E23\u0E34\u0E07`);return}}let B=q.filter(U=>!(U.classId===n&&U.day===ae.day&&C.includes(U.period))),_=Kr||null,K=null,ne=null;if(wo){let U=Zr.trim();if(!U){Na('\u0E01\u0E23\u0E2D\u0E01\u0E0A\u0E37\u0E48\u0E2D\u0E2B\u0E49\u0E2D\u0E07 \u0E2B\u0E23\u0E37\u0E2D\u0E40\u0E2D\u0E32\u0E40\u0E04\u0E23\u0E37\u0E48\u0E2D\u0E07\u0E2B\u0E21\u0E32\u0E22\u0E16\u0E39\u0E01\u0E2D\u0E2D\u0E01\u0E08\u0E32\u0E01 "\u0E2B\u0E49\u0E2D\u0E07\u0E19\u0E2D\u0E01\u0E41\u0E1C\u0E19\u0E01" \u0E41\u0E25\u0E49\u0E27\u0E40\u0E25\u0E37\u0E2D\u0E01\u0E2B\u0E49\u0E2D\u0E07\u0E08\u0E32\u0E01\u0E17\u0E30\u0E40\u0E1A\u0E35\u0E22\u0E19');return}if(bl){let $=I.find(se=>se.name.trim().toLowerCase()===U.toLowerCase());$?_=$.id:(ne={id:`r_ext_${Date.now()}`,name:U,note:"",external:!0},_=ne.id)}else _=null,K=U}let X=C.map(U=>({classId:n,day:ae.day,period:U,subjectId:p,subjectName:y,isManualTeacher:Re,teacherId:Re?null:rt,teacherName:Re?So.trim():null,roomId:_,roomName:K}));Z(),d&&c(U=>[...U,d]),g&&h(U=>({...U,[n]:[...U[n]||[],g]})),ne&&N(U=>[...U,ne]),x([...B,...X]),tt(null)},Ig=(n,d)=>{let i=(f[n]||[]).find(p=>p.id===d);return!!i&&Number(i.theory)===0&&Number(i.practical)===2&&Number(i.credit)===0},ke=(()=>{if(!ae)return null;let n=qa||m,d=du(n,ae.day,ae.period);if(!d)return null;let i=d.periods.filter(y=>y>=ae.period),p=d.slot.isFixed||!d.slot.isFixed&&Ig(n,d.slot.subjectId);return{classId:n,blk:d,fromHere:i,lockWhole:p,max:p?d.periods.length:i.length,targets:p?d.periods:i}})(),Cg=()=>{if(!ke){tt(null);return}let{classId:n,blk:d,targets:i,lockWhole:p}=ke,y=p?i.length:Math.max(1,Math.min(Number(Xr)||1,i.length)),g=i.slice(0,y),C=q.filter(B=>!(B.classId===n&&B.day===ae.day&&g.includes(B.period)));Z(),x(C),tt(null);let S=d.slot.isFixed?null:(f[n]||[]).find(B=>B.id===d.slot.subjectId),T=S?.name||d.slot.subjectName,P=u.find(B=>B.id===n),A=null;if(S){let B=Number(S.theory||0)+Number(S.practical||0),_=C.filter(K=>K.classId===n&&K.subjectId===S.id).length;A={placed:_,required:B,remain:Math.max(0,B-_)}}df({verb:"\u0E25\u0E1A",name:d.slot.isFixed?d.slot.label:T||"\u0E04\u0E32\u0E1A\u0E40\u0E23\u0E35\u0E22\u0E19",where:`${ae.day} \u0E04\u0E32\u0E1A ${g.join(", ")}`,className:P?.name||"",len:g.length,stat:A,historyLen:ze.length+1})},Sg=()=>{Z();let d=`${G.major.trim()?`${G.major.trim()} `:""}${G.level} ${G.year}/${G.room}`,i=G.level==="\u0E1B\u0E27\u0E0A."?5:4,p=`c${Date.now()}`;c([...u,{id:p,name:d,lunchPeriod:i,major:G.major,level:G.level,year:G.year,room:G.room,studentCount:G.studentCount,advisor:G.advisor}]),h(y=>({...y,[p]:[]})),x(y=>[...y,{classId:p,day:"\u0E1E\u0E38\u0E18",period:1,isFixed:!0,label:"\u0E01\u0E34\u0E08\u0E01\u0E23\u0E23\u0E21"},{classId:p,day:"\u0E1E\u0E38\u0E18",period:2,isFixed:!0,label:"\u0E01\u0E34\u0E08\u0E01\u0E23\u0E23\u0E21"}]),_t({major:vl["\u0E1B\u0E27\u0E0A."],level:"\u0E1B\u0E27\u0E0A.",year:1,room:1,studentCount:"",advisor:""})},Bo=(n,d,i)=>{Z(d==="major"||d==="studentCount"||d==="name"?`class:${n}:${d}`:null),c(u.map(y=>{if(y.id!==n)return y;let g={...y,[d]:i};if(d==="level"&&(g.lunchPeriod=i==="\u0E1B\u0E27\u0E0A."?5:4,i==="\u0E1B\u0E27\u0E2A."&&g.year>2&&(g.year=2),g.major&&!Jh.includes(String(g.major).trim())||(g.major=vl[i])),["major","level","year","room"].includes(d)){let C=g.major?`${String(g.major).trim()} `:"";g.name=`${C}${g.level||""} ${g.year||""}/${g.room||""}`.trim()}return g}))},wf=n=>{let d=u.find(i=>i.id===n);if(!d?.external&&Ue.length<=1){J("\u0E23\u0E30\u0E1A\u0E1A\u0E15\u0E49\u0E2D\u0E07\u0E21\u0E35\u0E2B\u0E49\u0E2D\u0E07\u0E40\u0E23\u0E35\u0E22\u0E19\u0E02\u0E2D\u0E07\u0E41\u0E1C\u0E19\u0E01\u0E2D\u0E22\u0E48\u0E32\u0E07\u0E19\u0E49\u0E2D\u0E22 1 \u0E2B\u0E49\u0E2D\u0E07");return}Gt("DELETE_CLASS",n,d?.external?"\u0E25\u0E1A\u0E01\u0E25\u0E38\u0E48\u0E21\u0E19\u0E2D\u0E01\u0E41\u0E1C\u0E19\u0E01":"\u0E25\u0E1A\u0E2B\u0E49\u0E2D\u0E07\u0E40\u0E23\u0E35\u0E22\u0E19","\u0E15\u0E32\u0E23\u0E32\u0E07\u0E41\u0E25\u0E30\u0E23\u0E32\u0E22\u0E27\u0E34\u0E0A\u0E32\u0E02\u0E2D\u0E07\u0E2B\u0E49\u0E2D\u0E07\u0E19\u0E35\u0E49\u0E08\u0E30\u0E16\u0E39\u0E01\u0E25\u0E1A\u0E44\u0E1B\u0E14\u0E49\u0E27\u0E22\u0E17\u0E31\u0E49\u0E07\u0E2B\u0E21\u0E14",d?.external?"\u0E25\u0E1A\u0E01\u0E25\u0E38\u0E48\u0E21\u0E19\u0E2D\u0E01\u0E41\u0E1C\u0E19\u0E01":"\u0E25\u0E1A\u0E2B\u0E49\u0E2D\u0E07\u0E40\u0E23\u0E35\u0E22\u0E19")},kg=()=>{Wt.name&&(Z(),k([...v,{id:`t${Date.now()}`,name:Wt.name,roomId:Wt.roomId||null}]),Qs({name:"",roomId:""}))},wg=n=>{Rs(n.id),eu({name:n.name,roomId:n.roomId||""})},bg=()=>Rs(null),Pg=n=>{if(!$t.name.trim()){J("\u0E01\u0E23\u0E2D\u0E01\u0E0A\u0E37\u0E48\u0E2D\u0E04\u0E23\u0E39\u0E1C\u0E39\u0E49\u0E2A\u0E2D\u0E19\u0E01\u0E48\u0E2D\u0E19\u0E1A\u0E31\u0E19\u0E17\u0E36\u0E01");return}Z(),k(v.map(d=>d.id===n?{...d,name:$t.name.trim(),roomId:$t.roomId||null}:d)),Rs(null)},bf=n=>q.filter(d=>ut(d)===n).length,Ng=()=>{let n=No.name.trim();if(n){if(I.some(d=>d.name.trim().toLowerCase()===n.toLowerCase())){J(`\u0E21\u0E35\u0E2B\u0E49\u0E2D\u0E07 "${n}" \u0E43\u0E19\u0E17\u0E30\u0E40\u0E1A\u0E35\u0E22\u0E19\u0E41\u0E25\u0E49\u0E27 \u0E43\u0E0A\u0E49\u0E0A\u0E37\u0E48\u0E2D\u0E2D\u0E37\u0E48\u0E19\u0E2B\u0E23\u0E37\u0E2D\u0E41\u0E01\u0E49\u0E44\u0E02\u0E2B\u0E49\u0E2D\u0E07\u0E40\u0E14\u0E34\u0E21\u0E41\u0E17\u0E19`);return}Z(),N([...I,{id:`r${Date.now()}`,name:n,note:No.note.trim()}]),Zs({name:"",note:""})}},Fg=n=>{Ys(n.id),Js({name:n.name,note:n.note||""})},Dg=()=>Ys(null),Tg=n=>{let d=Fo.name.trim();if(!d){J("\u0E01\u0E23\u0E2D\u0E01\u0E0A\u0E37\u0E48\u0E2D\u0E2B\u0E49\u0E2D\u0E07\u0E01\u0E48\u0E2D\u0E19\u0E1A\u0E31\u0E19\u0E17\u0E36\u0E01");return}if(I.some(i=>i.id!==n&&i.name.trim().toLowerCase()===d.toLowerCase())){J(`\u0E21\u0E35\u0E2B\u0E49\u0E2D\u0E07 "${d}" \u0E43\u0E19\u0E17\u0E30\u0E40\u0E1A\u0E35\u0E22\u0E19\u0E41\u0E25\u0E49\u0E27 \u0E43\u0E0A\u0E49\u0E0A\u0E37\u0E48\u0E2D\u0E2D\u0E37\u0E48\u0E19`);return}Z(),N(I.map(i=>i.id===n?{...i,name:d,note:Fo.note.trim()}:i)),Ys(null)},Ag=n=>{let d=bf(n);Gt("DELETE_ROOM",n,"\u0E25\u0E1A\u0E2B\u0E49\u0E2D\u0E07\u0E2D\u0E2D\u0E01\u0E08\u0E32\u0E01\u0E17\u0E30\u0E40\u0E1A\u0E35\u0E22\u0E19",d>0?`\u0E2B\u0E49\u0E2D\u0E07 "${Ge(n)}" \u0E16\u0E39\u0E01\u0E43\u0E0A\u0E49\u0E2D\u0E22\u0E39\u0E48 ${d} \u0E04\u0E32\u0E1A \u0E16\u0E49\u0E32\u0E25\u0E1A \u0E04\u0E32\u0E1A\u0E40\u0E2B\u0E25\u0E48\u0E32\u0E19\u0E31\u0E49\u0E19\u0E08\u0E30\u0E01\u0E25\u0E32\u0E22\u0E40\u0E1B\u0E47\u0E19\u0E44\u0E21\u0E48\u0E23\u0E30\u0E1A\u0E38\u0E2B\u0E49\u0E2D\u0E07 \u0E41\u0E25\u0E30\u0E08\u0E30\u0E44\u0E21\u0E48\u0E16\u0E39\u0E01\u0E15\u0E23\u0E27\u0E08\u0E2B\u0E49\u0E2D\u0E07\u0E0A\u0E19\u0E2D\u0E35\u0E01`:`\u0E25\u0E1A\u0E2B\u0E49\u0E2D\u0E07 "${Ge(n)}" \u0E2D\u0E2D\u0E01\u0E08\u0E32\u0E01\u0E17\u0E30\u0E40\u0E1A\u0E35\u0E22\u0E19`,"\u0E25\u0E1A\u0E2B\u0E49\u0E2D\u0E07")},Mg=()=>{let n=`\u0E0A\u0E37\u0E48\u0E2D\u0E2B\u0E49\u0E2D\u0E07,\u0E2B\u0E21\u0E32\u0E22\u0E40\u0E2B\u0E15\u0E38
-114,\u0E2B\u0E49\u0E2D\u0E07\u0E17\u0E24\u0E29\u0E0E\u0E35
-Shop 2,\u0E42\u0E23\u0E07\u0E1D\u0E36\u0E01\u0E44\u0E1F\u0E1F\u0E49\u0E32
-147,\u0E2B\u0E49\u0E2D\u0E07\u0E1B\u0E0F\u0E34\u0E1A\u0E31\u0E15\u0E34\u0E01\u0E32\u0E23\u0E21\u0E2D\u0E40\u0E15\u0E2D\u0E23\u0E4C`,d=new Blob(["\uFEFF"+n],{type:"text/csv;charset=utf-8;"}),i=URL.createObjectURL(d),p=document.createElement("a");p.setAttribute("href",i),p.setAttribute("download","room_template.csv"),document.body.appendChild(p),p.click(),document.body.removeChild(p),URL.revokeObjectURL(i)},Bg=n=>{let d=n.target.files[0];if(!d)return;let i=new FileReader;i.onload=p=>{let y=p.target.result.replace(/^\uFEFF/,"").split(/\r?\n/).filter(S=>S.trim()!=="");if(y.length<2){J("\u0E44\u0E1F\u0E25\u0E4C\u0E15\u0E49\u0E2D\u0E07\u0E21\u0E35\u0E1A\u0E23\u0E23\u0E17\u0E31\u0E14\u0E2B\u0E31\u0E27\u0E15\u0E32\u0E23\u0E32\u0E07 \u0E41\u0E25\u0E30\u0E02\u0E49\u0E2D\u0E21\u0E39\u0E25\u0E2D\u0E22\u0E48\u0E32\u0E07\u0E19\u0E49\u0E2D\u0E22 1 \u0E1A\u0E23\u0E23\u0E17\u0E31\u0E14");return}let g=new Set(I.map(S=>S.name.trim().toLowerCase())),C=[];for(let S=1;S<y.length;S++){let T=y[S].split(",").map(A=>A.trim()),P=T[0];P&&!g.has(P.toLowerCase())&&(g.add(P.toLowerCase()),C.push({id:`r_import_${Date.now()}_${S}`,name:P,note:T[1]||""}))}C.length>0?(Z(),N(S=>[...S,...C]),J(`\u0E19\u0E33\u0E40\u0E02\u0E49\u0E32\u0E2B\u0E49\u0E2D\u0E07\u0E41\u0E25\u0E49\u0E27 ${C.length} \u0E2B\u0E49\u0E2D\u0E07`)):J("\u0E44\u0E21\u0E48\u0E1E\u0E1A\u0E2B\u0E49\u0E2D\u0E07\u0E43\u0E2B\u0E21\u0E48\u0E43\u0E19\u0E44\u0E1F\u0E25\u0E4C \u0E2D\u0E32\u0E08\u0E21\u0E35\u0E2D\u0E22\u0E39\u0E48\u0E43\u0E19\u0E17\u0E30\u0E40\u0E1A\u0E35\u0E22\u0E19\u0E41\u0E25\u0E49\u0E27\u0E17\u0E31\u0E49\u0E07\u0E2B\u0E21\u0E14"),n.target.value=null},i.readAsText(d)},Eg=n=>Gt("DELETE_TEACHER",n,"\u0E25\u0E1A\u0E04\u0E23\u0E39\u0E1C\u0E39\u0E49\u0E2A\u0E2D\u0E19","\u0E04\u0E23\u0E39\u0E17\u0E48\u0E32\u0E19\u0E19\u0E35\u0E49\u0E08\u0E30\u0E16\u0E39\u0E01\u0E25\u0E1A\u0E2D\u0E2D\u0E01\u0E08\u0E32\u0E01\u0E23\u0E32\u0E22\u0E0A\u0E37\u0E48\u0E2D \u0E04\u0E32\u0E1A\u0E17\u0E35\u0E48\u0E25\u0E07\u0E44\u0E27\u0E49\u0E41\u0E25\u0E49\u0E27\u0E43\u0E19\u0E15\u0E32\u0E23\u0E32\u0E07\u0E08\u0E30\u0E22\u0E31\u0E07\u0E2D\u0E22\u0E39\u0E48\u0E41\u0E15\u0E48\u0E08\u0E30\u0E44\u0E21\u0E48\u0E41\u0E2A\u0E14\u0E07\u0E0A\u0E37\u0E48\u0E2D\u0E04\u0E23\u0E39","\u0E25\u0E1A\u0E04\u0E23\u0E39\u0E1C\u0E39\u0E49\u0E2A\u0E2D\u0E19"),Og=()=>{let n=`\u0E0A\u0E37\u0E48\u0E2D-\u0E2A\u0E01\u0E38\u0E25,\u0E2B\u0E49\u0E2D\u0E07\u0E2A\u0E2D\u0E19
-\u0E04\u0E23\u0E39\u0E2A\u0E21\u0E0A\u0E32\u0E22 \u0E43\u0E08\u0E14\u0E35,114
-Teacher John,147`,d=new Blob(["\uFEFF"+n],{type:"text/csv;charset=utf-8;"}),i=URL.createObjectURL(d),p=document.createElement("a");p.setAttribute("href",i),p.setAttribute("download","teacher_template.csv"),document.body.appendChild(p),p.click(),document.body.removeChild(p),URL.revokeObjectURL(i)},zg=n=>{let d=n.target.files[0];if(!d)return;let i=new FileReader;i.onload=p=>{let y=p.target.result.replace(/^\uFEFF/,"").split(/\r?\n/).filter(S=>S.trim()!=="");if(y.length<2){J("\u0E44\u0E1F\u0E25\u0E4C\u0E15\u0E49\u0E2D\u0E07\u0E21\u0E35\u0E1A\u0E23\u0E23\u0E17\u0E31\u0E14\u0E2B\u0E31\u0E27\u0E15\u0E32\u0E23\u0E32\u0E07 \u0E41\u0E25\u0E30\u0E02\u0E49\u0E2D\u0E21\u0E39\u0E25\u0E2D\u0E22\u0E48\u0E32\u0E07\u0E19\u0E49\u0E2D\u0E22 1 \u0E1A\u0E23\u0E23\u0E17\u0E31\u0E14");return}let g=[],C=[];for(let S=1;S<y.length;S++){let T=y[S].split(",").map(B=>B.trim());if(!T[0])continue;let P=(T[1]||"").trim(),A=null;if(P){let B=[...I,...C].find(_=>_.name.trim().toLowerCase()===P.toLowerCase());B?A=B.id:(A=`r_timp_${Date.now()}_${S}`,C.push({id:A,name:P,note:""}))}g.push({id:`t_import_${Date.now()}_${S}`,name:T[0],roomId:A})}g.length>0?(Z(),C.length&&N(S=>[...S,...C]),k(S=>[...S,...g]),J(`\u0E19\u0E33\u0E40\u0E02\u0E49\u0E32\u0E04\u0E23\u0E39\u0E1C\u0E39\u0E49\u0E2A\u0E2D\u0E19\u0E41\u0E25\u0E49\u0E27 ${g.length} \u0E04\u0E19${C.length?` \u0E41\u0E25\u0E30\u0E40\u0E1E\u0E34\u0E48\u0E21\u0E2B\u0E49\u0E2D\u0E07\u0E43\u0E2B\u0E21\u0E48 ${C.length} \u0E2B\u0E49\u0E2D\u0E07`:""}`)):J("\u0E44\u0E21\u0E48\u0E1E\u0E1A\u0E02\u0E49\u0E2D\u0E21\u0E39\u0E25\u0E17\u0E35\u0E48\u0E2D\u0E48\u0E32\u0E19\u0E44\u0E14\u0E49\u0E43\u0E19\u0E44\u0E1F\u0E25\u0E4C \u0E15\u0E23\u0E27\u0E08\u0E2A\u0E2D\u0E1A\u0E27\u0E48\u0E32\u0E04\u0E2D\u0E25\u0E31\u0E21\u0E19\u0E4C\u0E15\u0E23\u0E07\u0E01\u0E31\u0E1A\u0E44\u0E1F\u0E25\u0E4C\u0E15\u0E31\u0E27\u0E2D\u0E22\u0E48\u0E32\u0E07"),n.target.value=null},i.readAsText(d)},Ug=n=>{lf(n.id),rf(n.name)},Pf=n=>{Jr.trim()&&(n.startsWith("t")?(Z(),k(v.map(d=>d.id===n?{...d,name:Jr.trim()}:d))):n.startsWith("r")&&(Z(),N(I.map(d=>d.id===n?{...d,name:Jr.trim()}:d)))),lf(null)},qg=()=>{Z();let n=`t${Date.now()}`;k([...v,{id:n,name:`\u0E04\u0E23\u0E39\u0E43\u0E2B\u0E21\u0E48 ${v.length+1}`,roomId:null}]),E(n)},Hg=(n,d,i)=>{let p=new Set(u.filter(y=>y.level===d&&Number(y.year)===Number(i)&&(y.major||"").trim()===(n||"").trim()).map(y=>Number(y.room)));for(let y=1;y<=Es;y++)if(!p.has(y))return y;return Es},_g=()=>{Z();let n=`c${Date.now()}`,d=vl["\u0E1B\u0E27\u0E0A."],i=Hg(d,"\u0E1B\u0E27\u0E0A.",1);c([...u,{id:n,name:`${d} \u0E1B\u0E27\u0E0A. 1/${i}`,lunchPeriod:5,major:d,level:"\u0E1B\u0E27\u0E0A.",year:1,room:i,studentCount:"",advisor:""}]),h(p=>({...p,[n]:[]})),x(p=>[...p,{classId:n,day:"\u0E1E\u0E38\u0E18",period:1,isFixed:!0,label:"\u0E01\u0E34\u0E08\u0E01\u0E23\u0E23\u0E21"},{classId:n,day:"\u0E1E\u0E38\u0E18",period:2,isFixed:!0,label:"\u0E01\u0E34\u0E08\u0E01\u0E23\u0E23\u0E21"}]),L(n)},Wg=()=>{if(!re.code||!re.name)return;let n=f[m]||[];if(n.some(i=>(i.code||"").trim().toLowerCase()===re.code.trim().toLowerCase())){J(`\u0E23\u0E2B\u0E31\u0E2A\u0E27\u0E34\u0E0A\u0E32 ${re.code} \u0E21\u0E35\u0E2D\u0E22\u0E39\u0E48\u0E43\u0E19\u0E2B\u0E49\u0E2D\u0E07\u0E19\u0E35\u0E49\u0E41\u0E25\u0E49\u0E27 \u0E43\u0E0A\u0E49\u0E23\u0E2B\u0E31\u0E2A\u0E2D\u0E37\u0E48\u0E19\u0E2B\u0E23\u0E37\u0E2D\u0E41\u0E01\u0E49\u0E44\u0E02\u0E27\u0E34\u0E0A\u0E32\u0E40\u0E14\u0E34\u0E21\u0E41\u0E17\u0E19`);return}Z();let d=re.colorKey||le[n.length%le.length].key;h(i=>({...i,[m]:[...n,{id:`s${Date.now()}`,code:re.code,name:re.name,theory:Number(re.theory),practical:Number(re.practical),credit:Number(re.credit),colorKey:d}]})),jt({code:"",name:"",theory:0,practical:0,credit:0,colorKey:""})},jg=n=>{Z(),h(d=>({...d,[m]:(d[m]||[]).filter(i=>i.id!==n)})),x(q.filter(d=>d.subjectId!==n))},$g=(n,d,i)=>{d!==i&&h(p=>{let y=[...p[n]||[]],g=y.findIndex(T=>T.id===d),C=y.findIndex(T=>T.id===i);if(g===-1||C===-1)return p;let[S]=y.splice(g,1);return y.splice(C,0,S),{...p,[n]:y}})},Vg=n=>{tu(n.id),Al({code:n.code||"",name:n.name||"",theory:n.theory??0,practical:n.practical??0,credit:n.credit??0,colorKey:n.colorKey||Ll(n).key})},Gg=()=>tu(null),Xg=n=>{if(!ve.name.trim()){J("\u0E01\u0E23\u0E2D\u0E01\u0E0A\u0E37\u0E48\u0E2D\u0E27\u0E34\u0E0A\u0E32\u0E01\u0E48\u0E2D\u0E19\u0E1A\u0E31\u0E19\u0E17\u0E36\u0E01");return}if((f[m]||[]).some(i=>i.id!==n&&(i.code||"").trim().toLowerCase()===ve.code.trim().toLowerCase())){J(`\u0E23\u0E2B\u0E31\u0E2A\u0E27\u0E34\u0E0A\u0E32 ${ve.code} \u0E21\u0E35\u0E2D\u0E22\u0E39\u0E48\u0E43\u0E19\u0E2B\u0E49\u0E2D\u0E07\u0E19\u0E35\u0E49\u0E41\u0E25\u0E49\u0E27 \u0E43\u0E0A\u0E49\u0E23\u0E2B\u0E31\u0E2A\u0E2D\u0E37\u0E48\u0E19`);return}Z(),h(i=>({...i,[m]:(i[m]||[]).map(p=>p.id===n?{...p,code:ve.code,name:ve.name,theory:Number(ve.theory)||0,practical:Number(ve.practical)||0,credit:Number(ve.credit)||0,colorKey:ve.colorKey||p.colorKey}:p)})),tu(null)},Kg=()=>{if(!xo)return;Z();let d=(f[xo]||[]).map(i=>({...i,id:`s_copy_${Date.now()}_${Math.random().toString(36).slice(2,9)}`}));h(i=>({...i,[m]:[...i[m]||[],...d]})),J(`\u0E04\u0E31\u0E14\u0E25\u0E2D\u0E01\u0E21\u0E32\u0E41\u0E25\u0E49\u0E27 ${d.length} \u0E27\u0E34\u0E0A\u0E32`),Ri("")},Qg=()=>{let n=`\u0E23\u0E2B\u0E31\u0E2A\u0E27\u0E34\u0E0A\u0E32,\u0E0A\u0E37\u0E48\u0E2D\u0E27\u0E34\u0E0A\u0E32,\u0E17,\u0E1B,\u0E19
-20000-1401,\u0E04\u0E13\u0E34\u0E15\u0E28\u0E32\u0E2A\u0E15\u0E23\u0E4C\u0E2D\u0E38\u0E15\u0E2A\u0E32\u0E2B\u0E01\u0E23\u0E23\u0E21,2,0,2
-20000-1301,\u0E27\u0E34\u0E17\u0E22\u0E32\u0E28\u0E32\u0E2A\u0E15\u0E23\u0E4C\u0E1B\u0E23\u0E30\u0E22\u0E38\u0E01\u0E15\u0E4C,2,2,3
-20000-2001,\u0E01\u0E34\u0E08\u0E01\u0E23\u0E23\u0E21\u0E0A\u0E21\u0E23\u0E21\u0E27\u0E34\u0E0A\u0E32\u0E0A\u0E35\u0E1E,0,2,0`,d=new Blob(["\uFEFF"+n],{type:"text/csv;charset=utf-8;"}),i=URL.createObjectURL(d),p=document.createElement("a");p.setAttribute("href",i),p.setAttribute("download","subject_template.csv"),document.body.appendChild(p),p.click(),document.body.removeChild(p),URL.revokeObjectURL(i)},Zg=n=>{let d=n.target.files[0];if(!d)return;let i=new FileReader;i.onload=p=>{let y=p.target.result.replace(/^\uFEFF/,"").split(/\r?\n/).filter(S=>S.trim()!=="");if(y.length<2){J("\u0E44\u0E1F\u0E25\u0E4C\u0E15\u0E49\u0E2D\u0E07\u0E21\u0E35\u0E1A\u0E23\u0E23\u0E17\u0E31\u0E14\u0E2B\u0E31\u0E27\u0E15\u0E32\u0E23\u0E32\u0E07 \u0E41\u0E25\u0E30\u0E02\u0E49\u0E2D\u0E21\u0E39\u0E25\u0E2D\u0E22\u0E48\u0E32\u0E07\u0E19\u0E49\u0E2D\u0E22 1 \u0E1A\u0E23\u0E23\u0E17\u0E31\u0E14");return}let g=[],C=(f[m]||[]).length;for(let S=1;S<y.length;S++){let T=y[S].split(",").map(P=>P.trim());T.length>=5&&g.push({id:`s_import_${Date.now()}_${S}`,code:T[0],name:T[1],theory:Number(T[2])||0,practical:Number(T[3])||0,credit:Number(T[4])||0,colorKey:le[(C+S-1)%le.length].key})}g.length>0?(Z(),h(S=>({...S,[m]:[...S[m]||[],...g]})),J(`\u0E19\u0E33\u0E40\u0E02\u0E49\u0E32\u0E41\u0E25\u0E49\u0E27 ${g.length} \u0E27\u0E34\u0E0A\u0E32 \u0E40\u0E02\u0E49\u0E32\u0E2B\u0E49\u0E2D\u0E07 ${Te.name}`)):J("\u0E44\u0E21\u0E48\u0E1E\u0E1A\u0E02\u0E49\u0E2D\u0E21\u0E39\u0E25\u0E17\u0E35\u0E48\u0E2D\u0E48\u0E32\u0E19\u0E44\u0E14\u0E49\u0E43\u0E19\u0E44\u0E1F\u0E25\u0E4C \u0E15\u0E23\u0E27\u0E08\u0E2A\u0E2D\u0E1A\u0E27\u0E48\u0E32\u0E21\u0E35\u0E04\u0E23\u0E1A 5 \u0E04\u0E2D\u0E25\u0E31\u0E21\u0E19\u0E4C\u0E15\u0E32\u0E21\u0E44\u0E1F\u0E25\u0E4C\u0E15\u0E31\u0E27\u0E2D\u0E22\u0E48\u0E32\u0E07"),n.target.value=null},i.readAsText(d)},Nf=(n,d,i=1)=>{let p=n.id,y=n.lunchPeriod||5,g=Rh(p,f[p]);return o.default.createElement("div",{key:p,className:"pdf-page",style:{fontFamily:Le,width:"1122px",height:"793px",padding:"30px 40px",boxSizing:"border-box",overflow:"hidden",background:"#fff",color:"#000",display:"flex",flexDirection:"column",boxShadow:"0 10px 30px rgba(15,30,61,.15)",marginBottom:"32px"}},o.default.createElement("div",{style:{marginBottom:"16px"}},o.default.createElement("div",{style:{display:"flex",justifyContent:"space-between",alignItems:"flex-end",paddingBottom:"8px"}},o.default.createElement("div",null,o.default.createElement("h1",{style:{fontSize:"31px",fontWeight:800,margin:"0 0 8px 0"}},"\u0E15\u0E32\u0E23\u0E32\u0E07\u0E40\u0E23\u0E35\u0E22\u0E19 ",n.name),o.default.createElement("p",{style:{fontSize:"17px",fontWeight:700,margin:0}},"\u0E1B\u0E35\u0E01\u0E32\u0E23\u0E28\u0E36\u0E01\u0E29\u0E32 ",w.year," \u0E20\u0E32\u0E04\u0E40\u0E23\u0E35\u0E22\u0E19\u0E17\u0E35\u0E48 ",w.term)),o.default.createElement("div",{style:{textAlign:"right",fontSize:"15px"}},o.default.createElement("p",{style:{margin:"0 0 6px 0"}},"\u0E23\u0E30\u0E14\u0E31\u0E1A\u0E0A\u0E31\u0E49\u0E19: ",n.level," \u0E1B\u0E35\u0E17\u0E35\u0E48: ",n.year," \u0E2B\u0E49\u0E2D\u0E07: ",n.room," ",n.major&&`\u0E2A\u0E32\u0E02\u0E32\u0E07\u0E32\u0E19: ${n.major}`),o.default.createElement("p",{style:{margin:0}},"\u0E08\u0E33\u0E19\u0E27\u0E19\u0E19\u0E31\u0E01\u0E40\u0E23\u0E35\u0E22\u0E19: ",n.studentCount||"-"," \u0E04\u0E19 | \u0E04\u0E23\u0E39\u0E17\u0E35\u0E48\u0E1B\u0E23\u0E36\u0E01\u0E29\u0E32: ",n.advisor||"-"))),o.default.createElement("div",{style:{borderBottom:"2px solid #000",width:"100%"}})),o.default.createElement("div",{style:{display:"flex",gap:"16px",flex:1,alignItems:"flex-start"}},o.default.createElement("div",{style:{width:"68%"}},o.default.createElement("table",{style:{width:"100%",borderCollapse:"collapse",textAlign:"center",tableLayout:"fixed"}},o.default.createElement("thead",null,o.default.createElement("tr",null,o.default.createElement("th",{style:{border:"1px solid #111",backgroundColor:"#EFF1F4",padding:"4px",fontSize:"15px",width:"78px"}},"\u0E27\u0E31\u0E19/\u0E40\u0E27\u0E25\u0E32"),Pa.map(C=>{let S=C.id===y;return o.default.createElement("th",{key:C.id,style:{border:"1px solid #111",backgroundColor:"#EFF1F4",padding:"4px",width:S?"40px":"auto"}},o.default.createElement("div",{style:{fontSize:"15px",fontWeight:700,fontFamily:Le}},S?"\u0E1E\u0E31\u0E01":C.id),!S&&o.default.createElement("div",{style:{fontSize:"11.5px",fontWeight:400,fontFamily:Le}},C.rawTime))}))),o.default.createElement("tbody",null,Oa.map((C,S)=>o.default.createElement("tr",{key:C},o.default.createElement("td",{style:{border:"1px solid #111",backgroundColor:"#EFF1F4",fontWeight:700,fontSize:"17px",height:"76px"}},C),Pa.map(T=>{if(T.id===y)return S===0?o.default.createElement("td",{key:`lunch-${T.id}`,rowSpan:5,style:{border:"1px solid #111",backgroundColor:"#FAFAFA",position:"relative",width:"40px",padding:0}},o.default.createElement("div",{style:{position:"absolute",top:"50%",left:"50%",width:"120px",height:"24px",marginLeft:"-60px",marginTop:"-12px",transform:"rotate(90deg)",textAlign:"center",lineHeight:"24px",fontSize:"18px",fontWeight:700,whiteSpace:"nowrap",letterSpacing:"2px"}},"\u0E1E\u0E31\u0E01\u0E01\u0E25\u0E32\u0E07\u0E27\u0E31\u0E19")):null;let P=To(p,C,T.id);if(P?.isFixed)return o.default.createElement("td",{key:T.id,style:{border:"1px solid #111",backgroundColor:"#EFF1F4",verticalAlign:"middle",padding:"4px"}},o.default.createElement("div",{style:{fontSize:"15px",fontWeight:700}},P.label));let A=Ml(P),B=P&&!P.isManualTeacher?v.find(X=>X.id===P.teacherId):null,_=ou(P),K=P?.isManualTeacher?P.teacherName:B?.name,ne=A?A.pal:null;return o.default.createElement("td",{key:T.id,style:{border:"1px solid #111",verticalAlign:"top",padding:"2px",backgroundColor:ne?ne.bg:"white"}},P&&o.default.createElement("div",{style:{display:"flex",flexDirection:"column",justifyContent:"space-between",height:"100%",minHeight:"70px"}},o.default.createElement("div",{style:{textAlign:"right",fontSize:"11.5px",fontWeight:700,color:"#374151",height:"14px",fontFamily:Le}},_||"\xA0"),o.default.createElement("div",{style:{textAlign:"center",fontSize:"13.5px",fontWeight:700,flex:1,display:"flex",alignItems:"center",justifyContent:"center",lineHeight:1.2}},o.default.createElement("span",{style:{display:"-webkit-box",WebkitLineClamp:3,WebkitBoxOrient:"vertical",overflow:"hidden"}},A?.name)),o.default.createElement("div",{style:{textAlign:"center",fontSize:"11.5px",color:"#1f2937",height:"14px",overflow:"hidden",whiteSpace:"nowrap",textOverflow:"ellipsis"}},nn(K))))})))))),o.default.createElement("div",{style:{width:"32%"}},o.default.createElement("div",{style:{border:"1px solid #111",borderBottom:"none",backgroundColor:"#EFF1F4",padding:"6px",textAlign:"center"}},o.default.createElement("div",{style:{fontSize:"17px",fontWeight:700}},"\u0E42\u0E04\u0E23\u0E07\u0E2A\u0E23\u0E49\u0E32\u0E07\u0E23\u0E32\u0E22\u0E27\u0E34\u0E0A\u0E32"),o.default.createElement("div",{style:{display:"flex",justifyContent:"center",gap:"10px",fontSize:"12.5px",fontWeight:700,marginTop:"4px"}},o.default.createElement("span",{style:{color:"#BC1C2B"}},"\u0E22\u0E31\u0E07\u0E44\u0E21\u0E48\u0E08\u0E31\u0E14"),o.default.createElement("span",{style:{color:"#B4740B"}},"\u0E22\u0E31\u0E07\u0E44\u0E21\u0E48\u0E04\u0E23\u0E1A"),o.default.createElement("span",{style:{color:"#15795A"}},"\u0E04\u0E23\u0E1A\u0E41\u0E25\u0E49\u0E27"))),vu(g,!0))),o.default.createElement("div",{style:{borderTop:"1px solid #9CA3AF",marginTop:8,paddingTop:5,display:"flex",justifyContent:"flex-end",fontSize:12,color:"#4B5563"}},o.default.createElement("span",{style:{fontFamily:Le}},"\u0E1E\u0E34\u0E21\u0E1E\u0E4C ",new Date().toLocaleDateString("th-TH"),i>1?` \xB7 \u0E2B\u0E19\u0E49\u0E32 ${d+1}/${i}`:"")))},Ff=(n,d,i=1)=>{let p=n.id,y=Ki(p,q,f);return o.default.createElement("div",{key:p,className:"pdf-page",style:{fontFamily:Le,width:"1122px",height:"793px",padding:"30px 40px",boxSizing:"border-box",overflow:"hidden",background:"#fff",color:"#000",display:"flex",flexDirection:"column",boxShadow:"0 10px 30px rgba(15,30,61,.15)",marginBottom:"32px"}},o.default.createElement("div",{style:{marginBottom:"16px"}},o.default.createElement("div",{style:{display:"flex",justifyContent:"space-between",alignItems:"flex-end",paddingBottom:"8px"}},o.default.createElement("div",null,o.default.createElement("h1",{style:{fontSize:"31px",fontWeight:800,margin:"0 0 8px 0"}},"\u0E15\u0E32\u0E23\u0E32\u0E07\u0E2A\u0E2D\u0E19 ",n.name),o.default.createElement("p",{style:{fontSize:"17px",fontWeight:700,margin:0}},"\u0E1B\u0E35\u0E01\u0E32\u0E23\u0E28\u0E36\u0E01\u0E29\u0E32 ",w.year," \u0E20\u0E32\u0E04\u0E40\u0E23\u0E35\u0E22\u0E19\u0E17\u0E35\u0E48 ",w.term)),o.default.createElement("div",{style:{textAlign:"right",fontSize:"15px"}},o.default.createElement("p",{style:{margin:"0 0 6px 0"}},"\u0E2B\u0E49\u0E2D\u0E07\u0E1B\u0E23\u0E30\u0E08\u0E33: ",Ge(n.roomId)||"-"),o.default.createElement("p",{style:{margin:0}},"\u0E0A\u0E31\u0E48\u0E27\u0E42\u0E21\u0E07\u0E2A\u0E2D\u0E19\u0E17\u0E31\u0E49\u0E07\u0E2B\u0E21\u0E14: ",o.default.createElement("span",{style:{fontWeight:700,fontFamily:Le,fontSize:"17px"}},y.sumHours)," \u0E04\u0E32\u0E1A/\u0E2A\u0E31\u0E1B\u0E14\u0E32\u0E2B\u0E4C"))),o.default.createElement("div",{style:{borderBottom:"2px solid #000",width:"100%"}})),o.default.createElement("div",{style:{display:"flex",gap:"16px",flex:1,alignItems:"flex-start"}},o.default.createElement("div",{style:{width:"68%"}},o.default.createElement("table",{style:{width:"100%",borderCollapse:"collapse",textAlign:"center",tableLayout:"fixed"}},o.default.createElement("thead",null,o.default.createElement("tr",null,o.default.createElement("th",{style:{border:"1px solid #111",backgroundColor:"#EFF1F4",padding:"4px",fontSize:"15px",width:"78px"}},"\u0E27\u0E31\u0E19/\u0E40\u0E27\u0E25\u0E32"),Pa.map(g=>o.default.createElement("th",{key:g.id,style:{border:"1px solid #111",backgroundColor:"#EFF1F4",padding:"4px"}},o.default.createElement("div",{style:{fontSize:"15px",fontWeight:700,fontFamily:Le}},g.id),o.default.createElement("div",{style:{fontSize:"11.5px",fontFamily:Le}},g.rawTime))))),o.default.createElement("tbody",null,Oa.map(g=>o.default.createElement("tr",{key:g},o.default.createElement("td",{style:{border:"1px solid #111",backgroundColor:"#EFF1F4",fontWeight:700,fontSize:"17px",height:"76px"}},g),Pa.map(C=>{let S=nu(p,g,C.id),T=S.length,P=S.reduce((A,B)=>{let _=u.find(K=>K.id===B.classId);return A+(parseInt(_?.studentCount,10)||0)},0);return o.default.createElement("td",{key:C.id,style:{border:"1px solid #111",verticalAlign:"top",padding:0}},o.default.createElement("div",{style:{display:"flex",flexDirection:"column",height:"100%",minHeight:"70px"}},S.map((A,B)=>{let _=Ml(A),K=u.find(qe=>qe.id===A.classId),ne=ou(A)||Ge(n.roomId),X=11.5,U=13.5,$=11.5;T===2?(X=10,U=12,$=10):T>=3&&(X=8.5,U=10,$=8.5);let se=_?_.pal:null;return o.default.createElement("div",{key:B,style:{flex:1,display:"flex",flexDirection:"column",justifyContent:"space-between",padding:"2px",borderBottom:B<T-1?"1px solid #9ca3af":"none",backgroundColor:se?se.bg:"#fff"}},o.default.createElement("div",{style:{display:"flex",justifyContent:"space-between",fontSize:`${X}px`,fontWeight:700,fontFamily:Le}},o.default.createElement("span",{style:{color:"#1e40af"}},P>0?`\u0E19\u0E23.${P}`:"\xA0"),o.default.createElement("span",{style:{color:"#374151"}},ne||"\xA0")),o.default.createElement("div",{style:{flex:1,display:"flex",alignItems:"center",justifyContent:"center",fontSize:`${U}px`,fontWeight:700,lineHeight:1.2}},o.default.createElement("span",{style:{display:"-webkit-box",WebkitLineClamp:T>1?1:2,WebkitBoxOrient:"vertical",overflow:"hidden"}},_?.name)),o.default.createElement("div",{style:{fontSize:`${$}px`,color:"#1e3a8a",fontWeight:700,textAlign:"center",whiteSpace:"nowrap",overflow:"hidden",textOverflow:"ellipsis"}},K?.name))})))})))))),o.default.createElement("div",{style:{width:"32%"}},o.default.createElement("div",{style:{border:"1px solid #111",borderBottom:"none",backgroundColor:"#EFF1F4",padding:"6px",textAlign:"center"}},o.default.createElement("div",{style:{fontSize:"17px",fontWeight:700}},"\u0E2A\u0E23\u0E38\u0E1B\u0E20\u0E32\u0E23\u0E30\u0E07\u0E32\u0E19\u0E2A\u0E2D\u0E19")),vu(y,!1))),o.default.createElement("div",{style:{borderTop:"1px solid #9CA3AF",marginTop:8,paddingTop:5,display:"flex",justifyContent:"flex-end",fontSize:12,color:"#4B5563"}},o.default.createElement("span",{style:{fontFamily:Le}},"\u0E1E\u0E34\u0E21\u0E1E\u0E4C ",new Date().toLocaleDateString("th-TH"),i>1?` \xB7 \u0E2B\u0E19\u0E49\u0E32 ${d+1}/${i}`:"")))},Df=(n,d,i=1)=>{let p=n.id,y=eg(p,q,f,u,ut);return o.default.createElement("div",{key:p,className:"pdf-page",style:{fontFamily:Le,width:`${Ur}px`,height:`${Zi}px`,padding:"30px 40px",boxSizing:"border-box",overflow:"hidden",background:"#fff",color:"#000",display:"flex",flexDirection:"column",boxShadow:"0 10px 30px rgba(15,30,61,.15)",marginBottom:"32px"}},o.default.createElement("div",{style:{marginBottom:"16px"}},o.default.createElement("div",{style:{display:"flex",justifyContent:"space-between",alignItems:"flex-end",paddingBottom:"8px"}},o.default.createElement("div",null,o.default.createElement("h1",{style:{fontSize:"31px",fontWeight:800,margin:"0 0 8px 0"}},"\u0E15\u0E32\u0E23\u0E32\u0E07\u0E01\u0E32\u0E23\u0E43\u0E0A\u0E49\u0E2B\u0E49\u0E2D\u0E07 ",n.name),o.default.createElement("p",{style:{fontSize:"17px",fontWeight:700,margin:0}},"\u0E1B\u0E35\u0E01\u0E32\u0E23\u0E28\u0E36\u0E01\u0E29\u0E32 ",w.year," \u0E20\u0E32\u0E04\u0E40\u0E23\u0E35\u0E22\u0E19\u0E17\u0E35\u0E48 ",w.term)),o.default.createElement("div",{style:{textAlign:"right",fontSize:"15px"}},o.default.createElement("p",{style:{margin:"0 0 6px 0"}},n.note||"\xA0"),o.default.createElement("p",{style:{margin:0}},"\u0E16\u0E39\u0E01\u0E43\u0E0A\u0E49 ",o.default.createElement("span",{style:{fontWeight:700}},y.sumHours)," \u0E08\u0E32\u0E01 ",Oa.length*11," \u0E04\u0E32\u0E1A \xB7 \u0E27\u0E48\u0E32\u0E07 ",Oa.length*11-y.sumHours," \u0E04\u0E32\u0E1A"))),o.default.createElement("div",{style:{borderBottom:"2px solid #000",width:"100%"}})),o.default.createElement("div",{style:{display:"flex",gap:"16px",flex:1,alignItems:"flex-start"}},o.default.createElement("div",{style:{width:"68%"}},o.default.createElement("table",{style:{width:"100%",borderCollapse:"collapse",textAlign:"center",tableLayout:"fixed"}},o.default.createElement("thead",null,o.default.createElement("tr",null,o.default.createElement("th",{style:{border:"1px solid #111",backgroundColor:"#EFF1F4",padding:"4px",fontSize:"15px",width:"78px"}},"\u0E27\u0E31\u0E19/\u0E40\u0E27\u0E25\u0E32"),Pa.map(g=>o.default.createElement("th",{key:g.id,style:{border:"1px solid #111",backgroundColor:"#EFF1F4",padding:"4px"}},o.default.createElement("div",{style:{fontSize:"15px",fontWeight:700,fontFamily:Le}},g.id),o.default.createElement("div",{style:{fontSize:"11.5px",fontFamily:Le}},g.rawTime))))),o.default.createElement("tbody",null,Oa.map(g=>o.default.createElement("tr",{key:g},o.default.createElement("td",{style:{border:"1px solid #111",backgroundColor:"#EFF1F4",fontWeight:700,fontSize:"17px",height:"76px"}},g),Pa.map(C=>{let S=su(p,g,C.id),T=S.length;return o.default.createElement("td",{key:C.id,style:{border:"1px solid #111",verticalAlign:"top",padding:0}},o.default.createElement("div",{style:{display:"flex",flexDirection:"column",height:"100%",minHeight:"70px"}},S.map((P,A)=>{let B=Ml(P),_=u.find(qe=>qe.id===P.classId),K=P.isManualTeacher?null:v.find(qe=>qe.id===P.teacherId),ne=P.isManualTeacher?P.teacherName:K?.name,X=11.5,U=13.5,$=11.5;T===2?(X=10,U=12,$=10):T>=3&&(X=8.5,U=10,$=8.5);let se=B?B.pal:null;return o.default.createElement("div",{key:A,style:{flex:1,display:"flex",flexDirection:"column",justifyContent:"space-between",padding:"2px",borderBottom:A<T-1?"1px solid #9ca3af":"none",backgroundColor:se?se.bg:"#fff"}},o.default.createElement("div",{style:{fontSize:`${X}px`,fontWeight:700,color:"#1e3a8a",textAlign:"center",whiteSpace:"nowrap",overflow:"hidden",textOverflow:"ellipsis"}},_?.name),o.default.createElement("div",{style:{flex:1,display:"flex",alignItems:"center",justifyContent:"center",fontSize:`${U}px`,fontWeight:700,lineHeight:1.2}},o.default.createElement("span",{style:{display:"-webkit-box",WebkitLineClamp:T>1?1:2,WebkitBoxOrient:"vertical",overflow:"hidden"}},P.isFixed?P.label:B?.name)),o.default.createElement("div",{style:{fontSize:`${$}px`,color:"#1f2937",textAlign:"center",whiteSpace:"nowrap",overflow:"hidden",textOverflow:"ellipsis"}},nn(ne)))})))})))))),o.default.createElement("div",{style:{width:"32%"}},o.default.createElement("div",{style:{border:"1px solid #111",borderBottom:"none",backgroundColor:"#EFF1F4",padding:"6px",textAlign:"center"}},o.default.createElement("div",{style:{fontSize:"17px",fontWeight:700}},"\u0E2A\u0E23\u0E38\u0E1B\u0E01\u0E32\u0E23\u0E43\u0E0A\u0E49\u0E2B\u0E49\u0E2D\u0E07")),vu(y,!1))),o.default.createElement("div",{style:{borderTop:"1px solid #9CA3AF",marginTop:8,paddingTop:5,display:"flex",justifyContent:"flex-end",fontSize:12,color:"#4B5563"}},o.default.createElement("span",{style:{fontFamily:Le}},"\u0E1E\u0E34\u0E21\u0E1E\u0E4C ",new Date().toLocaleDateString("th-TH"),i>1?` \xB7 \u0E2B\u0E19\u0E49\u0E32 ${d+1}/${i}`:"")))},fn=`
+</html>`;
+  };
+
+  /**
+   * สั่งพิมพ์ — เปิดเอกสารในแท็บใหม่แล้วเด้งหน้าต่างพิมพ์ให้อัตโนมัติ
+   *
+   * ของเดิมเรียก window.print() ตรงๆ บนหน้านี้ ซึ่งพังเงียบๆ ไม่มี error ใดๆ
+   * เพราะหน้าตัวอย่างรันอยู่ในกรอบ iframe ที่ถูกจำกัดสิทธิ์เพื่อความปลอดภัย
+   * (ทั้งตอนดูในแชทและตอนเปิดจากลิงก์สาธารณะที่แชร์ออกไป)
+   * เบราว์เซอร์บล็อกคำสั่งพิมพ์จากกรอบนั้นโดยไม่แจ้งอะไรเลย ปุ่มจึงดูเหมือนกดไม่ติด
+   *
+   * แก้โดยเปิดเนื้อหาเป็นแท็บใหม่แทน ซึ่งเป็นหน้าเว็บปกติไม่ถูกจำกัดสิทธิ์แบบเดียวกัน
+   * ถ้าเบราว์เซอร์บล็อกการเปิดแท็บใหม่ (popup blocker) จะสลับไปดาวน์โหลดไฟล์แทนให้อัตโนมัติ
+   * ซึ่งเป็นวิธีที่ไม่มีทางถูกบล็อกได้เลย
+   */
+  const printNow = () => {
+    setPdfError('');
+    try {
+      const html = buildPrintableHtml();
+      const blob = new Blob(['\uFEFF' + html], {
+        type: 'text/html;charset=utf-8'
+      });
+      const url = URL.createObjectURL(blob);
+      const win = window.open(url, '_blank');
+      if (!win) {
+        // เบราว์เซอร์บล็อกการเปิดแท็บใหม่ (popup blocker) — สลับไปดาวน์โหลดไฟล์แทน
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = pdfFilename('html');
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        setPdfError('เบราว์เซอร์บล็อกการเปิดแท็บใหม่ จึงดาวน์โหลดไฟล์ให้แทน เปิดไฟล์ที่ดาวน์โหลดแล้วเบราว์เซอร์จะเปิดหน้าต่างพิมพ์ให้เอง');
+      }
+      setTimeout(() => URL.revokeObjectURL(url), 60000);
+    } catch (err) {
+      console.error('Print error:', err);
+      const code = err && err.message;
+      setPdfError(code === 'NODOM' || code === 'NOPAGE' ? 'ไม่พบหน้าตารางสำหรับสร้างไฟล์ กดกลับไปแก้ตารางแล้วสั่งพิมพ์อีกครั้ง' : 'สั่งพิมพ์ไม่สำเร็จ ลองใช้ปุ่มดาวน์โหลดไฟล์สำหรับพิมพ์แทน');
+    }
+  };
+
+  /**
+   * ดาวน์โหลดไฟล์สำหรับพิมพ์ — ทางเลือกที่ไม่มีทางถูกบล็อก
+   * ใช้เมื่อปุ่มสั่งพิมพ์เปิดแท็บใหม่ไม่ได้ หรือกรณีอยากเก็บไฟล์ไว้พิมพ์ทีหลัง
+   */
+  const downloadPrintFile = () => {
+    setPdfError('');
+    try {
+      const html = buildPrintableHtml();
+      const blob = new Blob(['\uFEFF' + html], {
+        type: 'text/html;charset=utf-8'
+      });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = pdfFilename('html');
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    } catch (err) {
+      console.error('Print file error:', err);
+      const code = err && err.message;
+      setPdfError(code === 'NODOM' || code === 'NOPAGE' ? 'ไม่พบหน้าตารางสำหรับสร้างไฟล์ กดกลับไปแก้ตารางแล้วสั่งพิมพ์อีกครั้ง' : 'สร้างไฟล์สำหรับพิมพ์ไม่สำเร็จ ลองรีเฟรชหน้านี้แล้วทำอีกครั้ง');
+    }
+  };
+  const handleCellClick = (day, period) => {
+    if (viewMode === 'student' && period === activeLunchPeriod) return;
+    let existing = null;
+    let targetClassId = '';
+    if (viewMode === 'student') {
+      existing = getSlotData(currentClass, day, period);
+      targetClassId = currentClass;
+      if ((classSubjects[currentClass] || []).length === 0) {
+        requestConfirm('OPEN_SUBJECT_MODAL', null, 'ห้องนี้ยังไม่มีรายวิชา', `ลงรายวิชาให้ห้อง ${activeClassObj.name} ก่อนจึงจะจัดตารางได้ เพิ่มเองทีละวิชา นำเข้าจาก CSV หรือคัดลอกแผนการเรียนจากห้องอื่นก็ได้`, 'เปิดหน้าจัดการวิชา', 'ปิด', false);
+        return;
+      }
+    } else {
+      const vSlots = viewMode === 'teacher' ? getSlotsForTeacher(currentTeacherTab, day, period) : getSlotsForRoom(currentRoomTab, day, period);
+      existing = vSlots[0];
+      targetClassId = existing ? existing.classId : '';
+    }
+    setEditingSlot({
+      day,
+      period
+    });
+    setErrorMsg('');
+    setSelectedDuration(1);
+    setAllowOverlap(false);
+    setModalClassId(targetClassId);
+
+    // ห้องเรียนของคาบนี้เป็นกลุ่มนอกแผนกหรือไม่ (เกิดจากการเปิดคาบเดิมที่เคยตั้งไว้)
+    const targetClassObj = targetClassId ? classes.find(c => c.id === targetClassId) : null;
+    if (targetClassObj?.external) {
+      setIsManualClass(true);
+      setManualClassName(targetClassObj.name);
+    } else {
+      setIsManualClass(false);
+      setManualClassName('');
+    }
+    setExtSubjectForm({
+      code: '',
+      name: '',
+      theory: 0,
+      practical: 0,
+      credit: 0
+    });
+
+    // ตั้งค่าเริ่มต้นของจำนวนคาบที่จะลบ ให้เป็น "ลบจากคาบนี้ไปจนจบก้อน"
+    // เพราะกรณีที่พบบ่อยที่สุดคือวางไป 4 คาบแล้วอยากเอาออกทั้งชุด
+    const blkForDelete = targetClassId ? getBlockAt(targetClassId, day, period) : null;
+    setDeleteCount(blkForDelete ? blkForDelete.periods.filter(p => p >= period).length : 1);
+    if (existing && !existing.isFixed) {
+      if (targetClassObj?.external) {
+        // กลุ่มนอกแผนก: วิชาผูกอยู่ในหลักสูตร "เสมือน" ของห้องนอกแผนกนี้อยู่แล้ว ดึงมาเติมฟอร์มแก้ไขได้เลย
+        const extSub = (classSubjects[targetClassId] || []).find(s => s.id === existing.subjectId);
+        if (extSub) setExtSubjectForm({
+          code: extSub.code || '',
+          name: extSub.name || '',
+          theory: extSub.theory ?? 0,
+          practical: extSub.practical ?? 0,
+          credit: extSub.credit ?? 0
+        });
+        setSelectedSubject(existing.subjectId);
+        setIsManualSubject(false);
+        setManualSubjectName('');
+      } else if (existing.subjectName) {
+        setIsManualSubject(true);
+        setManualSubjectName(existing.subjectName);
+        setSelectedSubject('');
+      } else {
+        setIsManualSubject(false);
+        setManualSubjectName('');
+        setSelectedSubject(existing.subjectId);
+      }
+      if (existing.isManualTeacher) {
+        setIsManualTeacher(true);
+        setManualTeacherName(existing.teacherName || '');
+        setSelectedTeacher('');
+      } else {
+        setIsManualTeacher(false);
+        setSelectedTeacher(existing.teacherId || '');
+        setManualTeacherName('');
+      }
+      const tInfo = teachers.find(t => t.id === existing.teacherId);
+      if (existing.roomName) {
+        setIsManualRoom(true);
+        setManualRoomName(existing.roomName);
+        setCustomRoomId('');
+      } else {
+        setIsManualRoom(false);
+        setManualRoomName('');
+        setCustomRoomId(existing.roomId || tInfo?.roomId || '');
+      }
+      setSaveRoomToRegistry(true);
+    } else {
+      setSelectedSubject('');
+      setIsManualSubject(false);
+      setManualSubjectName('');
+      setSelectedTeacher(viewMode === 'teacher' ? currentTeacherTab : '');
+      setIsManualTeacher(false);
+      setManualTeacherName('');
+      setCustomRoomId(viewMode === 'room' ? currentRoomTab : '');
+      setIsManualRoom(false);
+      setManualRoomName('');
+      setSaveRoomToRegistry(true);
+    }
+  };
+  const handleSaveSlot = () => {
+    // --- 1. ห้องเรียน: ถ้าเป็นกลุ่มนอกแผนก หาห้องเสมือนที่เคยสร้างไว้ หรือสร้างใหม่ ---
+    let classToSave = modalClassId || currentClass;
+    let classToAdd = null;
+    if (isManualClass) {
+      const cnm = manualClassName.trim();
+      if (!cnm) {
+        setErrorMsg('กรอกชื่อกลุ่มนักเรียนนอกแผนก หรือเอาเครื่องหมายถูกออกจาก "กลุ่มนอกแผนก" แล้วเลือกห้องเรียนของแผนก');
+        return;
+      }
+      const foundClass = classes.find(c => c.external && c.name.trim().toLowerCase() === cnm.toLowerCase());
+      if (foundClass) classToSave = foundClass.id;else {
+        classToAdd = {
+          id: `c_ext_${Date.now()}`,
+          name: cnm,
+          external: true,
+          level: '',
+          year: '',
+          room: '',
+          studentCount: '',
+          advisor: '',
+          lunchPeriod: 5
+        };
+        classToSave = classToAdd.id;
+      }
+    }
+    const hasSubject = isManualClass ? !!extSubjectForm.name.trim() : isManualSubject ? !!manualSubjectName.trim() : !!selectedSubject;
+    if (!classToSave || !hasSubject || !isManualTeacher && !selectedTeacher || isManualTeacher && !manualTeacherName.trim() || !selectedDuration) {
+      setErrorMsg('กรอกห้องเรียน วิชา ครูผู้สอน และจำนวนคาบให้ครบก่อนบันทึก');
+      return;
+    }
+
+    // --- 2. วิชา ---
+    // วิชานอกแผนก/กลุ่มนอกแผนก: ไม่ผูกกฎเรื่องวิชากิจกรรม (ท0 ป2 น0) ซึ่งใช้ได้เฉพาะวิชาที่ลงทะเบียนในหลักสูตรจริงเท่านั้น
+    let finalSubjectId = null;
+    let finalSubjectName = null;
+    let subjectToAdd = null;
+    if (isManualClass) {
+      // วิชาของกลุ่มนอกแผนก ผูกเป็นรายวิชาจริงในหลักสูตร "เสมือน" ของห้องนี้
+      // ใช้โครงสร้างเดิมทั้งหมด (สี, การนับชั่วโมง, การแสดงผลใน PDF) โดยไม่ต้องเขียนโค้ดแยกอีกชุด
+      const existingSubs = classSubjects[classToSave] || [];
+      const nm = extSubjectForm.name.trim();
+      const code = extSubjectForm.code.trim();
+      const found = existingSubs.find(s => s.name.trim().toLowerCase() === nm.toLowerCase() && (s.code || '').trim() === code);
+      if (found) {
+        finalSubjectId = found.id;
+      } else {
+        subjectToAdd = {
+          id: `s_ext_${Date.now()}`,
+          code,
+          name: nm,
+          theory: Number(extSubjectForm.theory) || 0,
+          practical: Number(extSubjectForm.practical) || 0,
+          credit: Number(extSubjectForm.credit) || 0,
+          colorKey: SUBJECT_COLORS[existingSubs.length % SUBJECT_COLORS.length].key
+        };
+        finalSubjectId = subjectToAdd.id;
+      }
+    } else if (isManualSubject) {
+      finalSubjectName = manualSubjectName.trim();
+    } else {
+      finalSubjectId = selectedSubject;
+      const subjectInfo = (classSubjects[classToSave] || []).find(s => s.id === selectedSubject);
+      const isActivityProps = Number(subjectInfo.theory) === 0 && Number(subjectInfo.practical) === 2 && Number(subjectInfo.credit) === 0;
+      const isActivityName = subjectInfo.name.includes('กิจกรรม');
+      if (isActivityName && !isActivityProps) {
+        setErrorMsg('วิชากิจกรรมต้องกำหนดเป็น ท=0 ป=2 น=0 จึงจะลงตารางได้ แก้ที่หน้าจัดการวิชาก่อน');
+        return;
+      }
+      if (isActivityProps && selectedDuration !== 2) {
+        setErrorMsg('วิชากิจกรรมต้องลง 2 คาบติดกันเสมอ');
+        return;
+      }
+    }
+    let periodsToSave = [];
+    let cursor = editingSlot.period;
+    let assigned = 0;
+    // ห้องที่เพิ่งสร้างใหม่ (กลุ่มนอกแผนก) ยังไม่อยู่ใน state ตอนนี้ ต้องอ้างจาก classToAdd ด้วย
+    const cObj = classes.find(c => c.id === classToSave) || classToAdd || {};
+    const cLunch = cObj.lunchPeriod || 5;
+    while (assigned < selectedDuration) {
+      if (cursor > 11) {
+        setErrorMsg(`ลง ${selectedDuration} คาบติดกันจากจุดนี้ไม่ได้ เพราะเลยคาบ 11 ซึ่งเป็นคาบสุดท้ายของวัน`);
+        return;
+      }
+      if (cursor !== cLunch) {
+        periodsToSave.push(cursor);
+        assigned++;
+      }
+      cursor++;
+    }
+    for (let p of periodsToSave) {
+      const teacherBusy = schedule.filter(s => s.day === editingSlot.day && s.period === p && s.classId !== classToSave && (isManualTeacher ? s.isManualTeacher && s.teacherName === manualTeacherName.trim() : !s.isManualTeacher && s.teacherId === selectedTeacher));
+      // วิชานอกแผนกไม่มี subjectId เทียบด้วยชื่อวิชาแทน ไม่งั้นจะเข้าใจผิดว่าคาบเดิมของตัวเองคือคาบที่ชนกัน
+      const classBusy = schedule.filter(s => s.day === editingSlot.day && s.period === p && s.classId === classToSave && (isManualSubject ? s.subjectId || s.subjectName !== finalSubjectName : s.subjectId !== finalSubjectId));
+      if (teacherBusy.length > 0 && !allowOverlap) {
+        const busyClass = classes.find(c => c.id === teacherBusy[0].classId);
+        setErrorMsg(`คาบ ${p} ครูท่านนี้ติดสอนห้อง "${busyClass?.name}" อยู่แล้ว เลือกเวลาอื่น หรือติ๊ก "ให้สอนซ้อนเวลาได้" ด้านล่างหากตั้งใจ`);
+        return;
+      }
+      if (classBusy.length > 0 && !allowOverlap) {
+        setErrorMsg(`คาบ ${p} ห้องนี้มีวิชาอื่นเรียนอยู่แล้ว เลือกเวลาอื่น หรือติ๊ก "ให้สอนซ้อนเวลาได้" หากตั้งใจทับ`);
+        return;
+      }
+
+      // ห้องปฏิบัติการถูกใช้โดยห้องเรียนอื่นอยู่แล้วหรือไม่
+      // ห้องที่พิมพ์เองแบบไม่เก็บเข้าทะเบียน ตรวจชนไม่ได้เพราะไม่มีรหัสให้เทียบ
+      const effectiveRoomId = isManualRoom ? saveRoomToRegistry ? rooms.find(r => r.name.trim().toLowerCase() === manualRoomName.trim().toLowerCase())?.id || null : null : customRoomId || (!isManualTeacher ? teachers.find(t => t.id === selectedTeacher)?.roomId : null) || null;
+      const rc = roomClashAt(effectiveRoomId, editingSlot.day, p, classToSave);
+      if (rc && !allowOverlap) {
+        const rcCls = classes.find(c => c.id === rc.classId);
+        setErrorMsg(`คาบ ${p} ห้อง "${roomLabel(effectiveRoomId)}" ถูกใช้โดย "${rcCls?.name || 'ห้องเรียนอื่น'}" อยู่แล้ว เลือกห้องอื่น เปลี่ยนเวลา หรือติ๊ก "ให้สอนซ้อนเวลาได้" หากใช้ห้องร่วมกันจริง`);
+        return;
+      }
+    }
+    const cleaned = schedule.filter(s => !(s.classId === classToSave && s.day === editingSlot.day && periodsToSave.includes(s.period)));
+    // จัดการห้องนอกแผนก: เก็บเข้าทะเบียนหรือเป็นข้อความอิสระ ตามที่ผู้ใช้เลือก
+    let finalRoomId = customRoomId || null;
+    let finalRoomName = null;
+    let roomToAdd = null;
+    if (isManualRoom) {
+      const nm = manualRoomName.trim();
+      if (!nm) {
+        setErrorMsg('กรอกชื่อห้อง หรือเอาเครื่องหมายถูกออกจาก "ห้องนอกแผนก" แล้วเลือกห้องจากทะเบียน');
+        return;
+      }
+      if (saveRoomToRegistry) {
+        const found = rooms.find(r => r.name.trim().toLowerCase() === nm.toLowerCase());
+        if (found) finalRoomId = found.id;else {
+          roomToAdd = {
+            id: `r_ext_${Date.now()}`,
+            name: nm,
+            note: '',
+            external: true
+          };
+          finalRoomId = roomToAdd.id;
+        }
+      } else {
+        finalRoomId = null;
+        finalRoomName = nm;
+      }
+    }
+    const newSlots = periodsToSave.map(p => ({
+      classId: classToSave,
+      day: editingSlot.day,
+      period: p,
+      subjectId: finalSubjectId,
+      subjectName: finalSubjectName,
+      isManualTeacher,
+      teacherId: isManualTeacher ? null : selectedTeacher,
+      teacherName: isManualTeacher ? manualTeacherName.trim() : null,
+      roomId: finalRoomId,
+      roomName: finalRoomName
+    }));
+    saveHistory();
+    if (classToAdd) setClasses(prev => [...prev, classToAdd]);
+    if (subjectToAdd) setClassSubjects(prev => ({
+      ...prev,
+      [classToSave]: [...(prev[classToSave] || []), subjectToAdd]
+    }));
+    if (roomToAdd) setRooms(prev => [...prev, roomToAdd]);
+    setSchedule([...cleaned, ...newSlots]);
+    setEditingSlot(null);
+  };
+
+  // วิชากิจกรรม (ท0 ป2 น0) ต้องอยู่เป็นคู่เสมอ ลบแยกคาบเดียวไม่ได้
+  const isActivitySubject = (classId, subjectId) => {
+    const info = (classSubjects[classId] || []).find(s => s.id === subjectId);
+    return !!info && Number(info.theory) === 0 && Number(info.practical) === 2 && Number(info.credit) === 0;
+  };
+
+  /**
+   * ข้อมูลประกอบการลบของช่องที่กำลังเปิดอยู่
+   * lockWhole = true หมายถึงต้องลบทั้งก้อน เลือกจำนวนไม่ได้
+   * (วิชากิจกรรมและคาบตายตัว ซึ่งกฎบังคับให้อยู่เป็นคู่)
+   */
+  const deleteInfo = (() => {
+    if (!editingSlot) return null;
+    const cid = modalClassId || currentClass;
+    const blk = getBlockAt(cid, editingSlot.day, editingSlot.period);
+    if (!blk) return null;
+    const fromHere = blk.periods.filter(p => p >= editingSlot.period);
+    const lockWhole = blk.slot.isFixed || !blk.slot.isFixed && isActivitySubject(cid, blk.slot.subjectId);
+    return {
+      classId: cid,
+      blk,
+      fromHere,
+      lockWhole,
+      max: lockWhole ? blk.periods.length : fromHere.length,
+      targets: lockWhole ? blk.periods : fromHere
+    };
+  })();
+  const handleDeleteSlot = () => {
+    if (!deleteInfo) {
+      setEditingSlot(null);
+      return;
+    }
+    const {
+      classId,
+      blk,
+      targets,
+      lockWhole
+    } = deleteInfo;
+    const n = lockWhole ? targets.length : Math.max(1, Math.min(Number(deleteCount) || 1, targets.length));
+    const toDelete = targets.slice(0, n);
+    const nextSchedule = schedule.filter(s => !(s.classId === classId && s.day === editingSlot.day && toDelete.includes(s.period)));
+    saveHistory();
+    setSchedule(nextSchedule);
+    setEditingSlot(null);
+
+    // แจ้งผลพร้อมปุ่มย้อนกลับ เหมือนตอนย้ายคาบ เผลอลบผิดกดคืนได้ทันที
+    const subj = blk.slot.isFixed ? null : (classSubjects[classId] || []).find(x => x.id === blk.slot.subjectId);
+    const subjNameForToast = subj?.name || blk.slot.subjectName;
+    const cls = classes.find(c => c.id === classId);
+    let stat = null;
+    if (subj) {
+      const required = Number(subj.theory || 0) + Number(subj.practical || 0);
+      const placed = nextSchedule.filter(s => s.classId === classId && s.subjectId === subj.id).length;
+      stat = {
+        placed,
+        required,
+        remain: Math.max(0, required - placed)
+      };
+    }
+    showToast({
+      verb: 'ลบ',
+      name: blk.slot.isFixed ? blk.slot.label : subjNameForToast || 'คาบเรียน',
+      where: `${editingSlot.day} คาบ ${toDelete.join(', ')}`,
+      className: cls?.name || '',
+      len: toDelete.length,
+      stat,
+      historyLen: history.length + 1
+    });
+  };
+  const handleAddClass = () => {
+    saveHistory();
+    const majorText = newClassForm.major.trim() ? `${newClassForm.major.trim()} ` : '';
+    const name = `${majorText}${newClassForm.level} ${newClassForm.year}/${newClassForm.room}`;
+    const lunchPeriod = newClassForm.level === 'ปวช.' ? 5 : 4;
+    const newId = `c${Date.now()}`;
+    setClasses([...classes, {
+      id: newId,
+      name,
+      lunchPeriod,
+      major: newClassForm.major,
+      level: newClassForm.level,
+      year: newClassForm.year,
+      room: newClassForm.room,
+      studentCount: newClassForm.studentCount,
+      advisor: newClassForm.advisor
+    }]);
+    setClassSubjects(prev => ({
+      ...prev,
+      [newId]: []
+    }));
+    setSchedule(prev => [...prev, {
+      classId: newId,
+      day: 'พุธ',
+      period: 1,
+      isFixed: true,
+      label: 'กิจกรรม'
+    }, {
+      classId: newId,
+      day: 'พุธ',
+      period: 2,
+      isFixed: true,
+      label: 'กิจกรรม'
+    }]);
+    setNewClassForm({
+      major: MAJOR_BY_LEVEL['ปวช.'],
+      level: 'ปวช.',
+      year: 1,
+      room: 1,
+      studentCount: '',
+      advisor: ''
+    });
+  };
+  const handleUpdateClassComplex = (id, field, value) => {
+    // ช่องที่พิมพ์ได้ต้องรวมการพิมพ์ต่อเนื่องเป็นขั้นเดียว
+    // ส่วนช่องเลือก (ระดับชั้น ชั้นปี ห้อง ที่ปรึกษา) เป็นการกระทำเดี่ยว นับแยกตามปกติ
+    const isTyping = field === 'major' || field === 'studentCount' || field === 'name';
+    saveHistory(isTyping ? `class:${id}:${field}` : null);
+    setClasses(classes.map(c => {
+      if (c.id !== id) return c;
+      const updated = {
+        ...c,
+        [field]: value
+      };
+      if (field === 'level') {
+        updated.lunchPeriod = value === 'ปวช.' ? 5 : 4;
+        if (value === 'ปวส.' && updated.year > 2) updated.year = 2;
+        // สลับชื่อสาขาให้ตรงระดับชั้น เว้นแต่ผู้ใช้ตั้งสาขาอื่นเองไว้แล้ว
+        const keepCustom = updated.major && !DEFAULT_MAJORS.includes(String(updated.major).trim());
+        if (!keepCustom) updated.major = MAJOR_BY_LEVEL[value];
+      }
+      if (['major', 'level', 'year', 'room'].includes(field)) {
+        const mText = updated.major ? `${String(updated.major).trim()} ` : '';
+        updated.name = `${mText}${updated.level || ''} ${updated.year || ''}/${updated.room || ''}`.trim();
+      }
+      return updated;
+    }));
+  };
+  const handleDeleteClass = id => {
+    const target = classes.find(c => c.id === id);
+    // เกณฑ์ "ต้องมีอย่างน้อย 1 ห้อง" นับเฉพาะห้องของแผนก ไม่รวมกลุ่มนอกแผนก
+    // ลบกลุ่มนอกแผนกให้เหลือ 0 กลุ่มได้ตามปกติ ไม่ใช่ทรัพยากรหลักของระบบ
+    if (!target?.external && deptClasses.length <= 1) {
+      customAlert('ระบบต้องมีห้องเรียนของแผนกอย่างน้อย 1 ห้อง');
+      return;
+    }
+    requestConfirm('DELETE_CLASS', id, target?.external ? 'ลบกลุ่มนอกแผนก' : 'ลบห้องเรียน', 'ตารางและรายวิชาของห้องนี้จะถูกลบไปด้วยทั้งหมด', target?.external ? 'ลบกลุ่มนอกแผนก' : 'ลบห้องเรียน');
+  };
+  const handleAddTeacher = () => {
+    if (!newTeacherForm.name) return;
+    saveHistory();
+    setTeachers([...teachers, {
+      id: `t${Date.now()}`,
+      name: newTeacherForm.name,
+      roomId: newTeacherForm.roomId || null
+    }]);
+    setNewTeacherForm({
+      name: '',
+      roomId: ''
+    });
+  };
+  const startEditTeacher = t => {
+    setEditingTeacherId(t.id);
+    setEditTeacherForm({
+      name: t.name,
+      roomId: t.roomId || ''
+    });
+  };
+  const cancelEditTeacher = () => setEditingTeacherId(null);
+  const saveEditTeacher = id => {
+    if (!editTeacherForm.name.trim()) {
+      customAlert('กรอกชื่อครูผู้สอนก่อนบันทึก');
+      return;
+    }
+    saveHistory();
+    setTeachers(teachers.map(t => t.id === id ? {
+      ...t,
+      name: editTeacherForm.name.trim(),
+      roomId: editTeacherForm.roomId || null
+    } : t));
+    setEditingTeacherId(null);
+  };
+  // ==========================================
+  // จัดการทะเบียนห้อง
+  // ==========================================
+  const roomUsageCount = roomId => schedule.filter(s => slotRoomId(s) === roomId).length;
+  const handleAddRoom = () => {
+    const name = newRoomForm.name.trim();
+    if (!name) return;
+    if (rooms.some(r => r.name.trim().toLowerCase() === name.toLowerCase())) {
+      customAlert(`มีห้อง "${name}" ในทะเบียนแล้ว ใช้ชื่ออื่นหรือแก้ไขห้องเดิมแทน`);
+      return;
+    }
+    saveHistory();
+    setRooms([...rooms, {
+      id: `r${Date.now()}`,
+      name,
+      note: newRoomForm.note.trim()
+    }]);
+    setNewRoomForm({
+      name: '',
+      note: ''
+    });
+  };
+  const startEditRoom = r => {
+    setEditingRoomId(r.id);
+    setEditRoomForm({
+      name: r.name,
+      note: r.note || ''
+    });
+  };
+  const cancelEditRoom = () => setEditingRoomId(null);
+  const saveEditRoom = id => {
+    const name = editRoomForm.name.trim();
+    if (!name) {
+      customAlert('กรอกชื่อห้องก่อนบันทึก');
+      return;
+    }
+    if (rooms.some(r => r.id !== id && r.name.trim().toLowerCase() === name.toLowerCase())) {
+      customAlert(`มีห้อง "${name}" ในทะเบียนแล้ว ใช้ชื่ออื่น`);
+      return;
+    }
+    saveHistory();
+    setRooms(rooms.map(r => r.id === id ? {
+      ...r,
+      name,
+      note: editRoomForm.note.trim()
+    } : r));
+    setEditingRoomId(null);
+  };
+  const handleDeleteRoom = id => {
+    const used = roomUsageCount(id);
+    requestConfirm('DELETE_ROOM', id, 'ลบห้องออกจากทะเบียน', used > 0 ? `ห้อง "${roomLabel(id)}" ถูกใช้อยู่ ${used} คาบ ถ้าลบ คาบเหล่านั้นจะกลายเป็นไม่ระบุห้อง และจะไม่ถูกตรวจห้องชนอีก` : `ลบห้อง "${roomLabel(id)}" ออกจากทะเบียน`, 'ลบห้อง');
+  };
+  const downloadRoomTemplate = () => {
+    const template = "ชื่อห้อง,หมายเหตุ\n114,ห้องทฤษฎี\nShop 2,โรงฝึกไฟฟ้า\n147,ห้องปฏิบัติการมอเตอร์";
+    const blob = new Blob(["\uFEFF" + template], {
+      type: 'text/csv;charset=utf-8;'
+    });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.setAttribute("href", url);
+    a.setAttribute("download", "room_template.csv");
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  };
+  const handleRoomFileUpload = e => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = ev => {
+      const lines = ev.target.result.replace(/^\uFEFF/, '').split(/\r?\n/).filter(l => l.trim() !== '');
+      if (lines.length < 2) {
+        customAlert('ไฟล์ต้องมีบรรทัดหัวตาราง และข้อมูลอย่างน้อย 1 บรรทัด');
+        return;
+      }
+      const existing = new Set(rooms.map(r => r.name.trim().toLowerCase()));
+      const list = [];
+      for (let i = 1; i < lines.length; i++) {
+        const row = lines[i].split(',').map(c => c.trim());
+        const nm = row[0];
+        if (nm && !existing.has(nm.toLowerCase())) {
+          existing.add(nm.toLowerCase());
+          list.push({
+            id: `r_import_${Date.now()}_${i}`,
+            name: nm,
+            note: row[1] || ''
+          });
+        }
+      }
+      if (list.length > 0) {
+        saveHistory();
+        setRooms(prev => [...prev, ...list]);
+        customAlert(`นำเข้าห้องแล้ว ${list.length} ห้อง`);
+      } else {
+        customAlert('ไม่พบห้องใหม่ในไฟล์ อาจมีอยู่ในทะเบียนแล้วทั้งหมด');
+      }
+      e.target.value = null;
+    };
+    reader.readAsText(file);
+  };
+  const handleDeleteTeacher = id => requestConfirm('DELETE_TEACHER', id, 'ลบครูผู้สอน', 'ครูท่านนี้จะถูกลบออกจากรายชื่อ คาบที่ลงไว้แล้วในตารางจะยังอยู่แต่จะไม่แสดงชื่อครู', 'ลบครูผู้สอน');
+  const downloadTeacherTemplate = () => {
+    const template = "ชื่อ-สกุล,ห้องสอน\nครูสมชาย ใจดี,114\nTeacher John,147";
+    const blob = new Blob(["\uFEFF" + template], {
+      type: 'text/csv;charset=utf-8;'
+    });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.setAttribute("href", url);
+    a.setAttribute("download", "teacher_template.csv");
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  };
+  const handleTeacherFileUpload = e => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = ev => {
+      const lines = ev.target.result.replace(/^\uFEFF/, '').split(/\r?\n/).filter(l => l.trim() !== '');
+      if (lines.length < 2) {
+        customAlert('ไฟล์ต้องมีบรรทัดหัวตาราง และข้อมูลอย่างน้อย 1 บรรทัด');
+        return;
+      }
+      const list = [];
+      const newRooms = [];
+      for (let i = 1; i < lines.length; i++) {
+        const row = lines[i].split(',').map(c => c.trim());
+        if (!row[0]) continue;
+        // คอลัมน์ห้องในไฟล์เป็นชื่อห้อง ต้องหาในทะเบียนหรือสร้างใหม่ให้
+        const rn = (row[1] || '').trim();
+        let rid = null;
+        if (rn) {
+          const found = [...rooms, ...newRooms].find(r => r.name.trim().toLowerCase() === rn.toLowerCase());
+          if (found) rid = found.id;else {
+            rid = `r_timp_${Date.now()}_${i}`;
+            newRooms.push({
+              id: rid,
+              name: rn,
+              note: ''
+            });
+          }
+        }
+        list.push({
+          id: `t_import_${Date.now()}_${i}`,
+          name: row[0],
+          roomId: rid
+        });
+      }
+      if (list.length > 0) {
+        saveHistory();
+        if (newRooms.length) setRooms(prev => [...prev, ...newRooms]);
+        setTeachers(prev => [...prev, ...list]);
+        customAlert(`นำเข้าครูผู้สอนแล้ว ${list.length} คน${newRooms.length ? ` และเพิ่มห้องใหม่ ${newRooms.length} ห้อง` : ''}`);
+      } else {
+        customAlert('ไม่พบข้อมูลที่อ่านได้ในไฟล์ ตรวจสอบว่าคอลัมน์ตรงกับไฟล์ตัวอย่าง');
+      }
+      e.target.value = null;
+    };
+    reader.readAsText(file);
+  };
+  const handleTabDoubleClick = c => {
+    setEditingTabId(c.id);
+    setEditTabName(c.name);
+  };
+  const saveTabName = id => {
+    // ชื่อห้องเรียนคำนวณจากสาขา ระดับชั้น และเลขห้องเสมอ จึงตั้งเองไม่ได้
+    // แท็บห้องเรียนใช้ดับเบิลคลิกเปิดหน้าตั้งค่าแทน เส้นทางนี้จึงเหลือแค่ครูกับห้อง
+    if (editTabName.trim()) {
+      if (id.startsWith('t')) {
+        saveHistory();
+        setTeachers(teachers.map(t => t.id === id ? {
+          ...t,
+          name: editTabName.trim()
+        } : t));
+      } else if (id.startsWith('r')) {
+        saveHistory();
+        setRooms(rooms.map(r => r.id === id ? {
+          ...r,
+          name: editTabName.trim()
+        } : r));
+      }
+    }
+    setEditingTabId(null);
+  };
+  const handleQuickAddTeacher = () => {
+    saveHistory();
+    const newId = `t${Date.now()}`;
+    setTeachers([...teachers, {
+      id: newId,
+      name: `ครูใหม่ ${teachers.length + 1}`,
+      roomId: null
+    }]);
+    setCurrentTeacherTab(newId);
+  };
+
+  /**
+   * หาเลขห้องที่ยังว่างในกลุ่มเดียวกัน (สาขา + ระดับชั้น + ชั้นปี)
+   *
+   * เดิมใช้จำนวนห้องทั้งหมด + 1 ซึ่งพังเมื่อมีห้องเยอะ
+   * มี 27 ห้องจะได้ "ห้องที่ 28" ทั้งที่ช่องเลือกมีแค่ 1-10
+   * ค่าจึงหลุดออกนอกช่วง แสดงผลไม่ตรงกับข้อมูลจริง
+   */
+  const nextFreeRoomNo = (major, level, year) => {
+    const used = new Set(classes.filter(c => c.level === level && Number(c.year) === Number(year) && (c.major || '').trim() === (major || '').trim()).map(c => Number(c.room)));
+    for (let i = 1; i <= MAX_ROOM_NO; i++) if (!used.has(i)) return i;
+    return MAX_ROOM_NO;
+  };
+  const handleQuickAddClass = () => {
+    saveHistory();
+    const newId = `c${Date.now()}`;
+    // ตั้งชื่อด้วยกฎเดียวกับที่ระบบใช้คำนวณชื่อห้อง (สาขา + ระดับ + ชั้นปี/ห้อง)
+    // ไม่งั้นชื่อจะกระโดดเปลี่ยนเองทันทีที่ผู้ใช้ไปแก้ค่าใดค่าหนึ่งในหน้าตั้งค่าห้อง
+    const major = MAJOR_BY_LEVEL['ปวช.'];
+    const n = nextFreeRoomNo(major, 'ปวช.', 1);
+    setClasses([...classes, {
+      id: newId,
+      name: `${major} ปวช. 1/${n}`,
+      lunchPeriod: 5,
+      major,
+      level: 'ปวช.',
+      year: 1,
+      room: n,
+      studentCount: '',
+      advisor: ''
+    }]);
+    setClassSubjects(prev => ({
+      ...prev,
+      [newId]: []
+    }));
+    setSchedule(prev => [...prev, {
+      classId: newId,
+      day: 'พุธ',
+      period: 1,
+      isFixed: true,
+      label: 'กิจกรรม'
+    }, {
+      classId: newId,
+      day: 'พุธ',
+      period: 2,
+      isFixed: true,
+      label: 'กิจกรรม'
+    }]);
+    setCurrentClass(newId);
+  };
+  const handleAddSubject = () => {
+    if (!newSubjectForm.code || !newSubjectForm.name) return;
+    const existing = classSubjects[currentClass] || [];
+    if (existing.some(s => (s.code || '').trim().toLowerCase() === newSubjectForm.code.trim().toLowerCase())) {
+      customAlert(`รหัสวิชา ${newSubjectForm.code} มีอยู่ในห้องนี้แล้ว ใช้รหัสอื่นหรือแก้ไขวิชาเดิมแทน`);
+      return;
+    }
+    saveHistory();
+    const colorKey = newSubjectForm.colorKey || SUBJECT_COLORS[existing.length % SUBJECT_COLORS.length].key;
+    setClassSubjects(prev => ({
+      ...prev,
+      [currentClass]: [...existing, {
+        id: `s${Date.now()}`,
+        code: newSubjectForm.code,
+        name: newSubjectForm.name,
+        theory: Number(newSubjectForm.theory),
+        practical: Number(newSubjectForm.practical),
+        credit: Number(newSubjectForm.credit),
+        colorKey
+      }]
+    }));
+    setNewSubjectForm({
+      code: '',
+      name: '',
+      theory: 0,
+      practical: 0,
+      credit: 0,
+      colorKey: ''
+    });
+  };
+  const handleDeleteSubject = id => {
+    saveHistory();
+    setClassSubjects(prev => ({
+      ...prev,
+      [currentClass]: (prev[currentClass] || []).filter(s => s.id !== id)
+    }));
+    setSchedule(schedule.filter(s => s.subjectId !== id));
+  };
+
+  /**
+   * จัดลำดับรายวิชาด้วยการลาก
+   * ลำดับใน classSubjects[classId] เป็นแหล่งความจริงเดียวที่ใช้ทั้งตารางสรุปในหน้าจอ
+   * และตารางสรุปในเอกสาร PDF — สลับตำแหน่งตรงนี้จุดเดียว จะสะท้อนไปทุกที่โดยอัตโนมัติ
+   */
+  const reorderSubject = (classId, fromId, toId) => {
+    if (fromId === toId) return;
+    setClassSubjects(prev => {
+      const list = [...(prev[classId] || [])];
+      const fromIdx = list.findIndex(s => s.id === fromId);
+      const toIdx = list.findIndex(s => s.id === toId);
+      if (fromIdx === -1 || toIdx === -1) return prev;
+      const [moved] = list.splice(fromIdx, 1);
+      list.splice(toIdx, 0, moved);
+      return {
+        ...prev,
+        [classId]: list
+      };
+    });
+  };
+  const startEditSubject = s => {
+    setEditingSubjectId(s.id);
+    setEditSubjectForm({
+      code: s.code || '',
+      name: s.name || '',
+      theory: s.theory ?? 0,
+      practical: s.practical ?? 0,
+      credit: s.credit ?? 0,
+      colorKey: s.colorKey || normalizeSubjectColor(s).key
+    });
+  };
+  const cancelEditSubject = () => setEditingSubjectId(null);
+  const saveEditSubject = id => {
+    if (!editSubjectForm.name.trim()) {
+      customAlert('กรอกชื่อวิชาก่อนบันทึก');
+      return;
+    }
+    const dup = (classSubjects[currentClass] || []).some(s => s.id !== id && (s.code || '').trim().toLowerCase() === editSubjectForm.code.trim().toLowerCase());
+    if (dup) {
+      customAlert(`รหัสวิชา ${editSubjectForm.code} มีอยู่ในห้องนี้แล้ว ใช้รหัสอื่น`);
+      return;
+    }
+    saveHistory();
+    setClassSubjects(prev => ({
+      ...prev,
+      [currentClass]: (prev[currentClass] || []).map(s => s.id === id ? {
+        ...s,
+        code: editSubjectForm.code,
+        name: editSubjectForm.name,
+        theory: Number(editSubjectForm.theory) || 0,
+        practical: Number(editSubjectForm.practical) || 0,
+        credit: Number(editSubjectForm.credit) || 0,
+        colorKey: editSubjectForm.colorKey || s.colorKey
+      } : s)
+    }));
+    setEditingSubjectId(null);
+  };
+  const handleCopyPlan = () => {
+    if (!copySourceClassId) return;
+    saveHistory();
+    const src = classSubjects[copySourceClassId] || [];
+    const cloned = src.map(s => ({
+      ...s,
+      id: `s_copy_${Date.now()}_${Math.random().toString(36).slice(2, 9)}`
+    }));
+    setClassSubjects(prev => ({
+      ...prev,
+      [currentClass]: [...(prev[currentClass] || []), ...cloned]
+    }));
+    customAlert(`คัดลอกมาแล้ว ${cloned.length} วิชา`);
+    setCopySourceClassId('');
+  };
+  const downloadTemplate = () => {
+    const template = "รหัสวิชา,ชื่อวิชา,ท,ป,น\n20000-1401,คณิตศาสตร์อุตสาหกรรม,2,0,2\n20000-1301,วิทยาศาสตร์ประยุกต์,2,2,3\n20000-2001,กิจกรรมชมรมวิชาชีพ,0,2,0";
+    const blob = new Blob(["\uFEFF" + template], {
+      type: 'text/csv;charset=utf-8;'
+    });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.setAttribute("href", url);
+    a.setAttribute("download", "subject_template.csv");
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  };
+  const handleFileUpload = e => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = ev => {
+      const lines = ev.target.result.replace(/^\uFEFF/, '').split(/\r?\n/).filter(l => l.trim() !== '');
+      if (lines.length < 2) {
+        customAlert('ไฟล์ต้องมีบรรทัดหัวตาราง และข้อมูลอย่างน้อย 1 บรรทัด');
+        return;
+      }
+      const list = [];
+      const base = (classSubjects[currentClass] || []).length;
+      for (let i = 1; i < lines.length; i++) {
+        const row = lines[i].split(',').map(c => c.trim());
+        if (row.length >= 5) {
+          list.push({
+            id: `s_import_${Date.now()}_${i}`,
+            code: row[0],
+            name: row[1],
+            theory: Number(row[2]) || 0,
+            practical: Number(row[3]) || 0,
+            credit: Number(row[4]) || 0,
+            colorKey: SUBJECT_COLORS[(base + i - 1) % SUBJECT_COLORS.length].key
+          });
+        }
+      }
+      if (list.length > 0) {
+        saveHistory();
+        setClassSubjects(prev => ({
+          ...prev,
+          [currentClass]: [...(prev[currentClass] || []), ...list]
+        }));
+        customAlert(`นำเข้าแล้ว ${list.length} วิชา เข้าห้อง ${activeClassObj.name}`);
+      } else {
+        customAlert('ไม่พบข้อมูลที่อ่านได้ในไฟล์ ตรวจสอบว่ามีครบ 5 คอลัมน์ตามไฟล์ตัวอย่าง');
+      }
+      e.target.value = null;
+    };
+    reader.readAsText(file);
+  };
+
+  // ==========================================
+  // 8. หน้ากระดาษสำหรับ PDF
+  // ==========================================
+  const renderPrintablePage = (classObj, index, total = 1) => {
+    const classId = classObj.id;
+    const lunchPeriod = classObj.lunchPeriod || 5;
+    const summaryData = calculateClassSummary(classId, classSubjects[classId]);
+    return /*#__PURE__*/React.createElement("div", {
+      key: classId,
+      className: "pdf-page",
+      style: {
+        fontFamily: PRINT_FONT,
+        width: '1122px',
+        height: '793px',
+        padding: '30px 40px',
+        boxSizing: 'border-box',
+        overflow: 'hidden',
+        background: '#fff',
+        color: '#000',
+        display: 'flex',
+        flexDirection: 'column',
+        boxShadow: '0 10px 30px rgba(15,30,61,.15)',
+        marginBottom: '32px'
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        marginBottom: '16px'
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'flex-end',
+        paddingBottom: '8px'
+      }
+    }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h1", {
+      style: {
+        fontSize: '31px',
+        fontWeight: 800,
+        margin: '0 0 8px 0'
+      }
+    }, "ตารางเรียน ", classObj.name), /*#__PURE__*/React.createElement("p", {
+      style: {
+        fontSize: '17px',
+        fontWeight: 700,
+        margin: 0
+      }
+    }, "ปีการศึกษา ", config.year, " ภาคเรียนที่ ", config.term)), /*#__PURE__*/React.createElement("div", {
+      style: {
+        textAlign: 'right',
+        fontSize: '15px'
+      }
+    }, /*#__PURE__*/React.createElement("p", {
+      style: {
+        margin: '0 0 6px 0'
+      }
+    }, "ระดับชั้น: ", classObj.level, " ปีที่: ", classObj.year, " ห้อง: ", classObj.room, " ", classObj.major && `สาขางาน: ${classObj.major}`), /*#__PURE__*/React.createElement("p", {
+      style: {
+        margin: 0
+      }
+    }, "จำนวนนักเรียน: ", classObj.studentCount || '-', " คน | ครูที่ปรึกษา: ", classObj.advisor || '-'))), /*#__PURE__*/React.createElement("div", {
+      style: {
+        borderBottom: '2px solid #000',
+        width: '100%'
+      }
+    })), /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: 'flex',
+        gap: '16px',
+        flex: 1,
+        alignItems: 'flex-start'
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        width: '68%'
+      }
+    }, /*#__PURE__*/React.createElement("table", {
+      style: {
+        width: '100%',
+        borderCollapse: 'collapse',
+        textAlign: 'center',
+        tableLayout: 'fixed'
+      }
+    }, /*#__PURE__*/React.createElement("thead", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", {
+      style: {
+        border: '1px solid #111',
+        backgroundColor: '#EFF1F4',
+        padding: '4px',
+        fontSize: '15px',
+        width: '78px'
+      }
+    }, "วัน/เวลา"), PERIODS.map(p => {
+      const isLunch = p.id === lunchPeriod;
+      return /*#__PURE__*/React.createElement("th", {
+        key: p.id,
+        style: {
+          border: '1px solid #111',
+          backgroundColor: '#EFF1F4',
+          padding: '4px',
+          width: isLunch ? '40px' : 'auto'
+        }
+      }, /*#__PURE__*/React.createElement("div", {
+        style: {
+          fontSize: '15px',
+          fontWeight: 700,
+          fontFamily: PRINT_FONT
+        }
+      }, isLunch ? 'พัก' : p.id), !isLunch && /*#__PURE__*/React.createElement("div", {
+        style: {
+          fontSize: '11.5px',
+          fontWeight: 400,
+          fontFamily: PRINT_FONT
+        }
+      }, p.rawTime));
+    }))), /*#__PURE__*/React.createElement("tbody", null, DAYS.map((day, dayIndex) => /*#__PURE__*/React.createElement("tr", {
+      key: day
+    }, /*#__PURE__*/React.createElement("td", {
+      style: {
+        border: '1px solid #111',
+        backgroundColor: '#EFF1F4',
+        fontWeight: 700,
+        fontSize: '17px',
+        height: '76px'
+      }
+    }, day), PERIODS.map(period => {
+      if (period.id === lunchPeriod) {
+        if (dayIndex === 0) {
+          return /*#__PURE__*/React.createElement("td", {
+            key: `lunch-${period.id}`,
+            rowSpan: 5,
+            style: {
+              border: '1px solid #111',
+              backgroundColor: '#FAFAFA',
+              position: 'relative',
+              width: '40px',
+              padding: 0
+            }
+          }, /*#__PURE__*/React.createElement("div", {
+            style: {
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              width: '120px',
+              height: '24px',
+              marginLeft: '-60px',
+              marginTop: '-12px',
+              transform: 'rotate(90deg)',
+              textAlign: 'center',
+              lineHeight: '24px',
+              fontSize: '18px',
+              fontWeight: 700,
+              whiteSpace: 'nowrap',
+              letterSpacing: '2px'
+            }
+          }, "พักกลางวัน"));
+        }
+        return null;
+      }
+      const slotData = getSlotData(classId, day, period.id);
+      if (slotData?.isFixed) {
+        return /*#__PURE__*/React.createElement("td", {
+          key: period.id,
+          style: {
+            border: '1px solid #111',
+            backgroundColor: '#EFF1F4',
+            verticalAlign: 'middle',
+            padding: '4px'
+          }
+        }, /*#__PURE__*/React.createElement("div", {
+          style: {
+            fontSize: '15px',
+            fontWeight: 700
+          }
+        }, slotData.label));
+      }
+      const subjectInfo = slotSubjectInfo(slotData);
+      const teacherInfo = slotData && !slotData.isManualTeacher ? teachers.find(t => t.id === slotData.teacherId) : null;
+      const displayRoom = slotRoomText(slotData);
+      const displayTeacherName = slotData?.isManualTeacher ? slotData.teacherName : teacherInfo?.name;
+      const pal = subjectInfo ? subjectInfo.pal : null;
+      return /*#__PURE__*/React.createElement("td", {
+        key: period.id,
+        style: {
+          border: '1px solid #111',
+          verticalAlign: 'top',
+          padding: '2px',
+          backgroundColor: pal ? pal.bg : 'white'
+        }
+      }, slotData && /*#__PURE__*/React.createElement("div", {
+        style: {
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'space-between',
+          height: '100%',
+          minHeight: '70px'
+        }
+      }, /*#__PURE__*/React.createElement("div", {
+        style: {
+          textAlign: 'right',
+          fontSize: '11.5px',
+          fontWeight: 700,
+          color: '#374151',
+          height: '14px',
+          fontFamily: PRINT_FONT
+        }
+      }, displayRoom || '\u00A0'), /*#__PURE__*/React.createElement("div", {
+        style: {
+          textAlign: 'center',
+          fontSize: '13.5px',
+          fontWeight: 700,
+          flex: 1,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          lineHeight: 1.2
+        }
+      }, /*#__PURE__*/React.createElement("span", {
+        style: {
+          display: '-webkit-box',
+          WebkitLineClamp: 3,
+          WebkitBoxOrient: 'vertical',
+          overflow: 'hidden'
+        }
+      }, subjectInfo?.name)), /*#__PURE__*/React.createElement("div", {
+        style: {
+          textAlign: 'center',
+          fontSize: '11.5px',
+          color: '#1f2937',
+          height: '14px',
+          overflow: 'hidden',
+          whiteSpace: 'nowrap',
+          textOverflow: 'ellipsis'
+        }
+      }, getFirstName(displayTeacherName))));
+    })))))), /*#__PURE__*/React.createElement("div", {
+      style: {
+        width: '32%'
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        border: '1px solid #111',
+        borderBottom: 'none',
+        backgroundColor: '#EFF1F4',
+        padding: '6px',
+        textAlign: 'center'
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: '17px',
+        fontWeight: 700
+      }
+    }, "โครงสร้างรายวิชา"), /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: 'flex',
+        justifyContent: 'center',
+        gap: '10px',
+        fontSize: '12.5px',
+        fontWeight: 700,
+        marginTop: '4px'
+      }
+    }, /*#__PURE__*/React.createElement("span", {
+      style: {
+        color: '#BC1C2B'
+      }
+    }, "ยังไม่จัด"), /*#__PURE__*/React.createElement("span", {
+      style: {
+        color: '#B4740B'
+      }
+    }, "ยังไม่ครบ"), /*#__PURE__*/React.createElement("span", {
+      style: {
+        color: '#15795A'
+      }
+    }, "ครบแล้ว"))), renderPDFSummaryTable(summaryData, true))), /*#__PURE__*/React.createElement("div", {
+      style: {
+        borderTop: '1px solid #9CA3AF',
+        marginTop: 8,
+        paddingTop: 5,
+        display: 'flex',
+        justifyContent: 'flex-end',
+        fontSize: 12,
+        color: '#4B5563'
+      }
+    }, /*#__PURE__*/React.createElement("span", {
+      style: {
+        fontFamily: PRINT_FONT
+      }
+    }, "พิมพ์ ", new Date().toLocaleDateString('th-TH'), total > 1 ? ` · หน้า ${index + 1}/${total}` : '')));
+  };
+  const renderTeacherPrintablePage = (teacherObj, index, total = 1) => {
+    const tId = teacherObj.id;
+    const summaryData = calculateTeacherSummary(tId, schedule, classSubjects);
+    return /*#__PURE__*/React.createElement("div", {
+      key: tId,
+      className: "pdf-page",
+      style: {
+        fontFamily: PRINT_FONT,
+        width: '1122px',
+        height: '793px',
+        padding: '30px 40px',
+        boxSizing: 'border-box',
+        overflow: 'hidden',
+        background: '#fff',
+        color: '#000',
+        display: 'flex',
+        flexDirection: 'column',
+        boxShadow: '0 10px 30px rgba(15,30,61,.15)',
+        marginBottom: '32px'
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        marginBottom: '16px'
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'flex-end',
+        paddingBottom: '8px'
+      }
+    }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h1", {
+      style: {
+        fontSize: '31px',
+        fontWeight: 800,
+        margin: '0 0 8px 0'
+      }
+    }, "ตารางสอน ", teacherObj.name), /*#__PURE__*/React.createElement("p", {
+      style: {
+        fontSize: '17px',
+        fontWeight: 700,
+        margin: 0
+      }
+    }, "ปีการศึกษา ", config.year, " ภาคเรียนที่ ", config.term)), /*#__PURE__*/React.createElement("div", {
+      style: {
+        textAlign: 'right',
+        fontSize: '15px'
+      }
+    }, /*#__PURE__*/React.createElement("p", {
+      style: {
+        margin: '0 0 6px 0'
+      }
+    }, "ห้องประจำ: ", roomLabel(teacherObj.roomId) || '-'), /*#__PURE__*/React.createElement("p", {
+      style: {
+        margin: 0
+      }
+    }, "ชั่วโมงสอนทั้งหมด: ", /*#__PURE__*/React.createElement("span", {
+      style: {
+        fontWeight: 700,
+        fontFamily: PRINT_FONT,
+        fontSize: '17px'
+      }
+    }, summaryData.sumHours), " คาบ/สัปดาห์"))), /*#__PURE__*/React.createElement("div", {
+      style: {
+        borderBottom: '2px solid #000',
+        width: '100%'
+      }
+    })), /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: 'flex',
+        gap: '16px',
+        flex: 1,
+        alignItems: 'flex-start'
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        width: '68%'
+      }
+    }, /*#__PURE__*/React.createElement("table", {
+      style: {
+        width: '100%',
+        borderCollapse: 'collapse',
+        textAlign: 'center',
+        tableLayout: 'fixed'
+      }
+    }, /*#__PURE__*/React.createElement("thead", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", {
+      style: {
+        border: '1px solid #111',
+        backgroundColor: '#EFF1F4',
+        padding: '4px',
+        fontSize: '15px',
+        width: '78px'
+      }
+    }, "วัน/เวลา"), PERIODS.map(p => /*#__PURE__*/React.createElement("th", {
+      key: p.id,
+      style: {
+        border: '1px solid #111',
+        backgroundColor: '#EFF1F4',
+        padding: '4px'
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: '15px',
+        fontWeight: 700,
+        fontFamily: PRINT_FONT
+      }
+    }, p.id), /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: '11.5px',
+        fontFamily: PRINT_FONT
+      }
+    }, p.rawTime))))), /*#__PURE__*/React.createElement("tbody", null, DAYS.map(day => /*#__PURE__*/React.createElement("tr", {
+      key: day
+    }, /*#__PURE__*/React.createElement("td", {
+      style: {
+        border: '1px solid #111',
+        backgroundColor: '#EFF1F4',
+        fontWeight: 700,
+        fontSize: '17px',
+        height: '76px'
+      }
+    }, day), PERIODS.map(period => {
+      const slots = getSlotsForTeacher(tId, day, period.id);
+      const count = slots.length;
+      const totalStudents = slots.reduce((sum, slot) => {
+        const cInfo = classes.find(c => c.id === slot.classId);
+        return sum + (parseInt(cInfo?.studentCount, 10) || 0);
+      }, 0);
+      return /*#__PURE__*/React.createElement("td", {
+        key: period.id,
+        style: {
+          border: '1px solid #111',
+          verticalAlign: 'top',
+          padding: 0
+        }
+      }, /*#__PURE__*/React.createElement("div", {
+        style: {
+          display: 'flex',
+          flexDirection: 'column',
+          height: '100%',
+          minHeight: '70px'
+        }
+      }, slots.map((slotData, i) => {
+        const subjectInfo = slotSubjectInfo(slotData);
+        const classInfo = classes.find(c => c.id === slotData.classId);
+        const displayRoom = slotRoomText(slotData) || roomLabel(teacherObj.roomId);
+        let topFs = 11.5,
+          midFs = 13.5,
+          botFs = 11.5;
+        if (count === 2) {
+          topFs = 10;
+          midFs = 12;
+          botFs = 10;
+        } else if (count >= 3) {
+          topFs = 8.5;
+          midFs = 10;
+          botFs = 8.5;
+        }
+        const pal = subjectInfo ? subjectInfo.pal : null;
+        return /*#__PURE__*/React.createElement("div", {
+          key: i,
+          style: {
+            flex: 1,
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+            padding: '2px',
+            borderBottom: i < count - 1 ? '1px solid #9ca3af' : 'none',
+            backgroundColor: pal ? pal.bg : '#fff'
+          }
+        }, /*#__PURE__*/React.createElement("div", {
+          style: {
+            display: 'flex',
+            justifyContent: 'space-between',
+            fontSize: `${topFs}px`,
+            fontWeight: 700,
+            fontFamily: PRINT_FONT
+          }
+        }, /*#__PURE__*/React.createElement("span", {
+          style: {
+            color: '#1e40af'
+          }
+        }, totalStudents > 0 ? `นร.${totalStudents}` : '\u00A0'), /*#__PURE__*/React.createElement("span", {
+          style: {
+            color: '#374151'
+          }
+        }, displayRoom || '\u00A0')), /*#__PURE__*/React.createElement("div", {
+          style: {
+            flex: 1,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontSize: `${midFs}px`,
+            fontWeight: 700,
+            lineHeight: 1.2
+          }
+        }, /*#__PURE__*/React.createElement("span", {
+          style: {
+            display: '-webkit-box',
+            WebkitLineClamp: count > 1 ? 1 : 2,
+            WebkitBoxOrient: 'vertical',
+            overflow: 'hidden'
+          }
+        }, subjectInfo?.name)), /*#__PURE__*/React.createElement("div", {
+          style: {
+            fontSize: `${botFs}px`,
+            color: '#1e3a8a',
+            fontWeight: 700,
+            textAlign: 'center',
+            whiteSpace: 'nowrap',
+            overflow: 'hidden',
+            textOverflow: 'ellipsis'
+          }
+        }, classInfo?.name));
+      })));
+    })))))), /*#__PURE__*/React.createElement("div", {
+      style: {
+        width: '32%'
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        border: '1px solid #111',
+        borderBottom: 'none',
+        backgroundColor: '#EFF1F4',
+        padding: '6px',
+        textAlign: 'center'
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: '17px',
+        fontWeight: 700
+      }
+    }, "สรุปภาระงานสอน")), renderPDFSummaryTable(summaryData, false))), /*#__PURE__*/React.createElement("div", {
+      style: {
+        borderTop: '1px solid #9CA3AF',
+        marginTop: 8,
+        paddingTop: 5,
+        display: 'flex',
+        justifyContent: 'flex-end',
+        fontSize: 12,
+        color: '#4B5563'
+      }
+    }, /*#__PURE__*/React.createElement("span", {
+      style: {
+        fontFamily: PRINT_FONT
+      }
+    }, "พิมพ์ ", new Date().toLocaleDateString('th-TH'), total > 1 ? ` · หน้า ${index + 1}/${total}` : '')));
+  };
+  const renderRoomPrintablePage = (roomObj, index, total = 1) => {
+    const rid = roomObj.id;
+    const summaryData = calculateRoomSummary(rid, schedule, classSubjects, classes, slotRoomId);
+    return /*#__PURE__*/React.createElement("div", {
+      key: rid,
+      className: "pdf-page",
+      style: {
+        fontFamily: PRINT_FONT,
+        width: `${PAGE_W}px`,
+        height: `${PAGE_H}px`,
+        padding: '30px 40px',
+        boxSizing: 'border-box',
+        overflow: 'hidden',
+        background: '#fff',
+        color: '#000',
+        display: 'flex',
+        flexDirection: 'column',
+        boxShadow: '0 10px 30px rgba(15,30,61,.15)',
+        marginBottom: '32px'
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        marginBottom: '16px'
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'flex-end',
+        paddingBottom: '8px'
+      }
+    }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h1", {
+      style: {
+        fontSize: '31px',
+        fontWeight: 800,
+        margin: '0 0 8px 0'
+      }
+    }, "ตารางการใช้ห้อง ", roomObj.name), /*#__PURE__*/React.createElement("p", {
+      style: {
+        fontSize: '17px',
+        fontWeight: 700,
+        margin: 0
+      }
+    }, "ปีการศึกษา ", config.year, " ภาคเรียนที่ ", config.term)), /*#__PURE__*/React.createElement("div", {
+      style: {
+        textAlign: 'right',
+        fontSize: '15px'
+      }
+    }, /*#__PURE__*/React.createElement("p", {
+      style: {
+        margin: '0 0 6px 0'
+      }
+    }, roomObj.note || '\u00A0'), /*#__PURE__*/React.createElement("p", {
+      style: {
+        margin: 0
+      }
+    }, "ถูกใช้ ", /*#__PURE__*/React.createElement("span", {
+      style: {
+        fontWeight: 700
+      }
+    }, summaryData.sumHours), " จาก ", DAYS.length * 11, " คาบ · ว่าง ", DAYS.length * 11 - summaryData.sumHours, " คาบ"))), /*#__PURE__*/React.createElement("div", {
+      style: {
+        borderBottom: '2px solid #000',
+        width: '100%'
+      }
+    })), /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: 'flex',
+        gap: '16px',
+        flex: 1,
+        alignItems: 'flex-start'
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        width: '68%'
+      }
+    }, /*#__PURE__*/React.createElement("table", {
+      style: {
+        width: '100%',
+        borderCollapse: 'collapse',
+        textAlign: 'center',
+        tableLayout: 'fixed'
+      }
+    }, /*#__PURE__*/React.createElement("thead", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", {
+      style: {
+        border: '1px solid #111',
+        backgroundColor: '#EFF1F4',
+        padding: '4px',
+        fontSize: '15px',
+        width: '78px'
+      }
+    }, "วัน/เวลา"), PERIODS.map(p => /*#__PURE__*/React.createElement("th", {
+      key: p.id,
+      style: {
+        border: '1px solid #111',
+        backgroundColor: '#EFF1F4',
+        padding: '4px'
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: '15px',
+        fontWeight: 700,
+        fontFamily: PRINT_FONT
+      }
+    }, p.id), /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: '11.5px',
+        fontFamily: PRINT_FONT
+      }
+    }, p.rawTime))))), /*#__PURE__*/React.createElement("tbody", null, DAYS.map(day => /*#__PURE__*/React.createElement("tr", {
+      key: day
+    }, /*#__PURE__*/React.createElement("td", {
+      style: {
+        border: '1px solid #111',
+        backgroundColor: '#EFF1F4',
+        fontWeight: 700,
+        fontSize: '17px',
+        height: '76px'
+      }
+    }, day), PERIODS.map(period => {
+      const slots = getSlotsForRoom(rid, day, period.id);
+      const count = slots.length;
+      return /*#__PURE__*/React.createElement("td", {
+        key: period.id,
+        style: {
+          border: '1px solid #111',
+          verticalAlign: 'top',
+          padding: 0
+        }
+      }, /*#__PURE__*/React.createElement("div", {
+        style: {
+          display: 'flex',
+          flexDirection: 'column',
+          height: '100%',
+          minHeight: '70px'
+        }
+      }, slots.map((slotData, i) => {
+        const subjectInfo = slotSubjectInfo(slotData);
+        const classInfo = classes.find(c => c.id === slotData.classId);
+        const tInfo = !slotData.isManualTeacher ? teachers.find(t => t.id === slotData.teacherId) : null;
+        const tName = slotData.isManualTeacher ? slotData.teacherName : tInfo?.name;
+        let topFs = 11.5,
+          midFs = 13.5,
+          botFs = 11.5;
+        if (count === 2) {
+          topFs = 10;
+          midFs = 12;
+          botFs = 10;
+        } else if (count >= 3) {
+          topFs = 8.5;
+          midFs = 10;
+          botFs = 8.5;
+        }
+        const pal = subjectInfo ? subjectInfo.pal : null;
+        return /*#__PURE__*/React.createElement("div", {
+          key: i,
+          style: {
+            flex: 1,
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+            padding: '2px',
+            borderBottom: i < count - 1 ? '1px solid #9ca3af' : 'none',
+            backgroundColor: pal ? pal.bg : '#fff'
+          }
+        }, /*#__PURE__*/React.createElement("div", {
+          style: {
+            fontSize: `${topFs}px`,
+            fontWeight: 700,
+            color: '#1e3a8a',
+            textAlign: 'center',
+            whiteSpace: 'nowrap',
+            overflow: 'hidden',
+            textOverflow: 'ellipsis'
+          }
+        }, classInfo?.name), /*#__PURE__*/React.createElement("div", {
+          style: {
+            flex: 1,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontSize: `${midFs}px`,
+            fontWeight: 700,
+            lineHeight: 1.2
+          }
+        }, /*#__PURE__*/React.createElement("span", {
+          style: {
+            display: '-webkit-box',
+            WebkitLineClamp: count > 1 ? 1 : 2,
+            WebkitBoxOrient: 'vertical',
+            overflow: 'hidden'
+          }
+        }, slotData.isFixed ? slotData.label : subjectInfo?.name)), /*#__PURE__*/React.createElement("div", {
+          style: {
+            fontSize: `${botFs}px`,
+            color: '#1f2937',
+            textAlign: 'center',
+            whiteSpace: 'nowrap',
+            overflow: 'hidden',
+            textOverflow: 'ellipsis'
+          }
+        }, getFirstName(tName)));
+      })));
+    })))))), /*#__PURE__*/React.createElement("div", {
+      style: {
+        width: '32%'
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        border: '1px solid #111',
+        borderBottom: 'none',
+        backgroundColor: '#EFF1F4',
+        padding: '6px',
+        textAlign: 'center'
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: '17px',
+        fontWeight: 700
+      }
+    }, "สรุปการใช้ห้อง")), renderPDFSummaryTable(summaryData, false))), /*#__PURE__*/React.createElement("div", {
+      style: {
+        borderTop: '1px solid #9CA3AF',
+        marginTop: 8,
+        paddingTop: 5,
+        display: 'flex',
+        justifyContent: 'flex-end',
+        fontSize: 12,
+        color: '#4B5563'
+      }
+    }, /*#__PURE__*/React.createElement("span", {
+      style: {
+        fontFamily: PRINT_FONT
+      }
+    }, "พิมพ์ ", new Date().toLocaleDateString('th-TH'), total > 1 ? ` · หน้า ${index + 1}/${total}` : '')));
+  };
+
+  // ==========================================
+  // 9. Design system (CSS)
+  // ==========================================
+  const styles = `
     :root{
       --ink:#0F1E3D; --ink-2:#1C3160; --ink-3:#48597D;
       --rule:#CFD5DF; --rule-soft:#E4E8EE;
@@ -80,32 +3988,32 @@ Teacher John,147`,d=new Blob(["\uFEFF"+n],{type:"text/csv;charset=utf-8;"}),i=UR
       --danger:#B81F2D; --danger-soft:#FBEBED;
     }
 
-    .tt *{ font-family:${Le}; box-sizing:border-box; }
+    .tt *{ font-family:${PRINT_FONT}; box-sizing:border-box; }
 
-    /* ---- \u0E2A\u0E31\u0E48\u0E07\u0E1E\u0E34\u0E21\u0E1E\u0E4C\u0E08\u0E32\u0E01\u0E2B\u0E19\u0E49\u0E32\u0E19\u0E35\u0E49\u0E42\u0E14\u0E22\u0E15\u0E23\u0E07 ----
-       \u0E43\u0E0A\u0E49 visibility \u0E44\u0E21\u0E48\u0E43\u0E0A\u0E48 display \u0E40\u0E1E\u0E37\u0E48\u0E2D\u0E44\u0E21\u0E48\u0E43\u0E2B\u0E49 layout \u0E02\u0E2D\u0E07\u0E15\u0E32\u0E23\u0E32\u0E07\u0E1E\u0E31\u0E07\u0E15\u0E2D\u0E19\u0E1E\u0E34\u0E21\u0E1E\u0E4C */
+    /* ---- สั่งพิมพ์จากหน้านี้โดยตรง ----
+       ใช้ visibility ไม่ใช่ display เพื่อไม่ให้ layout ของตารางพังตอนพิมพ์ */
     @media print{
       html, body{ background:#fff !important; -webkit-print-color-adjust:exact !important; print-color-adjust:exact !important; }
       body *{ visibility:hidden !important; -webkit-print-color-adjust:exact !important; print-color-adjust:exact !important; }
       #pdf-render-area, #pdf-render-area *{ visibility:visible !important; }
       #pdf-render-area{
         position:absolute !important; left:0 !important; top:0 !important;
-        width:${Ur}px !important; display:block !important; padding:0 !important;
+        width:${PAGE_W}px !important; display:block !important; padding:0 !important;
       }
       .no-print{ display:none !important; }
     }
-${ag}
+${PRINT_PAGE_CSS}
     .tt{ background:var(--paper); color:var(--ink); min-height:100vh; }
-    /* \u0E44\u0E21\u0E48\u0E40\u0E1B\u0E25\u0E35\u0E48\u0E22\u0E19\u0E1F\u0E2D\u0E19\u0E15\u0E4C \u0E40\u0E1B\u0E34\u0E14\u0E41\u0E04\u0E48\u0E40\u0E25\u0E02\u0E04\u0E27\u0E32\u0E21\u0E01\u0E27\u0E49\u0E32\u0E07\u0E40\u0E17\u0E48\u0E32\u0E01\u0E31\u0E19\u0E40\u0E1E\u0E37\u0E48\u0E2D\u0E43\u0E2B\u0E49\u0E04\u0E2D\u0E25\u0E31\u0E21\u0E19\u0E4C\u0E15\u0E31\u0E27\u0E40\u0E25\u0E02\u0E40\u0E23\u0E35\u0E22\u0E07\u0E15\u0E23\u0E07 */
+    /* ไม่เปลี่ยนฟอนต์ เปิดแค่เลขความกว้างเท่ากันเพื่อให้คอลัมน์ตัวเลขเรียงตรง */
     .mono{ font-variant-numeric:tabular-nums; font-feature-settings:'tnum' 1; }
     .tt button:focus-visible, .tt input:focus-visible, .tt select:focus-visible{
       outline:2px solid var(--accent); outline-offset:1px;
     }
     @media (prefers-reduced-motion: reduce){ .tt *{ transition:none !important; animation:none !important; } }
 
-    /* ---- \u0E41\u0E16\u0E1A\u0E1A\u0E19\u0E2A\u0E38\u0E14 ---- */
+    /* ---- แถบบนสุด ---- */
     .rail{ background:var(--ink); color:#fff; }
-    /* \u0E42\u0E25\u0E42\u0E01\u0E49\u0E21\u0E38\u0E21\u0E1A\u0E19\u0E0B\u0E49\u0E32\u0E22\u0E01\u0E14\u0E01\u0E25\u0E31\u0E1A\u0E2B\u0E19\u0E49\u0E32\u0E41\u0E23\u0E01\u0E44\u0E14\u0E49 \u0E15\u0E49\u0E2D\u0E07\u0E21\u0E35\u0E2A\u0E31\u0E0D\u0E0D\u0E32\u0E13\u0E43\u0E2B\u0E49\u0E23\u0E39\u0E49\u0E27\u0E48\u0E32\u0E01\u0E14\u0E44\u0E14\u0E49 */
+    /* โลโก้มุมบนซ้ายกดกลับหน้าแรกได้ ต้องมีสัญญาณให้รู้ว่ากดได้ */
     .brand{
       display:flex; align-items:center; gap:8px; flex-shrink:0;
       padding:5px 9px 5px 5px; margin-left:-5px; border-radius:7px;
@@ -129,7 +4037,7 @@ ${ag}
     .chip-btn{ transition:background .12s, color .12s; }
     .chip-btn:hover{ background:rgba(255,255,255,.2); color:#fff; }
 
-    /* ---- \u0E1B\u0E38\u0E48\u0E21\u0E2A\u0E25\u0E31\u0E1A\u0E21\u0E38\u0E21\u0E21\u0E2D\u0E07 ---- */
+    /* ---- ปุ่มสลับมุมมอง ---- */
     .seg{ display:flex; background:rgba(255,255,255,.09); border-radius:7px; padding:2px; gap:2px; }
     .seg-btn{
       display:inline-flex; align-items:center; gap:6px; padding:6px 14px; border-radius:5px;
@@ -139,7 +4047,7 @@ ${ag}
     .seg-on{ background:#fff; color:var(--ink); }
     .seg-on:hover{ color:var(--ink); }
 
-    /* ---- \u0E41\u0E16\u0E1A\u0E02\u0E49\u0E2D\u0E21\u0E39\u0E25\u0E1A\u0E23\u0E34\u0E1A\u0E17 ---- */
+    /* ---- แถบข้อมูลบริบท ---- */
     .context-bar{
       background:var(--surface); border-bottom:1px solid var(--rule);
       display:flex; align-items:center; justify-content:space-between; gap:16px;
@@ -149,12 +4057,12 @@ ${ag}
     .meta{ display:flex; align-items:baseline; gap:5px; font-size:17px; color:var(--ink-3); }
     .meta b{ color:var(--ink); font-weight:700; }
 
-    /* ---- \u0E15\u0E32\u0E23\u0E32\u0E07\u0E2B\u0E25\u0E31\u0E01 ---- */
+    /* ---- ตารางหลัก ---- */
     .grid-wrap{ background:var(--surface); overflow:auto; }
 
-    /* \u0E41\u0E16\u0E1A\u0E40\u0E25\u0E37\u0E48\u0E2D\u0E19\u0E41\u0E19\u0E27\u0E19\u0E2D\u0E19\u0E02\u0E2D\u0E07\u0E15\u0E32\u0E23\u0E32\u0E07\u0E04\u0E37\u0E2D\u0E15\u0E31\u0E27\u0E04\u0E27\u0E1A\u0E04\u0E38\u0E21\u0E2B\u0E25\u0E31\u0E01\u0E40\u0E27\u0E25\u0E32\u0E08\u0E2D\u0E44\u0E21\u0E48\u0E01\u0E27\u0E49\u0E32\u0E07\u0E1E\u0E2D
-       \u0E04\u0E48\u0E32\u0E1B\u0E23\u0E34\u0E22\u0E32\u0E22\u0E02\u0E2D\u0E07\u0E40\u0E1A\u0E23\u0E32\u0E27\u0E4C\u0E40\u0E0B\u0E2D\u0E23\u0E4C\u0E1A\u0E32\u0E07\u0E23\u0E30\u0E1A\u0E1A\u0E1A\u0E32\u0E07\u0E21\u0E32\u0E01\u0E41\u0E25\u0E30\u0E08\u0E32\u0E07\u0E2B\u0E32\u0E22\u0E40\u0E21\u0E37\u0E48\u0E2D\u0E2B\u0E22\u0E38\u0E14\u0E40\u0E25\u0E37\u0E48\u0E2D\u0E19
-       \u0E08\u0E36\u0E07\u0E1A\u0E31\u0E07\u0E04\u0E31\u0E1A\u0E43\u0E2B\u0E49\u0E2B\u0E19\u0E32\u0E41\u0E25\u0E30\u0E21\u0E35\u0E2A\u0E35\u0E40\u0E02\u0E49\u0E21\u0E1E\u0E2D\u0E17\u0E35\u0E48\u0E08\u0E30\u0E21\u0E2D\u0E07\u0E40\u0E2B\u0E47\u0E19\u0E41\u0E25\u0E30\u0E25\u0E32\u0E01\u0E44\u0E14\u0E49\u0E07\u0E48\u0E32\u0E22\u0E15\u0E25\u0E2D\u0E14\u0E40\u0E27\u0E25\u0E32 */
+    /* แถบเลื่อนแนวนอนของตารางคือตัวควบคุมหลักเวลาจอไม่กว้างพอ
+       ค่าปริยายของเบราว์เซอร์บางระบบบางมากและจางหายเมื่อหยุดเลื่อน
+       จึงบังคับให้หนาและมีสีเข้มพอที่จะมองเห็นและลากได้ง่ายตลอดเวลา */
     .grid-wrap{ scrollbar-width:auto; scrollbar-color:var(--ink-3) var(--surface-2); }
     .grid-wrap::-webkit-scrollbar{ height:16px; width:14px; }
     .grid-wrap::-webkit-scrollbar-track{
@@ -221,7 +4129,7 @@ ${ag}
       letter-spacing:4px; color:var(--ink-3); white-space:nowrap;
     }
 
-    /* ---- \u0E41\u0E1C\u0E48\u0E19\u0E07\u0E32\u0E19 (tabs) ---- */
+    /* ---- แผ่นงาน (tabs) ---- */
     .sheet-bar{ background:var(--surface-2); border-top:1px solid var(--rule); display:flex; align-items:stretch; }
     .sheet-scroll{ display:flex; align-items:stretch; overflow-x:auto; flex:1; scrollbar-color:var(--ink-3) var(--surface-2); }
     .sheet-scroll::-webkit-scrollbar{ height:11px; }
@@ -251,7 +4159,7 @@ ${ag}
     }
     .sheet-add:hover{ background:rgba(15,30,61,.04); color:var(--accent); }
 
-    /* ---- \u0E41\u0E1C\u0E07\u0E02\u0E49\u0E32\u0E07 ---- */
+    /* ---- แผงข้าง ---- */
     .panel{ width:396px; flex-shrink:0; background:var(--surface); border-left:1px solid var(--rule); display:flex; flex-direction:column; }
     .panel-head{ padding:12px 14px; border-bottom:1px solid var(--rule); }
     .panel-body{ overflow-y:auto; flex:1; }
@@ -272,14 +4180,14 @@ ${ag}
 
     .swatch{ width:10px; height:10px; border-radius:2px; flex-shrink:0; }
 
-    /* ---- \u0E41\u0E16\u0E1A\u0E02\u0E35\u0E14\u0E19\u0E31\u0E1A\u0E04\u0E32\u0E1A (signature) ---- */
+    /* ---- แถบขีดนับคาบ (signature) ---- */
     .tick-rail{ display:flex; gap:2px; align-items:center; flex-wrap:wrap; }
     .tick{ width:6px; height:16px; border-radius:1px; background:var(--rule); display:block; }
     .tick-on{ background:var(--ok); }
     .tick-over{ background:var(--danger); }
     .tick-none{ font-size:14px; color:var(--ink-3); }
 
-    /* ---- \u0E1B\u0E38\u0E48\u0E21\u0E17\u0E31\u0E48\u0E27\u0E44\u0E1B ---- */
+    /* ---- ปุ่มทั่วไป ---- */
     .btn{
       display:inline-flex; align-items:center; justify-content:center; gap:6px;
       padding:10px 16px; border-radius:6px; font-size:17.5px; font-weight:700;
@@ -298,7 +4206,7 @@ ${ag}
     .btn-ghost-danger:hover:not(:disabled){ background:#F8DDE0; border-color:var(--danger); }
     .btn-sm{ padding:7px 12px; font-size:16px; border-radius:5px; }
 
-    /* ---- \u0E1F\u0E2D\u0E23\u0E4C\u0E21 ---- */
+    /* ---- ฟอร์ม ---- */
     .field{ display:block; }
     .lbl{ display:block; font-size:15px; font-weight:700; color:var(--ink-3); margin-bottom:5px; letter-spacing:.2px; }
     .inp, .sel{
@@ -311,7 +4219,7 @@ ${ag}
     .inp-num{ text-align:center; }
     .hint{ font-size:15px; color:var(--ink-3); margin-top:5px; line-height:1.45; }
 
-    /* ---- \u0E01\u0E25\u0E48\u0E2D\u0E07\u0E02\u0E49\u0E2D\u0E04\u0E27\u0E32\u0E21 ---- */
+    /* ---- กล่องข้อความ ---- */
     .note{ border-radius:6px; padding:11px 13px; font-size:16.5px; line-height:1.55; display:flex; gap:8px; }
     .note-err{ background:var(--danger-soft); color:#8C1620; border:1px solid #F0C7CC; }
     .note-info{ background:var(--surface-2); color:var(--ink-3); border:1px solid var(--rule); }
@@ -327,11 +4235,11 @@ ${ag}
     .x-btn{ color:var(--ink-3); padding:4px; border-radius:5px; transition:background .12s,color .12s; }
     .x-btn:hover{ background:var(--surface-2); color:var(--ink); }
 
-    /* ---- \u0E01\u0E25\u0E48\u0E2D\u0E07\u0E07\u0E32\u0E19\u0E22\u0E48\u0E2D\u0E22\u0E43\u0E19 modal ---- */
+    /* ---- กล่องงานย่อยใน modal ---- */
     .box{ border:1px solid var(--rule); border-radius:8px; padding:14px; }
     .box-title{ font-size:17px; font-weight:700; color:var(--ink); display:flex; align-items:center; gap:7px; margin-bottom:11px; }
     .list-row{ border:1px solid var(--rule); border-radius:7px; padding:11px 12px; background:#fff; transition:border-color .12s, box-shadow .12s, opacity .12s; }
-    /* \u0E08\u0E38\u0E14\u0E08\u0E31\u0E1A\u0E25\u0E32\u0E01\u0E08\u0E31\u0E14\u0E25\u0E33\u0E14\u0E31\u0E1A\u0E23\u0E32\u0E22\u0E27\u0E34\u0E0A\u0E32 */
+    /* จุดจับลากจัดลำดับรายวิชา */
     .drag-handle{
       display:flex; align-items:center; justify-content:center; flex-shrink:0;
       width:20px; height:34px; cursor:grab; color:var(--rule); touch-action:none;
@@ -344,7 +4252,7 @@ ${ag}
     .list-row:hover{ border-color:var(--ink-3); }
     .list-row + .list-row{ margin-top:7px; }
 
-    /* ---- \u0E15\u0E32\u0E23\u0E32\u0E07\u0E40\u0E0A\u0E47\u0E04\u0E04\u0E34\u0E27\u0E04\u0E23\u0E39\u0E43\u0E19 modal ---- */
+    /* ---- ตารางเช็คคิวครูใน modal ---- */
     .mini{ width:100%; border-collapse:collapse; table-layout:fixed; }
     .mini th{ background:var(--surface-2); border:1px solid var(--rule-soft); font-size:12px; font-weight:600; color:var(--ink-3); padding:3px 0; }
     .mini td{ border:1px solid var(--rule-soft); height:29px; padding:0; text-align:center; }
@@ -357,10 +4265,10 @@ ${ag}
     .mini-legend{ display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin-top:9px; font-size:14.5px; font-weight:600; color:var(--ink-3); }
     .mini-legend i{ width:11px; height:11px; border-radius:2px; display:inline-block; margin-right:4px; vertical-align:-1px; }
 
-    /* ---- \u0E41\u0E16\u0E1A\u0E40\u0E25\u0E37\u0E2D\u0E01\u0E2A\u0E35 ---- */
+    /* ---- แถบเลือกสี ---- */
     .color-row{ display:flex; flex-wrap:wrap; gap:6px; }
     /* ==========================================================
-       \u0E41\u0E16\u0E1A\u0E41\u0E08\u0E49\u0E07\u0E1C\u0E25\u0E21\u0E38\u0E21\u0E25\u0E48\u0E32\u0E07 \u2014 \u0E1A\u0E2D\u0E01\u0E1C\u0E25\u0E01\u0E32\u0E23\u0E22\u0E49\u0E32\u0E22\u0E42\u0E14\u0E22\u0E44\u0E21\u0E48\u0E02\u0E31\u0E14\u0E08\u0E31\u0E07\u0E2B\u0E27\u0E30\u0E01\u0E32\u0E23\u0E17\u0E33\u0E07\u0E32\u0E19
+       แถบแจ้งผลมุมล่าง — บอกผลการย้ายโดยไม่ขัดจังหวะการทำงาน
        ========================================================== */
     .toast{
       position:fixed; left:20px; bottom:78px; z-index:280;
@@ -382,7 +4290,7 @@ ${ag}
       background:rgba(255,255,255,.13); color:#fff; transition:background .12s;
     }
     .toast-btn:hover{ background:rgba(255,255,255,.24); }
-    /* \u0E41\u0E16\u0E1A\u0E19\u0E31\u0E1A\u0E40\u0E27\u0E25\u0E32\u0E16\u0E2D\u0E22\u0E2B\u0E25\u0E31\u0E07 \u0E43\u0E2B\u0E49\u0E23\u0E39\u0E49\u0E27\u0E48\u0E32\u0E40\u0E2B\u0E25\u0E37\u0E2D\u0E40\u0E27\u0E25\u0E32\u0E01\u0E14\u0E22\u0E49\u0E2D\u0E19\u0E01\u0E25\u0E31\u0E1A\u0E2D\u0E35\u0E01\u0E40\u0E17\u0E48\u0E32\u0E44\u0E23 */
+    /* แถบนับเวลาถอยหลัง ให้รู้ว่าเหลือเวลากดย้อนกลับอีกเท่าไร */
     .toast-bar{
       position:absolute; left:0; bottom:0; height:3px; background:var(--accent);
       animation:toast-bar 6s linear forwards;
@@ -394,14 +4302,14 @@ ${ag}
     .color-on{ border-color:var(--ink); }
 
     /* ==========================================================
-       \u0E25\u0E32\u0E01\u0E22\u0E49\u0E32\u0E22\u0E04\u0E32\u0E1A
+       ลากย้ายคาบ
        ========================================================== */
     .card-drag{ cursor:grab; }
     .card-drag:active{ cursor:grabbing; }
-    /* \u0E15\u0E49\u0E19\u0E17\u0E32\u0E07\u0E17\u0E35\u0E48\u0E01\u0E33\u0E25\u0E31\u0E07\u0E25\u0E32\u0E01 \u0E08\u0E32\u0E07\u0E25\u0E07\u0E41\u0E15\u0E48\u0E22\u0E31\u0E07\u0E40\u0E2B\u0E47\u0E19\u0E27\u0E48\u0E32\u0E40\u0E14\u0E34\u0E21\u0E2D\u0E22\u0E39\u0E48\u0E15\u0E23\u0E07\u0E44\u0E2B\u0E19 */
+    /* ต้นทางที่กำลังลาก จางลงแต่ยังเห็นว่าเดิมอยู่ตรงไหน */
     .card-lifted{ opacity:.28; }
 
-    /* \u0E40\u0E07\u0E32\u0E17\u0E35\u0E48\u0E25\u0E2D\u0E22\u0E15\u0E32\u0E21\u0E40\u0E21\u0E32\u0E2A\u0E4C \u0E02\u0E22\u0E31\u0E1A\u0E14\u0E49\u0E27\u0E22 transform \u0E2D\u0E22\u0E48\u0E32\u0E07\u0E40\u0E14\u0E35\u0E22\u0E27\u0E40\u0E1E\u0E37\u0E48\u0E2D\u0E43\u0E2B\u0E49\u0E25\u0E37\u0E48\u0E19\u0E44\u0E21\u0E48\u0E01\u0E23\u0E30\u0E15\u0E38\u0E01 */
+    /* เงาที่ลอยตามเมาส์ ขยับด้วย transform อย่างเดียวเพื่อให้ลื่นไม่กระตุก */
     .drag-ghost{
       position:fixed; left:0; top:0; z-index:300; pointer-events:none;
       border-radius:6px; border-left:4px solid; padding:6px 9px;
@@ -419,20 +4327,20 @@ ${ag}
     .ghost-why-bad{ color:var(--danger); }
     .ghost-why-idle{ color:var(--ink-3); font-weight:600; }
 
-    /* \u0E0A\u0E48\u0E2D\u0E07\u0E1B\u0E25\u0E32\u0E22\u0E17\u0E32\u0E07 \u0E23\u0E30\u0E1A\u0E32\u0E22\u0E17\u0E35\u0E25\u0E30\u0E04\u0E32\u0E1A\u0E40\u0E1E\u0E37\u0E48\u0E2D\u0E43\u0E2B\u0E49\u0E40\u0E2B\u0E47\u0E19\u0E27\u0E48\u0E32\u0E04\u0E32\u0E1A\u0E44\u0E2B\u0E19\u0E27\u0E48\u0E32\u0E07 \u0E04\u0E32\u0E1A\u0E44\u0E2B\u0E19\u0E0A\u0E19 */
+    /* ช่องปลายทาง ระบายทีละคาบเพื่อให้เห็นว่าคาบไหนว่าง คาบไหนชน */
     .drop-ok{ background:var(--accent-soft) !important; box-shadow:inset 0 0 0 2px var(--accent); }
     .drop-bad{ background:#F6D3D7 !important; box-shadow:inset 0 0 0 2px var(--danger); }
     .slot-td.drop-ok .slot-empty, .slot-td.drop-bad .slot-empty{ opacity:0; }
-    /* \u0E27\u0E34\u0E0A\u0E32\u0E17\u0E35\u0E48\u0E02\u0E27\u0E32\u0E07\u0E2D\u0E22\u0E39\u0E48\u0E43\u0E19\u0E0A\u0E48\u0E2D\u0E07\u0E41\u0E14\u0E07 \u0E43\u0E2B\u0E49\u0E08\u0E32\u0E07\u0E25\u0E07\u0E40\u0E1E\u0E37\u0E48\u0E2D\u0E43\u0E2B\u0E49\u0E40\u0E2B\u0E47\u0E19\u0E2A\u0E35\u0E40\u0E15\u0E37\u0E2D\u0E19\u0E0A\u0E31\u0E14 */
+    /* วิชาที่ขวางอยู่ในช่องแดง ให้จางลงเพื่อให้เห็นสีเตือนชัด */
     .slot-td.drop-bad .card{ opacity:.45; }
 
-    /* \u0E02\u0E13\u0E30\u0E25\u0E32\u0E01 \u0E2B\u0E49\u0E32\u0E21\u0E25\u0E32\u0E01\u0E40\u0E25\u0E37\u0E2D\u0E01\u0E02\u0E49\u0E2D\u0E04\u0E27\u0E32\u0E21\u0E41\u0E25\u0E30\u0E1B\u0E34\u0E14 hover \u0E17\u0E35\u0E48\u0E23\u0E1A\u0E01\u0E27\u0E19\u0E2A\u0E32\u0E22\u0E15\u0E32 */
+    /* ขณะลาก ห้ามลากเลือกข้อความและปิด hover ที่รบกวนสายตา */
     body.tt-dragging{ user-select:none; -webkit-user-select:none; cursor:grabbing !important; }
     body.tt-dragging .slot-td.empty:hover{ background:transparent; }
 
     /* ==========================================================
-       \u0E1B\u0E23\u0E31\u0E1A\u0E15\u0E32\u0E21\u0E04\u0E27\u0E32\u0E21\u0E2A\u0E39\u0E07\u0E2B\u0E19\u0E49\u0E32\u0E08\u0E2D \u2014 \u0E43\u0E2B\u0E49\u0E40\u0E2B\u0E47\u0E19\u0E04\u0E23\u0E1A\u0E17\u0E31\u0E49\u0E07 5 \u0E27\u0E31\u0E19\u0E42\u0E14\u0E22\u0E44\u0E21\u0E48\u0E15\u0E49\u0E2D\u0E07\u0E40\u0E25\u0E37\u0E48\u0E2D\u0E19\u0E41\u0E19\u0E27\u0E15\u0E31\u0E49\u0E07
-       \u0E40\u0E1E\u0E23\u0E32\u0E30\u0E01\u0E32\u0E23\u0E40\u0E25\u0E37\u0E48\u0E2D\u0E19\u0E2B\u0E32\u0E27\u0E31\u0E19\u0E08\u0E31\u0E19\u0E17\u0E23\u0E4C\u0E17\u0E38\u0E01\u0E04\u0E23\u0E31\u0E49\u0E07\u0E17\u0E35\u0E48\u0E08\u0E31\u0E14\u0E15\u0E32\u0E23\u0E32\u0E07\u0E40\u0E2A\u0E35\u0E22\u0E40\u0E27\u0E25\u0E32\u0E41\u0E25\u0E30\u0E17\u0E33\u0E43\u0E2B\u0E49\u0E40\u0E17\u0E35\u0E22\u0E1A\u0E27\u0E31\u0E19\u0E22\u0E32\u0E01
+       ปรับตามความสูงหน้าจอ — ให้เห็นครบทั้ง 5 วันโดยไม่ต้องเลื่อนแนวตั้ง
+       เพราะการเลื่อนหาวันจันทร์ทุกครั้งที่จัดตารางเสียเวลาและทำให้เทียบวันยาก
        ========================================================== */
     @media (max-height:920px){
       .slot-td{ height:80px; }
@@ -465,12 +4373,12 @@ ${ag}
     }
 
     /* ==========================================================
-       \u0E1B\u0E23\u0E31\u0E1A\u0E15\u0E32\u0E21\u0E04\u0E27\u0E32\u0E21\u0E01\u0E27\u0E49\u0E32\u0E07\u0E2B\u0E19\u0E49\u0E32\u0E08\u0E2D \u2014 \u0E41\u0E1C\u0E07\u0E2A\u0E23\u0E38\u0E1B\u0E41\u0E04\u0E1A\u0E25\u0E07\u0E40\u0E1E\u0E37\u0E48\u0E2D\u0E04\u0E37\u0E19\u0E1E\u0E37\u0E49\u0E19\u0E17\u0E35\u0E48\u0E43\u0E2B\u0E49\u0E15\u0E32\u0E23\u0E32\u0E07
+       ปรับตามความกว้างหน้าจอ — แผงสรุปแคบลงเพื่อคืนพื้นที่ให้ตาราง
        ========================================================== */
     @media (max-width:1400px){
       .panel{ width:336px; }
-      /* \u0E42\u0E19\u0E49\u0E15\u0E1A\u0E38\u0E4A\u0E01\u0E08\u0E2D 1366px \u0E40\u0E1B\u0E47\u0E19\u0E02\u0E19\u0E32\u0E14\u0E17\u0E35\u0E48\u0E1E\u0E2D\u0E14\u0E35\u0E08\u0E30\u0E25\u0E49\u0E19\u0E2D\u0E2D\u0E01\u0E44\u0E1B\u0E40\u0E25\u0E47\u0E01\u0E19\u0E49\u0E2D\u0E22
-         \u0E1A\u0E35\u0E1A\u0E04\u0E27\u0E32\u0E21\u0E01\u0E27\u0E49\u0E32\u0E07\u0E02\u0E31\u0E49\u0E19\u0E15\u0E48\u0E33\u0E25\u0E07\u0E43\u0E2B\u0E49\u0E41\u0E2A\u0E14\u0E07\u0E04\u0E23\u0E1A 11 \u0E04\u0E32\u0E1A\u0E42\u0E14\u0E22\u0E44\u0E21\u0E48\u0E15\u0E49\u0E2D\u0E07\u0E40\u0E25\u0E37\u0E48\u0E2D\u0E19\u0E41\u0E19\u0E27\u0E19\u0E2D\u0E19 */
+      /* โน้ตบุ๊กจอ 1366px เป็นขนาดที่พอดีจะล้นออกไปเล็กน้อย
+         บีบความกว้างขั้นต่ำลงให้แสดงครบ 11 คาบโดยไม่ต้องเลื่อนแนวนอน */
       .grid-tbl{ min-width:1020px; }
       .day-cell{ width:80px; }
     }
@@ -487,7 +4395,7 @@ ${ag}
       .meta{ font-size:15.5px; gap:4px; }
       .grid-tbl{ min-width:960px; }
       .day-cell{ width:74px; }
-      /* \u0E02\u0E49\u0E2D\u0E21\u0E39\u0E25\u0E17\u0E35\u0E48\u0E14\u0E39\u0E44\u0E14\u0E49\u0E08\u0E32\u0E01\u0E17\u0E35\u0E48\u0E2D\u0E37\u0E48\u0E19\u0E2D\u0E22\u0E39\u0E48\u0E41\u0E25\u0E49\u0E27 \u0E0B\u0E48\u0E2D\u0E19\u0E44\u0E27\u0E49\u0E01\u0E48\u0E2D\u0E19\u0E40\u0E1E\u0E37\u0E48\u0E2D\u0E44\u0E21\u0E48\u0E43\u0E2B\u0E49\u0E41\u0E16\u0E1A\u0E15\u0E31\u0E14\u0E2A\u0E2D\u0E07\u0E1A\u0E23\u0E23\u0E17\u0E31\u0E14 */
+      /* ข้อมูลที่ดูได้จากที่อื่นอยู่แล้ว ซ่อนไว้ก่อนเพื่อไม่ให้แถบตัดสองบรรทัด */
       .meta-opt{ display:none; }
       .sheet-hint{ display:none; }
     }
@@ -499,10 +4407,10 @@ ${ag}
     }
 
     /* ==========================================================
-       \u0E2B\u0E19\u0E49\u0E32\u0E41\u0E23\u0E01 \u2014 \u0E1B\u0E23\u0E31\u0E1A\u0E43\u0E2B\u0E49\u0E14\u0E39\u0E21\u0E35\u0E21\u0E34\u0E15\u0E34\u0E01\u0E27\u0E48\u0E32\u0E41\u0E1C\u0E07\u0E17\u0E33\u0E07\u0E32\u0E19\u0E2B\u0E25\u0E31\u0E01 \u0E40\u0E1E\u0E23\u0E32\u0E30\u0E40\u0E1B\u0E47\u0E19\u0E2B\u0E19\u0E49\u0E32\u0E15\u0E49\u0E2D\u0E19\u0E23\u0E31\u0E1A
+       หน้าแรก — ปรับให้ดูมีมิติกว่าแผงทำงานหลัก เพราะเป็นหน้าต้อนรับ
        ========================================================== */
     .home-blob{ position:absolute; border-radius:999px; filter:blur(70px); pointer-events:none; z-index:0; }
-    /* \u0E1E\u0E37\u0E49\u0E19\u0E2B\u0E25\u0E31\u0E07\u0E2B\u0E19\u0E49\u0E32\u0E41\u0E23\u0E01 \u2014 \u0E44\u0E25\u0E48\u0E2A\u0E35\u0E2B\u0E25\u0E32\u0E22\u0E0A\u0E31\u0E49\u0E19 + \u0E25\u0E32\u0E22\u0E08\u0E38\u0E14\u0E1A\u0E32\u0E07\u0E46 \u0E43\u0E2B\u0E49\u0E21\u0E35\u0E40\u0E19\u0E37\u0E49\u0E2D\u0E1C\u0E49\u0E32\u0E41\u0E17\u0E19\u0E1E\u0E37\u0E49\u0E19\u0E40\u0E17\u0E32\u0E40\u0E23\u0E35\u0E22\u0E1A */
+    /* พื้นหลังหน้าแรก — ไล่สีหลายชั้น + ลายจุดบางๆ ให้มีเนื้อผ้าแทนพื้นเทาเรียบ */
     .home-wrap{
       background:
         radial-gradient(1100px 640px at 6% -8%, rgba(217,116,26,.20), transparent 58%),
@@ -543,87 +4451,4000 @@ ${ag}
       background:var(--surface); border:1px solid var(--rule); font-size:15px; font-weight:600; color:var(--ink-3);
       box-shadow:0 1px 2px rgba(15,30,61,.04);
     }
-  `;if(!e)return o.default.createElement("div",{className:"tt",style:{display:"flex",alignItems:"center",justifyContent:"center"}},o.default.createElement("style",null,fn),o.default.createElement("div",{style:{textAlign:"center"}},o.default.createElement(at,{className:"w-6 h-6 animate-spin",style:{color:"var(--accent)",margin:"0 auto 10px"}}),o.default.createElement("div",{style:{fontSize:17.5,fontWeight:600,color:"var(--ink-3)"}},"\u0E01\u0E33\u0E25\u0E31\u0E07\u0E40\u0E1B\u0E34\u0E14\u0E02\u0E49\u0E2D\u0E21\u0E39\u0E25\u0E15\u0E32\u0E23\u0E32\u0E07")));if(r==="home"){let n=Object.values(f).reduce((i,p)=>i+(p?.length||0),0),d=q.filter(i=>i.subjectId).length;return o.default.createElement("div",{className:"tt home-wrap",style:{display:"flex",alignItems:"center",justifyContent:"center",padding:20,position:"relative",overflow:"hidden",minHeight:"100vh"}},o.default.createElement("style",null,fn),o.default.createElement("div",{className:"home-blob",style:{width:460,height:460,top:-170,right:-130,background:"radial-gradient(circle, rgba(217,116,26,.28), transparent 70%)"}}),o.default.createElement("div",{className:"home-blob",style:{width:500,height:500,bottom:-220,left:-170,background:"radial-gradient(circle, rgba(28,49,96,.30), transparent 70%)"}}),o.default.createElement("div",{className:"home-blob",style:{width:360,height:360,top:"38%",left:"48%",background:"radial-gradient(circle, rgba(217,116,26,.10), transparent 70%)"}}),o.default.createElement("div",{style:{width:"100%",maxWidth:960,position:"relative",zIndex:1}},o.default.createElement("div",{style:{display:"flex",alignItems:"center",gap:14,marginBottom:28}},o.default.createElement("div",{style:{width:44,height:44,background:"linear-gradient(155deg,var(--ink),var(--ink-2))",borderRadius:11,display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0,boxShadow:"0 4px 14px rgba(15,30,61,.28)"}},o.default.createElement(hl,{className:"w-5 h-5",style:{color:"var(--accent)"}})),o.default.createElement("div",null,o.default.createElement("div",{className:"eyebrow"},"\u0E41\u0E1C\u0E19\u0E01\u0E27\u0E34\u0E0A\u0E32\u0E0A\u0E48\u0E32\u0E07\u0E44\u0E1F\u0E1F\u0E49\u0E32 \xB7 \u0E27\u0E34\u0E17\u0E22\u0E32\u0E25\u0E31\u0E22\u0E40\u0E17\u0E04\u0E19\u0E34\u0E04\u0E1B\u0E23\u0E32\u0E08\u0E35\u0E19\u0E1A\u0E38\u0E23\u0E35"),o.default.createElement("div",{style:{fontSize:28,fontWeight:800,letterSpacing:"-.3px",marginTop:3}},"\u0E23\u0E30\u0E1A\u0E1A\u0E08\u0E31\u0E14\u0E15\u0E32\u0E23\u0E32\u0E07\u0E40\u0E23\u0E35\u0E22\u0E19",o.default.createElement("span",{style:{color:"var(--accent)"}},"\u0E41\u0E25\u0E30\u0E15\u0E32\u0E23\u0E32\u0E07\u0E2A\u0E2D\u0E19")))),o.default.createElement("div",{className:"box home-card",style:{background:"linear-gradient(180deg, #fff, #FCFBF9)",padding:0,overflow:"hidden",boxShadow:"0 24px 56px rgba(28,49,96,.16), 0 4px 14px rgba(217,116,26,.10)"}},o.default.createElement("div",{style:{display:"grid",gridTemplateColumns:"minmax(0,1fr)",gap:0}},o.default.createElement("div",{style:{padding:"22px 24px",borderBottom:"1px solid var(--rule)"}},o.default.createElement("div",{className:"eyebrow",style:{marginBottom:14}},"\u0E15\u0E31\u0E49\u0E07\u0E04\u0E48\u0E32\u0E20\u0E32\u0E04\u0E40\u0E23\u0E35\u0E22\u0E19\u0E17\u0E35\u0E48\u0E08\u0E30\u0E08\u0E31\u0E14"),o.default.createElement("div",{style:{display:"flex",gap:16,flexWrap:"wrap",alignItems:"flex-end"}},o.default.createElement("div",{style:{minWidth:190}},o.default.createElement("label",{className:"lbl"},"\u0E1B\u0E35\u0E01\u0E32\u0E23\u0E28\u0E36\u0E01\u0E29\u0E32"),o.default.createElement("select",{className:"sel",value:w.year,style:w.year?void 0:{color:"var(--ink-3)",borderColor:"var(--accent-line)",background:"var(--accent-soft)"},onChange:i=>{let p=i.target.value;M({...w,year:p?parseInt(p):""})}},o.default.createElement("option",{value:""},"\u0E40\u0E25\u0E37\u0E2D\u0E01\u0E1B\u0E35\u0E01\u0E32\u0E23\u0E28\u0E36\u0E01\u0E29\u0E32"),Qh.map(i=>o.default.createElement("option",{key:i,value:i},i)))),o.default.createElement("div",null,o.default.createElement("label",{className:"lbl"},"\u0E20\u0E32\u0E04\u0E40\u0E23\u0E35\u0E22\u0E19"),o.default.createElement("div",{className:"seg-light"},[1,2].map(i=>o.default.createElement("button",{key:i,onClick:()=>M({...w,term:i}),className:`seg-light-btn ${w.term===i?"seg-light-on":""}`},"\u0E20\u0E32\u0E04\u0E40\u0E23\u0E35\u0E22\u0E19\u0E17\u0E35\u0E48 ",i)))))),t?o.default.createElement("div",{style:{padding:"22px 24px"}},o.default.createElement("div",{style:{display:"flex",flexWrap:"wrap",gap:22,alignItems:"stretch",justifyContent:"space-between"}},o.default.createElement("div",{style:{display:"grid",gridTemplateColumns:"repeat(auto-fit, minmax(150px, 1fr))",gap:10,flex:1,minWidth:280}},o.default.createElement("div",{className:"stat-tile"},o.default.createElement("div",{className:"stat-icon",style:{background:"var(--accent-soft)"}},o.default.createElement(go,{className:"w-4 h-4",style:{color:"var(--accent)"}})),o.default.createElement("div",null,o.default.createElement("div",{className:"eyebrow"},"\u0E2B\u0E49\u0E2D\u0E07\u0E40\u0E23\u0E35\u0E22\u0E19"),o.default.createElement("div",{className:"mono",style:{fontSize:22,fontWeight:700,marginTop:1}},Ue.length))),o.default.createElement("div",{className:"stat-tile"},o.default.createElement("div",{className:"stat-icon",style:{background:"#DCE3F3"}},o.default.createElement(At,{className:"w-4 h-4",style:{color:"#2A4A8C"}})),o.default.createElement("div",null,o.default.createElement("div",{className:"eyebrow"},"\u0E04\u0E23\u0E39\u0E1C\u0E39\u0E49\u0E2A\u0E2D\u0E19"),o.default.createElement("div",{className:"mono",style:{fontSize:22,fontWeight:700,marginTop:1}},v.length))),o.default.createElement("div",{className:"stat-tile"},o.default.createElement("div",{className:"stat-icon",style:{background:"#E4DEF6"}},o.default.createElement(ml,{className:"w-4 h-4",style:{color:"#5B3FA6"}})),o.default.createElement("div",null,o.default.createElement("div",{className:"eyebrow"},"\u0E23\u0E32\u0E22\u0E27\u0E34\u0E0A\u0E32"),o.default.createElement("div",{className:"mono",style:{fontSize:22,fontWeight:700,marginTop:1}},n))),o.default.createElement("div",{className:"stat-tile"},o.default.createElement("div",{className:"stat-icon",style:{background:"var(--ok-soft)"}},o.default.createElement(sa,{className:"w-4 h-4",style:{color:"var(--ok)"}})),o.default.createElement("div",null,o.default.createElement("div",{className:"eyebrow"},"\u0E04\u0E32\u0E1A\u0E17\u0E35\u0E48\u0E08\u0E31\u0E14\u0E41\u0E25\u0E49\u0E27"),o.default.createElement("div",{className:"mono",style:{fontSize:22,fontWeight:700,marginTop:1,color:"var(--ok)"}},d)))),o.default.createElement("div",{style:{display:"flex",flexDirection:"column",gap:8,justifyContent:"center"}},o.default.createElement("button",{onClick:()=>{L(Ue[0]?.id||""),s("timetable")},disabled:!w.year,className:"btn btn-accent",style:{padding:"13px 22px",whiteSpace:"nowrap"}},"\u0E40\u0E1B\u0E34\u0E14\u0E15\u0E32\u0E23\u0E32\u0E07\u0E17\u0E33\u0E07\u0E32\u0E19\u0E15\u0E48\u0E2D ",o.default.createElement(pl,{className:"w-4 h-4"})),o.default.createElement("label",{className:"btn",style:{cursor:"pointer",justifyContent:"center"}},o.default.createElement(po,{className:"w-4 h-4"})," \u0E19\u0E33\u0E40\u0E02\u0E49\u0E32\u0E44\u0E1F\u0E25\u0E4C",o.default.createElement("input",{type:"file",accept:".json",onChange:i=>Iu(i,!0),style:{display:"none"}})))),o.default.createElement("div",{className:"hint",style:{marginTop:16,display:"flex",alignItems:"center",gap:6,flexWrap:"wrap"}},w.year?Po?o.default.createElement(o.default.Fragment,null,o.default.createElement(Tt,{className:"w-3.5 h-3.5"})," \u0E1A\u0E31\u0E19\u0E17\u0E36\u0E01\u0E25\u0E48\u0E32\u0E2A\u0E38\u0E14\u0E40\u0E21\u0E37\u0E48\u0E2D ",Po):null:o.default.createElement("span",{style:{color:"var(--accent)",fontWeight:700}},"\u0E40\u0E25\u0E37\u0E2D\u0E01\u0E1B\u0E35\u0E01\u0E32\u0E23\u0E28\u0E36\u0E01\u0E29\u0E32\u0E14\u0E49\u0E32\u0E19\u0E1A\u0E19\u0E01\u0E48\u0E2D\u0E19\u0E08\u0E36\u0E07\u0E08\u0E30\u0E40\u0E1B\u0E34\u0E14\u0E15\u0E32\u0E23\u0E32\u0E07\u0E44\u0E14\u0E49"),Po&&w.year&&o.default.createElement("span",{style:{color:"var(--rule)"}},"\xB7"),o.default.createElement("button",{onClick:()=>Gt("RESET_FROM_HOME",null,"\u0E40\u0E23\u0E34\u0E48\u0E21\u0E15\u0E32\u0E23\u0E32\u0E07\u0E43\u0E2B\u0E21\u0E48\u0E17\u0E31\u0E49\u0E07\u0E2B\u0E21\u0E14","\u0E2B\u0E49\u0E2D\u0E07\u0E40\u0E23\u0E35\u0E22\u0E19 \u0E23\u0E32\u0E22\u0E27\u0E34\u0E0A\u0E32 \u0E04\u0E23\u0E39 \u0E41\u0E25\u0E30\u0E15\u0E32\u0E23\u0E32\u0E07\u0E17\u0E35\u0E48\u0E1A\u0E31\u0E19\u0E17\u0E36\u0E01\u0E44\u0E27\u0E49\u0E08\u0E30\u0E16\u0E39\u0E01\u0E25\u0E1A\u0E17\u0E34\u0E49\u0E07 \u0E2A\u0E33\u0E23\u0E2D\u0E07\u0E02\u0E49\u0E2D\u0E21\u0E39\u0E25\u0E40\u0E1B\u0E47\u0E19\u0E44\u0E1F\u0E25\u0E4C\u0E44\u0E27\u0E49\u0E01\u0E48\u0E2D\u0E19\u0E2B\u0E32\u0E01\u0E22\u0E31\u0E07\u0E15\u0E49\u0E2D\u0E07\u0E01\u0E32\u0E23\u0E43\u0E0A\u0E49","\u0E25\u0E49\u0E32\u0E07\u0E41\u0E25\u0E49\u0E27\u0E40\u0E23\u0E34\u0E48\u0E21\u0E43\u0E2B\u0E21\u0E48"),style:{color:"var(--danger)",fontWeight:700,textDecoration:"underline",textUnderlineOffset:2}},"\u0E40\u0E23\u0E34\u0E48\u0E21\u0E43\u0E2B\u0E21\u0E48\u0E17\u0E31\u0E49\u0E07\u0E2B\u0E21\u0E14"))):o.default.createElement("div",{style:{padding:"22px 24px"}},o.default.createElement("div",{style:{display:"flex",gap:26,alignItems:"flex-start",justifyContent:"space-between",flexWrap:"wrap"}},o.default.createElement("div",{style:{display:"flex",flexDirection:"column",gap:12,flex:1,minWidth:280}},["\u0E25\u0E07\u0E23\u0E32\u0E22\u0E27\u0E34\u0E0A\u0E32\u0E43\u0E2B\u0E49\u0E41\u0E15\u0E48\u0E25\u0E30\u0E2B\u0E49\u0E2D\u0E07\u0E40\u0E23\u0E35\u0E22\u0E19","\u0E40\u0E1E\u0E34\u0E48\u0E21\u0E23\u0E32\u0E22\u0E0A\u0E37\u0E48\u0E2D\u0E04\u0E23\u0E39\u0E1C\u0E39\u0E49\u0E2A\u0E2D\u0E19","\u0E04\u0E25\u0E34\u0E01\u0E0A\u0E48\u0E2D\u0E07\u0E43\u0E19\u0E15\u0E32\u0E23\u0E32\u0E07\u0E40\u0E1E\u0E37\u0E48\u0E2D\u0E27\u0E32\u0E07\u0E04\u0E32\u0E1A \u0E23\u0E30\u0E1A\u0E1A\u0E40\u0E15\u0E37\u0E2D\u0E19\u0E04\u0E32\u0E1A\u0E0A\u0E19\u0E43\u0E2B\u0E49\u0E2D\u0E31\u0E15\u0E42\u0E19\u0E21\u0E31\u0E15\u0E34"].map((i,p)=>o.default.createElement("div",{key:p,style:{display:"flex",alignItems:"center",gap:11}},o.default.createElement("span",{className:"step-num"},p+1),o.default.createElement("span",{style:{fontSize:16,color:"var(--ink-3)",lineHeight:1.5}},i)))),o.default.createElement("div",{style:{display:"flex",flexDirection:"column",gap:8,flexShrink:0}},o.default.createElement("button",{onClick:mg,disabled:!w.year,className:"btn btn-accent",style:{padding:"13px 22px",whiteSpace:"nowrap"}},"\u0E40\u0E23\u0E34\u0E48\u0E21\u0E08\u0E31\u0E14\u0E15\u0E32\u0E23\u0E32\u0E07 ",o.default.createElement(pl,{className:"w-4 h-4"})),o.default.createElement("label",{className:"btn",style:{cursor:"pointer",justifyContent:"center"}},o.default.createElement(po,{className:"w-4 h-4"})," \u0E19\u0E33\u0E40\u0E02\u0E49\u0E32\u0E44\u0E1F\u0E25\u0E4C\u0E17\u0E35\u0E48\u0E40\u0E04\u0E22\u0E17\u0E33\u0E44\u0E27\u0E49",o.default.createElement("input",{type:"file",accept:".json",onChange:i=>Iu(i,!0),style:{display:"none"}})))),o.default.createElement("div",{className:"hint",style:{marginTop:16}},w.year?"\u0E21\u0E35\u0E44\u0E1F\u0E25\u0E4C\u0E2A\u0E33\u0E23\u0E2D\u0E07 .json \u0E08\u0E32\u0E01\u0E40\u0E04\u0E23\u0E37\u0E48\u0E2D\u0E07\u0E2D\u0E37\u0E48\u0E19\u0E2D\u0E22\u0E39\u0E48\u0E41\u0E25\u0E49\u0E27 \u0E01\u0E14\u0E19\u0E33\u0E40\u0E02\u0E49\u0E32\u0E44\u0E1F\u0E25\u0E4C\u0E40\u0E1E\u0E37\u0E48\u0E2D\u0E17\u0E33\u0E07\u0E32\u0E19\u0E15\u0E48\u0E2D\u0E44\u0E14\u0E49\u0E17\u0E31\u0E19\u0E17\u0E35":o.default.createElement("span",{style:{color:"var(--accent)",fontWeight:700}},"\u0E40\u0E25\u0E37\u0E2D\u0E01\u0E1B\u0E35\u0E01\u0E32\u0E23\u0E28\u0E36\u0E01\u0E29\u0E32\u0E14\u0E49\u0E32\u0E19\u0E1A\u0E19\u0E01\u0E48\u0E2D\u0E19\u0E08\u0E36\u0E07\u0E08\u0E30\u0E40\u0E23\u0E34\u0E48\u0E21\u0E08\u0E31\u0E14\u0E15\u0E32\u0E23\u0E32\u0E07\u0E44\u0E14\u0E49"))))),o.default.createElement("div",{style:{display:"flex",gap:10,flexWrap:"wrap",marginTop:20}},[{icon:o.default.createElement($e,{className:"w-3.5 h-3.5"}),t:"\u0E40\u0E15\u0E37\u0E2D\u0E19\u0E04\u0E32\u0E1A\u0E0A\u0E19\u0E17\u0E31\u0E19\u0E17\u0E35\u0E17\u0E35\u0E48\u0E27\u0E32\u0E07",c:"var(--danger)"},{icon:o.default.createElement(Ea,{className:"w-3.5 h-3.5"}),t:"\u0E2D\u0E2D\u0E01\u0E44\u0E1F\u0E25\u0E4C PDF \u0E1E\u0E23\u0E49\u0E2D\u0E21\u0E2A\u0E48\u0E07",c:"var(--accent)"},{icon:o.default.createElement(co,{className:"w-3.5 h-3.5"}),t:"\u0E19\u0E33\u0E40\u0E02\u0E49\u0E32\u0E23\u0E32\u0E22\u0E27\u0E34\u0E0A\u0E32\u0E08\u0E32\u0E01 CSV",c:"#2A4A8C"},{icon:o.default.createElement(Tt,{className:"w-3.5 h-3.5"}),t:"\u0E1A\u0E31\u0E19\u0E17\u0E36\u0E01\u0E2D\u0E31\u0E15\u0E42\u0E19\u0E21\u0E31\u0E15\u0E34\u0E17\u0E38\u0E01\u0E01\u0E32\u0E23\u0E41\u0E01\u0E49\u0E44\u0E02",c:"var(--ok)"}].map((i,p)=>o.default.createElement("div",{key:p,className:"feature-pill"},o.default.createElement("span",{style:{color:i.c}},i.icon),i.t)))),Ua.isOpen&&o.default.createElement("div",{className:"ov",onClick:()=>nt({isOpen:!1,message:""})},o.default.createElement("div",{className:"modal",style:{maxWidth:380},onClick:i=>i.stopPropagation()},o.default.createElement("div",{className:"modal-body",style:{textAlign:"center"}},o.default.createElement("p",{style:{fontSize:15,lineHeight:1.6,color:"var(--ink)",whiteSpace:"pre-line",margin:"4px 0 16px"}},Ua.message),o.default.createElement("button",{onClick:()=>nt({isOpen:!1,message:""}),className:"btn btn-primary",style:{width:"100%"}},"\u0E15\u0E01\u0E25\u0E07")))),De.isOpen&&o.default.createElement("div",{className:"ov"},o.default.createElement("div",{className:"modal",style:{maxWidth:400}},o.default.createElement("div",{className:"modal-body"},o.default.createElement("div",{className:"modal-title",style:{marginBottom:8}},De.title),o.default.createElement("p",{style:{fontSize:17,lineHeight:1.65,color:"var(--ink-3)",whiteSpace:"pre-line",margin:0}},De.message)),o.default.createElement("div",{className:"modal-foot",style:{justifyContent:"flex-end"}},o.default.createElement("button",{onClick:()=>Nl(i=>({...i,isOpen:!1})),className:"btn"},De.cancelText),o.default.createElement("button",{onClick:If,className:`btn ${De.isDestructive?"btn-danger":"btn-accent"}`},De.confirmText)))))}if(ge!=="none"){let n=ge==="current"?`\u0E15\u0E32\u0E23\u0E32\u0E07\u0E40\u0E23\u0E35\u0E22\u0E19 ${Te.name}`:ge==="teacher_current"?`\u0E15\u0E32\u0E23\u0E32\u0E07\u0E2A\u0E2D\u0E19 ${Ha?.name||""}`:ge==="all"?"\u0E15\u0E32\u0E23\u0E32\u0E07\u0E40\u0E23\u0E35\u0E22\u0E19\u0E17\u0E38\u0E01\u0E2B\u0E49\u0E2D\u0E07":ge==="room_current"?`\u0E15\u0E32\u0E23\u0E32\u0E07\u0E01\u0E32\u0E23\u0E43\u0E0A\u0E49\u0E2B\u0E49\u0E2D\u0E07 ${_a?.name||""}`:ge==="room_all"?"\u0E15\u0E32\u0E23\u0E32\u0E07\u0E01\u0E32\u0E23\u0E43\u0E0A\u0E49\u0E2B\u0E49\u0E2D\u0E07\u0E17\u0E38\u0E01\u0E2B\u0E49\u0E2D\u0E07":"\u0E15\u0E32\u0E23\u0E32\u0E07\u0E2A\u0E2D\u0E19\u0E04\u0E23\u0E39\u0E17\u0E38\u0E01\u0E04\u0E19",d=ge==="all"?Ue.length:ge==="teacher_all"?v.length:ge==="room_all"?ea.length:1;return o.default.createElement("div",{className:"tt",style:{padding:"0 0 40px"}},o.default.createElement("style",null,fn),o.default.createElement("div",{className:"rail no-print",style:{position:"sticky",top:0,zIndex:40,padding:"10px 16px",display:"flex",alignItems:"center",justifyContent:"space-between",gap:14,flexWrap:"wrap"}},o.default.createElement("div",null,o.default.createElement("div",{className:"eyebrow",style:{color:"rgba(255,255,255,.5)"}},"\u0E15\u0E31\u0E27\u0E2D\u0E22\u0E48\u0E32\u0E07\u0E01\u0E48\u0E2D\u0E19\u0E1E\u0E34\u0E21\u0E1E\u0E4C \xB7 A4 \u0E41\u0E19\u0E27\u0E19\u0E2D\u0E19 \xB7 ",o.default.createElement("span",{className:"mono"},d)," \u0E2B\u0E19\u0E49\u0E32"),o.default.createElement("div",{style:{fontSize:19,fontWeight:700,marginTop:2}},n)),o.default.createElement("div",{style:{display:"flex",gap:8,alignItems:"center",flexWrap:"wrap"}},o.default.createElement("button",{onClick:Lg,className:"btn btn-accent",title:"\u0E40\u0E1B\u0E34\u0E14\u0E41\u0E17\u0E47\u0E1A\u0E43\u0E2B\u0E21\u0E48\u0E41\u0E25\u0E49\u0E27\u0E40\u0E14\u0E49\u0E07\u0E2B\u0E19\u0E49\u0E32\u0E15\u0E48\u0E32\u0E07\u0E1E\u0E34\u0E21\u0E1E\u0E4C\u0E43\u0E2B\u0E49\u0E2D\u0E31\u0E15\u0E42\u0E19\u0E21\u0E31\u0E15\u0E34"},o.default.createElement(Ea,{className:"w-4 h-4"})," \u0E40\u0E1B\u0E34\u0E14\u0E2B\u0E19\u0E49\u0E32\u0E15\u0E48\u0E32\u0E07\u0E1E\u0E34\u0E21\u0E1E\u0E4C"),o.default.createElement("button",{onClick:vg,className:"btn",title:"\u0E14\u0E32\u0E27\u0E19\u0E4C\u0E42\u0E2B\u0E25\u0E14\u0E44\u0E1F\u0E25\u0E4C\u0E44\u0E27\u0E49\u0E1E\u0E34\u0E21\u0E1E\u0E4C\u0E17\u0E35\u0E2B\u0E25\u0E31\u0E07 \u0E2B\u0E23\u0E37\u0E2D\u0E43\u0E0A\u0E49\u0E40\u0E21\u0E37\u0E48\u0E2D\u0E40\u0E1B\u0E34\u0E14\u0E41\u0E17\u0E47\u0E1A\u0E43\u0E2B\u0E21\u0E48\u0E44\u0E21\u0E48\u0E44\u0E14\u0E49"},o.default.createElement(et,{className:"w-4 h-4"})," \u0E14\u0E32\u0E27\u0E19\u0E4C\u0E42\u0E2B\u0E25\u0E14\u0E44\u0E1F\u0E25\u0E4C"),o.default.createElement("button",{onClick:()=>{qt(""),nf("none")},className:"btn"},o.default.createElement(ua,{className:"w-4 h-4"})," \u0E01\u0E25\u0E31\u0E1A\u0E44\u0E1B\u0E41\u0E01\u0E49\u0E15\u0E32\u0E23\u0E32\u0E07"))),o.default.createElement("div",{className:"no-print",style:{padding:"12px 16px 0",display:"flex",justifyContent:"center"}},o.default.createElement("div",{style:{maxWidth:Ur,width:"100%",display:"flex",flexDirection:"column",gap:10}},sf&&o.default.createElement("div",{className:"note note-err",style:{flexDirection:"column"}},o.default.createElement("div",{style:{display:"flex",gap:8}},o.default.createElement($e,{className:"w-4 h-4",style:{flexShrink:0,marginTop:1}}),o.default.createElement("span",null,sf))),o.default.createElement("div",{className:"note note-info"},o.default.createElement(Ea,{className:"w-4 h-4",style:{flexShrink:0,marginTop:1,color:"var(--accent)"}}),o.default.createElement("div",null,"\u0E43\u0E19\u0E2B\u0E19\u0E49\u0E32\u0E15\u0E48\u0E32\u0E07\u0E1E\u0E34\u0E21\u0E1E\u0E4C \u0E43\u0E2B\u0E49\u0E40\u0E25\u0E37\u0E2D\u0E01\u0E1B\u0E25\u0E32\u0E22\u0E17\u0E32\u0E07\u0E40\u0E1B\u0E47\u0E19 ",o.default.createElement("b",{style:{color:"var(--ink)"}},"\u0E1A\u0E31\u0E19\u0E17\u0E36\u0E01\u0E40\u0E1B\u0E47\u0E19 PDF")," \xB7 \u0E01\u0E23\u0E30\u0E14\u0E32\u0E29 ",o.default.createElement("b",{style:{color:"var(--ink)"}},"A4 \u0E41\u0E19\u0E27\u0E19\u0E2D\u0E19")," \xB7 \u0E02\u0E2D\u0E1A\u0E01\u0E23\u0E30\u0E14\u0E32\u0E29 ",o.default.createElement("b",{style:{color:"var(--ink)"}},"\u0E44\u0E21\u0E48\u0E21\u0E35"),o.default.createElement("div",{style:{marginTop:4}},"\u0E16\u0E49\u0E32\u0E01\u0E14\u0E2A\u0E31\u0E48\u0E07\u0E1E\u0E34\u0E21\u0E1E\u0E4C\u0E41\u0E25\u0E49\u0E27\u0E44\u0E21\u0E48\u0E21\u0E35\u0E2D\u0E30\u0E44\u0E23\u0E02\u0E36\u0E49\u0E19 (\u0E40\u0E01\u0E34\u0E14\u0E44\u0E14\u0E49\u0E40\u0E21\u0E37\u0E48\u0E2D\u0E40\u0E1B\u0E34\u0E14\u0E08\u0E32\u0E01\u0E25\u0E34\u0E07\u0E01\u0E4C\u0E17\u0E35\u0E48\u0E41\u0E0A\u0E23\u0E4C) \u0E43\u0E2B\u0E49\u0E43\u0E0A\u0E49\u0E1B\u0E38\u0E48\u0E21",o.default.createElement("b",{style:{color:"var(--ink)"}}," \u0E14\u0E32\u0E27\u0E19\u0E4C\u0E42\u0E2B\u0E25\u0E14\u0E44\u0E1F\u0E25\u0E4C\u0E2A\u0E33\u0E2B\u0E23\u0E31\u0E1A\u0E1E\u0E34\u0E21\u0E1E\u0E4C "),"\u0E41\u0E25\u0E49\u0E27\u0E40\u0E1B\u0E34\u0E14\u0E44\u0E1F\u0E25\u0E4C\u0E17\u0E35\u0E48\u0E44\u0E14\u0E49 \u0E23\u0E30\u0E1A\u0E1A\u0E08\u0E30\u0E40\u0E14\u0E49\u0E07\u0E2B\u0E19\u0E49\u0E32\u0E15\u0E48\u0E32\u0E07\u0E1E\u0E34\u0E21\u0E1E\u0E4C\u0E43\u0E2B\u0E49\u0E40\u0E2D\u0E07"))))),o.default.createElement("div",{style:{padding:"28px 16px 0",display:"flex",justifyContent:"center"}},o.default.createElement("div",{id:"pdf-render-area",style:{width:1122,background:"#fff"}},ge==="current"?Nf(Te,0,1):ge==="teacher_current"?Ff(Ha,0,1):ge==="teacher_all"?v.map((i,p)=>Ff(i,p,v.length)):ge==="room_current"?Df(_a,0,1):ge==="room_all"?ea.map((i,p)=>Df(i,p,ea.length)):Ue.map((i,p)=>Nf(i,p,Ue.length)))),Ua.isOpen&&o.default.createElement("div",{className:"ov",onClick:()=>nt({isOpen:!1,message:""})},o.default.createElement("div",{className:"modal",style:{maxWidth:380},onClick:i=>i.stopPropagation()},o.default.createElement("div",{className:"modal-body",style:{textAlign:"center"}},o.default.createElement("p",{style:{fontSize:15,lineHeight:1.6,whiteSpace:"pre-line",margin:"4px 0 16px"}},Ua.message),o.default.createElement("button",{onClick:()=>nt({isOpen:!1,message:""}),className:"btn btn-primary",style:{width:"100%"}},"\u0E15\u0E01\u0E25\u0E07")))))}let Ol=f[m]||[];return o.default.createElement("div",{className:"tt",style:{display:"flex",flexDirection:"column",height:"100vh",overflow:"hidden"}},o.default.createElement("style",null,fn),o.default.createElement("div",{className:"rail",style:{display:"flex",alignItems:"center",gap:10,padding:"0 14px",height:54,flexShrink:0,overflowX:"auto"}},o.default.createElement("button",{onClick:()=>s("home"),className:"brand",title:"\u0E01\u0E25\u0E31\u0E1A\u0E2B\u0E19\u0E49\u0E32\u0E41\u0E23\u0E01"},o.default.createElement("div",{style:{width:28,height:28,background:"var(--accent)",borderRadius:5,display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0}},o.default.createElement(hl,{className:"w-3.5 h-3.5",style:{color:"#fff"}})),o.default.createElement("span",{style:{fontSize:18.5,fontWeight:700,whiteSpace:"nowrap"}},"\u0E08\u0E31\u0E14\u0E15\u0E32\u0E23\u0E32\u0E07")),o.default.createElement("button",{onClick:()=>vo(!0),className:"chip chip-dark chip-btn",style:{flexShrink:0},title:"\u0E40\u0E1B\u0E25\u0E35\u0E48\u0E22\u0E19\u0E1B\u0E35\u0E01\u0E32\u0E23\u0E28\u0E36\u0E01\u0E29\u0E32\u0E41\u0E25\u0E30\u0E20\u0E32\u0E04\u0E40\u0E23\u0E35\u0E22\u0E19"},w.year," \xB7 \u0E20\u0E32\u0E04 ",w.term,o.default.createElement(Tr,{className:"w-3 h-3",style:{opacity:.7}})),o.default.createElement("div",{style:{flex:1,minWidth:8}}),Vs==="saving"&&o.default.createElement("span",{className:"chip chip-dark",style:{flexShrink:0}},o.default.createElement(at,{className:"w-3 h-3 animate-spin"})," \u0E1A\u0E31\u0E19\u0E17\u0E36\u0E01\u2026"),Vs==="saved"&&o.default.createElement("span",{className:"chip",style:{background:"rgba(21,121,90,.22)",color:"#8FE3C4",flexShrink:0}},o.default.createElement(sa,{className:"w-3 h-3"})," \u0E1A\u0E31\u0E19\u0E17\u0E36\u0E01 ",Po),Vs==="error"&&o.default.createElement("span",{className:"chip",style:{background:"rgba(184,31,45,.25)",color:"#FFB4BB",flexShrink:0}},o.default.createElement($e,{className:"w-3 h-3"})," \u0E1A\u0E31\u0E19\u0E17\u0E36\u0E01\u0E44\u0E21\u0E48\u0E2A\u0E33\u0E40\u0E23\u0E47\u0E08"),o.default.createElement("div",{className:"rail-sep",style:{flexShrink:0}}),o.default.createElement(Fv,{value:F,onChange:de,options:[{value:"student",label:"\u0E15\u0E32\u0E23\u0E32\u0E07\u0E40\u0E23\u0E35\u0E22\u0E19",icon:o.default.createElement(go,{className:"w-3.5 h-3.5"})},{value:"teacher",label:"\u0E15\u0E32\u0E23\u0E32\u0E07\u0E2A\u0E2D\u0E19",icon:o.default.createElement(At,{className:"w-3.5 h-3.5"})},{value:"room",label:"\u0E15\u0E32\u0E23\u0E32\u0E07\u0E2B\u0E49\u0E2D\u0E07",icon:o.default.createElement(Ra,{className:"w-3.5 h-3.5"})}]}),o.default.createElement("div",{className:"rail-sep",style:{flexShrink:0}}),o.default.createElement("button",{onClick:yu,disabled:ze.length===0,className:"rail-btn",title:ze.length===0?"\u0E22\u0E31\u0E07\u0E44\u0E21\u0E48\u0E21\u0E35\u0E01\u0E32\u0E23\u0E41\u0E01\u0E49\u0E44\u0E02\u0E43\u0E2B\u0E49\u0E22\u0E49\u0E2D\u0E19\u0E01\u0E25\u0E31\u0E1A":`\u0E22\u0E49\u0E2D\u0E19\u0E01\u0E25\u0E31\u0E1A\u0E01\u0E32\u0E23\u0E41\u0E01\u0E49\u0E44\u0E02\u0E25\u0E48\u0E32\u0E2A\u0E38\u0E14 (\u0E22\u0E49\u0E2D\u0E19\u0E44\u0E14\u0E49\u0E2D\u0E35\u0E01 ${ze.length} \u0E04\u0E23\u0E31\u0E49\u0E07) \xB7 Ctrl+Z`},o.default.createElement(gl,{className:"w-3.5 h-3.5"})," ",o.default.createElement("span",null,"\u0E22\u0E49\u0E2D\u0E19\u0E01\u0E25\u0E31\u0E1A",ze.length>0?` ${ze.length}`:"")),o.default.createElement("button",{onClick:()=>Mt(!0),className:"rail-btn",title:"\u0E08\u0E31\u0E14\u0E01\u0E32\u0E23\u0E23\u0E32\u0E22\u0E27\u0E34\u0E0A\u0E32\u0E02\u0E2D\u0E07\u0E2B\u0E49\u0E2D\u0E07\u0E19\u0E35\u0E49"},o.default.createElement(ml,{className:"w-3.5 h-3.5"})," ",o.default.createElement("span",null,"\u0E23\u0E32\u0E22\u0E27\u0E34\u0E0A\u0E32")),o.default.createElement("button",{onClick:()=>Il(!0),className:"rail-btn",title:"\u0E08\u0E31\u0E14\u0E01\u0E32\u0E23\u0E23\u0E32\u0E22\u0E0A\u0E37\u0E48\u0E2D\u0E04\u0E23\u0E39\u0E1C\u0E39\u0E49\u0E2A\u0E2D\u0E19"},o.default.createElement(At,{className:"w-3.5 h-3.5"})," ",o.default.createElement("span",null,"\u0E04\u0E23\u0E39\u0E1C\u0E39\u0E49\u0E2A\u0E2D\u0E19")),o.default.createElement("button",{onClick:()=>Et(!0),className:"rail-btn",title:"\u0E17\u0E30\u0E40\u0E1A\u0E35\u0E22\u0E19\u0E2B\u0E49\u0E2D\u0E07\u0E40\u0E23\u0E35\u0E22\u0E19\u0E41\u0E25\u0E30\u0E2B\u0E49\u0E2D\u0E07\u0E1B\u0E0F\u0E34\u0E1A\u0E31\u0E15\u0E34\u0E01\u0E32\u0E23"},o.default.createElement(Ra,{className:"w-3.5 h-3.5"})," ",o.default.createElement("span",null,"\u0E2B\u0E49\u0E2D\u0E07")),o.default.createElement("button",{onClick:()=>Lo(dg()),className:"rail-btn",title:"\u0E2A\u0E41\u0E01\u0E19\u0E17\u0E31\u0E49\u0E07\u0E15\u0E32\u0E23\u0E32\u0E07\u0E2B\u0E32\u0E04\u0E23\u0E39\u0E0A\u0E19 \u0E2B\u0E49\u0E2D\u0E07\u0E0A\u0E19 \u0E41\u0E25\u0E30\u0E27\u0E34\u0E0A\u0E32\u0E17\u0E35\u0E48\u0E25\u0E07\u0E44\u0E21\u0E48\u0E04\u0E23\u0E1A"},o.default.createElement(zr,{className:"w-3.5 h-3.5"})," ",o.default.createElement("span",null,"\u0E15\u0E23\u0E27\u0E08\u0E15\u0E32\u0E23\u0E32\u0E07")),o.default.createElement("button",{onClick:()=>Bt(!0),className:"rail-btn",title:"\u0E1E\u0E34\u0E21\u0E1E\u0E4C\u0E15\u0E32\u0E23\u0E32\u0E07 \u0E2A\u0E33\u0E23\u0E2D\u0E07\u0E02\u0E49\u0E2D\u0E21\u0E39\u0E25 \u0E41\u0E25\u0E30\u0E25\u0E49\u0E32\u0E07\u0E02\u0E49\u0E2D\u0E21\u0E39\u0E25"},o.default.createElement(Ea,{className:"w-3.5 h-3.5"})," ",o.default.createElement("span",null,"\u0E1E\u0E34\u0E21\u0E1E\u0E4C / \u0E02\u0E49\u0E2D\u0E21\u0E39\u0E25")),o.default.createElement("button",{onClick:()=>ga(!j),className:"rail-btn",title:j?"\u0E0B\u0E48\u0E2D\u0E19\u0E41\u0E1C\u0E07\u0E2A\u0E23\u0E38\u0E1B":"\u0E41\u0E2A\u0E14\u0E07\u0E41\u0E1C\u0E07\u0E2A\u0E23\u0E38\u0E1B"},j?o.default.createElement(Br,{className:"w-3.5 h-3.5"}):o.default.createElement(Er,{className:"w-3.5 h-3.5"})),o.default.createElement("div",{className:"rail-sep",style:{flexShrink:0}}),o.default.createElement("button",{onClick:()=>s("home"),className:"rail-btn",title:"\u0E01\u0E25\u0E31\u0E1A\u0E2B\u0E19\u0E49\u0E32\u0E41\u0E23\u0E01"},o.default.createElement("span",null,"\u0E2B\u0E19\u0E49\u0E32\u0E41\u0E23\u0E01"))),o.default.createElement("div",{style:{display:"flex",flex:1,minHeight:0}},o.default.createElement("div",{style:{flex:1,display:"flex",flexDirection:"column",minWidth:0}},o.default.createElement("div",{className:"context-bar"},F==="student"?o.default.createElement(o.default.Fragment,null,o.default.createElement("div",{style:{minWidth:0}},o.default.createElement("div",{className:"eyebrow"},"\u0E01\u0E33\u0E25\u0E31\u0E07\u0E08\u0E31\u0E14\u0E15\u0E32\u0E23\u0E32\u0E07\u0E40\u0E23\u0E35\u0E22\u0E19\u0E02\u0E2D\u0E07"),o.default.createElement("div",{style:{fontSize:21.5,fontWeight:800,letterSpacing:"-.2px",marginTop:2}},Te.name||"\u2014")),o.default.createElement("div",{style:{display:"flex",gap:18,flexWrap:"wrap",alignItems:"center"}},o.default.createElement("div",{className:"meta"},"\u0E23\u0E30\u0E14\u0E31\u0E1A ",o.default.createElement("b",null,Te.level||"-"," ",Te.year||"","/",Te.room||"")),Te.major&&o.default.createElement("div",{className:"meta"},"\u0E2A\u0E32\u0E02\u0E32 ",o.default.createElement("b",null,Te.major)),o.default.createElement("div",{className:"meta"},"\u0E19\u0E31\u0E01\u0E40\u0E23\u0E35\u0E22\u0E19 ",o.default.createElement("b",{className:"mono"},Te.studentCount||"-")," \u0E04\u0E19"),o.default.createElement("div",{className:"meta meta-opt"},"\u0E17\u0E35\u0E48\u0E1B\u0E23\u0E36\u0E01\u0E29\u0E32 ",o.default.createElement("b",null,Te.advisor||"-")),o.default.createElement("div",{className:"meta meta-opt"},"\u0E1E\u0E31\u0E01\u0E04\u0E32\u0E1A ",o.default.createElement("b",{className:"mono"},tn)),Do&&Do.required>0&&o.default.createElement("div",{style:{display:"flex",alignItems:"center",gap:8,paddingLeft:16,borderLeft:"1px solid var(--rule)"}},o.default.createElement("div",null,o.default.createElement("div",{className:"eyebrow"},"\u0E08\u0E31\u0E14\u0E41\u0E25\u0E49\u0E27"),o.default.createElement("div",{className:"mono",style:{fontSize:20,fontWeight:600,marginTop:1,color:Do.placed>=Do.required?"var(--ok)":"var(--accent)"}},Do.placed,o.default.createElement("span",{style:{color:"var(--ink-3)",fontSize:16}},"/",Do.required)))),o.default.createElement("button",{onClick:()=>yl(!0),className:"btn btn-sm"},o.default.createElement(mo,{className:"w-3.5 h-3.5"})," \u0E15\u0E31\u0E49\u0E07\u0E04\u0E48\u0E32\u0E2B\u0E49\u0E2D\u0E07"))):F==="teacher"?o.default.createElement(o.default.Fragment,null,o.default.createElement("div",{style:{minWidth:0}},o.default.createElement("div",{className:"eyebrow"},"\u0E01\u0E33\u0E25\u0E31\u0E07\u0E14\u0E39\u0E15\u0E32\u0E23\u0E32\u0E07\u0E2A\u0E2D\u0E19\u0E02\u0E2D\u0E07"),o.default.createElement("div",{style:{fontSize:21.5,fontWeight:800,letterSpacing:"-.2px",marginTop:2}},Ha.name||"\u0E22\u0E31\u0E07\u0E44\u0E21\u0E48\u0E21\u0E35\u0E04\u0E23\u0E39\u0E43\u0E19\u0E23\u0E30\u0E1A\u0E1A")),o.default.createElement("div",{style:{display:"flex",gap:18,flexWrap:"wrap",alignItems:"center"}},o.default.createElement("div",{className:"meta"},"\u0E2B\u0E49\u0E2D\u0E07\u0E1B\u0E23\u0E30\u0E08\u0E33 ",o.default.createElement("b",{className:"mono"},Ge(Ha.roomId)||"-")),o.default.createElement("div",{style:{paddingLeft:16,borderLeft:"1px solid var(--rule)"}},o.default.createElement("div",{className:"eyebrow"},"\u0E20\u0E32\u0E23\u0E30\u0E2A\u0E2D\u0E19"),o.default.createElement("div",{className:"mono",style:{fontSize:20,fontWeight:600,marginTop:1,color:"var(--accent)"}},Bl," ",o.default.createElement("span",{style:{fontSize:15,color:"var(--ink-3)"}},"\u0E04\u0E32\u0E1A/\u0E2A\u0E31\u0E1B\u0E14\u0E32\u0E2B\u0E4C"))),o.default.createElement("button",{onClick:()=>Il(!0),className:"btn btn-sm"},o.default.createElement(mo,{className:"w-3.5 h-3.5"})," \u0E15\u0E31\u0E49\u0E07\u0E04\u0E48\u0E32\u0E04\u0E23\u0E39"))):o.default.createElement(o.default.Fragment,null,o.default.createElement("div",{style:{minWidth:0}},o.default.createElement("div",{className:"eyebrow"},"\u0E01\u0E33\u0E25\u0E31\u0E07\u0E14\u0E39\u0E15\u0E32\u0E23\u0E32\u0E07\u0E01\u0E32\u0E23\u0E43\u0E0A\u0E49\u0E2B\u0E49\u0E2D\u0E07"),o.default.createElement("div",{style:{fontSize:21.5,fontWeight:800,letterSpacing:"-.2px",marginTop:2}},_a.name||"\u0E22\u0E31\u0E07\u0E44\u0E21\u0E48\u0E21\u0E35\u0E2B\u0E49\u0E2D\u0E07\u0E43\u0E19\u0E17\u0E30\u0E40\u0E1A\u0E35\u0E22\u0E19")),o.default.createElement("div",{style:{display:"flex",gap:18,flexWrap:"wrap",alignItems:"center"}},_a.note&&o.default.createElement("div",{className:"meta"},_a.note),o.default.createElement("div",{style:{paddingLeft:16,borderLeft:"1px solid var(--rule)"}},o.default.createElement("div",{className:"eyebrow"},"\u0E16\u0E39\u0E01\u0E43\u0E0A\u0E49"),o.default.createElement("div",{className:"mono",style:{fontSize:20,fontWeight:600,marginTop:1,color:"var(--accent)"}},Bl," ",o.default.createElement("span",{style:{fontSize:15,color:"var(--ink-3)"}},"\u0E08\u0E32\u0E01 ",Oa.length*11," \u0E04\u0E32\u0E1A"))),o.default.createElement("div",null,o.default.createElement("div",{className:"eyebrow"},"\u0E27\u0E48\u0E32\u0E07"),o.default.createElement("div",{className:"mono",style:{fontSize:20,fontWeight:600,marginTop:1,color:"var(--ok)"}},Oa.length*11-Bl)),o.default.createElement("button",{onClick:()=>Et(!0),className:"btn btn-sm"},o.default.createElement(mo,{className:"w-3.5 h-3.5"})," \u0E17\u0E30\u0E40\u0E1A\u0E35\u0E22\u0E19\u0E2B\u0E49\u0E2D\u0E07")))),o.default.createElement("div",{className:"grid-wrap",ref:mf,style:{flex:1}},o.default.createElement("table",{className:"grid-tbl"},o.default.createElement("thead",null,o.default.createElement("tr",null,o.default.createElement("th",{className:"day-cell",style:{borderBottom:"1px solid var(--rule)"}},o.default.createElement("div",{className:"eyebrow",style:{fontSize:12}},"\u0E27\u0E31\u0E19 \\ \u0E04\u0E32\u0E1A")),Pa.map(n=>F==="student"&&n.id===tn?o.default.createElement("th",{key:n.id,style:{width:42}},o.default.createElement("div",{className:"p-num",style:{fontSize:11,color:"var(--ink-3)"}},"\u0E1E\u0E31\u0E01")):o.default.createElement("th",{key:n.id},o.default.createElement("div",{className:"p-num mono"},n.id),o.default.createElement("div",{className:"p-time mono"},n.start,o.default.createElement("br",null),n.end))))),o.default.createElement("tbody",null,Oa.map((n,d)=>o.default.createElement("tr",{key:n},o.default.createElement("td",{className:"day-cell"},n),Pa.map(i=>{if(F==="student"&&i.id===tn)return d===0?o.default.createElement("td",{key:`lunch-${i.id}`,rowSpan:5,className:"lunch-td"},o.default.createElement("div",{className:"lunch-label"},"\u0E1E\u0E31\u0E01\u0E01\u0E25\u0E32\u0E07\u0E27\u0E31\u0E19")):null;let p=[],y=0;if(F==="student"){let g=To(m,n,i.id);g&&p.push(g)}else p=F==="teacher"?nu(b,n,i.id):su(z,n,i.id),y=p.reduce((g,C)=>{let S=u.find(T=>T.id===C.classId);return g+(parseInt(S?.studentCount,10)||0)},0);return F==="student"&&p[0]?.isFixed?o.default.createElement("td",{key:i.id,className:"slot-td filled","data-drop-cell":!0,"data-day":n,"data-period":i.id,onClick:()=>{un.current||Cu(n,i.id)}},o.default.createElement("div",{className:"card-fixed card-drag","data-cardkey":`${m}|${n}|${i.id}`,onPointerDown:g=>yf(g,m,n,i.id),title:"\u0E25\u0E32\u0E01\u0E40\u0E1E\u0E37\u0E48\u0E2D\u0E22\u0E49\u0E32\u0E22\u0E04\u0E32\u0E1A \xB7 \u0E04\u0E25\u0E34\u0E01\u0E40\u0E1E\u0E37\u0E48\u0E2D\u0E41\u0E01\u0E49\u0E44\u0E02"},o.default.createElement("span",null,p[0].label),o.default.createElement("span",{style:{fontSize:10,fontWeight:600,color:"var(--ink-3)"}},"\u0E04\u0E32\u0E1A\u0E15\u0E32\u0E22\u0E15\u0E31\u0E27"))):o.default.createElement("td",{key:i.id,className:`slot-td ${p.length?"filled":"empty"}`,"data-drop-cell":!0,"data-day":n,"data-period":i.id,onClick:()=>{un.current||Cu(n,i.id)}},p.length>0?p.map((g,C)=>{let S=Ml(g),T=g.isManualTeacher?null:v.find(ne=>ne.id===g.teacherId),P=u.find(ne=>ne.id===g.classId),A=ou(g)||(F==="teacher"?Ge(Ha?.roomId):""),B=g.isManualTeacher?g.teacherName:T?.name,_=S?S.pal:le[0],K=p.length>1;return o.default.createElement("div",{key:C,className:"card card-drag","data-cardkey":`${g.classId}|${n}|${i.id}`,onPointerDown:ne=>yf(ne,g.classId,n,i.id),title:S?.external?"\u0E27\u0E34\u0E0A\u0E32\u0E19\u0E2D\u0E01\u0E41\u0E1C\u0E19\u0E01 \xB7 \u0E25\u0E32\u0E01\u0E40\u0E1E\u0E37\u0E48\u0E2D\u0E22\u0E49\u0E32\u0E22\u0E04\u0E32\u0E1A \xB7 \u0E04\u0E25\u0E34\u0E01\u0E40\u0E1E\u0E37\u0E48\u0E2D\u0E41\u0E01\u0E49\u0E44\u0E02":"\u0E25\u0E32\u0E01\u0E40\u0E1E\u0E37\u0E48\u0E2D\u0E22\u0E49\u0E32\u0E22\u0E04\u0E32\u0E1A \xB7 \u0E04\u0E25\u0E34\u0E01\u0E40\u0E1E\u0E37\u0E48\u0E2D\u0E41\u0E01\u0E49\u0E44\u0E02",style:{background:_.bg,borderLeftColor:_.line,color:_.text,minHeight:K?34:70}},o.default.createElement("div",{className:"card-top mono"},o.default.createElement("span",null,F==="teacher"&&y>0?`\u0E19\u0E23.${y}`:S?.code||""),o.default.createElement("span",null,A||"")),o.default.createElement("div",{className:"card-name",style:{fontSize:K?10.5:11.5,margin:K?"1px 0":"3px 0"}},o.default.createElement("span",{style:{WebkitLineClamp:K?1:3}},S?.name||"\u2014")),o.default.createElement("div",{className:"card-foot"},F==="student"?nn(B):F==="teacher"?P?.name:`${P?.name||""}${B?` \xB7 ${nn(B)}`:""}`))}):o.default.createElement("div",{className:"slot-empty"},o.default.createElement(ba,{className:"w-3 h-3"})," \u0E27\u0E32\u0E07\u0E04\u0E32\u0E1A"))})))))),o.default.createElement("div",{className:"sheet-bar",style:{flexShrink:0}},o.default.createElement("div",{className:"sheet-scroll"},F==="student"?Lu(Ue,m,L,c,"var(--accent)",n=>{L(n.id),yl(!0)}):F==="teacher"?Lu(v,b,E,k,"var(--accent)"):Lu(ea,z,H,N,"var(--accent)"),o.default.createElement("button",{onClick:F==="student"?_g:F==="teacher"?qg:()=>Et(!0),className:"sheet-add",title:F==="student"?"\u0E40\u0E1E\u0E34\u0E48\u0E21\u0E2B\u0E49\u0E2D\u0E07\u0E40\u0E23\u0E35\u0E22\u0E19\u0E43\u0E2B\u0E21\u0E48":F==="teacher"?"\u0E40\u0E1E\u0E34\u0E48\u0E21\u0E04\u0E23\u0E39\u0E1C\u0E39\u0E49\u0E2A\u0E2D\u0E19\u0E43\u0E2B\u0E21\u0E48":"\u0E40\u0E1E\u0E34\u0E48\u0E21\u0E2B\u0E49\u0E2D\u0E07\u0E43\u0E19\u0E17\u0E30\u0E40\u0E1A\u0E35\u0E22\u0E19"},o.default.createElement(ba,{className:"w-4 h-4"}))),o.default.createElement("div",{className:"sheet-hint",style:{display:"flex",alignItems:"center",padding:"0 14px",fontSize:15,color:"var(--ink-3)",borderLeft:"1px solid var(--rule-soft)",whiteSpace:"nowrap"}},"\u0E25\u0E32\u0E01\u0E01\u0E32\u0E23\u0E4C\u0E14\u0E40\u0E1E\u0E37\u0E48\u0E2D\u0E22\u0E49\u0E32\u0E22\u0E04\u0E32\u0E1A \xB7 \u0E14\u0E31\u0E1A\u0E40\u0E1A\u0E34\u0E25\u0E04\u0E25\u0E34\u0E01\u0E41\u0E17\u0E47\u0E1A\u0E40\u0E1E\u0E37\u0E48\u0E2D\u0E15\u0E31\u0E49\u0E07\u0E04\u0E48\u0E32"))),j&&o.default.createElement("div",{className:"panel"},o.default.createElement("div",{className:"panel-head"},o.default.createElement("div",{style:{display:"flex",alignItems:"center",justifyContent:"space-between",gap:8}},o.default.createElement("div",null,o.default.createElement("div",{className:"eyebrow"},F==="student"?"\u0E42\u0E04\u0E23\u0E07\u0E2A\u0E23\u0E49\u0E32\u0E07\u0E23\u0E32\u0E22\u0E27\u0E34\u0E0A\u0E32":F==="teacher"?"\u0E20\u0E32\u0E23\u0E30\u0E07\u0E32\u0E19\u0E2A\u0E2D\u0E19":"\u0E01\u0E32\u0E23\u0E43\u0E0A\u0E49\u0E2B\u0E49\u0E2D\u0E07"),o.default.createElement("div",{style:{fontSize:17.5,fontWeight:700,marginTop:2}},F==="student"?Te.name||"\u2014":F==="teacher"?Ha.name||"\u2014":_a.name||"\u2014")),F==="student"&&o.default.createElement("button",{onClick:()=>Mt(!0),className:"btn btn-sm"},o.default.createElement(wa,{className:"w-3 h-3"})," \u0E41\u0E01\u0E49\u0E23\u0E32\u0E22\u0E27\u0E34\u0E0A\u0E32")),F==="student"&&o.default.createElement("div",{className:"hint",style:{marginTop:9,display:"flex",alignItems:"center",gap:6}},o.default.createElement("span",{className:"tick tick-on"})," \u0E08\u0E31\u0E14\u0E41\u0E25\u0E49\u0E27",o.default.createElement("span",{className:"tick",style:{marginLeft:4}})," \u0E22\u0E31\u0E07\u0E44\u0E21\u0E48\u0E08\u0E31\u0E14",o.default.createElement("span",{className:"tick tick-over",style:{marginLeft:4}})," \u0E40\u0E01\u0E34\u0E19\u0E2B\u0E25\u0E31\u0E01\u0E2A\u0E39\u0E15\u0E23")),o.default.createElement("div",{className:"panel-body"},ru.length===0?o.default.createElement("div",{style:{padding:"40px 20px",textAlign:"center"}},o.default.createElement("p",{style:{fontSize:16.5,color:"var(--ink-3)",lineHeight:1.6,margin:"0 0 14px"}},F==="student"?"\u0E2B\u0E49\u0E2D\u0E07\u0E19\u0E35\u0E49\u0E22\u0E31\u0E07\u0E44\u0E21\u0E48\u0E21\u0E35\u0E23\u0E32\u0E22\u0E27\u0E34\u0E0A\u0E32 \u0E25\u0E07\u0E23\u0E32\u0E22\u0E27\u0E34\u0E0A\u0E32\u0E01\u0E48\u0E2D\u0E19\u0E08\u0E36\u0E07\u0E08\u0E30\u0E40\u0E23\u0E34\u0E48\u0E21\u0E27\u0E32\u0E07\u0E04\u0E32\u0E1A\u0E44\u0E14\u0E49":F==="teacher"?"\u0E04\u0E23\u0E39\u0E17\u0E48\u0E32\u0E19\u0E19\u0E35\u0E49\u0E22\u0E31\u0E07\u0E44\u0E21\u0E48\u0E21\u0E35\u0E04\u0E32\u0E1A\u0E2A\u0E2D\u0E19 \u0E04\u0E25\u0E34\u0E01\u0E0A\u0E48\u0E2D\u0E07\u0E43\u0E19\u0E15\u0E32\u0E23\u0E32\u0E07\u0E40\u0E1E\u0E37\u0E48\u0E2D\u0E40\u0E1E\u0E34\u0E48\u0E21\u0E04\u0E32\u0E1A":I.length===0?"\u0E22\u0E31\u0E07\u0E44\u0E21\u0E48\u0E21\u0E35\u0E2B\u0E49\u0E2D\u0E07\u0E43\u0E19\u0E17\u0E30\u0E40\u0E1A\u0E35\u0E22\u0E19 \u0E40\u0E1E\u0E34\u0E48\u0E21\u0E2B\u0E49\u0E2D\u0E07\u0E01\u0E48\u0E2D\u0E19\u0E08\u0E36\u0E07\u0E08\u0E30\u0E14\u0E39\u0E15\u0E32\u0E23\u0E32\u0E07\u0E01\u0E32\u0E23\u0E43\u0E0A\u0E49\u0E2B\u0E49\u0E2D\u0E07\u0E44\u0E14\u0E49":"\u0E2B\u0E49\u0E2D\u0E07\u0E19\u0E35\u0E49\u0E22\u0E31\u0E07\u0E27\u0E48\u0E32\u0E07\u0E17\u0E31\u0E49\u0E07\u0E2A\u0E31\u0E1B\u0E14\u0E32\u0E2B\u0E4C \u0E22\u0E31\u0E07\u0E44\u0E21\u0E48\u0E21\u0E35\u0E04\u0E32\u0E1A\u0E43\u0E14\u0E43\u0E0A\u0E49\u0E2B\u0E49\u0E2D\u0E07\u0E19\u0E35\u0E49"),F==="student"&&o.default.createElement("button",{onClick:()=>Mt(!0),className:"btn btn-accent btn-sm"},o.default.createElement(ba,{className:"w-3.5 h-3.5"})," \u0E25\u0E07\u0E23\u0E32\u0E22\u0E27\u0E34\u0E0A\u0E32")):o.default.createElement("table",{className:"sum-tbl"},o.default.createElement("thead",null,o.default.createElement("tr",null,o.default.createElement("th",{className:"l"},"\u0E23\u0E32\u0E22\u0E27\u0E34\u0E0A\u0E32"),o.default.createElement("th",{style:{width:34}},"\u0E17"),o.default.createElement("th",{style:{width:34}},"\u0E1B"),o.default.createElement("th",{style:{width:34}},"\u0E19"),o.default.createElement("th",{style:{width:62}},"\u0E04\u0E32\u0E1A"))),o.default.createElement("tbody",null,ru.map((n,d)=>{let i=Number(n.theory)+Number(n.practical),p=F==="student"?sn(m,n.id):n.hours,y=Ll(n,d);return o.default.createElement("tr",{key:n.id||d,className:"sum-row"},o.default.createElement("td",{className:"l"},o.default.createElement("div",{style:{display:"flex",gap:8,alignItems:"flex-start"}},o.default.createElement("span",{className:"swatch",style:{background:y.line,marginTop:4}}),o.default.createElement("div",{style:{minWidth:0}},o.default.createElement("div",{className:"sum-code mono"},F==="room"?n.className||"\u2014":n.code||"\u2014"),o.default.createElement("div",{className:"sum-name"},n.name),F==="student"&&o.default.createElement("div",{style:{marginTop:5}},o.default.createElement(tg,{required:i,placed:p}))))),o.default.createElement("td",{className:"mono"},n.theory),o.default.createElement("td",{className:"mono"},n.practical),o.default.createElement("td",{className:"mono"},n.credit),o.default.createElement("td",{className:"mono",style:{fontWeight:600,color:F==="student"?p>=i?"var(--ok)":p>0?"var(--warn)":"var(--danger)":"var(--ink)"}},F==="student"?`${p}/${i}`:p))})),o.default.createElement("tfoot",null,o.default.createElement("tr",{className:"sum-foot"},o.default.createElement("td",{className:"l",style:{fontSize:15.5,color:"var(--ink-3)"}},"\u0E23\u0E27\u0E21 ",ru.length," \u0E23\u0E32\u0E22\u0E27\u0E34\u0E0A\u0E32"),o.default.createElement("td",{className:"mono"},ng),o.default.createElement("td",{className:"mono"},sg),o.default.createElement("td",{className:"mono"},ug),o.default.createElement("td",{className:"mono",style:{color:"var(--accent)"}},Bl))))))),Ce&&o.default.createElement("div",{className:"toast"},o.default.createElement("div",{style:{flex:1,minWidth:0}},o.default.createElement("div",{className:"toast-title"},Ce.verb||"\u0E22\u0E49\u0E32\u0E22"," ",Ce.name," \u0E41\u0E25\u0E49\u0E27"),o.default.createElement("div",{className:"toast-detail"},Ce.className," ",Ce.verb==="\u0E25\u0E1A"?"\xB7":"\u2192"," ",Ce.where,Ce.len>1?` (${Ce.len} \u0E04\u0E32\u0E1A)`:""),Ce.stat&&o.default.createElement("div",{className:`toast-stat ${Ce.stat.remain===0?"toast-done":"toast-left"}`},Ce.stat.remain===0?`\u0E25\u0E07\u0E04\u0E23\u0E1A\u0E41\u0E25\u0E49\u0E27 ${Ce.stat.required} \u0E04\u0E32\u0E1A`:`\u0E25\u0E07\u0E41\u0E25\u0E49\u0E27 ${Ce.stat.placed} \u0E08\u0E32\u0E01 ${Ce.stat.required} \u0E04\u0E32\u0E1A \xB7 \u0E40\u0E2B\u0E25\u0E37\u0E2D\u0E2D\u0E35\u0E01 ${Ce.stat.remain} \u0E04\u0E32\u0E1A`)),o.default.createElement("div",{style:{display:"flex",flexDirection:"column",gap:6,flexShrink:0}},o.default.createElement("button",{className:"toast-btn",onClick:()=>{yu(),Ks()},title:"\u0E22\u0E49\u0E2D\u0E19\u0E01\u0E25\u0E31\u0E1A\u0E01\u0E32\u0E23\u0E22\u0E49\u0E32\u0E22\u0E04\u0E23\u0E31\u0E49\u0E07\u0E19\u0E35\u0E49"},o.default.createElement(gl,{className:"w-3.5 h-3.5"})," \u0E22\u0E49\u0E2D\u0E19\u0E01\u0E25\u0E31\u0E1A"),o.default.createElement("button",{className:"toast-btn",onClick:Ks,style:{justifyContent:"center"},title:"\u0E1B\u0E34\u0E14\u0E41\u0E16\u0E1A\u0E19\u0E35\u0E49"},"\u0E15\u0E01\u0E25\u0E07")),o.default.createElement("div",{className:"toast-bar"})),o.default.createElement("div",{ref:Ao,className:"drag-ghost",style:{display:"none"}},o.default.createElement("div",{ref:fu,className:"ghost-name"}),o.default.createElement("div",{ref:cu,className:"ghost-sub"}),o.default.createElement("div",{ref:hf,className:"ghost-why"})),ae&&o.default.createElement("div",{className:"ov",onClick:()=>tt(null)},o.default.createElement("div",{className:"modal",style:{maxWidth:470},onClick:n=>n.stopPropagation()},o.default.createElement("div",{className:"modal-head"},o.default.createElement("div",null,o.default.createElement("div",{className:"modal-title"},"\u0E27\u0E32\u0E07\u0E04\u0E32\u0E1A\u0E40\u0E23\u0E35\u0E22\u0E19"),o.default.createElement("div",{className:"modal-sub mono"},ae.day," \xB7 \u0E04\u0E32\u0E1A ",ae.period," \xB7 ",Pa[ae.period-1]?.rawTime)),o.default.createElement("button",{onClick:()=>tt(null),className:"x-btn"},o.default.createElement(ua,{className:"w-4 h-4"}))),o.default.createElement("div",{className:"modal-body",style:{display:"flex",flexDirection:"column",gap:14}},of&&o.default.createElement("div",{className:"note note-err"},o.default.createElement($e,{className:"w-4 h-4",style:{flexShrink:0,marginTop:1}}),o.default.createElement("span",null,of)),F!=="student"&&o.default.createElement("div",{className:"field"},o.default.createElement("div",{style:{display:"flex",alignItems:"center",justifyContent:"space-between",marginBottom:5,gap:8}},o.default.createElement("label",{className:"lbl",style:{marginBottom:0}},"\u0E2B\u0E49\u0E2D\u0E07\u0E40\u0E23\u0E35\u0E22\u0E19\u0E17\u0E35\u0E48\u0E08\u0E30\u0E2A\u0E2D\u0E19"),o.default.createElement("label",{style:{display:"flex",alignItems:"center",gap:5,fontSize:11,fontWeight:600,color:"var(--ink-3)",cursor:"pointer"}},o.default.createElement("input",{type:"checkbox",checked:za,onChange:n=>{let d=n.target.checked;Hs(d),ot(""),Ut(1),d?(au(""),Io(!1),Ot("")):(Vr(""),Co({code:"",name:"",theory:0,practical:0,credit:0}))}}),"\u0E01\u0E25\u0E38\u0E48\u0E21\u0E19\u0E2D\u0E01\u0E41\u0E1C\u0E19\u0E01 (\u0E1E\u0E34\u0E21\u0E1E\u0E4C\u0E40\u0E2D\u0E07)")),za?o.default.createElement(o.default.Fragment,null,o.default.createElement("input",{list:"ext-class-suggest",type:"text",value:ef,onChange:n=>Vr(n.target.value),className:"inp",placeholder:"\u0E40\u0E0A\u0E48\u0E19 \u0E1A\u0E31\u0E0D\u0E0A\u0E35 \u0E1B\u0E27\u0E0A. 2/1 (\u0E19\u0E31\u0E01\u0E40\u0E23\u0E35\u0E22\u0E19\u0E41\u0E1C\u0E19\u0E01\u0E2D\u0E37\u0E48\u0E19)"}),o.default.createElement("datalist",{id:"ext-class-suggest"},u.filter(n=>n.external).map(n=>o.default.createElement("option",{key:n.id,value:n.name}))),o.default.createElement("div",{className:"hint"},"\u0E1E\u0E34\u0E21\u0E1E\u0E4C\u0E0A\u0E37\u0E48\u0E2D\u0E01\u0E25\u0E38\u0E48\u0E21\u0E17\u0E35\u0E48\u0E40\u0E04\u0E22\u0E43\u0E0A\u0E49\u0E0B\u0E49\u0E33\u0E44\u0E14\u0E49 \u0E23\u0E30\u0E1A\u0E1A\u0E08\u0E30\u0E08\u0E33\u0E44\u0E27\u0E49\u0E43\u0E2B\u0E49\u0E40\u0E25\u0E37\u0E2D\u0E01\u0E08\u0E32\u0E01\u0E23\u0E32\u0E22\u0E01\u0E32\u0E23\u0E2D\u0E31\u0E15\u0E42\u0E19\u0E21\u0E31\u0E15\u0E34 \u0E44\u0E21\u0E48\u0E1B\u0E19\u0E01\u0E31\u0E1A\u0E2B\u0E49\u0E2D\u0E07\u0E40\u0E23\u0E35\u0E22\u0E19\u0E02\u0E2D\u0E07\u0E41\u0E1C\u0E19\u0E01")):o.default.createElement("select",{className:"sel",value:qa,onChange:n=>{au(n.target.value),ot(""),Ut(1)}},o.default.createElement("option",{value:""},"\u0E40\u0E25\u0E37\u0E2D\u0E01\u0E2B\u0E49\u0E2D\u0E07\u0E40\u0E23\u0E35\u0E22\u0E19"),Ue.map(n=>o.default.createElement("option",{key:n.id,value:n.id},n.name)))),o.default.createElement("div",{className:"field"},za?o.default.createElement(o.default.Fragment,null,o.default.createElement("label",{className:"lbl"},"\u0E23\u0E32\u0E22\u0E27\u0E34\u0E0A\u0E32 (\u0E19\u0E2D\u0E01\u0E41\u0E1C\u0E19\u0E01)"),o.default.createElement("div",{style:{display:"grid",gridTemplateColumns:"120px 1fr",gap:8,marginBottom:8}},o.default.createElement("input",{type:"text",value:Ve.code,onChange:n=>Co({...Ve,code:n.target.value}),className:"inp mono",placeholder:"\u0E23\u0E2B\u0E31\u0E2A\u0E27\u0E34\u0E0A\u0E32"}),o.default.createElement("input",{type:"text",value:Ve.name,onChange:n=>Co({...Ve,name:n.target.value}),className:"inp",placeholder:"\u0E0A\u0E37\u0E48\u0E2D\u0E27\u0E34\u0E0A\u0E32"})),o.default.createElement("div",{style:{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:8}},[["\u0E17","theory"],["\u0E1B","practical"],["\u0E19","credit"]].map(([n,d])=>o.default.createElement("div",{key:d},o.default.createElement("label",{className:"lbl",style:{fontSize:10.5}},n),o.default.createElement("input",{type:"number",min:"0",value:Ve[d],onChange:i=>Co({...Ve,[d]:i.target.value}),className:"inp inp-num mono"})))),o.default.createElement("div",{className:"hint"},"\u0E27\u0E34\u0E0A\u0E32\u0E19\u0E35\u0E49\u0E08\u0E30\u0E16\u0E39\u0E01\u0E08\u0E33\u0E44\u0E27\u0E49\u0E40\u0E09\u0E1E\u0E32\u0E30\u0E02\u0E2D\u0E07\u0E01\u0E25\u0E38\u0E48\u0E21\u0E19\u0E2D\u0E01\u0E41\u0E1C\u0E19\u0E01\u0E19\u0E35\u0E49 \u0E44\u0E21\u0E48\u0E1B\u0E19\u0E01\u0E31\u0E1A\u0E23\u0E32\u0E22\u0E27\u0E34\u0E0A\u0E32\u0E02\u0E2D\u0E07\u0E2B\u0E49\u0E2D\u0E07\u0E40\u0E23\u0E35\u0E22\u0E19\u0E43\u0E19\u0E41\u0E1C\u0E19\u0E01")):o.default.createElement(o.default.Fragment,null,o.default.createElement("div",{style:{display:"flex",alignItems:"center",justifyContent:"space-between",marginBottom:5,gap:8}},o.default.createElement("label",{className:"lbl",style:{marginBottom:0}},"\u0E23\u0E32\u0E22\u0E27\u0E34\u0E0A\u0E32"),o.default.createElement("label",{style:{display:"flex",alignItems:"center",gap:5,fontSize:11,fontWeight:600,color:"var(--ink-3)",cursor:"pointer"}},o.default.createElement("input",{type:"checkbox",checked:lt,onChange:n=>{let d=n.target.checked;Io(d),d?(ot(""),Ut(1)):Ot("")}}),"\u0E27\u0E34\u0E0A\u0E32\u0E19\u0E2D\u0E01\u0E41\u0E1C\u0E19\u0E01 (\u0E1E\u0E34\u0E21\u0E1E\u0E4C\u0E40\u0E2D\u0E07)")),lt?o.default.createElement(o.default.Fragment,null,o.default.createElement("input",{type:"text",value:qs,onChange:n=>Ot(n.target.value),className:"inp",placeholder:"\u0E40\u0E0A\u0E48\u0E19 \u0E27\u0E34\u0E0A\u0E32\u0E08\u0E32\u0E01\u0E41\u0E1C\u0E19\u0E01\u0E2D\u0E37\u0E48\u0E19\u0E17\u0E35\u0E48\u0E21\u0E32\u0E2A\u0E2D\u0E19\u0E2B\u0E49\u0E2D\u0E07\u0E19\u0E35\u0E49"}),o.default.createElement("div",{className:"hint"},"\u0E27\u0E34\u0E0A\u0E32\u0E19\u0E35\u0E49\u0E08\u0E30\u0E44\u0E21\u0E48\u0E16\u0E39\u0E01\u0E19\u0E33\u0E44\u0E1B\u0E19\u0E31\u0E1A\u0E23\u0E27\u0E21\u0E01\u0E31\u0E1A\u0E42\u0E04\u0E23\u0E07\u0E2A\u0E23\u0E49\u0E32\u0E07\u0E23\u0E32\u0E22\u0E27\u0E34\u0E0A\u0E32\u0E02\u0E2D\u0E07\u0E2B\u0E49\u0E2D\u0E07 (\u0E17./\u0E1B./\u0E19./\u0E04\u0E27\u0E32\u0E21\u0E04\u0E23\u0E1A\u0E02\u0E2D\u0E07\u0E2B\u0E25\u0E31\u0E01\u0E2A\u0E39\u0E15\u0E23) \u2014 \u0E43\u0E0A\u0E49\u0E2A\u0E33\u0E2B\u0E23\u0E31\u0E1A\u0E27\u0E34\u0E0A\u0E32\u0E17\u0E35\u0E48\u0E21\u0E32\u0E2A\u0E2D\u0E19\u0E19\u0E2D\u0E01\u0E41\u0E1C\u0E19\u0E01\u0E40\u0E1B\u0E47\u0E19\u0E04\u0E23\u0E31\u0E49\u0E07\u0E04\u0E23\u0E32\u0E27\u0E40\u0E17\u0E48\u0E32\u0E19\u0E31\u0E49\u0E19")):o.default.createElement("select",{className:"sel",value:yo,disabled:F!=="student"&&!qa,onChange:n=>{let d=n.target.value;ot(d);let p=(f[qa||m]||[]).find(y=>y.id===d);if(p){let y=Number(p.theory)===0&&Number(p.practical)===2&&Number(p.credit)===0;Ut(y?2:1)}else Ut(1)}},o.default.createElement("option",{value:""},"\u0E40\u0E25\u0E37\u0E2D\u0E01\u0E23\u0E32\u0E22\u0E27\u0E34\u0E0A\u0E32"),(f[qa||m]||[]).map(n=>{let d=Number(n.theory)+Number(n.practical),i=sn(qa||m,n.id);return o.default.createElement("option",{key:n.id,value:n.id},n.code?`${n.code} \xB7 `:"",n.name," \u2014 \u0E08\u0E31\u0E14\u0E41\u0E25\u0E49\u0E27 ",i,"/",d," \u0E04\u0E32\u0E1A")})))),o.default.createElement("div",{style:{display:"grid",gridTemplateColumns:"1fr 1fr",gap:12}},o.default.createElement("div",{className:"field"},o.default.createElement("label",{className:"lbl"},"\u0E08\u0E33\u0E19\u0E27\u0E19\u0E04\u0E32\u0E1A\u0E15\u0E34\u0E14\u0E01\u0E31\u0E19"),o.default.createElement("input",{type:"number",min:"1",max:Vt,value:zt,disabled:!za&&!lt&&!yo,className:"inp inp-num mono",onChange:n=>{let d=parseInt(n.target.value);(isNaN(d)||d<1)&&(d=1),d>Vt&&(d=Vt),Ut(d)}}),za?o.default.createElement("div",{className:"hint"},lu>0?`\u0E15\u0E32\u0E21\u0E17\u0E35\u0E48\u0E01\u0E23\u0E2D\u0E01\u0E44\u0E27\u0E49 (\u0E17+\u0E1B) \u0E2A\u0E39\u0E07\u0E2A\u0E38\u0E14 ${Vt} \u0E04\u0E32\u0E1A`:`\u0E22\u0E31\u0E07\u0E44\u0E21\u0E48\u0E44\u0E14\u0E49\u0E01\u0E23\u0E2D\u0E01\u0E0A\u0E31\u0E48\u0E27\u0E42\u0E21\u0E07 \u0E15\u0E31\u0E49\u0E07\u0E44\u0E14\u0E49\u0E2D\u0E34\u0E2A\u0E23\u0E30\u0E2A\u0E39\u0E07\u0E2A\u0E38\u0E14 ${Vt} \u0E04\u0E32\u0E1A`):lt?o.default.createElement("div",{className:"hint"},"\u0E27\u0E34\u0E0A\u0E32\u0E19\u0E2D\u0E01\u0E41\u0E1C\u0E19\u0E01\u0E44\u0E21\u0E48\u0E21\u0E35\u0E08\u0E33\u0E19\u0E27\u0E19\u0E04\u0E32\u0E1A\u0E15\u0E32\u0E21\u0E2B\u0E25\u0E31\u0E01\u0E2A\u0E39\u0E15\u0E23 \u0E15\u0E31\u0E49\u0E07\u0E44\u0E14\u0E49\u0E2D\u0E34\u0E2A\u0E23\u0E30\u0E2A\u0E39\u0E07\u0E2A\u0E38\u0E14 ",Vt," \u0E04\u0E32\u0E1A"):ln&&o.default.createElement("div",{className:"hint"},"\u0E27\u0E34\u0E0A\u0E32\u0E19\u0E35\u0E49\u0E21\u0E35\u0E17\u0E31\u0E49\u0E07\u0E2B\u0E21\u0E14 ",Vt," \u0E04\u0E32\u0E1A\u0E15\u0E48\u0E2D\u0E2A\u0E31\u0E1B\u0E14\u0E32\u0E2B\u0E4C")),o.default.createElement("div",{className:"field"},o.default.createElement("div",{style:{display:"flex",alignItems:"center",justifyContent:"space-between",marginBottom:5,gap:8}},o.default.createElement("label",{className:"lbl",style:{marginBottom:0}},"\u0E2B\u0E49\u0E2D\u0E07\u0E17\u0E35\u0E48\u0E43\u0E0A\u0E49\u0E2A\u0E2D\u0E19"),o.default.createElement("label",{style:{display:"flex",alignItems:"center",gap:5,fontSize:12,fontWeight:600,color:"var(--ink-3)",cursor:"pointer"}},o.default.createElement("input",{type:"checkbox",checked:wo,onChange:n=>{Qr(n.target.checked),n.target.checked?ko(""):wl("")}}),"\u0E2B\u0E49\u0E2D\u0E07\u0E19\u0E2D\u0E01\u0E41\u0E1C\u0E19\u0E01 (\u0E1E\u0E34\u0E21\u0E1E\u0E4C\u0E40\u0E2D\u0E07)")),wo?o.default.createElement(o.default.Fragment,null,o.default.createElement("input",{type:"text",value:Zr,onChange:n=>wl(n.target.value),className:"inp",placeholder:"\u0E40\u0E0A\u0E48\u0E19 \u0E2D\u0E32\u0E04\u0E32\u0E23 8 \u0E2B\u0E49\u0E2D\u0E07 838"}),o.default.createElement("label",{style:{display:"flex",alignItems:"flex-start",gap:7,marginTop:8,cursor:"pointer"}},o.default.createElement("input",{type:"checkbox",checked:bl,style:{marginTop:3},onChange:n=>_s(n.target.checked)}),o.default.createElement("span",{style:{fontSize:13.5,color:"var(--ink-3)",lineHeight:1.45}},o.default.createElement("b",{style:{color:"var(--ink)"}},"\u0E40\u0E01\u0E47\u0E1A\u0E40\u0E02\u0E49\u0E32\u0E17\u0E30\u0E40\u0E1A\u0E35\u0E22\u0E19\u0E2B\u0E49\u0E2D\u0E07")," \u0E40\u0E1E\u0E37\u0E48\u0E2D\u0E43\u0E2B\u0E49\u0E15\u0E23\u0E27\u0E08\u0E2B\u0E49\u0E2D\u0E07\u0E0A\u0E19\u0E44\u0E14\u0E49 \u0E41\u0E25\u0E30\u0E04\u0E23\u0E31\u0E49\u0E07\u0E2B\u0E19\u0E49\u0E32\u0E40\u0E25\u0E37\u0E2D\u0E01\u0E08\u0E32\u0E01\u0E23\u0E32\u0E22\u0E01\u0E32\u0E23\u0E44\u0E14\u0E49\u0E40\u0E25\u0E22",!bl&&o.default.createElement("span",{style:{display:"block",color:"var(--warn)",fontWeight:700,marginTop:3}},"\u0E44\u0E21\u0E48\u0E40\u0E01\u0E47\u0E1A = \u0E23\u0E30\u0E1A\u0E1A\u0E08\u0E30\u0E44\u0E21\u0E48\u0E40\u0E15\u0E37\u0E2D\u0E19\u0E16\u0E49\u0E32\u0E2B\u0E49\u0E2D\u0E07\u0E19\u0E35\u0E49\u0E16\u0E39\u0E01\u0E43\u0E0A\u0E49\u0E0B\u0E49\u0E33\u0E40\u0E27\u0E25\u0E32\u0E01\u0E31\u0E19")))):o.default.createElement(o.default.Fragment,null,o.default.createElement("select",{value:Kr,onChange:n=>ko(n.target.value),className:"sel"},o.default.createElement("option",{value:""},"\u0E44\u0E21\u0E48\u0E23\u0E30\u0E1A\u0E38\u0E2B\u0E49\u0E2D\u0E07"),ea.map(n=>o.default.createElement("option",{key:n.id,value:n.id},n.name,n.note?` \xB7 ${n.note}`:"")),I.filter(n=>n.external).length>0&&o.default.createElement("optgroup",{label:"\u0E2B\u0E49\u0E2D\u0E07\u0E19\u0E2D\u0E01\u0E41\u0E1C\u0E19\u0E01"},I.filter(n=>n.external).map(n=>o.default.createElement("option",{key:n.id,value:n.id},n.name)))),I.length===0&&o.default.createElement("div",{className:"hint"},"\u0E22\u0E31\u0E07\u0E44\u0E21\u0E48\u0E21\u0E35\u0E2B\u0E49\u0E2D\u0E07\u0E43\u0E19\u0E17\u0E30\u0E40\u0E1A\u0E35\u0E22\u0E19"," ",o.default.createElement("button",{onClick:()=>Et(!0),style:{color:"var(--accent)",fontWeight:700,textDecoration:"underline",textUnderlineOffset:2}},"\u0E40\u0E1E\u0E34\u0E48\u0E21\u0E2B\u0E49\u0E2D\u0E07")," ",'\u0E2B\u0E23\u0E37\u0E2D\u0E15\u0E34\u0E4A\u0E01 "\u0E2B\u0E49\u0E2D\u0E07\u0E19\u0E2D\u0E01\u0E41\u0E1C\u0E19\u0E01" \u0E40\u0E1E\u0E37\u0E48\u0E2D\u0E1E\u0E34\u0E21\u0E1E\u0E4C\u0E40\u0E2D\u0E07')))),(()=>{if(!ae||wo&&!bl)return null;let n=wo?I.find(S=>S.name.trim().toLowerCase()===Zr.trim().toLowerCase())?.id:Kr||(Re?null:v.find(S=>S.id===rt)?.roomId);if(!n)return null;let d=qa||m,i=[],p=ae.period,y=0,C=(u.find(S=>S.id===d)||{}).lunchPeriod||5;for(;y<zt&&p<=11;){if(p!==C){let S=uu(n,ae.day,p,d);S&&i.push({period:p,cls:u.find(T=>T.id===S.classId)?.name||"\u0E2B\u0E49\u0E2D\u0E07\u0E2D\u0E37\u0E48\u0E19"}),y++}p++}return i.length===0?o.default.createElement("div",{className:"note",style:{background:"var(--ok-soft)",border:"1px solid #A8D8C4",color:"#0E5A42"}},o.default.createElement(sa,{className:"w-4 h-4",style:{flexShrink:0,marginTop:1}}),o.default.createElement("span",null,"\u0E2B\u0E49\u0E2D\u0E07 ",Ge(n)," \u0E27\u0E48\u0E32\u0E07\u0E43\u0E19\u0E0A\u0E48\u0E27\u0E07\u0E40\u0E27\u0E25\u0E32\u0E19\u0E35\u0E49")):o.default.createElement("div",{className:"note note-err"},o.default.createElement($e,{className:"w-4 h-4",style:{flexShrink:0,marginTop:1}}),o.default.createElement("span",null,"\u0E2B\u0E49\u0E2D\u0E07 ",Ge(n)," \u0E44\u0E21\u0E48\u0E27\u0E48\u0E32\u0E07 \u2014 ",i.map(S=>`\u0E04\u0E32\u0E1A ${S.period} \u0E43\u0E0A\u0E49\u0E42\u0E14\u0E22 ${S.cls}`).join(" \xB7 ")))})(),o.default.createElement("div",{className:"field"},o.default.createElement("div",{style:{display:"flex",alignItems:"center",justifyContent:"space-between",marginBottom:5,gap:8}},o.default.createElement("label",{className:"lbl",style:{marginBottom:0}},"\u0E04\u0E23\u0E39\u0E1C\u0E39\u0E49\u0E2A\u0E2D\u0E19"),o.default.createElement("label",{style:{display:"flex",alignItems:"center",gap:5,fontSize:12,fontWeight:600,color:"var(--ink-3)",cursor:"pointer"}},o.default.createElement("input",{type:"checkbox",checked:Re,onChange:n=>{Gr(n.target.checked),n.target.checked?Sl(""):kl("")}}),"\u0E04\u0E23\u0E39\u0E19\u0E2D\u0E01\u0E41\u0E1C\u0E19\u0E01 (\u0E1E\u0E34\u0E21\u0E1E\u0E4C\u0E0A\u0E37\u0E48\u0E2D\u0E40\u0E2D\u0E07)")),Re?o.default.createElement("input",{type:"text",value:So,onChange:n=>kl(n.target.value),className:"inp",placeholder:"\u0E1E\u0E34\u0E21\u0E1E\u0E4C\u0E0A\u0E37\u0E48\u0E2D\u0E04\u0E23\u0E39\u0E1C\u0E39\u0E49\u0E2A\u0E2D\u0E19"}):o.default.createElement("select",{className:"sel",value:rt,onChange:n=>{Sl(n.target.value);let d=v.find(i=>i.id===n.target.value);ko(d?.roomId||"")}},o.default.createElement("option",{value:""},"\u0E40\u0E25\u0E37\u0E2D\u0E01\u0E04\u0E23\u0E39\u0E1C\u0E39\u0E49\u0E2A\u0E2D\u0E19"),v.map(n=>o.default.createElement("option",{key:n.id,value:n.id},n.name,n.roomId?` \xB7 \u0E2B\u0E49\u0E2D\u0E07 ${Ge(n.roomId)}`:"")))),(!Re&&rt||Re&&So.trim())&&o.default.createElement("div",{className:"box",style:{background:"var(--surface-2)",padding:12}},o.default.createElement("div",{className:"eyebrow",style:{marginBottom:8}},"\u0E04\u0E34\u0E27\u0E27\u0E48\u0E32\u0E07\u0E02\u0E2D\u0E07\u0E04\u0E23\u0E39\u0E17\u0E48\u0E32\u0E19\u0E19\u0E35\u0E49\u0E17\u0E31\u0E49\u0E07\u0E2A\u0E31\u0E1B\u0E14\u0E32\u0E2B\u0E4C"),o.default.createElement("table",{className:"mini"},o.default.createElement("thead",null,o.default.createElement("tr",null,o.default.createElement("th",{style:{width:26}}),Pa.map(n=>o.default.createElement("th",{key:n.id,className:"mono"},n.id)))),o.default.createElement("tbody",null,Oa.map(n=>{let d=[];if(ae&&n===ae.day){let i=ae.period,p=0,g=(u.find(C=>C.id===on)||{}).lunchPeriod||5;for(;p<zt&&i<=11;)i!==g&&(d.push(i),p++),i++}return o.default.createElement("tr",{key:n},o.default.createElement("th",{style:{fontSize:11}},Iv[n]),Pa.map(i=>{let p=d.includes(i.id),y=q.find(T=>T.day===n&&T.period===i.id&&(Re?T.isManualTeacher&&T.teacherName===So.trim():!T.isManualTeacher&&T.teacherId===rt)),g="free",C="\u0E27\u0E48\u0E32\u0E07",S="";if(y&&y.classId!==on){let T=u.find(A=>A.id===y.classId);g="busy",C=`\u0E15\u0E34\u0E14\u0E2A\u0E2D\u0E19 ${T?.name||""}`;let P=(T?.name||"").match(/(ปวช\.|ปวส\.)\s*\d+\/\d+/);S=P?P[0].replace(/\s/g,""):(T?.name||"").split(" ").slice(-1)[0]}else y&&(g="self",C="\u0E2A\u0E2D\u0E19\u0E2B\u0E49\u0E2D\u0E07\u0E19\u0E35\u0E49\u0E2D\u0E22\u0E39\u0E48\u0E41\u0E25\u0E49\u0E27");return p&&(g=y&&y.classId!==on?"clash":"plan",C=g==="clash"?"\u0E0A\u0E19\u0E01\u0E31\u0E1A\u0E04\u0E32\u0E1A\u0E40\u0E14\u0E34\u0E21":"\u0E04\u0E32\u0E1A\u0E17\u0E35\u0E48\u0E01\u0E33\u0E25\u0E31\u0E07\u0E08\u0E30\u0E27\u0E32\u0E07"),o.default.createElement("td",{key:i.id,className:g,title:C},S&&o.default.createElement("div",{className:"mini-txt"},S))}))}))),o.default.createElement("div",{className:"mini-legend"},o.default.createElement("span",null,o.default.createElement("i",{style:{background:"#fff",border:"1px solid var(--rule)"}}),"\u0E27\u0E48\u0E32\u0E07"),o.default.createElement("span",null,o.default.createElement("i",{style:{background:"var(--danger)"}}),"\u0E15\u0E34\u0E14\u0E2A\u0E2D\u0E19"),o.default.createElement("span",null,o.default.createElement("i",{style:{background:"var(--accent)"}}),"\u0E01\u0E33\u0E25\u0E31\u0E07\u0E08\u0E30\u0E27\u0E32\u0E07"),o.default.createElement("span",null,o.default.createElement("i",{style:{background:"#7E1019"}}),"\u0E0A\u0E19\u0E01\u0E31\u0E19"))),o.default.createElement("label",{style:{display:"flex",gap:9,alignItems:"flex-start",cursor:"pointer",padding:"10px 12px",border:"1px solid var(--accent-line)",background:"var(--accent-soft)",borderRadius:6}},o.default.createElement("input",{type:"checkbox",checked:Yr,onChange:n=>tf(n.target.checked),style:{marginTop:2}}),o.default.createElement("div",null,o.default.createElement("div",{style:{fontSize:14,fontWeight:700,color:"#7A3F07"}},"\u0E43\u0E2B\u0E49\u0E2A\u0E2D\u0E19\u0E0B\u0E49\u0E2D\u0E19\u0E40\u0E27\u0E25\u0E32\u0E44\u0E14\u0E49"),o.default.createElement("div",{style:{fontSize:12,color:"#96591A",lineHeight:1.5,marginTop:2}},"\u0E15\u0E34\u0E4A\u0E01\u0E40\u0E21\u0E37\u0E48\u0E2D\u0E04\u0E23\u0E39\u0E15\u0E49\u0E2D\u0E07\u0E04\u0E38\u0E21\u0E2B\u0E25\u0E32\u0E22\u0E2B\u0E49\u0E2D\u0E07\u0E1E\u0E23\u0E49\u0E2D\u0E21\u0E01\u0E31\u0E19\u0E08\u0E23\u0E34\u0E07 \u0E23\u0E30\u0E1A\u0E1A\u0E08\u0E30\u0E02\u0E49\u0E32\u0E21\u0E01\u0E32\u0E23\u0E40\u0E15\u0E37\u0E2D\u0E19\u0E04\u0E32\u0E1A\u0E0A\u0E19")))),o.default.createElement("div",{className:"modal-foot"},ke?o.default.createElement("div",{style:{display:"flex",alignItems:"center",gap:8,flexWrap:"wrap"}},ke.lockWhole?o.default.createElement("span",{style:{fontSize:14,color:"var(--ink-3)",fontWeight:600}},ke.blk.slot.isFixed?"\u0E04\u0E32\u0E1A\u0E15\u0E32\u0E22\u0E15\u0E31\u0E27":"\u0E27\u0E34\u0E0A\u0E32\u0E01\u0E34\u0E08\u0E01\u0E23\u0E23\u0E21","\u0E15\u0E49\u0E2D\u0E07\u0E25\u0E1A\u0E17\u0E31\u0E49\u0E07 ",ke.max," \u0E04\u0E32\u0E1A"):ke.max>1?o.default.createElement(o.default.Fragment,null,o.default.createElement("span",{style:{fontSize:14,color:"var(--ink-3)",fontWeight:600}},"\u0E25\u0E1A"),o.default.createElement("input",{type:"number",min:"1",max:ke.max,value:Math.min(Xr,ke.max),onChange:n=>{let d=parseInt(n.target.value);(isNaN(d)||d<1)&&(d=1),d>ke.max&&(d=ke.max),af(d)},className:"inp inp-num",style:{width:62,padding:"6px 8px",fontSize:15.5}}),o.default.createElement("span",{style:{fontSize:14,color:"var(--ink-3)",fontWeight:600}},"\u0E08\u0E32\u0E01 ",ke.max," \u0E04\u0E32\u0E1A (\u0E04\u0E32\u0E1A ",ke.targets.slice(0,Math.min(Xr,ke.max)).join(", "),")")):null,o.default.createElement("button",{onClick:Cg,className:"btn btn-ghost-danger btn-sm"},o.default.createElement(Je,{className:"w-3.5 h-3.5"}),ke.lockWhole?`\u0E25\u0E1A ${ke.max} \u0E04\u0E32\u0E1A`:ke.max>1?`\u0E25\u0E1A ${Math.min(Xr,ke.max)} \u0E04\u0E32\u0E1A`:"\u0E25\u0E1A\u0E04\u0E32\u0E1A\u0E19\u0E35\u0E49")):o.default.createElement("span",null),o.default.createElement("div",{style:{display:"flex",gap:8}},o.default.createElement("button",{onClick:()=>tt(null),className:"btn"},"\u0E22\u0E01\u0E40\u0E25\u0E34\u0E01"),o.default.createElement("button",{onClick:yg,className:"btn btn-accent"},o.default.createElement(sa,{className:"w-4 h-4"})," \u0E27\u0E32\u0E07\u0E04\u0E32\u0E1A"))))),Hr&&o.default.createElement("div",{className:"ov",onClick:()=>Wa(Tl,()=>Mt(!1))},o.default.createElement("div",{className:"modal",style:{maxWidth:620},onClick:n=>n.stopPropagation()},o.default.createElement("div",{className:"modal-head"},o.default.createElement("div",null,o.default.createElement("div",{className:"modal-title"},"\u0E23\u0E32\u0E22\u0E27\u0E34\u0E0A\u0E32\u0E02\u0E2D\u0E07 ",Te.name),o.default.createElement("div",{className:"modal-sub"},Ol.length," \u0E23\u0E32\u0E22\u0E27\u0E34\u0E0A\u0E32 \xB7 \u0E23\u0E27\u0E21 ",Bl," \u0E04\u0E32\u0E1A\u0E15\u0E48\u0E2D\u0E2A\u0E31\u0E1B\u0E14\u0E32\u0E2B\u0E4C")),o.default.createElement("button",{onClick:()=>Wa(Tl,()=>Mt(!1)),className:"x-btn"},o.default.createElement(ua,{className:"w-4 h-4"}))),o.default.createElement("div",{className:"modal-body",style:{display:"flex",flexDirection:"column",gap:16}},o.default.createElement("div",{style:{display:"grid",gridTemplateColumns:"1fr 1fr",gap:12}},o.default.createElement("div",{className:"box"},o.default.createElement("div",{className:"box-title"},o.default.createElement(Ar,{className:"w-3.5 h-3.5"})," \u0E04\u0E31\u0E14\u0E25\u0E2D\u0E01\u0E08\u0E32\u0E01\u0E2B\u0E49\u0E2D\u0E07\u0E2D\u0E37\u0E48\u0E19"),o.default.createElement("select",{className:"sel",style:{marginBottom:8},value:xo,onChange:n=>Ri(n.target.value)},o.default.createElement("option",{value:""},"\u0E40\u0E25\u0E37\u0E2D\u0E01\u0E2B\u0E49\u0E2D\u0E07\u0E15\u0E49\u0E19\u0E17\u0E32\u0E07"),u.filter(n=>n.id!==m&&(f[n.id]||[]).length>0).map(n=>o.default.createElement("option",{key:n.id,value:n.id},n.name," (",(f[n.id]||[]).length," \u0E27\u0E34\u0E0A\u0E32)"))),o.default.createElement("button",{onClick:Kg,disabled:!xo,className:"btn btn-sm",style:{width:"100%"}},"\u0E04\u0E31\u0E14\u0E25\u0E2D\u0E01\u0E21\u0E32\u0E25\u0E07\u0E2B\u0E49\u0E2D\u0E07\u0E19\u0E35\u0E49")),o.default.createElement("div",{className:"box"},o.default.createElement("div",{className:"box-title"},o.default.createElement(co,{className:"w-3.5 h-3.5"})," \u0E19\u0E33\u0E40\u0E02\u0E49\u0E32\u0E08\u0E32\u0E01 CSV"),o.default.createElement("label",{className:"btn btn-sm",style:{width:"100%",marginBottom:8,cursor:"pointer"}},o.default.createElement(ho,{className:"w-3.5 h-3.5"})," \u0E40\u0E25\u0E37\u0E2D\u0E01\u0E44\u0E1F\u0E25\u0E4C CSV",o.default.createElement("input",{type:"file",accept:".csv",onChange:Zg,style:{display:"none"}})),o.default.createElement("button",{onClick:Qg,className:"btn btn-sm",style:{width:"100%"}},o.default.createElement(et,{className:"w-3.5 h-3.5"})," \u0E14\u0E32\u0E27\u0E19\u0E4C\u0E42\u0E2B\u0E25\u0E14\u0E44\u0E1F\u0E25\u0E4C\u0E15\u0E31\u0E27\u0E2D\u0E22\u0E48\u0E32\u0E07"))),o.default.createElement("div",{className:"box"},o.default.createElement("div",{className:"box-title"},o.default.createElement(ba,{className:"w-3.5 h-3.5"})," \u0E40\u0E1E\u0E34\u0E48\u0E21\u0E23\u0E32\u0E22\u0E27\u0E34\u0E0A\u0E32"),o.default.createElement("div",{style:{display:"grid",gridTemplateColumns:"150px 1fr",gap:10,marginBottom:10}},o.default.createElement("div",{className:"field"},o.default.createElement("label",{className:"lbl"},"\u0E23\u0E2B\u0E31\u0E2A\u0E27\u0E34\u0E0A\u0E32"),o.default.createElement("input",{type:"text",className:"inp mono",value:re.code,placeholder:"20000-1401",onChange:n=>jt({...re,code:n.target.value})})),o.default.createElement("div",{className:"field"},o.default.createElement("label",{className:"lbl"},"\u0E0A\u0E37\u0E48\u0E2D\u0E27\u0E34\u0E0A\u0E32"),o.default.createElement("input",{type:"text",className:"inp",value:re.name,placeholder:"\u0E04\u0E13\u0E34\u0E15\u0E28\u0E32\u0E2A\u0E15\u0E23\u0E4C\u0E2D\u0E38\u0E15\u0E2A\u0E32\u0E2B\u0E01\u0E23\u0E23\u0E21",onChange:n=>jt({...re,name:n.target.value})}))),o.default.createElement("div",{style:{display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:10,marginBottom:12}},o.default.createElement("div",{className:"field"},o.default.createElement("label",{className:"lbl"},"\u0E17\u0E24\u0E29\u0E0E\u0E35"),o.default.createElement("input",{type:"number",min:"0",className:"inp inp-num mono",value:re.theory,onChange:n=>jt({...re,theory:n.target.value})})),o.default.createElement("div",{className:"field"},o.default.createElement("label",{className:"lbl"},"\u0E1B\u0E0F\u0E34\u0E1A\u0E31\u0E15\u0E34"),o.default.createElement("input",{type:"number",min:"0",className:"inp inp-num mono",value:re.practical,onChange:n=>jt({...re,practical:n.target.value})})),o.default.createElement("div",{className:"field"},o.default.createElement("label",{className:"lbl"},"\u0E2B\u0E19\u0E48\u0E27\u0E22\u0E01\u0E34\u0E15"),o.default.createElement("input",{type:"number",min:"0",className:"inp inp-num mono",value:re.credit,onChange:n=>jt({...re,credit:n.target.value})})),o.default.createElement("div",{className:"field"},o.default.createElement("label",{className:"lbl",style:{color:"var(--accent)"}},"\u0E23\u0E27\u0E21\u0E04\u0E32\u0E1A"),o.default.createElement("div",{className:"inp inp-num mono",style:{background:"var(--accent-soft)",borderColor:"var(--accent-line)",fontWeight:600}},Number(re.theory||0)+Number(re.practical||0)))),o.default.createElement("div",{style:{marginBottom:12}},o.default.createElement("label",{className:"lbl"},"\u0E2A\u0E35\u0E17\u0E35\u0E48\u0E08\u0E30\u0E41\u0E2A\u0E14\u0E07\u0E43\u0E19\u0E15\u0E32\u0E23\u0E32\u0E07"),o.default.createElement("div",{className:"color-row"},le.map((n,d)=>{let i=le[Ol.length%le.length].key,p=(re.colorKey||i)===n.key;return o.default.createElement("button",{key:n.key,type:"button",title:n.key,onClick:()=>jt({...re,colorKey:n.key}),className:`color-dot ${p?"color-on":""}`,style:{background:n.bg,boxShadow:`inset 0 0 0 2px ${n.line}`}})}))),o.default.createElement("button",{onClick:Wg,className:"btn btn-primary",style:{width:"100%"}},"\u0E40\u0E1E\u0E34\u0E48\u0E21\u0E23\u0E32\u0E22\u0E27\u0E34\u0E0A\u0E32")),o.default.createElement("div",null,o.default.createElement("div",{className:"eyebrow",style:{marginBottom:4}},"\u0E23\u0E32\u0E22\u0E27\u0E34\u0E0A\u0E32\u0E43\u0E19\u0E2B\u0E49\u0E2D\u0E07\u0E19\u0E35\u0E49"),Ol.length>1&&o.default.createElement("div",{className:"hint",style:{marginBottom:9}},"\u0E25\u0E32\u0E01\u0E17\u0E35\u0E48\u0E44\u0E2D\u0E04\u0E2D\u0E19 \u283F \u0E14\u0E49\u0E32\u0E19\u0E0B\u0E49\u0E32\u0E22\u0E02\u0E2D\u0E07\u0E41\u0E15\u0E48\u0E25\u0E30\u0E27\u0E34\u0E0A\u0E32\u0E40\u0E1E\u0E37\u0E48\u0E2D\u0E08\u0E31\u0E14\u0E25\u0E33\u0E14\u0E31\u0E1A\u0E01\u0E48\u0E2D\u0E19-\u0E2B\u0E25\u0E31\u0E07"),Ol.length===0?o.default.createElement("div",{className:"note note-info",style:{justifyContent:"center"}},"\u0E22\u0E31\u0E07\u0E44\u0E21\u0E48\u0E21\u0E35\u0E23\u0E32\u0E22\u0E27\u0E34\u0E0A\u0E32 \u0E40\u0E1E\u0E34\u0E48\u0E21\u0E14\u0E49\u0E32\u0E19\u0E1A\u0E19 \u0E04\u0E31\u0E14\u0E25\u0E2D\u0E01\u0E08\u0E32\u0E01\u0E2B\u0E49\u0E2D\u0E07\u0E2D\u0E37\u0E48\u0E19 \u0E2B\u0E23\u0E37\u0E2D\u0E19\u0E33\u0E40\u0E02\u0E49\u0E32\u0E08\u0E32\u0E01 CSV"):Ol.map((n,d)=>{let i=Ll(n,d),p=Number(n.theory)+Number(n.practical),y=sn(m,n.id),g=Tl===n.id;return o.default.createElement("div",{key:n.id,className:`list-row ${bo===n.id?"list-row-dragging":""}`,onDragOver:C=>{!bo||bo===n.id||g||(C.preventDefault(),C.currentTarget.classList.add("list-row-dragover"))},onDragLeave:C=>C.currentTarget.classList.remove("list-row-dragover"),onDrop:C=>{C.preventDefault(),C.currentTarget.classList.remove("list-row-dragover"),bo&&bo!==n.id&&(Z(),$g(m,bo,n.id)),$s(null)}},g?o.default.createElement("div",{style:{display:"flex",flexDirection:"column",gap:10}},o.default.createElement("div",{style:{display:"grid",gridTemplateColumns:"130px 1fr",gap:8}},o.default.createElement("div",{className:"field"},o.default.createElement("label",{className:"lbl"},"\u0E23\u0E2B\u0E31\u0E2A\u0E27\u0E34\u0E0A\u0E32"),o.default.createElement("input",{type:"text",className:"inp mono",style:{padding:"6px 8px",fontSize:13.5},value:ve.code,onChange:C=>Al({...ve,code:C.target.value})})),o.default.createElement("div",{className:"field"},o.default.createElement("label",{className:"lbl"},"\u0E0A\u0E37\u0E48\u0E2D\u0E27\u0E34\u0E0A\u0E32"),o.default.createElement("input",{type:"text",className:"inp",style:{padding:"6px 8px",fontSize:13.5},value:ve.name,onChange:C=>Al({...ve,name:C.target.value})}))),o.default.createElement("div",{style:{display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:8}},[["\u0E17\u0E24\u0E29\u0E0E\u0E35","theory"],["\u0E1B\u0E0F\u0E34\u0E1A\u0E31\u0E15\u0E34","practical"],["\u0E2B\u0E19\u0E48\u0E27\u0E22\u0E01\u0E34\u0E15","credit"]].map(([C,S])=>o.default.createElement("div",{className:"field",key:S},o.default.createElement("label",{className:"lbl"},C),o.default.createElement("input",{type:"number",min:"0",className:"inp inp-num mono",style:{padding:"6px 8px",fontSize:13.5},value:ve[S],onChange:T=>Al({...ve,[S]:T.target.value})}))),o.default.createElement("div",{className:"field"},o.default.createElement("label",{className:"lbl",style:{color:"var(--accent)"}},"\u0E23\u0E27\u0E21"),o.default.createElement("div",{className:"inp inp-num mono",style:{padding:"6px 8px",fontSize:13.5,background:"var(--surface-2)"}},Number(ve.theory||0)+Number(ve.practical||0)))),o.default.createElement("div",null,o.default.createElement("label",{className:"lbl"},"\u0E2A\u0E35"),o.default.createElement("div",{className:"color-row"},le.map(C=>o.default.createElement("button",{key:C.key,type:"button",title:C.key,onClick:()=>Al({...ve,colorKey:C.key}),className:`color-dot ${ve.colorKey===C.key?"color-on":""}`,style:{width:22,height:22,background:C.bg,boxShadow:`inset 0 0 0 2px ${C.line}`}})))),o.default.createElement("div",{style:{display:"flex",gap:7,justifyContent:"flex-end",borderTop:"1px solid var(--rule-soft)",paddingTop:10}},o.default.createElement("button",{onClick:Gg,className:"btn btn-sm"},"\u0E22\u0E01\u0E40\u0E25\u0E34\u0E01"),o.default.createElement("button",{onClick:()=>Xg(n.id),className:"btn btn-accent btn-sm"},o.default.createElement(sa,{className:"w-3.5 h-3.5"})," \u0E1A\u0E31\u0E19\u0E17\u0E36\u0E01"))):o.default.createElement("div",{style:{display:"flex",alignItems:"center",gap:4}},o.default.createElement("div",{className:"drag-handle",draggable:!0,title:"\u0E01\u0E14\u0E04\u0E49\u0E32\u0E07\u0E41\u0E25\u0E49\u0E27\u0E25\u0E32\u0E01\u0E40\u0E1E\u0E37\u0E48\u0E2D\u0E08\u0E31\u0E14\u0E25\u0E33\u0E14\u0E31\u0E1A",onDragStart:C=>{$s(n.id),C.dataTransfer.effectAllowed="move",C.dataTransfer.setData("text/plain",n.id)},onDragEnd:()=>$s(null)},o.default.createElement(Mr,{className:"w-4 h-4"})),o.default.createElement("span",{className:"swatch",style:{background:i.line,width:4,height:34,borderRadius:2}}),o.default.createElement("div",{style:{flex:1,minWidth:0}},o.default.createElement("div",{className:"mono",style:{fontSize:14.5,color:"var(--ink-3)"}},n.code||"\u2014"),o.default.createElement("div",{style:{fontSize:17.5,fontWeight:600,lineHeight:1.3}},n.name),o.default.createElement("div",{style:{display:"flex",alignItems:"center",gap:9,marginTop:4}},o.default.createElement("span",{className:"mono",style:{fontSize:14.5,color:"var(--ink-3)"}},"\u0E17",n.theory," \u0E1B",n.practical," \u0E19",n.credit),o.default.createElement(tg,{required:p,placed:y}))),o.default.createElement("div",{style:{display:"flex",gap:3}},o.default.createElement("button",{onClick:()=>Vg(n),className:"x-btn",title:"\u0E41\u0E01\u0E49\u0E44\u0E02\u0E27\u0E34\u0E0A\u0E32\u0E19\u0E35\u0E49"},o.default.createElement(wa,{className:"w-4 h-4"})),o.default.createElement("button",{onClick:()=>jg(n.id),className:"x-btn",style:{color:"var(--danger)"},title:"\u0E25\u0E1A\u0E27\u0E34\u0E0A\u0E32\u0E19\u0E35\u0E49"},o.default.createElement(Je,{className:"w-4 h-4"})))))}))))),qr&&o.default.createElement("div",{className:"ov",onClick:()=>yl(!1)},o.default.createElement("div",{className:"modal",style:{maxWidth:660},onClick:n=>n.stopPropagation()},o.default.createElement("div",{className:"modal-head"},o.default.createElement("div",null,o.default.createElement("div",{className:"modal-title"},"\u0E2B\u0E49\u0E2D\u0E07\u0E40\u0E23\u0E35\u0E22\u0E19"),o.default.createElement("div",{className:"modal-sub"},Ue.length," \u0E2B\u0E49\u0E2D\u0E07\u0E02\u0E2D\u0E07\u0E41\u0E1C\u0E19\u0E01",u.length-Ue.length>0?` \xB7 ${u.length-Ue.length} \u0E01\u0E25\u0E38\u0E48\u0E21\u0E19\u0E2D\u0E01\u0E41\u0E1C\u0E19\u0E01`:""," \xB7 \u0E0A\u0E37\u0E48\u0E2D\u0E2B\u0E49\u0E2D\u0E07\u0E2A\u0E23\u0E49\u0E32\u0E07\u0E08\u0E32\u0E01\u0E2A\u0E32\u0E02\u0E32 \u0E23\u0E30\u0E14\u0E31\u0E1A\u0E0A\u0E31\u0E49\u0E19 \u0E41\u0E25\u0E30\u0E40\u0E25\u0E02\u0E2B\u0E49\u0E2D\u0E07\u0E42\u0E14\u0E22\u0E2D\u0E31\u0E15\u0E42\u0E19\u0E21\u0E31\u0E15\u0E34")),o.default.createElement("button",{onClick:()=>yl(!1),className:"x-btn"},o.default.createElement(ua,{className:"w-4 h-4"}))),o.default.createElement("div",{className:"modal-body",style:{display:"flex",flexDirection:"column",gap:16}},o.default.createElement("div",{className:"box"},o.default.createElement("div",{className:"box-title"},o.default.createElement(ba,{className:"w-3.5 h-3.5"})," \u0E40\u0E1E\u0E34\u0E48\u0E21\u0E2B\u0E49\u0E2D\u0E07\u0E40\u0E23\u0E35\u0E22\u0E19"),o.default.createElement("div",{className:"field",style:{marginBottom:10}},o.default.createElement("label",{className:"lbl"},"\u0E2A\u0E32\u0E02\u0E32\u0E07\u0E32\u0E19"),o.default.createElement("input",{type:"text",className:"inp",placeholder:"\u0E40\u0E0A\u0E48\u0E19 \u0E0A\u0E48\u0E32\u0E07\u0E44\u0E1F\u0E1F\u0E49\u0E32\u0E01\u0E33\u0E25\u0E31\u0E07",value:G.major,onChange:n=>_t({...G,major:n.target.value})})),o.default.createElement("div",{style:{display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:10,marginBottom:10}},o.default.createElement("div",{className:"field"},o.default.createElement("label",{className:"lbl"},"\u0E23\u0E30\u0E14\u0E31\u0E1A\u0E0A\u0E31\u0E49\u0E19"),o.default.createElement("select",{className:"sel",value:G.level,onChange:n=>{let d=n.target.value,i=G.major&&!Jh.includes(G.major.trim());_t({...G,level:d,year:1,major:i?G.major:vl[d]})}},o.default.createElement("option",{value:"\u0E1B\u0E27\u0E0A."},"\u0E1B\u0E27\u0E0A."),o.default.createElement("option",{value:"\u0E1B\u0E27\u0E2A."},"\u0E1B\u0E27\u0E2A."))),o.default.createElement("div",{className:"field"},o.default.createElement("label",{className:"lbl"},"\u0E0A\u0E31\u0E49\u0E19\u0E1B\u0E35\u0E17\u0E35\u0E48"),o.default.createElement("select",{className:"sel mono",value:G.year,onChange:n=>_t({...G,year:parseInt(n.target.value)})},Yh(G.level,G.year).map(n=>o.default.createElement("option",{key:n,value:n},n)))),o.default.createElement("div",{className:"field"},o.default.createElement("label",{className:"lbl"},"\u0E2B\u0E49\u0E2D\u0E07\u0E17\u0E35\u0E48"),o.default.createElement("select",{className:"sel mono",value:G.room,onChange:n=>_t({...G,room:parseInt(n.target.value)})},Qi(Es,G.room).map(n=>o.default.createElement("option",{key:n,value:n},n)))),o.default.createElement("div",{className:"field"},o.default.createElement("label",{className:"lbl"},"\u0E08\u0E33\u0E19\u0E27\u0E19\u0E19\u0E31\u0E01\u0E40\u0E23\u0E35\u0E22\u0E19"),o.default.createElement("input",{type:"number",className:"inp inp-num mono",placeholder:"30",value:G.studentCount,onChange:n=>_t({...G,studentCount:n.target.value})}))),o.default.createElement("div",{className:"field",style:{marginBottom:12}},o.default.createElement("label",{className:"lbl"},"\u0E04\u0E23\u0E39\u0E17\u0E35\u0E48\u0E1B\u0E23\u0E36\u0E01\u0E29\u0E32"),o.default.createElement("select",{className:"sel",value:G.advisor,onChange:n=>_t({...G,advisor:n.target.value})},o.default.createElement("option",{value:""},"\u0E22\u0E31\u0E07\u0E44\u0E21\u0E48\u0E23\u0E30\u0E1A\u0E38"),v.map(n=>o.default.createElement("option",{key:n.id,value:n.name},n.name)))),o.default.createElement("div",{className:"note note-info",style:{marginBottom:12}},"\u0E08\u0E30\u0E44\u0E14\u0E49\u0E0A\u0E37\u0E48\u0E2D\u0E2B\u0E49\u0E2D\u0E07\u0E27\u0E48\u0E32 ",o.default.createElement("b",{style:{color:"var(--ink)"}},`${G.major.trim()?G.major.trim()+" ":""}${G.level} ${G.year}/${G.room}`)," ","\xB7 \u0E1E\u0E31\u0E01\u0E01\u0E25\u0E32\u0E07\u0E27\u0E31\u0E19\u0E04\u0E32\u0E1A ",G.level==="\u0E1B\u0E27\u0E0A."?5:4),o.default.createElement("button",{onClick:Sg,className:"btn btn-primary",style:{width:"100%"}},"\u0E40\u0E1E\u0E34\u0E48\u0E21\u0E2B\u0E49\u0E2D\u0E07\u0E40\u0E23\u0E35\u0E22\u0E19")),o.default.createElement("div",null,o.default.createElement("div",{className:"eyebrow",style:{marginBottom:9}},"\u0E2B\u0E49\u0E2D\u0E07\u0E40\u0E23\u0E35\u0E22\u0E19\u0E17\u0E31\u0E49\u0E07\u0E2B\u0E21\u0E14 \xB7 \u0E41\u0E01\u0E49\u0E44\u0E02\u0E44\u0E14\u0E49\u0E17\u0E31\u0E19\u0E17\u0E35"),Ue.map(n=>o.default.createElement("div",{key:n.id,className:"list-row"},o.default.createElement("div",{style:{display:"flex",alignItems:"center",justifyContent:"space-between",marginBottom:11}},o.default.createElement("div",null,o.default.createElement("span",{style:{fontSize:17.5,fontWeight:700}},n.name),o.default.createElement("span",{className:"mono",style:{fontSize:15,color:"var(--ink-3)",marginLeft:9}},(f[n.id]||[]).length," \u0E27\u0E34\u0E0A\u0E32 \xB7 ",q.filter(d=>d.classId===n.id&&d.subjectId).length," \u0E04\u0E32\u0E1A")),o.default.createElement("button",{onClick:()=>wf(n.id),className:"x-btn",style:{color:"var(--danger)"},title:"\u0E25\u0E1A\u0E2B\u0E49\u0E2D\u0E07\u0E40\u0E23\u0E35\u0E22\u0E19\u0E19\u0E35\u0E49"},o.default.createElement(Je,{className:"w-4 h-4"}))),o.default.createElement("div",{style:{display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:8}},o.default.createElement("div",{className:"field",style:{gridColumn:"span 4"}},o.default.createElement("label",{className:"lbl"},"\u0E2A\u0E32\u0E02\u0E32\u0E07\u0E32\u0E19"),o.default.createElement("input",{type:"text",className:"inp",style:{padding:"6px 8px",fontSize:13.5},value:n.major||"",onChange:d=>Bo(n.id,"major",d.target.value)})),o.default.createElement("div",{className:"field"},o.default.createElement("label",{className:"lbl"},"\u0E23\u0E30\u0E14\u0E31\u0E1A\u0E0A\u0E31\u0E49\u0E19"),o.default.createElement("select",{className:"sel",style:{padding:"6px 8px",fontSize:13.5},value:n.level||"\u0E1B\u0E27\u0E0A.",onChange:d=>Bo(n.id,"level",d.target.value)},o.default.createElement("option",{value:"\u0E1B\u0E27\u0E0A."},"\u0E1B\u0E27\u0E0A."),o.default.createElement("option",{value:"\u0E1B\u0E27\u0E2A."},"\u0E1B\u0E27\u0E2A."))),o.default.createElement("div",{className:"field"},o.default.createElement("label",{className:"lbl"},"\u0E0A\u0E31\u0E49\u0E19\u0E1B\u0E35\u0E17\u0E35\u0E48"),o.default.createElement("select",{className:"sel mono",style:{padding:"6px 8px",fontSize:13.5},value:n.year||1,onChange:d=>Bo(n.id,"year",parseInt(d.target.value))},Yh(n.level,n.year).map(d=>o.default.createElement("option",{key:d,value:d},d)))),o.default.createElement("div",{className:"field"},o.default.createElement("label",{className:"lbl"},"\u0E2B\u0E49\u0E2D\u0E07\u0E17\u0E35\u0E48"),o.default.createElement("select",{className:"sel mono",style:{padding:"6px 8px",fontSize:13.5},value:n.room||1,onChange:d=>Bo(n.id,"room",parseInt(d.target.value))},Qi(Es,n.room).map(d=>o.default.createElement("option",{key:d,value:d},d)))),o.default.createElement("div",{className:"field"},o.default.createElement("label",{className:"lbl"},"\u0E19\u0E31\u0E01\u0E40\u0E23\u0E35\u0E22\u0E19"),o.default.createElement("input",{type:"number",className:"inp inp-num mono",style:{padding:"6px 8px",fontSize:13.5},value:n.studentCount||"",onChange:d=>Bo(n.id,"studentCount",d.target.value)})),o.default.createElement("div",{className:"field",style:{gridColumn:"span 4"}},o.default.createElement("label",{className:"lbl"},"\u0E04\u0E23\u0E39\u0E17\u0E35\u0E48\u0E1B\u0E23\u0E36\u0E01\u0E29\u0E32"),o.default.createElement("select",{className:"sel",style:{padding:"6px 8px",fontSize:13.5},value:n.advisor||"",onChange:d=>Bo(n.id,"advisor",d.target.value)},o.default.createElement("option",{value:""},"\u0E22\u0E31\u0E07\u0E44\u0E21\u0E48\u0E23\u0E30\u0E1A\u0E38"),n.advisor&&!v.find(d=>d.name===n.advisor)&&o.default.createElement("option",{value:n.advisor},n.advisor),v.map(d=>o.default.createElement("option",{key:d.id,value:d.name},d.name)))))))),u.some(n=>n.external)&&o.default.createElement("div",null,o.default.createElement("div",{className:"eyebrow",style:{marginBottom:9}},"\u0E01\u0E25\u0E38\u0E48\u0E21\u0E19\u0E2D\u0E01\u0E41\u0E1C\u0E19\u0E01 \xB7 \u0E40\u0E01\u0E34\u0E14\u0E08\u0E32\u0E01\u0E01\u0E32\u0E23\u0E1E\u0E34\u0E21\u0E1E\u0E4C\u0E0A\u0E37\u0E48\u0E2D\u0E40\u0E2D\u0E07\u0E15\u0E2D\u0E19\u0E27\u0E32\u0E07\u0E04\u0E32\u0E1A\u0E43\u0E19\u0E21\u0E38\u0E21\u0E21\u0E2D\u0E07\u0E15\u0E32\u0E23\u0E32\u0E07\u0E2A\u0E2D\u0E19"),u.filter(n=>n.external).map(n=>o.default.createElement("div",{key:n.id,className:"list-row",style:{display:"flex",alignItems:"center",gap:10}},o.default.createElement("input",{type:"text",value:n.name,className:"inp",style:{padding:"7px 9px",fontSize:14.5},onChange:d=>c(i=>i.map(p=>p.id===n.id?{...p,name:d.target.value}:p)),onBlur:()=>Z()}),o.default.createElement("span",{className:"mono",style:{fontSize:13,color:"var(--ink-3)",whiteSpace:"nowrap"}},q.filter(d=>d.classId===n.id&&d.subjectId).length," \u0E04\u0E32\u0E1A"),o.default.createElement("button",{onClick:()=>wf(n.id),className:"x-btn",style:{color:"var(--danger)",flexShrink:0},title:"\u0E25\u0E1A\u0E01\u0E25\u0E38\u0E48\u0E21\u0E19\u0E35\u0E49"},o.default.createElement(Je,{className:"w-4 h-4"})))))))),_r&&o.default.createElement("div",{className:"ov",onClick:()=>Wa(Dl,()=>Il(!1))},o.default.createElement("div",{className:"modal",style:{maxWidth:500},onClick:n=>n.stopPropagation()},o.default.createElement("div",{className:"modal-head"},o.default.createElement("div",null,o.default.createElement("div",{className:"modal-title"},"\u0E04\u0E23\u0E39\u0E1C\u0E39\u0E49\u0E2A\u0E2D\u0E19"),o.default.createElement("div",{className:"modal-sub"},v.length," \u0E04\u0E19\u0E43\u0E19\u0E23\u0E30\u0E1A\u0E1A")),o.default.createElement("button",{onClick:()=>Wa(Dl,()=>Il(!1)),className:"x-btn"},o.default.createElement(ua,{className:"w-4 h-4"}))),o.default.createElement("div",{className:"modal-body",style:{display:"flex",flexDirection:"column",gap:16}},o.default.createElement("div",{className:"box"},o.default.createElement("div",{className:"box-title"},o.default.createElement(ba,{className:"w-3.5 h-3.5"})," \u0E40\u0E1E\u0E34\u0E48\u0E21\u0E04\u0E23\u0E39\u0E1C\u0E39\u0E49\u0E2A\u0E2D\u0E19"),o.default.createElement("div",{style:{display:"grid",gridTemplateColumns:"1fr 130px",gap:10,marginBottom:12}},o.default.createElement("div",{className:"field"},o.default.createElement("label",{className:"lbl"},"\u0E0A\u0E37\u0E48\u0E2D-\u0E2A\u0E01\u0E38\u0E25"),o.default.createElement("input",{type:"text",className:"inp",placeholder:"\u0E04\u0E23\u0E39\u0E2A\u0E21\u0E0A\u0E32\u0E22 \u0E43\u0E08\u0E14\u0E35",value:Wt.name,onChange:n=>Qs({...Wt,name:n.target.value})})),o.default.createElement("div",{className:"field"},o.default.createElement("label",{className:"lbl"},"\u0E2B\u0E49\u0E2D\u0E07\u0E1B\u0E23\u0E30\u0E08\u0E33"),o.default.createElement("select",{className:"sel",value:Wt.roomId,onChange:n=>Qs({...Wt,roomId:n.target.value})},o.default.createElement("option",{value:""},"\u0E44\u0E21\u0E48\u0E23\u0E30\u0E1A\u0E38"),I.map(n=>o.default.createElement("option",{key:n.id,value:n.id},n.name))))),o.default.createElement("button",{onClick:kg,className:"btn btn-primary",style:{width:"100%",marginBottom:10}},"\u0E40\u0E1E\u0E34\u0E48\u0E21\u0E04\u0E23\u0E39\u0E1C\u0E39\u0E49\u0E2A\u0E2D\u0E19"),o.default.createElement("div",{style:{display:"flex",gap:8}},o.default.createElement("label",{className:"btn btn-sm",style:{flex:1,cursor:"pointer"}},o.default.createElement(ho,{className:"w-3.5 h-3.5"})," \u0E19\u0E33\u0E40\u0E02\u0E49\u0E32 CSV",o.default.createElement("input",{type:"file",accept:".csv",onChange:zg,style:{display:"none"}})),o.default.createElement("button",{onClick:Og,className:"btn btn-sm",style:{flex:1}},o.default.createElement(et,{className:"w-3.5 h-3.5"})," \u0E44\u0E1F\u0E25\u0E4C\u0E15\u0E31\u0E27\u0E2D\u0E22\u0E48\u0E32\u0E07"))),o.default.createElement("div",null,o.default.createElement("div",{className:"eyebrow",style:{marginBottom:9}},"\u0E23\u0E32\u0E22\u0E0A\u0E37\u0E48\u0E2D\u0E04\u0E23\u0E39\u0E1C\u0E39\u0E49\u0E2A\u0E2D\u0E19"),v.length===0?o.default.createElement("div",{className:"note note-info",style:{justifyContent:"center"}},"\u0E22\u0E31\u0E07\u0E44\u0E21\u0E48\u0E21\u0E35\u0E04\u0E23\u0E39\u0E43\u0E19\u0E23\u0E30\u0E1A\u0E1A \u0E40\u0E1E\u0E34\u0E48\u0E21\u0E14\u0E49\u0E32\u0E19\u0E1A\u0E19\u0E2B\u0E23\u0E37\u0E2D\u0E19\u0E33\u0E40\u0E02\u0E49\u0E32\u0E08\u0E32\u0E01\u0E44\u0E1F\u0E25\u0E4C CSV"):v.map(n=>{let d=Ki(n.id,q,f).sumHours;return o.default.createElement("div",{key:n.id,className:"list-row"},Dl===n.id?o.default.createElement("div",{style:{display:"flex",flexDirection:"column",gap:9}},o.default.createElement("div",{style:{display:"grid",gridTemplateColumns:"1fr 110px",gap:8}},o.default.createElement("div",{className:"field"},o.default.createElement("label",{className:"lbl"},"\u0E0A\u0E37\u0E48\u0E2D-\u0E2A\u0E01\u0E38\u0E25"),o.default.createElement("input",{type:"text",className:"inp",style:{padding:"6px 8px",fontSize:13.5},value:$t.name,onChange:i=>eu({...$t,name:i.target.value})})),o.default.createElement("div",{className:"field"},o.default.createElement("label",{className:"lbl"},"\u0E2B\u0E49\u0E2D\u0E07\u0E1B\u0E23\u0E30\u0E08\u0E33"),o.default.createElement("select",{className:"sel",style:{padding:"6px 8px",fontSize:13.5},value:$t.roomId,onChange:i=>eu({...$t,roomId:i.target.value})},o.default.createElement("option",{value:""},"\u0E44\u0E21\u0E48\u0E23\u0E30\u0E1A\u0E38"),I.map(i=>o.default.createElement("option",{key:i.id,value:i.id},i.name))))),o.default.createElement("div",{style:{display:"flex",gap:7,justifyContent:"flex-end"}},o.default.createElement("button",{onClick:bg,className:"btn btn-sm"},"\u0E22\u0E01\u0E40\u0E25\u0E34\u0E01"),o.default.createElement("button",{onClick:()=>Pg(n.id),className:"btn btn-accent btn-sm"},o.default.createElement(sa,{className:"w-3.5 h-3.5"})," \u0E1A\u0E31\u0E19\u0E17\u0E36\u0E01"))):o.default.createElement("div",{style:{display:"flex",alignItems:"center",gap:11}},o.default.createElement("div",{style:{flex:1,minWidth:0}},o.default.createElement("div",{style:{fontSize:17.5,fontWeight:600}},n.name),o.default.createElement("div",{className:"mono",style:{fontSize:15,color:"var(--ink-3)",marginTop:2}},n.roomId?`\u0E2B\u0E49\u0E2D\u0E07 ${Ge(n.roomId)} \xB7 `:"","\u0E2A\u0E2D\u0E19 ",d," \u0E04\u0E32\u0E1A/\u0E2A\u0E31\u0E1B\u0E14\u0E32\u0E2B\u0E4C")),o.default.createElement("div",{style:{display:"flex",gap:3}},o.default.createElement("button",{onClick:()=>wg(n),className:"x-btn",title:"\u0E41\u0E01\u0E49\u0E44\u0E02"},o.default.createElement(wa,{className:"w-4 h-4"})),o.default.createElement("button",{onClick:()=>Eg(n.id),className:"x-btn",style:{color:"var(--danger)"},title:"\u0E25\u0E1A"},o.default.createElement(Je,{className:"w-4 h-4"})))))}))))),$r&&o.default.createElement("div",{className:"ov",onClick:()=>vo(!1)},o.default.createElement("div",{className:"modal",style:{maxWidth:420},onClick:n=>n.stopPropagation()},o.default.createElement("div",{className:"modal-head"},o.default.createElement("div",null,o.default.createElement("div",{className:"modal-title"},"\u0E1B\u0E35\u0E01\u0E32\u0E23\u0E28\u0E36\u0E01\u0E29\u0E32\u0E41\u0E25\u0E30\u0E20\u0E32\u0E04\u0E40\u0E23\u0E35\u0E22\u0E19"),o.default.createElement("div",{className:"modal-sub"},"\u0E43\u0E0A\u0E49\u0E41\u0E2A\u0E14\u0E07\u0E1A\u0E19\u0E2B\u0E31\u0E27\u0E01\u0E23\u0E30\u0E14\u0E32\u0E29\u0E02\u0E2D\u0E07\u0E17\u0E38\u0E01\u0E15\u0E32\u0E23\u0E32\u0E07\u0E17\u0E35\u0E48\u0E1E\u0E34\u0E21\u0E1E\u0E4C\u0E2D\u0E2D\u0E01\u0E44\u0E1B")),o.default.createElement("button",{onClick:()=>vo(!1),className:"x-btn"},o.default.createElement(ua,{className:"w-4 h-4"}))),o.default.createElement("div",{className:"modal-body",style:{display:"flex",flexDirection:"column",gap:14}},o.default.createElement("div",{className:"field"},o.default.createElement("label",{className:"lbl"},"\u0E1B\u0E35\u0E01\u0E32\u0E23\u0E28\u0E36\u0E01\u0E29\u0E32"),o.default.createElement("select",{className:"sel",value:w.year,style:w.year?void 0:{color:"var(--ink-3)",borderColor:"var(--accent-line)",background:"var(--accent-soft)"},onChange:n=>{let d=n.target.value;M({...w,year:d?parseInt(d):""})}},o.default.createElement("option",{value:""},"\u0E40\u0E25\u0E37\u0E2D\u0E01\u0E1B\u0E35\u0E01\u0E32\u0E23\u0E28\u0E36\u0E01\u0E29\u0E32"),Qh.map(n=>o.default.createElement("option",{key:n,value:n},n)))),o.default.createElement("div",{className:"field"},o.default.createElement("label",{className:"lbl"},"\u0E20\u0E32\u0E04\u0E40\u0E23\u0E35\u0E22\u0E19"),o.default.createElement("div",{style:{display:"flex",gap:8}},[1,2].map(n=>o.default.createElement("button",{key:n,onClick:()=>M({...w,term:n}),className:`btn ${w.term===n?"btn-primary":""}`,style:{flex:1}},"\u0E20\u0E32\u0E04\u0E40\u0E23\u0E35\u0E22\u0E19\u0E17\u0E35\u0E48 ",n)))),o.default.createElement("div",{className:"note note-info"},o.default.createElement($e,{className:"w-4 h-4",style:{flexShrink:0,marginTop:1,color:"var(--warn)"}}),o.default.createElement("div",null,"\u0E01\u0E32\u0E23\u0E40\u0E1B\u0E25\u0E35\u0E48\u0E22\u0E19\u0E15\u0E23\u0E07\u0E19\u0E35\u0E49\u0E40\u0E1B\u0E47\u0E19\u0E01\u0E32\u0E23",o.default.createElement("b",{style:{color:"var(--ink)"}},"\u0E41\u0E01\u0E49\u0E1B\u0E49\u0E32\u0E22\u0E01\u0E33\u0E01\u0E31\u0E1A\u0E02\u0E2D\u0E07\u0E15\u0E32\u0E23\u0E32\u0E07\u0E0A\u0E38\u0E14\u0E19\u0E35\u0E49")," \u0E44\u0E21\u0E48\u0E44\u0E14\u0E49\u0E40\u0E1B\u0E34\u0E14\u0E15\u0E32\u0E23\u0E32\u0E07\u0E0A\u0E38\u0E14\u0E43\u0E2B\u0E21\u0E48",o.default.createElement("div",{style:{marginTop:4}},"\u0E16\u0E49\u0E32\u0E08\u0E30\u0E02\u0E36\u0E49\u0E19\u0E20\u0E32\u0E04\u0E40\u0E23\u0E35\u0E22\u0E19\u0E43\u0E2B\u0E21\u0E48 \u0E43\u0E2B\u0E49\u0E2A\u0E33\u0E23\u0E2D\u0E07\u0E44\u0E1F\u0E25\u0E4C\u0E02\u0E2D\u0E07\u0E20\u0E32\u0E04\u0E40\u0E14\u0E34\u0E21\u0E40\u0E01\u0E47\u0E1A\u0E44\u0E27\u0E49\u0E01\u0E48\u0E2D\u0E19 \u0E41\u0E25\u0E49\u0E27\u0E04\u0E48\u0E2D\u0E22\u0E25\u0E49\u0E32\u0E07\u0E02\u0E49\u0E2D\u0E21\u0E39\u0E25\u0E40\u0E23\u0E34\u0E48\u0E21\u0E43\u0E2B\u0E21\u0E48")))),o.default.createElement("div",{className:"modal-foot",style:{justifyContent:"space-between"}},o.default.createElement("button",{onClick:()=>{vo(!1),Bt(!0)},className:"btn btn-sm"},o.default.createElement(Tt,{className:"w-3.5 h-3.5"})," \u0E2A\u0E33\u0E23\u0E2D\u0E07\u0E44\u0E1F\u0E25\u0E4C\u0E01\u0E48\u0E2D\u0E19"),o.default.createElement("button",{onClick:()=>vo(!1),className:"btn btn-accent"},o.default.createElement(sa,{className:"w-4 h-4"})," \u0E40\u0E2A\u0E23\u0E47\u0E08\u0E2A\u0E34\u0E49\u0E19")))),Cl&&(()=>{let{conflicts:n,shortages:d}=Cl,i=n.length===0&&d.length===0,p={class:"\u0E2B\u0E49\u0E2D\u0E07\u0E40\u0E23\u0E35\u0E22\u0E19\u0E0B\u0E49\u0E2D\u0E19",teacher:"\u0E04\u0E23\u0E39\u0E0B\u0E49\u0E2D\u0E19",room:"\u0E2B\u0E49\u0E2D\u0E07\u0E0B\u0E49\u0E2D\u0E19"},y=g=>{Lo(null),de("student"),g.classId&&L(g.classId),g.day&&g.period&&setTimeout(()=>Cu(g.day,g.period),60)};return o.default.createElement("div",{className:"ov",onClick:()=>Lo(null)},o.default.createElement("div",{className:"modal",style:{maxWidth:580},onClick:g=>g.stopPropagation()},o.default.createElement("div",{className:"modal-head"},o.default.createElement("div",null,o.default.createElement("div",{className:"modal-title"},"\u0E1C\u0E25\u0E15\u0E23\u0E27\u0E08\u0E15\u0E32\u0E23\u0E32\u0E07"),o.default.createElement("div",{className:"modal-sub"},"\u0E2A\u0E41\u0E01\u0E19 ",u.length," \u0E2B\u0E49\u0E2D\u0E07\u0E40\u0E23\u0E35\u0E22\u0E19 \xB7 ",v.length," \u0E04\u0E23\u0E39 \xB7 ",I.length," \u0E2B\u0E49\u0E2D\u0E07 \xB7 ",q.filter(g=>g.subjectId).length," \u0E04\u0E32\u0E1A")),o.default.createElement("button",{onClick:()=>Lo(null),className:"x-btn"},o.default.createElement(ua,{className:"w-4 h-4"}))),o.default.createElement("div",{className:"modal-body",style:{display:"flex",flexDirection:"column",gap:16}},i?o.default.createElement("div",{className:"note",style:{background:"var(--ok-soft)",border:"1px solid #A8D8C4",color:"#0E5A42"}},o.default.createElement(sa,{className:"w-4 h-4",style:{flexShrink:0,marginTop:1}}),o.default.createElement("span",null,"\u0E44\u0E21\u0E48\u0E1E\u0E1A\u0E1B\u0E31\u0E0D\u0E2B\u0E32 \u0E15\u0E32\u0E23\u0E32\u0E07\u0E44\u0E21\u0E48\u0E21\u0E35\u0E04\u0E32\u0E1A\u0E0A\u0E19 \u0E41\u0E25\u0E30\u0E17\u0E38\u0E01\u0E27\u0E34\u0E0A\u0E32\u0E25\u0E07\u0E04\u0E23\u0E1A\u0E15\u0E32\u0E21\u0E2B\u0E25\u0E31\u0E01\u0E2A\u0E39\u0E15\u0E23\u0E41\u0E25\u0E49\u0E27")):o.default.createElement("div",{style:{display:"flex",gap:22,flexWrap:"wrap"}},o.default.createElement("div",null,o.default.createElement("div",{className:"eyebrow"},"\u0E04\u0E32\u0E1A\u0E0A\u0E19"),o.default.createElement("div",{className:"mono",style:{fontSize:27.5,fontWeight:600,marginTop:3,color:n.length?"var(--danger)":"var(--ok)"}},n.length)),o.default.createElement("div",null,o.default.createElement("div",{className:"eyebrow"},"\u0E27\u0E34\u0E0A\u0E32\u0E25\u0E07\u0E44\u0E21\u0E48\u0E04\u0E23\u0E1A"),o.default.createElement("div",{className:"mono",style:{fontSize:27.5,fontWeight:600,marginTop:3,color:d.length?"var(--warn)":"var(--ok)"}},d.length))),n.length>0&&o.default.createElement("div",null,o.default.createElement("div",{className:"eyebrow",style:{marginBottom:9}},"\u0E04\u0E32\u0E1A\u0E0A\u0E19 \u2014 \u0E15\u0E49\u0E2D\u0E07\u0E41\u0E01\u0E49\u0E01\u0E48\u0E2D\u0E19\u0E1B\u0E23\u0E30\u0E01\u0E32\u0E28\u0E15\u0E32\u0E23\u0E32\u0E07"),n.map((g,C)=>o.default.createElement("div",{key:C,className:"list-row",style:{borderColor:"var(--danger-soft)"}},o.default.createElement("div",{style:{display:"flex",alignItems:"center",gap:11}},o.default.createElement("span",{style:{background:"var(--danger-soft)",color:"var(--danger)",fontSize:13,fontWeight:700,padding:"3px 7px",borderRadius:4,flexShrink:0}},p[g.type]),o.default.createElement("div",{style:{flex:1,minWidth:0}},o.default.createElement("div",{style:{fontSize:16.5,fontWeight:600}},g.title),o.default.createElement("div",{style:{fontSize:14.5,color:"var(--ink-3)",marginTop:2}},g.day," \u0E04\u0E32\u0E1A ",g.period," \xB7 ",g.detail)),o.default.createElement("button",{onClick:()=>y(g),className:"btn btn-sm",style:{flexShrink:0}},"\u0E44\u0E1B\u0E41\u0E01\u0E49"))))),d.length>0&&o.default.createElement("div",null,o.default.createElement("div",{className:"eyebrow",style:{marginBottom:9}},"\u0E27\u0E34\u0E0A\u0E32\u0E17\u0E35\u0E48\u0E22\u0E31\u0E07\u0E25\u0E07\u0E44\u0E21\u0E48\u0E04\u0E23\u0E1A\u0E15\u0E32\u0E21\u0E2B\u0E25\u0E31\u0E01\u0E2A\u0E39\u0E15\u0E23"),d.map((g,C)=>o.default.createElement("div",{key:C,className:"list-row"},o.default.createElement("div",{style:{display:"flex",alignItems:"center",gap:11}},o.default.createElement("span",{style:{background:g.type==="over"?"var(--danger-soft)":"var(--warn-soft)",color:g.type==="over"?"var(--danger)":"var(--warn)",fontSize:13,fontWeight:700,padding:"3px 7px",borderRadius:4,flexShrink:0}},g.type==="over"?"\u0E40\u0E01\u0E34\u0E19":"\u0E02\u0E32\u0E14"),o.default.createElement("div",{style:{flex:1,minWidth:0}},o.default.createElement("div",{style:{fontSize:16.5,fontWeight:600}},g.title),o.default.createElement("div",{style:{fontSize:14.5,color:"var(--ink-3)",marginTop:2}},g.detail)),o.default.createElement("button",{onClick:()=>{Lo(null),de("student"),L(g.classId)},className:"btn btn-sm",style:{flexShrink:0}},"\u0E40\u0E1B\u0E34\u0E14\u0E2B\u0E49\u0E2D\u0E07"))))))))})(),jr&&o.default.createElement("div",{className:"ov",onClick:()=>Wa(Fl,()=>Et(!1))},o.default.createElement("div",{className:"modal",style:{maxWidth:540},onClick:n=>n.stopPropagation()},o.default.createElement("div",{className:"modal-head"},o.default.createElement("div",null,o.default.createElement("div",{className:"modal-title"},"\u0E17\u0E30\u0E40\u0E1A\u0E35\u0E22\u0E19\u0E2B\u0E49\u0E2D\u0E07"),o.default.createElement("div",{className:"modal-sub"},ea.length," \u0E2B\u0E49\u0E2D\u0E07\u0E02\u0E2D\u0E07\u0E41\u0E1C\u0E19\u0E01",I.length-ea.length>0?` \xB7 ${I.length-ea.length} \u0E2B\u0E49\u0E2D\u0E07\u0E19\u0E2D\u0E01\u0E41\u0E1C\u0E19\u0E01`:""," \xB7 \u0E23\u0E30\u0E1A\u0E1A\u0E40\u0E15\u0E37\u0E2D\u0E19\u0E17\u0E31\u0E19\u0E17\u0E35\u0E40\u0E21\u0E37\u0E48\u0E2D\u0E2A\u0E2D\u0E07\u0E2B\u0E49\u0E2D\u0E07\u0E40\u0E23\u0E35\u0E22\u0E19\u0E43\u0E0A\u0E49\u0E2B\u0E49\u0E2D\u0E07\u0E40\u0E14\u0E35\u0E22\u0E27\u0E01\u0E31\u0E19\u0E43\u0E19\u0E40\u0E27\u0E25\u0E32\u0E40\u0E14\u0E35\u0E22\u0E27\u0E01\u0E31\u0E19")),o.default.createElement("button",{onClick:()=>Wa(Fl,()=>Et(!1)),className:"x-btn"},o.default.createElement(ua,{className:"w-4 h-4"}))),o.default.createElement("div",{className:"modal-body",style:{display:"flex",flexDirection:"column",gap:16}},o.default.createElement("div",{className:"box"},o.default.createElement("div",{className:"box-title"},o.default.createElement(ba,{className:"w-3.5 h-3.5"})," \u0E40\u0E1E\u0E34\u0E48\u0E21\u0E2B\u0E49\u0E2D\u0E07"),o.default.createElement("div",{style:{display:"grid",gridTemplateColumns:"160px 1fr",gap:10,marginBottom:12}},o.default.createElement("div",{className:"field"},o.default.createElement("label",{className:"lbl"},"\u0E0A\u0E37\u0E48\u0E2D\u0E2B\u0E49\u0E2D\u0E07"),o.default.createElement("input",{type:"text",className:"inp",placeholder:"114, Shop 2",value:No.name,onChange:n=>Zs({...No,name:n.target.value})})),o.default.createElement("div",{className:"field"},o.default.createElement("label",{className:"lbl"},"\u0E2B\u0E21\u0E32\u0E22\u0E40\u0E2B\u0E15\u0E38"),o.default.createElement("input",{type:"text",className:"inp",placeholder:"\u0E40\u0E0A\u0E48\u0E19 \u0E42\u0E23\u0E07\u0E1D\u0E36\u0E01\u0E44\u0E1F\u0E1F\u0E49\u0E32, \u0E2B\u0E49\u0E2D\u0E07\u0E17\u0E24\u0E29\u0E0E\u0E35",value:No.note,onChange:n=>Zs({...No,note:n.target.value})}))),o.default.createElement("button",{onClick:Ng,className:"btn btn-primary",style:{width:"100%",marginBottom:10}},"\u0E40\u0E1E\u0E34\u0E48\u0E21\u0E2B\u0E49\u0E2D\u0E07"),o.default.createElement("div",{style:{display:"flex",gap:8}},o.default.createElement("label",{className:"btn btn-sm",style:{flex:1,cursor:"pointer"}},o.default.createElement(ho,{className:"w-3.5 h-3.5"})," \u0E19\u0E33\u0E40\u0E02\u0E49\u0E32 CSV",o.default.createElement("input",{type:"file",accept:".csv",onChange:Bg,style:{display:"none"}})),o.default.createElement("button",{onClick:Mg,className:"btn btn-sm",style:{flex:1}},o.default.createElement(et,{className:"w-3.5 h-3.5"})," \u0E44\u0E1F\u0E25\u0E4C\u0E15\u0E31\u0E27\u0E2D\u0E22\u0E48\u0E32\u0E07"))),o.default.createElement("div",null,o.default.createElement("div",{className:"eyebrow",style:{marginBottom:9}},"\u0E2B\u0E49\u0E2D\u0E07\u0E17\u0E31\u0E49\u0E07\u0E2B\u0E21\u0E14"),I.length===0?o.default.createElement("div",{className:"note note-info",style:{justifyContent:"center"}},"\u0E22\u0E31\u0E07\u0E44\u0E21\u0E48\u0E21\u0E35\u0E2B\u0E49\u0E2D\u0E07\u0E43\u0E19\u0E17\u0E30\u0E40\u0E1A\u0E35\u0E22\u0E19 \u0E40\u0E1E\u0E34\u0E48\u0E21\u0E14\u0E49\u0E32\u0E19\u0E1A\u0E19\u0E2B\u0E23\u0E37\u0E2D\u0E19\u0E33\u0E40\u0E02\u0E49\u0E32\u0E08\u0E32\u0E01\u0E44\u0E1F\u0E25\u0E4C CSV \u0E41\u0E25\u0E49\u0E27\u0E23\u0E30\u0E1A\u0E1A\u0E08\u0E30\u0E40\u0E23\u0E34\u0E48\u0E21\u0E15\u0E23\u0E27\u0E08\u0E2B\u0E49\u0E2D\u0E07\u0E0A\u0E19\u0E43\u0E2B\u0E49"):[...I].sort((n,d)=>(n.external?1:0)-(d.external?1:0)).map(n=>{let d=bf(n.id);return o.default.createElement("div",{key:n.id,className:"list-row"},Fl===n.id?o.default.createElement("div",{style:{display:"flex",flexDirection:"column",gap:9}},o.default.createElement("div",{style:{display:"grid",gridTemplateColumns:"140px 1fr",gap:8}},o.default.createElement("div",{className:"field"},o.default.createElement("label",{className:"lbl"},"\u0E0A\u0E37\u0E48\u0E2D\u0E2B\u0E49\u0E2D\u0E07"),o.default.createElement("input",{type:"text",className:"inp",style:{padding:"6px 8px",fontSize:13.5},value:Fo.name,onChange:i=>Js({...Fo,name:i.target.value})})),o.default.createElement("div",{className:"field"},o.default.createElement("label",{className:"lbl"},"\u0E2B\u0E21\u0E32\u0E22\u0E40\u0E2B\u0E15\u0E38"),o.default.createElement("input",{type:"text",className:"inp",style:{padding:"6px 8px",fontSize:13.5},value:Fo.note,onChange:i=>Js({...Fo,note:i.target.value})}))),o.default.createElement("div",{style:{display:"flex",gap:7,justifyContent:"flex-end"}},o.default.createElement("button",{onClick:Dg,className:"btn btn-sm"},"\u0E22\u0E01\u0E40\u0E25\u0E34\u0E01"),o.default.createElement("button",{onClick:()=>Tg(n.id),className:"btn btn-accent btn-sm"},o.default.createElement(sa,{className:"w-3.5 h-3.5"})," \u0E1A\u0E31\u0E19\u0E17\u0E36\u0E01"))):o.default.createElement("div",{style:{display:"flex",alignItems:"center",gap:11}},o.default.createElement("div",{style:{flex:1,minWidth:0}},o.default.createElement("div",{style:{fontSize:17.5,fontWeight:600,display:"flex",alignItems:"center",gap:7,flexWrap:"wrap"}},n.name,n.external&&o.default.createElement("span",{style:{background:"var(--surface-2)",color:"var(--ink-3)",fontSize:12,fontWeight:700,padding:"2px 7px",borderRadius:4,border:"1px solid var(--rule)"}},"\u0E19\u0E2D\u0E01\u0E41\u0E1C\u0E19\u0E01")),o.default.createElement("div",{style:{fontSize:15,color:"var(--ink-3)",marginTop:2}},n.note?`${n.note} \xB7 `:"","\u0E43\u0E0A\u0E49\u0E2D\u0E22\u0E39\u0E48 ",d," \u0E04\u0E32\u0E1A/\u0E2A\u0E31\u0E1B\u0E14\u0E32\u0E2B\u0E4C",n.external?" \xB7 \u0E44\u0E21\u0E48\u0E41\u0E2A\u0E14\u0E07\u0E43\u0E19\u0E41\u0E17\u0E47\u0E1A\u0E15\u0E32\u0E23\u0E32\u0E07\u0E2B\u0E49\u0E2D\u0E07":"")),o.default.createElement("div",{style:{display:"flex",gap:3}},o.default.createElement("button",{onClick:()=>{Z(),N(I.map(i=>i.id===n.id?{...i,external:!i.external}:i))},className:"x-btn",title:n.external?"\u0E22\u0E49\u0E32\u0E22\u0E21\u0E32\u0E40\u0E1B\u0E47\u0E19\u0E2B\u0E49\u0E2D\u0E07\u0E02\u0E2D\u0E07\u0E41\u0E1C\u0E19\u0E01":"\u0E17\u0E33\u0E40\u0E1B\u0E47\u0E19\u0E2B\u0E49\u0E2D\u0E07\u0E19\u0E2D\u0E01\u0E41\u0E1C\u0E19\u0E01 (\u0E0B\u0E48\u0E2D\u0E19\u0E08\u0E32\u0E01\u0E41\u0E17\u0E47\u0E1A\u0E15\u0E32\u0E23\u0E32\u0E07\u0E2B\u0E49\u0E2D\u0E07)"},o.default.createElement(Ra,{className:"w-4 h-4",style:{opacity:n.external?.5:1}})),o.default.createElement("button",{onClick:()=>Fg(n),className:"x-btn",title:"\u0E41\u0E01\u0E49\u0E44\u0E02"},o.default.createElement(wa,{className:"w-4 h-4"})),o.default.createElement("button",{onClick:()=>Ag(n.id),className:"x-btn",style:{color:"var(--danger)"},title:"\u0E25\u0E1A\u0E2B\u0E49\u0E2D\u0E07"},o.default.createElement(Je,{className:"w-4 h-4"})))))}))))),Wr&&o.default.createElement("div",{className:"ov",onClick:()=>Bt(!1)},o.default.createElement("div",{className:"modal",style:{maxWidth:520},onClick:n=>n.stopPropagation()},o.default.createElement("div",{className:"modal-head"},o.default.createElement("div",null,o.default.createElement("div",{className:"modal-title"},"\u0E1E\u0E34\u0E21\u0E1E\u0E4C\u0E15\u0E32\u0E23\u0E32\u0E07\u0E41\u0E25\u0E30\u0E08\u0E31\u0E14\u0E01\u0E32\u0E23\u0E02\u0E49\u0E2D\u0E21\u0E39\u0E25"),o.default.createElement("div",{className:"modal-sub"},"\u0E23\u0E30\u0E1A\u0E1A\u0E1A\u0E31\u0E19\u0E17\u0E36\u0E01\u0E43\u0E2B\u0E49\u0E2D\u0E31\u0E15\u0E42\u0E19\u0E21\u0E31\u0E15\u0E34\u0E2D\u0E22\u0E39\u0E48\u0E41\u0E25\u0E49\u0E27 \u0E44\u0E1F\u0E25\u0E4C\u0E2A\u0E33\u0E23\u0E2D\u0E07\u0E43\u0E0A\u0E49\u0E40\u0E21\u0E37\u0E48\u0E2D\u0E15\u0E49\u0E2D\u0E07\u0E01\u0E32\u0E23\u0E22\u0E49\u0E32\u0E22\u0E40\u0E04\u0E23\u0E37\u0E48\u0E2D\u0E07\u0E2B\u0E23\u0E37\u0E2D\u0E40\u0E01\u0E47\u0E1A\u0E44\u0E27\u0E49\u0E40\u0E1B\u0E47\u0E19\u0E23\u0E38\u0E48\u0E19")),o.default.createElement("button",{onClick:()=>Bt(!1),className:"x-btn"},o.default.createElement(ua,{className:"w-4 h-4"}))),o.default.createElement("div",{className:"modal-body",style:{display:"flex",flexDirection:"column",gap:16}},o.default.createElement("div",{className:"box"},o.default.createElement("div",{className:"box-title"},o.default.createElement(Ea,{className:"w-3.5 h-3.5"})," \u0E2D\u0E2D\u0E01\u0E44\u0E1F\u0E25\u0E4C PDF"),o.default.createElement("div",{style:{display:"grid",gridTemplateColumns:"1fr 1fr",gap:8}},o.default.createElement("button",{onClick:()=>Mo("current"),className:"btn btn-sm",style:{flexDirection:"column",gap:3,padding:"12px 8px"}},o.default.createElement(go,{className:"w-4 h-4"}),o.default.createElement("span",null,"\u0E15\u0E32\u0E23\u0E32\u0E07\u0E40\u0E23\u0E35\u0E22\u0E19\u0E2B\u0E49\u0E2D\u0E07\u0E19\u0E35\u0E49")),o.default.createElement("button",{onClick:()=>Mo("all"),className:"btn btn-sm",style:{flexDirection:"column",gap:3,padding:"12px 8px"}},o.default.createElement(co,{className:"w-4 h-4"}),o.default.createElement("span",null,"\u0E15\u0E32\u0E23\u0E32\u0E07\u0E40\u0E23\u0E35\u0E22\u0E19\u0E17\u0E38\u0E01\u0E2B\u0E49\u0E2D\u0E07")),o.default.createElement("button",{onClick:()=>Mo("teacher_current"),disabled:!Ha.id,className:"btn btn-sm",style:{flexDirection:"column",gap:3,padding:"12px 8px"}},o.default.createElement(At,{className:"w-4 h-4"}),o.default.createElement("span",null,"\u0E15\u0E32\u0E23\u0E32\u0E07\u0E2A\u0E2D\u0E19\u0E04\u0E23\u0E39\u0E17\u0E48\u0E32\u0E19\u0E19\u0E35\u0E49")),o.default.createElement("button",{onClick:()=>Mo("teacher_all"),disabled:v.length===0,className:"btn btn-sm",style:{flexDirection:"column",gap:3,padding:"12px 8px"}},o.default.createElement(Ea,{className:"w-4 h-4"}),o.default.createElement("span",null,"\u0E15\u0E32\u0E23\u0E32\u0E07\u0E2A\u0E2D\u0E19\u0E04\u0E23\u0E39\u0E17\u0E38\u0E01\u0E04\u0E19")),o.default.createElement("button",{onClick:()=>Mo("room_current"),disabled:!_a.id,className:"btn btn-sm",style:{flexDirection:"column",gap:3,padding:"12px 8px"}},o.default.createElement(Ra,{className:"w-4 h-4"}),o.default.createElement("span",null,"\u0E15\u0E32\u0E23\u0E32\u0E07\u0E43\u0E0A\u0E49\u0E2B\u0E49\u0E2D\u0E07\u0E19\u0E35\u0E49")),o.default.createElement("button",{onClick:()=>Mo("room_all"),disabled:ea.length===0,className:"btn btn-sm",style:{flexDirection:"column",gap:3,padding:"12px 8px"}},o.default.createElement(Ra,{className:"w-4 h-4"}),o.default.createElement("span",null,"\u0E15\u0E32\u0E23\u0E32\u0E07\u0E43\u0E0A\u0E49\u0E2B\u0E49\u0E2D\u0E07\u0E17\u0E38\u0E01\u0E2B\u0E49\u0E2D\u0E07")))),o.default.createElement("div",{className:"box"},o.default.createElement("div",{className:"box-title"},o.default.createElement(Tt,{className:"w-3.5 h-3.5"})," \u0E44\u0E1F\u0E25\u0E4C\u0E2A\u0E33\u0E23\u0E2D\u0E07\u0E02\u0E49\u0E2D\u0E21\u0E39\u0E25"),o.default.createElement("div",{style:{display:"flex",gap:8}},o.default.createElement("button",{onClick:xg,className:"btn btn-sm",style:{flex:1}},o.default.createElement(et,{className:"w-3.5 h-3.5"})," \u0E1A\u0E31\u0E19\u0E17\u0E36\u0E01\u0E40\u0E1B\u0E47\u0E19\u0E44\u0E1F\u0E25\u0E4C"),o.default.createElement("label",{className:"btn btn-sm",style:{flex:1,cursor:"pointer"}},o.default.createElement(po,{className:"w-3.5 h-3.5"})," \u0E40\u0E1B\u0E34\u0E14\u0E08\u0E32\u0E01\u0E44\u0E1F\u0E25\u0E4C",o.default.createElement("input",{type:"file",accept:".json",onChange:Iu,style:{display:"none"}}))),Po&&o.default.createElement("div",{className:"hint",style:{marginTop:9}},"\u0E1A\u0E31\u0E19\u0E17\u0E36\u0E01\u0E2D\u0E31\u0E15\u0E42\u0E19\u0E21\u0E31\u0E15\u0E34\u0E25\u0E48\u0E32\u0E2A\u0E38\u0E14\u0E40\u0E21\u0E37\u0E48\u0E2D ",Po)),o.default.createElement("div",{className:"box",style:{borderColor:"var(--danger-soft)"}},o.default.createElement("div",{className:"box-title",style:{color:"var(--danger)"}},o.default.createElement($e,{className:"w-3.5 h-3.5"})," \u0E25\u0E49\u0E32\u0E07\u0E02\u0E49\u0E2D\u0E21\u0E39\u0E25"),o.default.createElement("div",{style:{display:"flex",gap:8}},o.default.createElement("button",{onClick:hg,className:"btn btn-ghost-danger btn-sm",style:{flex:1}},o.default.createElement(Or,{className:"w-3.5 h-3.5"})," \u0E25\u0E49\u0E32\u0E07\u0E15\u0E32\u0E23\u0E32\u0E07\u0E2B\u0E49\u0E2D\u0E07\u0E19\u0E35\u0E49"),o.default.createElement("button",{onClick:gg,className:"btn btn-danger btn-sm",style:{flex:1}},o.default.createElement(Je,{className:"w-3.5 h-3.5"})," \u0E25\u0E49\u0E32\u0E07\u0E02\u0E49\u0E2D\u0E21\u0E39\u0E25\u0E17\u0E31\u0E49\u0E07\u0E2B\u0E21\u0E14")),o.default.createElement("div",{className:"hint",style:{marginTop:9}},"\u0E2A\u0E33\u0E23\u0E2D\u0E07\u0E02\u0E49\u0E2D\u0E21\u0E39\u0E25\u0E40\u0E1B\u0E47\u0E19\u0E44\u0E1F\u0E25\u0E4C\u0E44\u0E27\u0E49\u0E01\u0E48\u0E2D\u0E19\u0E25\u0E49\u0E32\u0E07\u0E17\u0E38\u0E01\u0E04\u0E23\u0E31\u0E49\u0E07 \u0E40\u0E1E\u0E23\u0E32\u0E30\u0E01\u0E39\u0E49\u0E04\u0E37\u0E19\u0E44\u0E21\u0E48\u0E44\u0E14\u0E49\u0E2B\u0E25\u0E31\u0E07\u0E08\u0E32\u0E01\u0E19\u0E31\u0E49\u0E19"))))),Ua.isOpen&&o.default.createElement("div",{className:"ov",style:{zIndex:90},onClick:()=>nt({isOpen:!1,message:""})},o.default.createElement("div",{className:"modal",style:{maxWidth:380},onClick:n=>n.stopPropagation()},o.default.createElement("div",{className:"modal-body",style:{textAlign:"center"}},o.default.createElement("p",{style:{fontSize:17.5,lineHeight:1.65,whiteSpace:"pre-line",margin:"4px 0 16px"}},Ua.message),o.default.createElement("button",{onClick:()=>nt({isOpen:!1,message:""}),className:"btn btn-primary",style:{width:"100%"}},"\u0E15\u0E01\u0E25\u0E07")))),De.isOpen&&o.default.createElement("div",{className:"ov",style:{zIndex:90}},o.default.createElement("div",{className:"modal",style:{maxWidth:410}},o.default.createElement("div",{className:"modal-body"},o.default.createElement("div",{className:"modal-title",style:{marginBottom:8}},De.title),o.default.createElement("p",{style:{fontSize:17,lineHeight:1.65,color:"var(--ink-3)",whiteSpace:"pre-line",margin:0}},De.message)),o.default.createElement("div",{className:"modal-foot",style:{justifyContent:"flex-end"}},o.default.createElement("button",{onClick:()=>Nl(n=>({...n,isOpen:!1})),className:"btn"},De.cancelText),o.default.createElement("button",{onClick:If,className:`btn ${De.isDestructive?"btn-danger":"btn-accent"}`},De.confirmText)))))}var Yi=class extends o.default.Component{constructor(a){super(a),this.state={hasError:!1}}static getDerivedStateFromError(){return{hasError:!0}}componentDidCatch(a,t){console.error("Timetable app crashed:",a,t)}render(){return this.state.hasError?o.default.createElement("div",{style:{fontFamily:Le,minHeight:"100vh",background:"#ECEEF3",display:"flex",alignItems:"center",justifyContent:"center",padding:24}},o.default.createElement("style",null,`*{ font-family:${Le}; box-sizing:border-box; }`),o.default.createElement("div",{style:{maxWidth:400,width:"100%",background:"#fff",border:"1px solid #CFD5DF",borderRadius:10,padding:28,textAlign:"center"}},o.default.createElement($e,{style:{width:26,height:26,color:"#B81F2D",margin:"0 auto 12px"}}),o.default.createElement("h2",{style:{fontSize:16.5,fontWeight:700,color:"#0F1E3D",margin:"0 0 8px"}},"\u0E41\u0E2D\u0E1B\u0E2B\u0E22\u0E38\u0E14\u0E17\u0E33\u0E07\u0E32\u0E19\u0E01\u0E25\u0E32\u0E07\u0E04\u0E31\u0E19"),o.default.createElement("p",{style:{fontSize:14.5,color:"#48597D",lineHeight:1.65,margin:"0 0 18px"}},"\u0E02\u0E49\u0E2D\u0E21\u0E39\u0E25\u0E17\u0E35\u0E48\u0E1A\u0E31\u0E19\u0E17\u0E36\u0E01\u0E44\u0E27\u0E49\u0E22\u0E31\u0E07\u0E2D\u0E22\u0E39\u0E48\u0E04\u0E23\u0E1A \u0E01\u0E14\u0E1B\u0E38\u0E48\u0E21\u0E14\u0E49\u0E32\u0E19\u0E25\u0E48\u0E32\u0E07\u0E40\u0E1E\u0E37\u0E48\u0E2D\u0E01\u0E25\u0E31\u0E1A\u0E40\u0E02\u0E49\u0E32\u0E2B\u0E19\u0E49\u0E32\u0E15\u0E32\u0E23\u0E32\u0E07\u0E2D\u0E35\u0E01\u0E04\u0E23\u0E31\u0E49\u0E07"),o.default.createElement("button",{onClick:()=>this.setState({hasError:!1}),style:{width:"100%",background:"#0F1E3D",color:"#fff",fontWeight:700,fontSize:14.5,padding:"11px",borderRadius:6}},"\u0E01\u0E25\u0E31\u0E1A\u0E40\u0E02\u0E49\u0E32\u0E2B\u0E19\u0E49\u0E32\u0E15\u0E32\u0E23\u0E32\u0E07"))):this.props.children}};function Ji(){return o.default.createElement(Yi,null,o.default.createElement(Dv,null))}var Tv=(0,lg.createRoot)(document.getElementById("root"));Tv.render(og.default.createElement(Ji,null));})();
-/*! Bundled license information:
+  `;
 
-react/cjs/react.production.min.js:
-  (**
-   * @license React
-   * react.production.min.js
-   *
-   * Copyright (c) Facebook, Inc. and its affiliates.
-   *
-   * This source code is licensed under the MIT license found in the
-   * LICENSE file in the root directory of this source tree.
-   *)
+  // ==========================================
+  // 10. หน้าจอโหลด
+  // ==========================================
+  if (!isLoaded) {
+    return /*#__PURE__*/React.createElement("div", {
+      className: "tt",
+      style: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center'
+      }
+    }, /*#__PURE__*/React.createElement("style", null, styles), /*#__PURE__*/React.createElement("div", {
+      style: {
+        textAlign: 'center'
+      }
+    }, /*#__PURE__*/React.createElement(Loader2, {
+      className: "w-6 h-6 animate-spin",
+      style: {
+        color: 'var(--accent)',
+        margin: '0 auto 10px'
+      }
+    }), /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 17.5,
+        fontWeight: 600,
+        color: 'var(--ink-3)'
+      }
+    }, "กำลังเปิดข้อมูลตาราง")));
+  }
 
-scheduler/cjs/scheduler.production.min.js:
-  (**
-   * @license React
-   * scheduler.production.min.js
-   *
-   * Copyright (c) Facebook, Inc. and its affiliates.
-   *
-   * This source code is licensed under the MIT license found in the
-   * LICENSE file in the root directory of this source tree.
-   *)
+  // ==========================================
+  // 11. หน้าแรก
+  // ==========================================
+  if (step === 'home') {
+    const totalSubjects = Object.values(classSubjects).reduce((a, l) => a + (l?.length || 0), 0);
+    const placedSlots = schedule.filter(s => s.subjectId).length;
+    return /*#__PURE__*/React.createElement("div", {
+      className: "tt home-wrap",
+      style: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: 20,
+        position: 'relative',
+        overflow: 'hidden',
+        minHeight: '100vh'
+      }
+    }, /*#__PURE__*/React.createElement("style", null, styles), /*#__PURE__*/React.createElement("div", {
+      className: "home-blob",
+      style: {
+        width: 460,
+        height: 460,
+        top: -170,
+        right: -130,
+        background: 'radial-gradient(circle, rgba(217,116,26,.28), transparent 70%)'
+      }
+    }), /*#__PURE__*/React.createElement("div", {
+      className: "home-blob",
+      style: {
+        width: 500,
+        height: 500,
+        bottom: -220,
+        left: -170,
+        background: 'radial-gradient(circle, rgba(28,49,96,.30), transparent 70%)'
+      }
+    }), /*#__PURE__*/React.createElement("div", {
+      className: "home-blob",
+      style: {
+        width: 360,
+        height: 360,
+        top: '38%',
+        left: '48%',
+        background: 'radial-gradient(circle, rgba(217,116,26,.10), transparent 70%)'
+      }
+    }), /*#__PURE__*/React.createElement("div", {
+      style: {
+        width: '100%',
+        maxWidth: 960,
+        position: 'relative',
+        zIndex: 1
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: 'flex',
+        alignItems: 'center',
+        gap: 14,
+        marginBottom: 28
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        width: 44,
+        height: 44,
+        background: 'linear-gradient(155deg,var(--ink),var(--ink-2))',
+        borderRadius: 11,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        flexShrink: 0,
+        boxShadow: '0 4px 14px rgba(15,30,61,.28)'
+      }
+    }, /*#__PURE__*/React.createElement(Calendar, {
+      className: "w-5 h-5",
+      style: {
+        color: 'var(--accent)'
+      }
+    })), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+      className: "eyebrow"
+    }, "แผนกวิชาช่างไฟฟ้า · วิทยาลัยเทคนิคปราจีนบุรี"), /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 28,
+        fontWeight: 800,
+        letterSpacing: '-.3px',
+        marginTop: 3
+      }
+    }, "ระบบจัดตารางเรียน", /*#__PURE__*/React.createElement("span", {
+      style: {
+        color: 'var(--accent)'
+      }
+    }, "และตารางสอน")))), /*#__PURE__*/React.createElement("div", {
+      className: "box home-card",
+      style: {
+        background: 'linear-gradient(180deg, #fff, #FCFBF9)',
+        padding: 0,
+        overflow: 'hidden',
+        boxShadow: '0 24px 56px rgba(28,49,96,.16), 0 4px 14px rgba(217,116,26,.10)'
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: 'grid',
+        gridTemplateColumns: 'minmax(0,1fr)',
+        gap: 0
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        padding: '22px 24px',
+        borderBottom: '1px solid var(--rule)'
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "eyebrow",
+      style: {
+        marginBottom: 14
+      }
+    }, "ตั้งค่าภาคเรียนที่จะจัด"), /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: 'flex',
+        gap: 16,
+        flexWrap: 'wrap',
+        alignItems: 'flex-end'
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        minWidth: 190
+      }
+    }, /*#__PURE__*/React.createElement("label", {
+      className: "lbl"
+    }, "ปีการศึกษา"), /*#__PURE__*/React.createElement("select", {
+      className: "sel",
+      value: config.year,
+      style: !config.year ? {
+        color: 'var(--ink-3)',
+        borderColor: 'var(--accent-line)',
+        background: 'var(--accent-soft)'
+      } : undefined,
+      onChange: e => {
+        const v = e.target.value;
+        setConfig({
+          ...config,
+          year: v ? parseInt(v) : ''
+        });
+      }
+    }, /*#__PURE__*/React.createElement("option", {
+      value: ""
+    }, "เลือกปีการศึกษา"), YEARS.map(y => /*#__PURE__*/React.createElement("option", {
+      key: y,
+      value: y
+    }, y)))), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("label", {
+      className: "lbl"
+    }, "ภาคเรียน"), /*#__PURE__*/React.createElement("div", {
+      className: "seg-light"
+    }, [1, 2].map(t => /*#__PURE__*/React.createElement("button", {
+      key: t,
+      onClick: () => setConfig({
+        ...config,
+        term: t
+      }),
+      className: `seg-light-btn ${config.term === t ? 'seg-light-on' : ''}`
+    }, "ภาคเรียนที่ ", t)))))), hasSavedData ? /*#__PURE__*/React.createElement("div", {
+      style: {
+        padding: '22px 24px'
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: 'flex',
+        flexWrap: 'wrap',
+        gap: 22,
+        alignItems: 'stretch',
+        justifyContent: 'space-between'
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))',
+        gap: 10,
+        flex: 1,
+        minWidth: 280
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "stat-tile"
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "stat-icon",
+      style: {
+        background: 'var(--accent-soft)'
+      }
+    }, /*#__PURE__*/React.createElement(Users, {
+      className: "w-4 h-4",
+      style: {
+        color: 'var(--accent)'
+      }
+    })), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+      className: "eyebrow"
+    }, "ห้องเรียน"), /*#__PURE__*/React.createElement("div", {
+      className: "mono",
+      style: {
+        fontSize: 22,
+        fontWeight: 700,
+        marginTop: 1
+      }
+    }, deptClasses.length))), /*#__PURE__*/React.createElement("div", {
+      className: "stat-tile"
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "stat-icon",
+      style: {
+        background: '#DCE3F3'
+      }
+    }, /*#__PURE__*/React.createElement(User, {
+      className: "w-4 h-4",
+      style: {
+        color: '#2A4A8C'
+      }
+    })), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+      className: "eyebrow"
+    }, "ครูผู้สอน"), /*#__PURE__*/React.createElement("div", {
+      className: "mono",
+      style: {
+        fontSize: 22,
+        fontWeight: 700,
+        marginTop: 1
+      }
+    }, teachers.length))), /*#__PURE__*/React.createElement("div", {
+      className: "stat-tile"
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "stat-icon",
+      style: {
+        background: '#E4DEF6'
+      }
+    }, /*#__PURE__*/React.createElement(BookOpen, {
+      className: "w-4 h-4",
+      style: {
+        color: '#5B3FA6'
+      }
+    })), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+      className: "eyebrow"
+    }, "รายวิชา"), /*#__PURE__*/React.createElement("div", {
+      className: "mono",
+      style: {
+        fontSize: 22,
+        fontWeight: 700,
+        marginTop: 1
+      }
+    }, totalSubjects))), /*#__PURE__*/React.createElement("div", {
+      className: "stat-tile"
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "stat-icon",
+      style: {
+        background: 'var(--ok-soft)'
+      }
+    }, /*#__PURE__*/React.createElement(Check, {
+      className: "w-4 h-4",
+      style: {
+        color: 'var(--ok)'
+      }
+    })), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+      className: "eyebrow"
+    }, "คาบที่จัดแล้ว"), /*#__PURE__*/React.createElement("div", {
+      className: "mono",
+      style: {
+        fontSize: 22,
+        fontWeight: 700,
+        marginTop: 1,
+        color: 'var(--ok)'
+      }
+    }, placedSlots)))), /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 8,
+        justifyContent: 'center'
+      }
+    }, /*#__PURE__*/React.createElement("button", {
+      onClick: () => {
+        setCurrentClass(deptClasses[0]?.id || '');
+        setStep('timetable');
+      },
+      disabled: !config.year,
+      className: "btn btn-accent",
+      style: {
+        padding: '13px 22px',
+        whiteSpace: 'nowrap'
+      }
+    }, "เปิดตารางทำงานต่อ ", /*#__PURE__*/React.createElement(ArrowRight, {
+      className: "w-4 h-4"
+    })), /*#__PURE__*/React.createElement("label", {
+      className: "btn",
+      style: {
+        cursor: 'pointer',
+        justifyContent: 'center'
+      }
+    }, /*#__PURE__*/React.createElement(FolderOpen, {
+      className: "w-4 h-4"
+    }), " นำเข้าไฟล์", /*#__PURE__*/React.createElement("input", {
+      type: "file",
+      accept: ".json",
+      onChange: e => importBackup(e, true),
+      style: {
+        display: 'none'
+      }
+    })))), /*#__PURE__*/React.createElement("div", {
+      className: "hint",
+      style: {
+        marginTop: 16,
+        display: 'flex',
+        alignItems: 'center',
+        gap: 6,
+        flexWrap: 'wrap'
+      }
+    }, !config.year ? /*#__PURE__*/React.createElement("span", {
+      style: {
+        color: 'var(--accent)',
+        fontWeight: 700
+      }
+    }, "เลือกปีการศึกษาด้านบนก่อนจึงจะเปิดตารางได้") : lastSavedTime ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(Save, {
+      className: "w-3.5 h-3.5"
+    }), " บันทึกล่าสุดเมื่อ ", lastSavedTime) : null, lastSavedTime && config.year && /*#__PURE__*/React.createElement("span", {
+      style: {
+        color: 'var(--rule)'
+      }
+    }, "·"), /*#__PURE__*/React.createElement("button", {
+      onClick: () => requestConfirm('RESET_FROM_HOME', null, 'เริ่มตารางใหม่ทั้งหมด', 'ห้องเรียน รายวิชา ครู และตารางที่บันทึกไว้จะถูกลบทิ้ง สำรองข้อมูลเป็นไฟล์ไว้ก่อนหากยังต้องการใช้', 'ล้างแล้วเริ่มใหม่'),
+      style: {
+        color: 'var(--danger)',
+        fontWeight: 700,
+        textDecoration: 'underline',
+        textUnderlineOffset: 2
+      }
+    }, "เริ่มใหม่ทั้งหมด"))) : /*#__PURE__*/React.createElement("div", {
+      style: {
+        padding: '22px 24px'
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: 'flex',
+        gap: 26,
+        alignItems: 'flex-start',
+        justifyContent: 'space-between',
+        flexWrap: 'wrap'
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 12,
+        flex: 1,
+        minWidth: 280
+      }
+    }, ['ลงรายวิชาให้แต่ละห้องเรียน', 'เพิ่มรายชื่อครูผู้สอน', 'คลิกช่องในตารางเพื่อวางคาบ ระบบเตือนคาบชนให้อัตโนมัติ'].map((txt, i) => /*#__PURE__*/React.createElement("div", {
+      key: i,
+      style: {
+        display: 'flex',
+        alignItems: 'center',
+        gap: 11
+      }
+    }, /*#__PURE__*/React.createElement("span", {
+      className: "step-num"
+    }, i + 1), /*#__PURE__*/React.createElement("span", {
+      style: {
+        fontSize: 16,
+        color: 'var(--ink-3)',
+        lineHeight: 1.5
+      }
+    }, txt)))), /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 8,
+        flexShrink: 0
+      }
+    }, /*#__PURE__*/React.createElement("button", {
+      onClick: handleStart,
+      disabled: !config.year,
+      className: "btn btn-accent",
+      style: {
+        padding: '13px 22px',
+        whiteSpace: 'nowrap'
+      }
+    }, "เริ่มจัดตาราง ", /*#__PURE__*/React.createElement(ArrowRight, {
+      className: "w-4 h-4"
+    })), /*#__PURE__*/React.createElement("label", {
+      className: "btn",
+      style: {
+        cursor: 'pointer',
+        justifyContent: 'center'
+      }
+    }, /*#__PURE__*/React.createElement(FolderOpen, {
+      className: "w-4 h-4"
+    }), " นำเข้าไฟล์ที่เคยทำไว้", /*#__PURE__*/React.createElement("input", {
+      type: "file",
+      accept: ".json",
+      onChange: e => importBackup(e, true),
+      style: {
+        display: 'none'
+      }
+    })))), /*#__PURE__*/React.createElement("div", {
+      className: "hint",
+      style: {
+        marginTop: 16
+      }
+    }, !config.year ? /*#__PURE__*/React.createElement("span", {
+      style: {
+        color: 'var(--accent)',
+        fontWeight: 700
+      }
+    }, "เลือกปีการศึกษาด้านบนก่อนจึงจะเริ่มจัดตารางได้") : 'มีไฟล์สำรอง .json จากเครื่องอื่นอยู่แล้ว กดนำเข้าไฟล์เพื่อทำงานต่อได้ทันที')))), /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: 'flex',
+        gap: 10,
+        flexWrap: 'wrap',
+        marginTop: 20
+      }
+    }, [{
+      icon: /*#__PURE__*/React.createElement(AlertCircle, {
+        className: "w-3.5 h-3.5"
+      }),
+      t: 'เตือนคาบชนทันทีที่วาง',
+      c: 'var(--danger)'
+    }, {
+      icon: /*#__PURE__*/React.createElement(Printer, {
+        className: "w-3.5 h-3.5"
+      }),
+      t: 'ออกไฟล์ PDF พร้อมส่ง',
+      c: 'var(--accent)'
+    }, {
+      icon: /*#__PURE__*/React.createElement(FileSpreadsheet, {
+        className: "w-3.5 h-3.5"
+      }),
+      t: 'นำเข้ารายวิชาจาก CSV',
+      c: '#2A4A8C'
+    }, {
+      icon: /*#__PURE__*/React.createElement(Save, {
+        className: "w-3.5 h-3.5"
+      }),
+      t: 'บันทึกอัตโนมัติทุกการแก้ไข',
+      c: 'var(--ok)'
+    }].map((f, i) => /*#__PURE__*/React.createElement("div", {
+      key: i,
+      className: "feature-pill"
+    }, /*#__PURE__*/React.createElement("span", {
+      style: {
+        color: f.c
+      }
+    }, f.icon), f.t)))), alertDialog.isOpen && /*#__PURE__*/React.createElement("div", {
+      className: "ov",
+      onClick: () => setAlertDialog({
+        isOpen: false,
+        message: ''
+      })
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "modal",
+      style: {
+        maxWidth: 380
+      },
+      onClick: e => e.stopPropagation()
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "modal-body",
+      style: {
+        textAlign: 'center'
+      }
+    }, /*#__PURE__*/React.createElement("p", {
+      style: {
+        fontSize: 15,
+        lineHeight: 1.6,
+        color: 'var(--ink)',
+        whiteSpace: 'pre-line',
+        margin: '4px 0 16px'
+      }
+    }, alertDialog.message), /*#__PURE__*/React.createElement("button", {
+      onClick: () => setAlertDialog({
+        isOpen: false,
+        message: ''
+      }),
+      className: "btn btn-primary",
+      style: {
+        width: '100%'
+      }
+    }, "ตกลง")))), confirmDialog.isOpen && /*#__PURE__*/React.createElement("div", {
+      className: "ov"
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "modal",
+      style: {
+        maxWidth: 400
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "modal-body"
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "modal-title",
+      style: {
+        marginBottom: 8
+      }
+    }, confirmDialog.title), /*#__PURE__*/React.createElement("p", {
+      style: {
+        fontSize: 17,
+        lineHeight: 1.65,
+        color: 'var(--ink-3)',
+        whiteSpace: 'pre-line',
+        margin: 0
+      }
+    }, confirmDialog.message)), /*#__PURE__*/React.createElement("div", {
+      className: "modal-foot",
+      style: {
+        justifyContent: 'flex-end'
+      }
+    }, /*#__PURE__*/React.createElement("button", {
+      onClick: () => setConfirmDialog(prev => ({
+        ...prev,
+        isOpen: false
+      })),
+      className: "btn"
+    }, confirmDialog.cancelText), /*#__PURE__*/React.createElement("button", {
+      onClick: executeConfirm,
+      className: `btn ${confirmDialog.isDestructive ? 'btn-danger' : 'btn-accent'}`
+    }, confirmDialog.confirmText)))));
+  }
 
-react-dom/cjs/react-dom.production.min.js:
-  (**
-   * @license React
-   * react-dom.production.min.js
-   *
-   * Copyright (c) Facebook, Inc. and its affiliates.
-   *
-   * This source code is licensed under the MIT license found in the
-   * LICENSE file in the root directory of this source tree.
-   *)
+  // ==========================================
+  // 12. หน้าตัวอย่าง PDF
+  // ==========================================
+  if (printMode !== 'none') {
+    const modeLabel = printMode === 'current' ? `ตารางเรียน ${activeClassObj.name}` : printMode === 'teacher_current' ? `ตารางสอน ${activeTeacherObj?.name || ''}` : printMode === 'all' ? 'ตารางเรียนทุกห้อง' : printMode === 'room_current' ? `ตารางการใช้ห้อง ${activeRoomObj?.name || ''}` : printMode === 'room_all' ? 'ตารางการใช้ห้องทุกห้อง' : 'ตารางสอนครูทุกคน';
+    const pageCount = printMode === 'all' ? deptClasses.length : printMode === 'teacher_all' ? teachers.length : printMode === 'room_all' ? deptRooms.length : 1;
+    return /*#__PURE__*/React.createElement("div", {
+      className: "tt",
+      style: {
+        padding: '0 0 40px'
+      }
+    }, /*#__PURE__*/React.createElement("style", null, styles), /*#__PURE__*/React.createElement("div", {
+      className: "rail no-print",
+      style: {
+        position: 'sticky',
+        top: 0,
+        zIndex: 40,
+        padding: '10px 16px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        gap: 14,
+        flexWrap: 'wrap'
+      }
+    }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+      className: "eyebrow",
+      style: {
+        color: 'rgba(255,255,255,.5)'
+      }
+    }, "ตัวอย่างก่อนพิมพ์ · A4 แนวนอน · ", /*#__PURE__*/React.createElement("span", {
+      className: "mono"
+    }, pageCount), " หน้า"), /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 19,
+        fontWeight: 700,
+        marginTop: 2
+      }
+    }, modeLabel)), /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: 'flex',
+        gap: 8,
+        alignItems: 'center',
+        flexWrap: 'wrap'
+      }
+    }, /*#__PURE__*/React.createElement("button", {
+      onClick: printNow,
+      className: "btn btn-accent",
+      title: "เปิดแท็บใหม่แล้วเด้งหน้าต่างพิมพ์ให้อัตโนมัติ"
+    }, /*#__PURE__*/React.createElement(Printer, {
+      className: "w-4 h-4"
+    }), " เปิดหน้าต่างพิมพ์"), /*#__PURE__*/React.createElement("button", {
+      onClick: downloadPrintFile,
+      className: "btn",
+      title: "ดาวน์โหลดไฟล์ไว้พิมพ์ทีหลัง หรือใช้เมื่อเปิดแท็บใหม่ไม่ได้"
+    }, /*#__PURE__*/React.createElement(Download, {
+      className: "w-4 h-4"
+    }), " ดาวน์โหลดไฟล์"), /*#__PURE__*/React.createElement("button", {
+      onClick: () => {
+        setPdfError('');
+        setPrintMode('none');
+      },
+      className: "btn"
+    }, /*#__PURE__*/React.createElement(X, {
+      className: "w-4 h-4"
+    }), " กลับไปแก้ตาราง"))), /*#__PURE__*/React.createElement("div", {
+      className: "no-print",
+      style: {
+        padding: '12px 16px 0',
+        display: 'flex',
+        justifyContent: 'center'
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        maxWidth: PAGE_W,
+        width: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 10
+      }
+    }, pdfError && /*#__PURE__*/React.createElement("div", {
+      className: "note note-err",
+      style: {
+        flexDirection: 'column'
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: 'flex',
+        gap: 8
+      }
+    }, /*#__PURE__*/React.createElement(AlertCircle, {
+      className: "w-4 h-4",
+      style: {
+        flexShrink: 0,
+        marginTop: 1
+      }
+    }), /*#__PURE__*/React.createElement("span", null, pdfError))), /*#__PURE__*/React.createElement("div", {
+      className: "note note-info"
+    }, /*#__PURE__*/React.createElement(Printer, {
+      className: "w-4 h-4",
+      style: {
+        flexShrink: 0,
+        marginTop: 1,
+        color: 'var(--accent)'
+      }
+    }), /*#__PURE__*/React.createElement("div", null, "ในหน้าต่างพิมพ์ ให้เลือกปลายทางเป็น ", /*#__PURE__*/React.createElement("b", {
+      style: {
+        color: 'var(--ink)'
+      }
+    }, "บันทึกเป็น PDF"), " · กระดาษ ", /*#__PURE__*/React.createElement("b", {
+      style: {
+        color: 'var(--ink)'
+      }
+    }, "A4 แนวนอน"), " · ขอบกระดาษ ", /*#__PURE__*/React.createElement("b", {
+      style: {
+        color: 'var(--ink)'
+      }
+    }, "ไม่มี"), /*#__PURE__*/React.createElement("div", {
+      style: {
+        marginTop: 4
+      }
+    }, "ถ้ากดสั่งพิมพ์แล้วไม่มีอะไรขึ้น (เกิดได้เมื่อเปิดจากลิงก์ที่แชร์) ให้ใช้ปุ่ม", /*#__PURE__*/React.createElement("b", {
+      style: {
+        color: 'var(--ink)'
+      }
+    }, " ดาวน์โหลดไฟล์สำหรับพิมพ์ "), "แล้วเปิดไฟล์ที่ได้ ระบบจะเด้งหน้าต่างพิมพ์ให้เอง"))))), /*#__PURE__*/React.createElement("div", {
+      style: {
+        padding: '28px 16px 0',
+        display: 'flex',
+        justifyContent: 'center'
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      id: "pdf-render-area",
+      style: {
+        width: 1122,
+        background: '#fff'
+      }
+    }, printMode === 'current' ? renderPrintablePage(activeClassObj, 0, 1) : printMode === 'teacher_current' ? renderTeacherPrintablePage(activeTeacherObj, 0, 1) : printMode === 'teacher_all' ? teachers.map((t, i) => renderTeacherPrintablePage(t, i, teachers.length)) : printMode === 'room_current' ? renderRoomPrintablePage(activeRoomObj, 0, 1) : printMode === 'room_all' ? deptRooms.map((r, i) => renderRoomPrintablePage(r, i, deptRooms.length)) : deptClasses.map((c, i) => renderPrintablePage(c, i, deptClasses.length)))), alertDialog.isOpen && /*#__PURE__*/React.createElement("div", {
+      className: "ov",
+      onClick: () => setAlertDialog({
+        isOpen: false,
+        message: ''
+      })
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "modal",
+      style: {
+        maxWidth: 380
+      },
+      onClick: e => e.stopPropagation()
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "modal-body",
+      style: {
+        textAlign: 'center'
+      }
+    }, /*#__PURE__*/React.createElement("p", {
+      style: {
+        fontSize: 15,
+        lineHeight: 1.6,
+        whiteSpace: 'pre-line',
+        margin: '4px 0 16px'
+      }
+    }, alertDialog.message), /*#__PURE__*/React.createElement("button", {
+      onClick: () => setAlertDialog({
+        isOpen: false,
+        message: ''
+      }),
+      className: "btn btn-primary",
+      style: {
+        width: '100%'
+      }
+    }, "ตกลง")))));
+  }
 
-lucide-react/dist/esm/shared/src/utils/toKebabCase.mjs:
-lucide-react/dist/esm/shared/src/utils/toLucideIconData.mjs:
-lucide-react/dist/esm/shared/src/utils/toCamelCase.mjs:
-lucide-react/dist/esm/shared/src/utils/toPascalCase.mjs:
-lucide-react/dist/esm/shared/src/utils/mergeClasses.mjs:
-lucide-react/dist/esm/shared/src/build/defaultAttributes.mjs:
-lucide-react/dist/esm/shared/src/build/buildLucideIconNode.mjs:
-lucide-react/dist/esm/shared/src/build/buildLucideIconForReact.mjs:
-lucide-react/dist/esm/shared/src/utils/hasA11yProp.mjs:
-lucide-react/dist/esm/context.mjs:
-lucide-react/dist/esm/Icon.mjs:
-lucide-react/dist/esm/createLucideIcon.mjs:
-lucide-react/dist/esm/icons/arrow-right.mjs:
-lucide-react/dist/esm/icons/book-open.mjs:
-lucide-react/dist/esm/icons/calendar.mjs:
-lucide-react/dist/esm/icons/check.mjs:
-lucide-react/dist/esm/icons/chevron-down.mjs:
-lucide-react/dist/esm/icons/circle-alert.mjs:
-lucide-react/dist/esm/icons/copy.mjs:
-lucide-react/dist/esm/icons/door-open.mjs:
-lucide-react/dist/esm/icons/download.mjs:
-lucide-react/dist/esm/icons/file-spreadsheet.mjs:
-lucide-react/dist/esm/icons/folder-open.mjs:
-lucide-react/dist/esm/icons/grip-vertical.mjs:
-lucide-react/dist/esm/icons/loader-circle.mjs:
-lucide-react/dist/esm/icons/panel-right-close.mjs:
-lucide-react/dist/esm/icons/panel-right-open.mjs:
-lucide-react/dist/esm/icons/pen.mjs:
-lucide-react/dist/esm/icons/plus.mjs:
-lucide-react/dist/esm/icons/printer.mjs:
-lucide-react/dist/esm/icons/refresh-cw.mjs:
-lucide-react/dist/esm/icons/save.mjs:
-lucide-react/dist/esm/icons/settings.mjs:
-lucide-react/dist/esm/icons/shield-check.mjs:
-lucide-react/dist/esm/icons/trash.mjs:
-lucide-react/dist/esm/icons/undo-2.mjs:
-lucide-react/dist/esm/icons/upload.mjs:
-lucide-react/dist/esm/icons/user.mjs:
-lucide-react/dist/esm/icons/users.mjs:
-lucide-react/dist/esm/icons/x.mjs:
-lucide-react/dist/esm/lucide-react.mjs:
-  (**
-   * @license lucide-react v1.47.0 - ISC
-   *
-   * This source code is licensed under the ISC license.
-   * See the LICENSE file in the root directory of this source tree.
-   *)
-*/
+  // ==========================================
+  // 13. หน้าจัดตารางหลัก
+  // ==========================================
+  const currentSubjectsList = classSubjects[currentClass] || [];
+  return /*#__PURE__*/React.createElement("div", {
+    className: "tt",
+    style: {
+      display: 'flex',
+      flexDirection: 'column',
+      height: '100vh',
+      overflow: 'hidden'
+    }
+  }, /*#__PURE__*/React.createElement("style", null, styles), /*#__PURE__*/React.createElement("div", {
+    className: "rail",
+    style: {
+      display: 'flex',
+      alignItems: 'center',
+      gap: 10,
+      padding: '0 14px',
+      height: 54,
+      flexShrink: 0,
+      overflowX: 'auto'
+    }
+  }, /*#__PURE__*/React.createElement("button", {
+    onClick: () => setStep('home'),
+    className: "brand",
+    title: "กลับหน้าแรก"
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      width: 28,
+      height: 28,
+      background: 'var(--accent)',
+      borderRadius: 5,
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      flexShrink: 0
+    }
+  }, /*#__PURE__*/React.createElement(Calendar, {
+    className: "w-3.5 h-3.5",
+    style: {
+      color: '#fff'
+    }
+  })), /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontSize: 18.5,
+      fontWeight: 700,
+      whiteSpace: 'nowrap'
+    }
+  }, "จัดตาราง")), /*#__PURE__*/React.createElement("button", {
+    onClick: () => setIsTermModalOpen(true),
+    className: "chip chip-dark chip-btn",
+    style: {
+      flexShrink: 0
+    },
+    title: "เปลี่ยนปีการศึกษาและภาคเรียน"
+  }, config.year, " · ภาค ", config.term, /*#__PURE__*/React.createElement(ChevronDown, {
+    className: "w-3 h-3",
+    style: {
+      opacity: .7
+    }
+  })), /*#__PURE__*/React.createElement("div", {
+    style: {
+      flex: 1,
+      minWidth: 8
+    }
+  }), saveStatus === 'saving' && /*#__PURE__*/React.createElement("span", {
+    className: "chip chip-dark",
+    style: {
+      flexShrink: 0
+    }
+  }, /*#__PURE__*/React.createElement(Loader2, {
+    className: "w-3 h-3 animate-spin"
+  }), " บันทึก…"), saveStatus === 'saved' && /*#__PURE__*/React.createElement("span", {
+    className: "chip",
+    style: {
+      background: 'rgba(21,121,90,.22)',
+      color: '#8FE3C4',
+      flexShrink: 0
+    }
+  }, /*#__PURE__*/React.createElement(Check, {
+    className: "w-3 h-3"
+  }), " บันทึก ", lastSavedTime), saveStatus === 'error' && /*#__PURE__*/React.createElement("span", {
+    className: "chip",
+    style: {
+      background: 'rgba(184,31,45,.25)',
+      color: '#FFB4BB',
+      flexShrink: 0
+    }
+  }, /*#__PURE__*/React.createElement(AlertCircle, {
+    className: "w-3 h-3"
+  }), " บันทึกไม่สำเร็จ"), /*#__PURE__*/React.createElement("div", {
+    className: "rail-sep",
+    style: {
+      flexShrink: 0
+    }
+  }), /*#__PURE__*/React.createElement(Segmented, {
+    value: viewMode,
+    onChange: setViewMode,
+    options: [{
+      value: 'student',
+      label: 'ตารางเรียน',
+      icon: /*#__PURE__*/React.createElement(Users, {
+        className: "w-3.5 h-3.5"
+      })
+    }, {
+      value: 'teacher',
+      label: 'ตารางสอน',
+      icon: /*#__PURE__*/React.createElement(User, {
+        className: "w-3.5 h-3.5"
+      })
+    }, {
+      value: 'room',
+      label: 'ตารางห้อง',
+      icon: /*#__PURE__*/React.createElement(DoorOpen, {
+        className: "w-3.5 h-3.5"
+      })
+    }]
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "rail-sep",
+    style: {
+      flexShrink: 0
+    }
+  }), /*#__PURE__*/React.createElement("button", {
+    onClick: handleUndo,
+    disabled: history.length === 0,
+    className: "rail-btn",
+    title: history.length === 0 ? 'ยังไม่มีการแก้ไขให้ย้อนกลับ' : `ย้อนกลับการแก้ไขล่าสุด (ย้อนได้อีก ${history.length} ครั้ง) · Ctrl+Z`
+  }, /*#__PURE__*/React.createElement(Undo2, {
+    className: "w-3.5 h-3.5"
+  }), " ", /*#__PURE__*/React.createElement("span", null, "ย้อนกลับ", history.length > 0 ? ` ${history.length}` : '')), /*#__PURE__*/React.createElement("button", {
+    onClick: () => setIsSubjectModalOpen(true),
+    className: "rail-btn",
+    title: "จัดการรายวิชาของห้องนี้"
+  }, /*#__PURE__*/React.createElement(BookOpen, {
+    className: "w-3.5 h-3.5"
+  }), " ", /*#__PURE__*/React.createElement("span", null, "รายวิชา")), /*#__PURE__*/React.createElement("button", {
+    onClick: () => setIsTeacherModalOpen(true),
+    className: "rail-btn",
+    title: "จัดการรายชื่อครูผู้สอน"
+  }, /*#__PURE__*/React.createElement(User, {
+    className: "w-3.5 h-3.5"
+  }), " ", /*#__PURE__*/React.createElement("span", null, "ครูผู้สอน")), /*#__PURE__*/React.createElement("button", {
+    onClick: () => setIsRoomModalOpen(true),
+    className: "rail-btn",
+    title: "ทะเบียนห้องเรียนและห้องปฏิบัติการ"
+  }, /*#__PURE__*/React.createElement(DoorOpen, {
+    className: "w-3.5 h-3.5"
+  }), " ", /*#__PURE__*/React.createElement("span", null, "ห้อง")), /*#__PURE__*/React.createElement("button", {
+    onClick: () => setAuditResult(auditSchedule()),
+    className: "rail-btn",
+    title: "สแกนทั้งตารางหาครูชน ห้องชน และวิชาที่ลงไม่ครบ"
+  }, /*#__PURE__*/React.createElement(ShieldCheck, {
+    className: "w-3.5 h-3.5"
+  }), " ", /*#__PURE__*/React.createElement("span", null, "ตรวจตาราง")), /*#__PURE__*/React.createElement("button", {
+    onClick: () => setIsDataModalOpen(true),
+    className: "rail-btn",
+    title: "พิมพ์ตาราง สำรองข้อมูล และล้างข้อมูล"
+  }, /*#__PURE__*/React.createElement(Printer, {
+    className: "w-3.5 h-3.5"
+  }), " ", /*#__PURE__*/React.createElement("span", null, "พิมพ์ / ข้อมูล")), /*#__PURE__*/React.createElement("button", {
+    onClick: () => setPanelOpen(!panelOpen),
+    className: "rail-btn",
+    title: panelOpen ? 'ซ่อนแผงสรุป' : 'แสดงแผงสรุป'
+  }, panelOpen ? /*#__PURE__*/React.createElement(PanelRightClose, {
+    className: "w-3.5 h-3.5"
+  }) : /*#__PURE__*/React.createElement(PanelRightOpen, {
+    className: "w-3.5 h-3.5"
+  })), /*#__PURE__*/React.createElement("div", {
+    className: "rail-sep",
+    style: {
+      flexShrink: 0
+    }
+  }), /*#__PURE__*/React.createElement("button", {
+    onClick: () => setStep('home'),
+    className: "rail-btn",
+    title: "กลับหน้าแรก"
+  }, /*#__PURE__*/React.createElement("span", null, "หน้าแรก"))), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'flex',
+      flex: 1,
+      minHeight: 0
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      flex: 1,
+      display: 'flex',
+      flexDirection: 'column',
+      minWidth: 0
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "context-bar"
+  }, viewMode === 'student' ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
+    style: {
+      minWidth: 0
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "eyebrow"
+  }, "กำลังจัดตารางเรียนของ"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 21.5,
+      fontWeight: 800,
+      letterSpacing: '-.2px',
+      marginTop: 2
+    }
+  }, activeClassObj.name || '—')), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'flex',
+      gap: 18,
+      flexWrap: 'wrap',
+      alignItems: 'center'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "meta"
+  }, "ระดับ ", /*#__PURE__*/React.createElement("b", null, activeClassObj.level || '-', " ", activeClassObj.year || '', "/", activeClassObj.room || '')), activeClassObj.major && /*#__PURE__*/React.createElement("div", {
+    className: "meta"
+  }, "สาขา ", /*#__PURE__*/React.createElement("b", null, activeClassObj.major)), /*#__PURE__*/React.createElement("div", {
+    className: "meta"
+  }, "นักเรียน ", /*#__PURE__*/React.createElement("b", {
+    className: "mono"
+  }, activeClassObj.studentCount || '-'), " คน"), /*#__PURE__*/React.createElement("div", {
+    className: "meta meta-opt"
+  }, "ที่ปรึกษา ", /*#__PURE__*/React.createElement("b", null, activeClassObj.advisor || '-')), /*#__PURE__*/React.createElement("div", {
+    className: "meta meta-opt"
+  }, "พักคาบ ", /*#__PURE__*/React.createElement("b", {
+    className: "mono"
+  }, activeLunchPeriod)), classProgress && classProgress.required > 0 && /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'flex',
+      alignItems: 'center',
+      gap: 8,
+      paddingLeft: 16,
+      borderLeft: '1px solid var(--rule)'
+    }
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    className: "eyebrow"
+  }, "จัดแล้ว"), /*#__PURE__*/React.createElement("div", {
+    className: "mono",
+    style: {
+      fontSize: 20,
+      fontWeight: 600,
+      marginTop: 1,
+      color: classProgress.placed >= classProgress.required ? 'var(--ok)' : 'var(--accent)'
+    }
+  }, classProgress.placed, /*#__PURE__*/React.createElement("span", {
+    style: {
+      color: 'var(--ink-3)',
+      fontSize: 16
+    }
+  }, "/", classProgress.required)))), /*#__PURE__*/React.createElement("button", {
+    onClick: () => setIsClassModalOpen(true),
+    className: "btn btn-sm"
+  }, /*#__PURE__*/React.createElement(Settings, {
+    className: "w-3.5 h-3.5"
+  }), " ตั้งค่าห้อง"))) : viewMode === 'teacher' ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
+    style: {
+      minWidth: 0
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "eyebrow"
+  }, "กำลังดูตารางสอนของ"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 21.5,
+      fontWeight: 800,
+      letterSpacing: '-.2px',
+      marginTop: 2
+    }
+  }, activeTeacherObj.name || 'ยังไม่มีครูในระบบ')), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'flex',
+      gap: 18,
+      flexWrap: 'wrap',
+      alignItems: 'center'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "meta"
+  }, "ห้องประจำ ", /*#__PURE__*/React.createElement("b", {
+    className: "mono"
+  }, roomLabel(activeTeacherObj.roomId) || '-')), /*#__PURE__*/React.createElement("div", {
+    style: {
+      paddingLeft: 16,
+      borderLeft: '1px solid var(--rule)'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "eyebrow"
+  }, "ภาระสอน"), /*#__PURE__*/React.createElement("div", {
+    className: "mono",
+    style: {
+      fontSize: 20,
+      fontWeight: 600,
+      marginTop: 1,
+      color: 'var(--accent)'
+    }
+  }, sumHours, " ", /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontSize: 15,
+      color: 'var(--ink-3)'
+    }
+  }, "คาบ/สัปดาห์"))), /*#__PURE__*/React.createElement("button", {
+    onClick: () => setIsTeacherModalOpen(true),
+    className: "btn btn-sm"
+  }, /*#__PURE__*/React.createElement(Settings, {
+    className: "w-3.5 h-3.5"
+  }), " ตั้งค่าครู"))) : /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
+    style: {
+      minWidth: 0
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "eyebrow"
+  }, "กำลังดูตารางการใช้ห้อง"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 21.5,
+      fontWeight: 800,
+      letterSpacing: '-.2px',
+      marginTop: 2
+    }
+  }, activeRoomObj.name || 'ยังไม่มีห้องในทะเบียน')), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'flex',
+      gap: 18,
+      flexWrap: 'wrap',
+      alignItems: 'center'
+    }
+  }, activeRoomObj.note && /*#__PURE__*/React.createElement("div", {
+    className: "meta"
+  }, activeRoomObj.note), /*#__PURE__*/React.createElement("div", {
+    style: {
+      paddingLeft: 16,
+      borderLeft: '1px solid var(--rule)'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "eyebrow"
+  }, "ถูกใช้"), /*#__PURE__*/React.createElement("div", {
+    className: "mono",
+    style: {
+      fontSize: 20,
+      fontWeight: 600,
+      marginTop: 1,
+      color: 'var(--accent)'
+    }
+  }, sumHours, " ", /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontSize: 15,
+      color: 'var(--ink-3)'
+    }
+  }, "จาก ", DAYS.length * 11, " คาบ"))), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    className: "eyebrow"
+  }, "ว่าง"), /*#__PURE__*/React.createElement("div", {
+    className: "mono",
+    style: {
+      fontSize: 20,
+      fontWeight: 600,
+      marginTop: 1,
+      color: 'var(--ok)'
+    }
+  }, DAYS.length * 11 - sumHours)), /*#__PURE__*/React.createElement("button", {
+    onClick: () => setIsRoomModalOpen(true),
+    className: "btn btn-sm"
+  }, /*#__PURE__*/React.createElement(Settings, {
+    className: "w-3.5 h-3.5"
+  }), " ทะเบียนห้อง")))), /*#__PURE__*/React.createElement("div", {
+    className: "grid-wrap",
+    ref: gridRef,
+    style: {
+      flex: 1
+    }
+  }, /*#__PURE__*/React.createElement("table", {
+    className: "grid-tbl"
+  }, /*#__PURE__*/React.createElement("thead", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", {
+    className: "day-cell",
+    style: {
+      borderBottom: '1px solid var(--rule)'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "eyebrow",
+    style: {
+      fontSize: 12
+    }
+  }, "วัน \\ คาบ")), PERIODS.map(p => {
+    const isLunch = viewMode === 'student' && p.id === activeLunchPeriod;
+    if (isLunch) return /*#__PURE__*/React.createElement("th", {
+      key: p.id,
+      style: {
+        width: 42
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "p-num",
+      style: {
+        fontSize: 11,
+        color: 'var(--ink-3)'
+      }
+    }, "พัก"));
+    return /*#__PURE__*/React.createElement("th", {
+      key: p.id
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "p-num mono"
+    }, p.id), /*#__PURE__*/React.createElement("div", {
+      className: "p-time mono"
+    }, p.start, /*#__PURE__*/React.createElement("br", null), p.end));
+  }))), /*#__PURE__*/React.createElement("tbody", null, DAYS.map((day, dayIndex) => /*#__PURE__*/React.createElement("tr", {
+    key: day
+  }, /*#__PURE__*/React.createElement("td", {
+    className: "day-cell"
+  }, day), PERIODS.map(period => {
+    if (viewMode === 'student' && period.id === activeLunchPeriod) {
+      if (dayIndex === 0) {
+        return /*#__PURE__*/React.createElement("td", {
+          key: `lunch-${period.id}`,
+          rowSpan: 5,
+          className: "lunch-td"
+        }, /*#__PURE__*/React.createElement("div", {
+          className: "lunch-label"
+        }, "พักกลางวัน"));
+      }
+      return null;
+    }
+    let slots = [];
+    let totalStudents = 0;
+    if (viewMode === 'student') {
+      const s = getSlotData(currentClass, day, period.id);
+      if (s) slots.push(s);
+    } else {
+      slots = viewMode === 'teacher' ? getSlotsForTeacher(currentTeacherTab, day, period.id) : getSlotsForRoom(currentRoomTab, day, period.id);
+      totalStudents = slots.reduce((sum, slot) => {
+        const cInfo = classes.find(c => c.id === slot.classId);
+        return sum + (parseInt(cInfo?.studentCount, 10) || 0);
+      }, 0);
+    }
+    if (viewMode === 'student' && slots[0]?.isFixed) {
+      return /*#__PURE__*/React.createElement("td", {
+        key: period.id,
+        className: "slot-td filled",
+        "data-drop-cell": true,
+        "data-day": day,
+        "data-period": period.id,
+        onClick: () => {
+          if (suppressClickRef.current) return;
+          handleCellClick(day, period.id);
+        }
+      }, /*#__PURE__*/React.createElement("div", {
+        className: "card-fixed card-drag",
+        "data-cardkey": `${currentClass}|${day}|${period.id}`,
+        onPointerDown: e => onCardPointerDown(e, currentClass, day, period.id),
+        title: "ลากเพื่อย้ายคาบ · คลิกเพื่อแก้ไข"
+      }, /*#__PURE__*/React.createElement("span", null, slots[0].label), /*#__PURE__*/React.createElement("span", {
+        style: {
+          fontSize: 10,
+          fontWeight: 600,
+          color: 'var(--ink-3)'
+        }
+      }, "คาบตายตัว")));
+    }
+    return /*#__PURE__*/React.createElement("td", {
+      key: period.id,
+      className: `slot-td ${slots.length ? 'filled' : 'empty'}`,
+      "data-drop-cell": true,
+      "data-day": day,
+      "data-period": period.id,
+      onClick: () => {
+        if (suppressClickRef.current) return;
+        handleCellClick(day, period.id);
+      }
+    }, slots.length > 0 ? slots.map((slotData, idx) => {
+      const subjectInfo = slotSubjectInfo(slotData);
+      const teacherInfo = !slotData.isManualTeacher ? teachers.find(t => t.id === slotData.teacherId) : null;
+      const classInfo = classes.find(c => c.id === slotData.classId);
+      const displayRoom = slotRoomText(slotData) || (viewMode === 'teacher' ? roomLabel(activeTeacherObj?.roomId) : '');
+      const displayTeacherName = slotData.isManualTeacher ? slotData.teacherName : teacherInfo?.name;
+      const pal = subjectInfo ? subjectInfo.pal : SUBJECT_COLORS[0];
+      const many = slots.length > 1;
+      return /*#__PURE__*/React.createElement("div", {
+        key: idx,
+        className: "card card-drag",
+        "data-cardkey": `${slotData.classId}|${day}|${period.id}`,
+        onPointerDown: e => onCardPointerDown(e, slotData.classId, day, period.id),
+        title: subjectInfo?.external ? 'วิชานอกแผนก · ลากเพื่อย้ายคาบ · คลิกเพื่อแก้ไข' : 'ลากเพื่อย้ายคาบ · คลิกเพื่อแก้ไข',
+        style: {
+          background: pal.bg,
+          borderLeftColor: pal.line,
+          color: pal.text,
+          minHeight: many ? 34 : 70
+        }
+      }, /*#__PURE__*/React.createElement("div", {
+        className: "card-top mono"
+      }, /*#__PURE__*/React.createElement("span", null, viewMode === 'teacher' && totalStudents > 0 ? `นร.${totalStudents}` : subjectInfo?.code || ''), /*#__PURE__*/React.createElement("span", null, displayRoom || '')), /*#__PURE__*/React.createElement("div", {
+        className: "card-name",
+        style: {
+          fontSize: many ? 10.5 : 11.5,
+          margin: many ? '1px 0' : '3px 0'
+        }
+      }, /*#__PURE__*/React.createElement("span", {
+        style: {
+          WebkitLineClamp: many ? 1 : 3
+        }
+      }, subjectInfo?.name || '—')), /*#__PURE__*/React.createElement("div", {
+        className: "card-foot"
+      }, viewMode === 'student' ? getFirstName(displayTeacherName) : viewMode === 'teacher' ? classInfo?.name : `${classInfo?.name || ''}${displayTeacherName ? ` · ${getFirstName(displayTeacherName)}` : ''}`));
+    }) : /*#__PURE__*/React.createElement("div", {
+      className: "slot-empty"
+    }, /*#__PURE__*/React.createElement(Plus, {
+      className: "w-3 h-3"
+    }), " วางคาบ"));
+  })))))), /*#__PURE__*/React.createElement("div", {
+    className: "sheet-bar",
+    style: {
+      flexShrink: 0
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "sheet-scroll"
+  }, viewMode === 'student' ? renderTabs(classes, currentClass, setCurrentClass, setClasses, 'var(--accent)', item => {
+    setCurrentClass(item.id);
+    setIsClassModalOpen(true);
+  }) : viewMode === 'teacher' ? renderTabs(teachers, currentTeacherTab, setCurrentTeacherTab, setTeachers, 'var(--accent)') : renderTabs(deptRooms, currentRoomTab, setCurrentRoomTab, setRooms, 'var(--accent)'), /*#__PURE__*/React.createElement("button", {
+    onClick: viewMode === 'student' ? handleQuickAddClass : viewMode === 'teacher' ? handleQuickAddTeacher : () => setIsRoomModalOpen(true),
+    className: "sheet-add",
+    title: viewMode === 'student' ? 'เพิ่มห้องเรียนใหม่' : viewMode === 'teacher' ? 'เพิ่มครูผู้สอนใหม่' : 'เพิ่มห้องในทะเบียน'
+  }, /*#__PURE__*/React.createElement(Plus, {
+    className: "w-4 h-4"
+  }))), /*#__PURE__*/React.createElement("div", {
+    className: "sheet-hint",
+    style: {
+      display: 'flex',
+      alignItems: 'center',
+      padding: '0 14px',
+      fontSize: 15,
+      color: 'var(--ink-3)',
+      borderLeft: '1px solid var(--rule-soft)',
+      whiteSpace: 'nowrap'
+    }
+  }, "ลากการ์ดเพื่อย้ายคาบ · ดับเบิลคลิกแท็บเพื่อตั้งค่า"))), panelOpen && /*#__PURE__*/React.createElement("div", {
+    className: "panel"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "panel-head"
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      gap: 8
+    }
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    className: "eyebrow"
+  }, viewMode === 'student' ? 'โครงสร้างรายวิชา' : viewMode === 'teacher' ? 'ภาระงานสอน' : 'การใช้ห้อง'), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 17.5,
+      fontWeight: 700,
+      marginTop: 2
+    }
+  }, viewMode === 'student' ? activeClassObj.name || '—' : viewMode === 'teacher' ? activeTeacherObj.name || '—' : activeRoomObj.name || '—')), viewMode === 'student' && /*#__PURE__*/React.createElement("button", {
+    onClick: () => setIsSubjectModalOpen(true),
+    className: "btn btn-sm"
+  }, /*#__PURE__*/React.createElement(Edit2, {
+    className: "w-3 h-3"
+  }), " แก้รายวิชา")), viewMode === 'student' && /*#__PURE__*/React.createElement("div", {
+    className: "hint",
+    style: {
+      marginTop: 9,
+      display: 'flex',
+      alignItems: 'center',
+      gap: 6
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "tick tick-on"
+  }), " จัดแล้ว", /*#__PURE__*/React.createElement("span", {
+    className: "tick",
+    style: {
+      marginLeft: 4
+    }
+  }), " ยังไม่จัด", /*#__PURE__*/React.createElement("span", {
+    className: "tick tick-over",
+    style: {
+      marginLeft: 4
+    }
+  }), " เกินหลักสูตร")), /*#__PURE__*/React.createElement("div", {
+    className: "panel-body"
+  }, sidebarSummary.length === 0 ? /*#__PURE__*/React.createElement("div", {
+    style: {
+      padding: '40px 20px',
+      textAlign: 'center'
+    }
+  }, /*#__PURE__*/React.createElement("p", {
+    style: {
+      fontSize: 16.5,
+      color: 'var(--ink-3)',
+      lineHeight: 1.6,
+      margin: '0 0 14px'
+    }
+  }, viewMode === 'student' ? 'ห้องนี้ยังไม่มีรายวิชา ลงรายวิชาก่อนจึงจะเริ่มวางคาบได้' : viewMode === 'teacher' ? 'ครูท่านนี้ยังไม่มีคาบสอน คลิกช่องในตารางเพื่อเพิ่มคาบ' : rooms.length === 0 ? 'ยังไม่มีห้องในทะเบียน เพิ่มห้องก่อนจึงจะดูตารางการใช้ห้องได้' : 'ห้องนี้ยังว่างทั้งสัปดาห์ ยังไม่มีคาบใดใช้ห้องนี้'), viewMode === 'student' && /*#__PURE__*/React.createElement("button", {
+    onClick: () => setIsSubjectModalOpen(true),
+    className: "btn btn-accent btn-sm"
+  }, /*#__PURE__*/React.createElement(Plus, {
+    className: "w-3.5 h-3.5"
+  }), " ลงรายวิชา")) : /*#__PURE__*/React.createElement("table", {
+    className: "sum-tbl"
+  }, /*#__PURE__*/React.createElement("thead", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", {
+    className: "l"
+  }, "รายวิชา"), /*#__PURE__*/React.createElement("th", {
+    style: {
+      width: 34
+    }
+  }, "ท"), /*#__PURE__*/React.createElement("th", {
+    style: {
+      width: 34
+    }
+  }, "ป"), /*#__PURE__*/React.createElement("th", {
+    style: {
+      width: 34
+    }
+  }, "น"), /*#__PURE__*/React.createElement("th", {
+    style: {
+      width: 62
+    }
+  }, "คาบ"))), /*#__PURE__*/React.createElement("tbody", null, sidebarSummary.map((s, idx) => {
+    const req = Number(s.theory) + Number(s.practical);
+    const placed = viewMode === 'student' ? placedHoursFor(currentClass, s.id) : s.hours;
+    const pal = normalizeSubjectColor(s, idx);
+    return /*#__PURE__*/React.createElement("tr", {
+      key: s.id || idx,
+      className: "sum-row"
+    }, /*#__PURE__*/React.createElement("td", {
+      className: "l"
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: 'flex',
+        gap: 8,
+        alignItems: 'flex-start'
+      }
+    }, /*#__PURE__*/React.createElement("span", {
+      className: "swatch",
+      style: {
+        background: pal.line,
+        marginTop: 4
+      }
+    }), /*#__PURE__*/React.createElement("div", {
+      style: {
+        minWidth: 0
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "sum-code mono"
+    }, viewMode === 'room' ? s.className || '—' : s.code || '—'), /*#__PURE__*/React.createElement("div", {
+      className: "sum-name"
+    }, s.name), viewMode === 'student' && /*#__PURE__*/React.createElement("div", {
+      style: {
+        marginTop: 5
+      }
+    }, /*#__PURE__*/React.createElement(TickRail, {
+      required: req,
+      placed: placed
+    }))))), /*#__PURE__*/React.createElement("td", {
+      className: "mono"
+    }, s.theory), /*#__PURE__*/React.createElement("td", {
+      className: "mono"
+    }, s.practical), /*#__PURE__*/React.createElement("td", {
+      className: "mono"
+    }, s.credit), /*#__PURE__*/React.createElement("td", {
+      className: "mono",
+      style: {
+        fontWeight: 600,
+        color: viewMode === 'student' ? placed >= req ? 'var(--ok)' : placed > 0 ? 'var(--warn)' : 'var(--danger)' : 'var(--ink)'
+      }
+    }, viewMode === 'student' ? `${placed}/${req}` : placed));
+  })), /*#__PURE__*/React.createElement("tfoot", null, /*#__PURE__*/React.createElement("tr", {
+    className: "sum-foot"
+  }, /*#__PURE__*/React.createElement("td", {
+    className: "l",
+    style: {
+      fontSize: 15.5,
+      color: 'var(--ink-3)'
+    }
+  }, "รวม ", sidebarSummary.length, " รายวิชา"), /*#__PURE__*/React.createElement("td", {
+    className: "mono"
+  }, sumTheory), /*#__PURE__*/React.createElement("td", {
+    className: "mono"
+  }, sumPractical), /*#__PURE__*/React.createElement("td", {
+    className: "mono"
+  }, sumCredit), /*#__PURE__*/React.createElement("td", {
+    className: "mono",
+    style: {
+      color: 'var(--accent)'
+    }
+  }, sumHours))))))), toast && /*#__PURE__*/React.createElement("div", {
+    className: "toast"
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      flex: 1,
+      minWidth: 0
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "toast-title"
+  }, toast.verb || 'ย้าย', " ", toast.name, " แล้ว"), /*#__PURE__*/React.createElement("div", {
+    className: "toast-detail"
+  }, toast.className, " ", toast.verb === 'ลบ' ? '·' : '→', " ", toast.where, toast.len > 1 ? ` (${toast.len} คาบ)` : ''), toast.stat && /*#__PURE__*/React.createElement("div", {
+    className: `toast-stat ${toast.stat.remain === 0 ? 'toast-done' : 'toast-left'}`
+  }, toast.stat.remain === 0 ? `ลงครบแล้ว ${toast.stat.required} คาบ` : `ลงแล้ว ${toast.stat.placed} จาก ${toast.stat.required} คาบ · เหลืออีก ${toast.stat.remain} คาบ`)), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'flex',
+      flexDirection: 'column',
+      gap: 6,
+      flexShrink: 0
+    }
+  }, /*#__PURE__*/React.createElement("button", {
+    className: "toast-btn",
+    onClick: () => {
+      handleUndo();
+      dismissToast();
+    },
+    title: "ย้อนกลับการย้ายครั้งนี้"
+  }, /*#__PURE__*/React.createElement(Undo2, {
+    className: "w-3.5 h-3.5"
+  }), " ย้อนกลับ"), /*#__PURE__*/React.createElement("button", {
+    className: "toast-btn",
+    onClick: dismissToast,
+    style: {
+      justifyContent: 'center'
+    },
+    title: "ปิดแถบนี้"
+  }, "ตกลง")), /*#__PURE__*/React.createElement("div", {
+    className: "toast-bar"
+  })), /*#__PURE__*/React.createElement("div", {
+    ref: ghostRef,
+    className: "drag-ghost",
+    style: {
+      display: 'none'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    ref: ghostNameRef,
+    className: "ghost-name"
+  }), /*#__PURE__*/React.createElement("div", {
+    ref: ghostSubRef,
+    className: "ghost-sub"
+  }), /*#__PURE__*/React.createElement("div", {
+    ref: ghostWhyRef,
+    className: "ghost-why"
+  })), editingSlot && /*#__PURE__*/React.createElement("div", {
+    className: "ov",
+    onClick: () => setEditingSlot(null)
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "modal",
+    style: {
+      maxWidth: 470
+    },
+    onClick: e => e.stopPropagation()
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "modal-head"
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    className: "modal-title"
+  }, "วางคาบเรียน"), /*#__PURE__*/React.createElement("div", {
+    className: "modal-sub mono"
+  }, editingSlot.day, " · คาบ ", editingSlot.period, " · ", PERIODS[editingSlot.period - 1]?.rawTime)), /*#__PURE__*/React.createElement("button", {
+    onClick: () => setEditingSlot(null),
+    className: "x-btn"
+  }, /*#__PURE__*/React.createElement(X, {
+    className: "w-4 h-4"
+  }))), /*#__PURE__*/React.createElement("div", {
+    className: "modal-body",
+    style: {
+      display: 'flex',
+      flexDirection: 'column',
+      gap: 14
+    }
+  }, errorMsg && /*#__PURE__*/React.createElement("div", {
+    className: "note note-err"
+  }, /*#__PURE__*/React.createElement(AlertCircle, {
+    className: "w-4 h-4",
+    style: {
+      flexShrink: 0,
+      marginTop: 1
+    }
+  }), /*#__PURE__*/React.createElement("span", null, errorMsg)), viewMode !== 'student' && /*#__PURE__*/React.createElement("div", {
+    className: "field"
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      marginBottom: 5,
+      gap: 8
+    }
+  }, /*#__PURE__*/React.createElement("label", {
+    className: "lbl",
+    style: {
+      marginBottom: 0
+    }
+  }, "ห้องเรียนที่จะสอน"), /*#__PURE__*/React.createElement("label", {
+    style: {
+      display: 'flex',
+      alignItems: 'center',
+      gap: 5,
+      fontSize: 11,
+      fontWeight: 600,
+      color: 'var(--ink-3)',
+      cursor: 'pointer'
+    }
+  }, /*#__PURE__*/React.createElement("input", {
+    type: "checkbox",
+    checked: isManualClass,
+    onChange: e => {
+      const checked = e.target.checked;
+      setIsManualClass(checked);
+      setSelectedSubject('');
+      setSelectedDuration(1);
+      if (checked) {
+        setModalClassId('');
+        setIsManualSubject(false);
+        setManualSubjectName('');
+      } else {
+        setManualClassName('');
+        setExtSubjectForm({
+          code: '',
+          name: '',
+          theory: 0,
+          practical: 0,
+          credit: 0
+        });
+      }
+    }
+  }), "กลุ่มนอกแผนก (พิมพ์เอง)")), isManualClass ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("input", {
+    list: "ext-class-suggest",
+    type: "text",
+    value: manualClassName,
+    onChange: e => setManualClassName(e.target.value),
+    className: "inp",
+    placeholder: "เช่น บัญชี ปวช. 2/1 (นักเรียนแผนกอื่น)"
+  }), /*#__PURE__*/React.createElement("datalist", {
+    id: "ext-class-suggest"
+  }, classes.filter(c => c.external).map(c => /*#__PURE__*/React.createElement("option", {
+    key: c.id,
+    value: c.name
+  }))), /*#__PURE__*/React.createElement("div", {
+    className: "hint"
+  }, "พิมพ์ชื่อกลุ่มที่เคยใช้ซ้ำได้ ระบบจะจำไว้ให้เลือกจากรายการอัตโนมัติ ไม่ปนกับห้องเรียนของแผนก")) : /*#__PURE__*/React.createElement("select", {
+    className: "sel",
+    value: modalClassId,
+    onChange: e => {
+      setModalClassId(e.target.value);
+      setSelectedSubject('');
+      setSelectedDuration(1);
+    }
+  }, /*#__PURE__*/React.createElement("option", {
+    value: ""
+  }, "เลือกห้องเรียน"), deptClasses.map(c => /*#__PURE__*/React.createElement("option", {
+    key: c.id,
+    value: c.id
+  }, c.name)))), /*#__PURE__*/React.createElement("div", {
+    className: "field"
+  }, isManualClass ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("label", {
+    className: "lbl"
+  }, "รายวิชา (นอกแผนก)"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'grid',
+      gridTemplateColumns: '120px 1fr',
+      gap: 8,
+      marginBottom: 8
+    }
+  }, /*#__PURE__*/React.createElement("input", {
+    type: "text",
+    value: extSubjectForm.code,
+    onChange: e => setExtSubjectForm({
+      ...extSubjectForm,
+      code: e.target.value
+    }),
+    className: "inp mono",
+    placeholder: "รหัสวิชา"
+  }), /*#__PURE__*/React.createElement("input", {
+    type: "text",
+    value: extSubjectForm.name,
+    onChange: e => setExtSubjectForm({
+      ...extSubjectForm,
+      name: e.target.value
+    }),
+    className: "inp",
+    placeholder: "ชื่อวิชา"
+  })), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'grid',
+      gridTemplateColumns: 'repeat(3,1fr)',
+      gap: 8
+    }
+  }, [['ท', 'theory'], ['ป', 'practical'], ['น', 'credit']].map(([lab, key]) => /*#__PURE__*/React.createElement("div", {
+    key: key
+  }, /*#__PURE__*/React.createElement("label", {
+    className: "lbl",
+    style: {
+      fontSize: 10.5
+    }
+  }, lab), /*#__PURE__*/React.createElement("input", {
+    type: "number",
+    min: "0",
+    value: extSubjectForm[key],
+    onChange: e => setExtSubjectForm({
+      ...extSubjectForm,
+      [key]: e.target.value
+    }),
+    className: "inp inp-num mono"
+  })))), /*#__PURE__*/React.createElement("div", {
+    className: "hint"
+  }, "วิชานี้จะถูกจำไว้เฉพาะของกลุ่มนอกแผนกนี้ ไม่ปนกับรายวิชาของห้องเรียนในแผนก")) : /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      marginBottom: 5,
+      gap: 8
+    }
+  }, /*#__PURE__*/React.createElement("label", {
+    className: "lbl",
+    style: {
+      marginBottom: 0
+    }
+  }, "รายวิชา"), /*#__PURE__*/React.createElement("label", {
+    style: {
+      display: 'flex',
+      alignItems: 'center',
+      gap: 5,
+      fontSize: 11,
+      fontWeight: 600,
+      color: 'var(--ink-3)',
+      cursor: 'pointer'
+    }
+  }, /*#__PURE__*/React.createElement("input", {
+    type: "checkbox",
+    checked: isManualSubject,
+    onChange: e => {
+      const checked = e.target.checked;
+      setIsManualSubject(checked);
+      if (checked) {
+        setSelectedSubject('');
+        setSelectedDuration(1);
+      } else setManualSubjectName('');
+    }
+  }), "วิชานอกแผนก (พิมพ์เอง)")), isManualSubject ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("input", {
+    type: "text",
+    value: manualSubjectName,
+    onChange: e => setManualSubjectName(e.target.value),
+    className: "inp",
+    placeholder: "เช่น วิชาจากแผนกอื่นที่มาสอนห้องนี้"
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "hint"
+  }, "วิชานี้จะไม่ถูกนำไปนับรวมกับโครงสร้างรายวิชาของห้อง (ท./ป./น./ความครบของหลักสูตร) — ใช้สำหรับวิชาที่มาสอนนอกแผนกเป็นครั้งคราวเท่านั้น")) : /*#__PURE__*/React.createElement("select", {
+    className: "sel",
+    value: selectedSubject,
+    disabled: viewMode !== 'student' && !modalClassId,
+    onChange: e => {
+      const subId = e.target.value;
+      setSelectedSubject(subId);
+      const cls = modalClassId || currentClass;
+      const info = (classSubjects[cls] || []).find(s => s.id === subId);
+      if (info) {
+        const isAct = Number(info.theory) === 0 && Number(info.practical) === 2 && Number(info.credit) === 0;
+        setSelectedDuration(isAct ? 2 : 1);
+      } else setSelectedDuration(1);
+    }
+  }, /*#__PURE__*/React.createElement("option", {
+    value: ""
+  }, "เลือกรายวิชา"), (classSubjects[modalClassId || currentClass] || []).map(s => {
+    const req = Number(s.theory) + Number(s.practical);
+    const done = placedHoursFor(modalClassId || currentClass, s.id);
+    return /*#__PURE__*/React.createElement("option", {
+      key: s.id,
+      value: s.id
+    }, s.code ? `${s.code} · ` : '', s.name, " — จัดแล้ว ", done, "/", req, " คาบ");
+  })))), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'grid',
+      gridTemplateColumns: '1fr 1fr',
+      gap: 12
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "field"
+  }, /*#__PURE__*/React.createElement("label", {
+    className: "lbl"
+  }, "จำนวนคาบติดกัน"), /*#__PURE__*/React.createElement("input", {
+    type: "number",
+    min: "1",
+    max: maxDuration,
+    value: selectedDuration,
+    disabled: !isManualClass && !isManualSubject && !selectedSubject,
+    className: "inp inp-num mono",
+    onChange: e => {
+      let v = parseInt(e.target.value);
+      if (isNaN(v) || v < 1) v = 1;
+      if (v > maxDuration) v = maxDuration;
+      setSelectedDuration(v);
+    }
+  }), isManualClass ? /*#__PURE__*/React.createElement("div", {
+    className: "hint"
+  }, extManualHours > 0 ? `ตามที่กรอกไว้ (ท+ป) สูงสุด ${maxDuration} คาบ` : `ยังไม่ได้กรอกชั่วโมง ตั้งได้อิสระสูงสุด ${maxDuration} คาบ`) : isManualSubject ? /*#__PURE__*/React.createElement("div", {
+    className: "hint"
+  }, "วิชานอกแผนกไม่มีจำนวนคาบตามหลักสูตร ตั้งได้อิสระสูงสุด ", maxDuration, " คาบ") : currentSubjectObj && /*#__PURE__*/React.createElement("div", {
+    className: "hint"
+  }, "วิชานี้มีทั้งหมด ", maxDuration, " คาบต่อสัปดาห์")), /*#__PURE__*/React.createElement("div", {
+    className: "field"
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      marginBottom: 5,
+      gap: 8
+    }
+  }, /*#__PURE__*/React.createElement("label", {
+    className: "lbl",
+    style: {
+      marginBottom: 0
+    }
+  }, "ห้องที่ใช้สอน"), /*#__PURE__*/React.createElement("label", {
+    style: {
+      display: 'flex',
+      alignItems: 'center',
+      gap: 5,
+      fontSize: 12,
+      fontWeight: 600,
+      color: 'var(--ink-3)',
+      cursor: 'pointer'
+    }
+  }, /*#__PURE__*/React.createElement("input", {
+    type: "checkbox",
+    checked: isManualRoom,
+    onChange: e => {
+      setIsManualRoom(e.target.checked);
+      if (e.target.checked) setCustomRoomId('');else setManualRoomName('');
+    }
+  }), "ห้องนอกแผนก (พิมพ์เอง)")), isManualRoom ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("input", {
+    type: "text",
+    value: manualRoomName,
+    onChange: e => setManualRoomName(e.target.value),
+    className: "inp",
+    placeholder: "เช่น อาคาร 8 ห้อง 838"
+  }), /*#__PURE__*/React.createElement("label", {
+    style: {
+      display: 'flex',
+      alignItems: 'flex-start',
+      gap: 7,
+      marginTop: 8,
+      cursor: 'pointer'
+    }
+  }, /*#__PURE__*/React.createElement("input", {
+    type: "checkbox",
+    checked: saveRoomToRegistry,
+    style: {
+      marginTop: 3
+    },
+    onChange: e => setSaveRoomToRegistry(e.target.checked)
+  }), /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontSize: 13.5,
+      color: 'var(--ink-3)',
+      lineHeight: 1.45
+    }
+  }, /*#__PURE__*/React.createElement("b", {
+    style: {
+      color: 'var(--ink)'
+    }
+  }, "เก็บเข้าทะเบียนห้อง"), " เพื่อให้ตรวจห้องชนได้ และครั้งหน้าเลือกจากรายการได้เลย", !saveRoomToRegistry && /*#__PURE__*/React.createElement("span", {
+    style: {
+      display: 'block',
+      color: 'var(--warn)',
+      fontWeight: 700,
+      marginTop: 3
+    }
+  }, "ไม่เก็บ = ระบบจะไม่เตือนถ้าห้องนี้ถูกใช้ซ้ำเวลากัน")))) : /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("select", {
+    value: customRoomId,
+    onChange: e => setCustomRoomId(e.target.value),
+    className: "sel"
+  }, /*#__PURE__*/React.createElement("option", {
+    value: ""
+  }, "ไม่ระบุห้อง"), deptRooms.map(r => /*#__PURE__*/React.createElement("option", {
+    key: r.id,
+    value: r.id
+  }, r.name, r.note ? ` · ${r.note}` : '')), rooms.filter(r => r.external).length > 0 && /*#__PURE__*/React.createElement("optgroup", {
+    label: "ห้องนอกแผนก"
+  }, rooms.filter(r => r.external).map(r => /*#__PURE__*/React.createElement("option", {
+    key: r.id,
+    value: r.id
+  }, r.name)))), rooms.length === 0 && /*#__PURE__*/React.createElement("div", {
+    className: "hint"
+  }, "ยังไม่มีห้องในทะเบียน", ' ', /*#__PURE__*/React.createElement("button", {
+    onClick: () => setIsRoomModalOpen(true),
+    style: {
+      color: 'var(--accent)',
+      fontWeight: 700,
+      textDecoration: 'underline',
+      textUnderlineOffset: 2
+    }
+  }, "เพิ่มห้อง"), ' ', "หรือติ๊ก \"ห้องนอกแผนก\" เพื่อพิมพ์เอง")))), (() => {
+    if (!editingSlot) return null;
+    if (isManualRoom && !saveRoomToRegistry) return null;
+    const rid = isManualRoom ? rooms.find(r => r.name.trim().toLowerCase() === manualRoomName.trim().toLowerCase())?.id : customRoomId || (!isManualTeacher ? teachers.find(t => t.id === selectedTeacher)?.roomId : null);
+    if (!rid) return null;
+    const cls = modalClassId || currentClass;
+    const clashes = [];
+    let cur = editingSlot.period,
+      cnt = 0;
+    const cObj2 = classes.find(c => c.id === cls) || {};
+    const lunch2 = cObj2.lunchPeriod || 5;
+    while (cnt < selectedDuration && cur <= 11) {
+      if (cur !== lunch2) {
+        const rc = roomClashAt(rid, editingSlot.day, cur, cls);
+        if (rc) clashes.push({
+          period: cur,
+          cls: classes.find(c => c.id === rc.classId)?.name || 'ห้องอื่น'
+        });
+        cnt++;
+      }
+      cur++;
+    }
+    if (clashes.length === 0) {
+      return /*#__PURE__*/React.createElement("div", {
+        className: "note",
+        style: {
+          background: 'var(--ok-soft)',
+          border: '1px solid #A8D8C4',
+          color: '#0E5A42'
+        }
+      }, /*#__PURE__*/React.createElement(Check, {
+        className: "w-4 h-4",
+        style: {
+          flexShrink: 0,
+          marginTop: 1
+        }
+      }), /*#__PURE__*/React.createElement("span", null, "ห้อง ", roomLabel(rid), " ว่างในช่วงเวลานี้"));
+    }
+    return /*#__PURE__*/React.createElement("div", {
+      className: "note note-err"
+    }, /*#__PURE__*/React.createElement(AlertCircle, {
+      className: "w-4 h-4",
+      style: {
+        flexShrink: 0,
+        marginTop: 1
+      }
+    }), /*#__PURE__*/React.createElement("span", null, "ห้อง ", roomLabel(rid), " ไม่ว่าง — ", clashes.map(c => `คาบ ${c.period} ใช้โดย ${c.cls}`).join(' · ')));
+  })(), /*#__PURE__*/React.createElement("div", {
+    className: "field"
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      marginBottom: 5,
+      gap: 8
+    }
+  }, /*#__PURE__*/React.createElement("label", {
+    className: "lbl",
+    style: {
+      marginBottom: 0
+    }
+  }, "ครูผู้สอน"), /*#__PURE__*/React.createElement("label", {
+    style: {
+      display: 'flex',
+      alignItems: 'center',
+      gap: 5,
+      fontSize: 12,
+      fontWeight: 600,
+      color: 'var(--ink-3)',
+      cursor: 'pointer'
+    }
+  }, /*#__PURE__*/React.createElement("input", {
+    type: "checkbox",
+    checked: isManualTeacher,
+    onChange: e => {
+      setIsManualTeacher(e.target.checked);
+      if (e.target.checked) setSelectedTeacher('');else setManualTeacherName('');
+    }
+  }), "ครูนอกแผนก (พิมพ์ชื่อเอง)")), isManualTeacher ? /*#__PURE__*/React.createElement("input", {
+    type: "text",
+    value: manualTeacherName,
+    onChange: e => setManualTeacherName(e.target.value),
+    className: "inp",
+    placeholder: "พิมพ์ชื่อครูผู้สอน"
+  }) : /*#__PURE__*/React.createElement("select", {
+    className: "sel",
+    value: selectedTeacher,
+    onChange: e => {
+      setSelectedTeacher(e.target.value);
+      const t = teachers.find(x => x.id === e.target.value);
+      setCustomRoomId(t?.roomId || '');
+    }
+  }, /*#__PURE__*/React.createElement("option", {
+    value: ""
+  }, "เลือกครูผู้สอน"), teachers.map(t => /*#__PURE__*/React.createElement("option", {
+    key: t.id,
+    value: t.id
+  }, t.name, t.roomId ? ` · ห้อง ${roomLabel(t.roomId)}` : '')))), (!isManualTeacher && selectedTeacher || isManualTeacher && manualTeacherName.trim()) && /*#__PURE__*/React.createElement("div", {
+    className: "box",
+    style: {
+      background: 'var(--surface-2)',
+      padding: 12
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "eyebrow",
+    style: {
+      marginBottom: 8
+    }
+  }, "คิวว่างของครูท่านนี้ทั้งสัปดาห์"), /*#__PURE__*/React.createElement("table", {
+    className: "mini"
+  }, /*#__PURE__*/React.createElement("thead", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", {
+    style: {
+      width: 26
+    }
+  }), PERIODS.map(p => /*#__PURE__*/React.createElement("th", {
+    key: p.id,
+    className: "mono"
+  }, p.id)))), /*#__PURE__*/React.createElement("tbody", null, DAYS.map(d => {
+    let preview = [];
+    if (editingSlot && d === editingSlot.day) {
+      let cur = editingSlot.period,
+        n = 0;
+      const cObj = classes.find(c => c.id === activeModalClassId) || {};
+      const cLunch = cObj.lunchPeriod || 5;
+      while (n < selectedDuration && cur <= 11) {
+        if (cur !== cLunch) {
+          preview.push(cur);
+          n++;
+        }
+        cur++;
+      }
+    }
+    return /*#__PURE__*/React.createElement("tr", {
+      key: d
+    }, /*#__PURE__*/React.createElement("th", {
+      style: {
+        fontSize: 11
+      }
+    }, DAY_SHORT[d]), PERIODS.map(p => {
+      const isPlan = preview.includes(p.id);
+      const busy = schedule.find(s => s.day === d && s.period === p.id && (isManualTeacher ? s.isManualTeacher && s.teacherName === manualTeacherName.trim() : !s.isManualTeacher && s.teacherId === selectedTeacher));
+      let cls = 'free',
+        title = 'ว่าง',
+        txt = '';
+      if (busy && busy.classId !== activeModalClassId) {
+        const bClass = classes.find(c => c.id === busy.classId);
+        cls = 'busy';
+        title = `ติดสอน ${bClass?.name || ''}`;
+        const m = (bClass?.name || '').match(/(ปวช\.|ปวส\.)\s*\d+\/\d+/);
+        txt = m ? m[0].replace(/\s/g, '') : (bClass?.name || '').split(' ').slice(-1)[0];
+      } else if (busy) {
+        cls = 'self';
+        title = 'สอนห้องนี้อยู่แล้ว';
+      }
+      if (isPlan) {
+        cls = busy && busy.classId !== activeModalClassId ? 'clash' : 'plan';
+        title = cls === 'clash' ? 'ชนกับคาบเดิม' : 'คาบที่กำลังจะวาง';
+      }
+      return /*#__PURE__*/React.createElement("td", {
+        key: p.id,
+        className: cls,
+        title: title
+      }, txt && /*#__PURE__*/React.createElement("div", {
+        className: "mini-txt"
+      }, txt));
+    }));
+  }))), /*#__PURE__*/React.createElement("div", {
+    className: "mini-legend"
+  }, /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("i", {
+    style: {
+      background: '#fff',
+      border: '1px solid var(--rule)'
+    }
+  }), "ว่าง"), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("i", {
+    style: {
+      background: 'var(--danger)'
+    }
+  }), "ติดสอน"), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("i", {
+    style: {
+      background: 'var(--accent)'
+    }
+  }), "กำลังจะวาง"), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("i", {
+    style: {
+      background: '#7E1019'
+    }
+  }), "ชนกัน"))), /*#__PURE__*/React.createElement("label", {
+    style: {
+      display: 'flex',
+      gap: 9,
+      alignItems: 'flex-start',
+      cursor: 'pointer',
+      padding: '10px 12px',
+      border: '1px solid var(--accent-line)',
+      background: 'var(--accent-soft)',
+      borderRadius: 6
+    }
+  }, /*#__PURE__*/React.createElement("input", {
+    type: "checkbox",
+    checked: allowOverlap,
+    onChange: e => setAllowOverlap(e.target.checked),
+    style: {
+      marginTop: 2
+    }
+  }), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 14,
+      fontWeight: 700,
+      color: '#7A3F07'
+    }
+  }, "ให้สอนซ้อนเวลาได้"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 12,
+      color: '#96591A',
+      lineHeight: 1.5,
+      marginTop: 2
+    }
+  }, "ติ๊กเมื่อครูต้องคุมหลายห้องพร้อมกันจริง ระบบจะข้ามการเตือนคาบชน")))), /*#__PURE__*/React.createElement("div", {
+    className: "modal-foot"
+  }, deleteInfo ? /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'flex',
+      alignItems: 'center',
+      gap: 8,
+      flexWrap: 'wrap'
+    }
+  }, deleteInfo.lockWhole ? /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontSize: 14,
+      color: 'var(--ink-3)',
+      fontWeight: 600
+    }
+  }, deleteInfo.blk.slot.isFixed ? 'คาบตายตัว' : 'วิชากิจกรรม', "ต้องลบทั้ง ", deleteInfo.max, " คาบ") : deleteInfo.max > 1 ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontSize: 14,
+      color: 'var(--ink-3)',
+      fontWeight: 600
+    }
+  }, "ลบ"), /*#__PURE__*/React.createElement("input", {
+    type: "number",
+    min: "1",
+    max: deleteInfo.max,
+    value: Math.min(deleteCount, deleteInfo.max),
+    onChange: e => {
+      let v = parseInt(e.target.value);
+      if (isNaN(v) || v < 1) v = 1;
+      if (v > deleteInfo.max) v = deleteInfo.max;
+      setDeleteCount(v);
+    },
+    className: "inp inp-num",
+    style: {
+      width: 62,
+      padding: '6px 8px',
+      fontSize: 15.5
+    }
+  }), /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontSize: 14,
+      color: 'var(--ink-3)',
+      fontWeight: 600
+    }
+  }, "จาก ", deleteInfo.max, " คาบ (คาบ ", deleteInfo.targets.slice(0, Math.min(deleteCount, deleteInfo.max)).join(', '), ")")) : null, /*#__PURE__*/React.createElement("button", {
+    onClick: handleDeleteSlot,
+    className: "btn btn-ghost-danger btn-sm"
+  }, /*#__PURE__*/React.createElement(Trash2, {
+    className: "w-3.5 h-3.5"
+  }), deleteInfo.lockWhole ? `ลบ ${deleteInfo.max} คาบ` : deleteInfo.max > 1 ? `ลบ ${Math.min(deleteCount, deleteInfo.max)} คาบ` : 'ลบคาบนี้')) : /*#__PURE__*/React.createElement("span", null), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'flex',
+      gap: 8
+    }
+  }, /*#__PURE__*/React.createElement("button", {
+    onClick: () => setEditingSlot(null),
+    className: "btn"
+  }, "ยกเลิก"), /*#__PURE__*/React.createElement("button", {
+    onClick: handleSaveSlot,
+    className: "btn btn-accent"
+  }, /*#__PURE__*/React.createElement(Check, {
+    className: "w-4 h-4"
+  }), " วางคาบ"))))), isSubjectModalOpen && /*#__PURE__*/React.createElement("div", {
+    className: "ov",
+    onClick: () => safeCloseModal(editingSubjectId, () => setIsSubjectModalOpen(false))
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "modal",
+    style: {
+      maxWidth: 620
+    },
+    onClick: e => e.stopPropagation()
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "modal-head"
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    className: "modal-title"
+  }, "รายวิชาของ ", activeClassObj.name), /*#__PURE__*/React.createElement("div", {
+    className: "modal-sub"
+  }, currentSubjectsList.length, " รายวิชา · รวม ", sumHours, " คาบต่อสัปดาห์")), /*#__PURE__*/React.createElement("button", {
+    onClick: () => safeCloseModal(editingSubjectId, () => setIsSubjectModalOpen(false)),
+    className: "x-btn"
+  }, /*#__PURE__*/React.createElement(X, {
+    className: "w-4 h-4"
+  }))), /*#__PURE__*/React.createElement("div", {
+    className: "modal-body",
+    style: {
+      display: 'flex',
+      flexDirection: 'column',
+      gap: 16
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'grid',
+      gridTemplateColumns: '1fr 1fr',
+      gap: 12
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "box"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "box-title"
+  }, /*#__PURE__*/React.createElement(Copy, {
+    className: "w-3.5 h-3.5"
+  }), " คัดลอกจากห้องอื่น"), /*#__PURE__*/React.createElement("select", {
+    className: "sel",
+    style: {
+      marginBottom: 8
+    },
+    value: copySourceClassId,
+    onChange: e => setCopySourceClassId(e.target.value)
+  }, /*#__PURE__*/React.createElement("option", {
+    value: ""
+  }, "เลือกห้องต้นทาง"), classes.filter(c => c.id !== currentClass && (classSubjects[c.id] || []).length > 0).map(c => /*#__PURE__*/React.createElement("option", {
+    key: c.id,
+    value: c.id
+  }, c.name, " (", (classSubjects[c.id] || []).length, " วิชา)"))), /*#__PURE__*/React.createElement("button", {
+    onClick: handleCopyPlan,
+    disabled: !copySourceClassId,
+    className: "btn btn-sm",
+    style: {
+      width: '100%'
+    }
+  }, "คัดลอกมาลงห้องนี้")), /*#__PURE__*/React.createElement("div", {
+    className: "box"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "box-title"
+  }, /*#__PURE__*/React.createElement(FileSpreadsheet, {
+    className: "w-3.5 h-3.5"
+  }), " นำเข้าจาก CSV"), /*#__PURE__*/React.createElement("label", {
+    className: "btn btn-sm",
+    style: {
+      width: '100%',
+      marginBottom: 8,
+      cursor: 'pointer'
+    }
+  }, /*#__PURE__*/React.createElement(Upload, {
+    className: "w-3.5 h-3.5"
+  }), " เลือกไฟล์ CSV", /*#__PURE__*/React.createElement("input", {
+    type: "file",
+    accept: ".csv",
+    onChange: handleFileUpload,
+    style: {
+      display: 'none'
+    }
+  })), /*#__PURE__*/React.createElement("button", {
+    onClick: downloadTemplate,
+    className: "btn btn-sm",
+    style: {
+      width: '100%'
+    }
+  }, /*#__PURE__*/React.createElement(Download, {
+    className: "w-3.5 h-3.5"
+  }), " ดาวน์โหลดไฟล์ตัวอย่าง"))), /*#__PURE__*/React.createElement("div", {
+    className: "box"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "box-title"
+  }, /*#__PURE__*/React.createElement(Plus, {
+    className: "w-3.5 h-3.5"
+  }), " เพิ่มรายวิชา"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'grid',
+      gridTemplateColumns: '150px 1fr',
+      gap: 10,
+      marginBottom: 10
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "field"
+  }, /*#__PURE__*/React.createElement("label", {
+    className: "lbl"
+  }, "รหัสวิชา"), /*#__PURE__*/React.createElement("input", {
+    type: "text",
+    className: "inp mono",
+    value: newSubjectForm.code,
+    placeholder: "20000-1401",
+    onChange: e => setNewSubjectForm({
+      ...newSubjectForm,
+      code: e.target.value
+    })
+  })), /*#__PURE__*/React.createElement("div", {
+    className: "field"
+  }, /*#__PURE__*/React.createElement("label", {
+    className: "lbl"
+  }, "ชื่อวิชา"), /*#__PURE__*/React.createElement("input", {
+    type: "text",
+    className: "inp",
+    value: newSubjectForm.name,
+    placeholder: "คณิตศาสตร์อุตสาหกรรม",
+    onChange: e => setNewSubjectForm({
+      ...newSubjectForm,
+      name: e.target.value
+    })
+  }))), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'grid',
+      gridTemplateColumns: 'repeat(4,1fr)',
+      gap: 10,
+      marginBottom: 12
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "field"
+  }, /*#__PURE__*/React.createElement("label", {
+    className: "lbl"
+  }, "ทฤษฎี"), /*#__PURE__*/React.createElement("input", {
+    type: "number",
+    min: "0",
+    className: "inp inp-num mono",
+    value: newSubjectForm.theory,
+    onChange: e => setNewSubjectForm({
+      ...newSubjectForm,
+      theory: e.target.value
+    })
+  })), /*#__PURE__*/React.createElement("div", {
+    className: "field"
+  }, /*#__PURE__*/React.createElement("label", {
+    className: "lbl"
+  }, "ปฏิบัติ"), /*#__PURE__*/React.createElement("input", {
+    type: "number",
+    min: "0",
+    className: "inp inp-num mono",
+    value: newSubjectForm.practical,
+    onChange: e => setNewSubjectForm({
+      ...newSubjectForm,
+      practical: e.target.value
+    })
+  })), /*#__PURE__*/React.createElement("div", {
+    className: "field"
+  }, /*#__PURE__*/React.createElement("label", {
+    className: "lbl"
+  }, "หน่วยกิต"), /*#__PURE__*/React.createElement("input", {
+    type: "number",
+    min: "0",
+    className: "inp inp-num mono",
+    value: newSubjectForm.credit,
+    onChange: e => setNewSubjectForm({
+      ...newSubjectForm,
+      credit: e.target.value
+    })
+  })), /*#__PURE__*/React.createElement("div", {
+    className: "field"
+  }, /*#__PURE__*/React.createElement("label", {
+    className: "lbl",
+    style: {
+      color: 'var(--accent)'
+    }
+  }, "รวมคาบ"), /*#__PURE__*/React.createElement("div", {
+    className: "inp inp-num mono",
+    style: {
+      background: 'var(--accent-soft)',
+      borderColor: 'var(--accent-line)',
+      fontWeight: 600
+    }
+  }, Number(newSubjectForm.theory || 0) + Number(newSubjectForm.practical || 0)))), /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginBottom: 12
+    }
+  }, /*#__PURE__*/React.createElement("label", {
+    className: "lbl"
+  }, "สีที่จะแสดงในตาราง"), /*#__PURE__*/React.createElement("div", {
+    className: "color-row"
+  }, SUBJECT_COLORS.map((c, i) => {
+    const def = SUBJECT_COLORS[currentSubjectsList.length % SUBJECT_COLORS.length].key;
+    const on = (newSubjectForm.colorKey || def) === c.key;
+    return /*#__PURE__*/React.createElement("button", {
+      key: c.key,
+      type: "button",
+      title: c.key,
+      onClick: () => setNewSubjectForm({
+        ...newSubjectForm,
+        colorKey: c.key
+      }),
+      className: `color-dot ${on ? 'color-on' : ''}`,
+      style: {
+        background: c.bg,
+        boxShadow: `inset 0 0 0 2px ${c.line}`
+      }
+    });
+  }))), /*#__PURE__*/React.createElement("button", {
+    onClick: handleAddSubject,
+    className: "btn btn-primary",
+    style: {
+      width: '100%'
+    }
+  }, "เพิ่มรายวิชา")), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    className: "eyebrow",
+    style: {
+      marginBottom: 4
+    }
+  }, "รายวิชาในห้องนี้"), currentSubjectsList.length > 1 && /*#__PURE__*/React.createElement("div", {
+    className: "hint",
+    style: {
+      marginBottom: 9
+    }
+  }, "ลากที่ไอคอน ⠿ ด้านซ้ายของแต่ละวิชาเพื่อจัดลำดับก่อน-หลัง"), currentSubjectsList.length === 0 ? /*#__PURE__*/React.createElement("div", {
+    className: "note note-info",
+    style: {
+      justifyContent: 'center'
+    }
+  }, "ยังไม่มีรายวิชา เพิ่มด้านบน คัดลอกจากห้องอื่น หรือนำเข้าจาก CSV") : currentSubjectsList.map((s, idx) => {
+    const pal = normalizeSubjectColor(s, idx);
+    const req = Number(s.theory) + Number(s.practical);
+    const done = placedHoursFor(currentClass, s.id);
+    const isEditingThis = editingSubjectId === s.id;
+    return /*#__PURE__*/React.createElement("div", {
+      key: s.id,
+      className: `list-row ${draggedSubjectId === s.id ? 'list-row-dragging' : ''}`,
+      onDragOver: e => {
+        if (!draggedSubjectId || draggedSubjectId === s.id || isEditingThis) return;
+        e.preventDefault();
+        e.currentTarget.classList.add('list-row-dragover');
+      },
+      onDragLeave: e => e.currentTarget.classList.remove('list-row-dragover'),
+      onDrop: e => {
+        e.preventDefault();
+        e.currentTarget.classList.remove('list-row-dragover');
+        if (draggedSubjectId && draggedSubjectId !== s.id) {
+          saveHistory();
+          reorderSubject(currentClass, draggedSubjectId, s.id);
+        }
+        setDraggedSubjectId(null);
+      }
+    }, isEditingThis ? /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 10
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: 'grid',
+        gridTemplateColumns: '130px 1fr',
+        gap: 8
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "field"
+    }, /*#__PURE__*/React.createElement("label", {
+      className: "lbl"
+    }, "รหัสวิชา"), /*#__PURE__*/React.createElement("input", {
+      type: "text",
+      className: "inp mono",
+      style: {
+        padding: '6px 8px',
+        fontSize: 13.5
+      },
+      value: editSubjectForm.code,
+      onChange: e => setEditSubjectForm({
+        ...editSubjectForm,
+        code: e.target.value
+      })
+    })), /*#__PURE__*/React.createElement("div", {
+      className: "field"
+    }, /*#__PURE__*/React.createElement("label", {
+      className: "lbl"
+    }, "ชื่อวิชา"), /*#__PURE__*/React.createElement("input", {
+      type: "text",
+      className: "inp",
+      style: {
+        padding: '6px 8px',
+        fontSize: 13.5
+      },
+      value: editSubjectForm.name,
+      onChange: e => setEditSubjectForm({
+        ...editSubjectForm,
+        name: e.target.value
+      })
+    }))), /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: 'grid',
+        gridTemplateColumns: 'repeat(4,1fr)',
+        gap: 8
+      }
+    }, [['ทฤษฎี', 'theory'], ['ปฏิบัติ', 'practical'], ['หน่วยกิต', 'credit']].map(([lab, key]) => /*#__PURE__*/React.createElement("div", {
+      className: "field",
+      key: key
+    }, /*#__PURE__*/React.createElement("label", {
+      className: "lbl"
+    }, lab), /*#__PURE__*/React.createElement("input", {
+      type: "number",
+      min: "0",
+      className: "inp inp-num mono",
+      style: {
+        padding: '6px 8px',
+        fontSize: 13.5
+      },
+      value: editSubjectForm[key],
+      onChange: e => setEditSubjectForm({
+        ...editSubjectForm,
+        [key]: e.target.value
+      })
+    }))), /*#__PURE__*/React.createElement("div", {
+      className: "field"
+    }, /*#__PURE__*/React.createElement("label", {
+      className: "lbl",
+      style: {
+        color: 'var(--accent)'
+      }
+    }, "รวม"), /*#__PURE__*/React.createElement("div", {
+      className: "inp inp-num mono",
+      style: {
+        padding: '6px 8px',
+        fontSize: 13.5,
+        background: 'var(--surface-2)'
+      }
+    }, Number(editSubjectForm.theory || 0) + Number(editSubjectForm.practical || 0)))), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("label", {
+      className: "lbl"
+    }, "สี"), /*#__PURE__*/React.createElement("div", {
+      className: "color-row"
+    }, SUBJECT_COLORS.map(c => /*#__PURE__*/React.createElement("button", {
+      key: c.key,
+      type: "button",
+      title: c.key,
+      onClick: () => setEditSubjectForm({
+        ...editSubjectForm,
+        colorKey: c.key
+      }),
+      className: `color-dot ${editSubjectForm.colorKey === c.key ? 'color-on' : ''}`,
+      style: {
+        width: 22,
+        height: 22,
+        background: c.bg,
+        boxShadow: `inset 0 0 0 2px ${c.line}`
+      }
+    })))), /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: 'flex',
+        gap: 7,
+        justifyContent: 'flex-end',
+        borderTop: '1px solid var(--rule-soft)',
+        paddingTop: 10
+      }
+    }, /*#__PURE__*/React.createElement("button", {
+      onClick: cancelEditSubject,
+      className: "btn btn-sm"
+    }, "ยกเลิก"), /*#__PURE__*/React.createElement("button", {
+      onClick: () => saveEditSubject(s.id),
+      className: "btn btn-accent btn-sm"
+    }, /*#__PURE__*/React.createElement(Check, {
+      className: "w-3.5 h-3.5"
+    }), " บันทึก"))) : /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: 'flex',
+        alignItems: 'center',
+        gap: 4
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "drag-handle",
+      draggable: true,
+      title: "กดค้างแล้วลากเพื่อจัดลำดับ",
+      onDragStart: e => {
+        setDraggedSubjectId(s.id);
+        e.dataTransfer.effectAllowed = 'move';
+        e.dataTransfer.setData('text/plain', s.id);
+      },
+      onDragEnd: () => setDraggedSubjectId(null)
+    }, /*#__PURE__*/React.createElement(GripVertical, {
+      className: "w-4 h-4"
+    })), /*#__PURE__*/React.createElement("span", {
+      className: "swatch",
+      style: {
+        background: pal.line,
+        width: 4,
+        height: 34,
+        borderRadius: 2
+      }
+    }), /*#__PURE__*/React.createElement("div", {
+      style: {
+        flex: 1,
+        minWidth: 0
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "mono",
+      style: {
+        fontSize: 14.5,
+        color: 'var(--ink-3)'
+      }
+    }, s.code || '—'), /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 17.5,
+        fontWeight: 600,
+        lineHeight: 1.3
+      }
+    }, s.name), /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: 'flex',
+        alignItems: 'center',
+        gap: 9,
+        marginTop: 4
+      }
+    }, /*#__PURE__*/React.createElement("span", {
+      className: "mono",
+      style: {
+        fontSize: 14.5,
+        color: 'var(--ink-3)'
+      }
+    }, "ท", s.theory, " ป", s.practical, " น", s.credit), /*#__PURE__*/React.createElement(TickRail, {
+      required: req,
+      placed: done
+    }))), /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: 'flex',
+        gap: 3
+      }
+    }, /*#__PURE__*/React.createElement("button", {
+      onClick: () => startEditSubject(s),
+      className: "x-btn",
+      title: "แก้ไขวิชานี้"
+    }, /*#__PURE__*/React.createElement(Edit2, {
+      className: "w-4 h-4"
+    })), /*#__PURE__*/React.createElement("button", {
+      onClick: () => handleDeleteSubject(s.id),
+      className: "x-btn",
+      style: {
+        color: 'var(--danger)'
+      },
+      title: "ลบวิชานี้"
+    }, /*#__PURE__*/React.createElement(Trash2, {
+      className: "w-4 h-4"
+    })))));
+  }))))), isClassModalOpen && /*#__PURE__*/React.createElement("div", {
+    className: "ov",
+    onClick: () => setIsClassModalOpen(false)
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "modal",
+    style: {
+      maxWidth: 660
+    },
+    onClick: e => e.stopPropagation()
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "modal-head"
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    className: "modal-title"
+  }, "ห้องเรียน"), /*#__PURE__*/React.createElement("div", {
+    className: "modal-sub"
+  }, deptClasses.length, " ห้องของแผนก", classes.length - deptClasses.length > 0 ? ` · ${classes.length - deptClasses.length} กลุ่มนอกแผนก` : '', " · ชื่อห้องสร้างจากสาขา ระดับชั้น และเลขห้องโดยอัตโนมัติ")), /*#__PURE__*/React.createElement("button", {
+    onClick: () => setIsClassModalOpen(false),
+    className: "x-btn"
+  }, /*#__PURE__*/React.createElement(X, {
+    className: "w-4 h-4"
+  }))), /*#__PURE__*/React.createElement("div", {
+    className: "modal-body",
+    style: {
+      display: 'flex',
+      flexDirection: 'column',
+      gap: 16
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "box"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "box-title"
+  }, /*#__PURE__*/React.createElement(Plus, {
+    className: "w-3.5 h-3.5"
+  }), " เพิ่มห้องเรียน"), /*#__PURE__*/React.createElement("div", {
+    className: "field",
+    style: {
+      marginBottom: 10
+    }
+  }, /*#__PURE__*/React.createElement("label", {
+    className: "lbl"
+  }, "สาขางาน"), /*#__PURE__*/React.createElement("input", {
+    type: "text",
+    className: "inp",
+    placeholder: "เช่น ช่างไฟฟ้ากำลัง",
+    value: newClassForm.major,
+    onChange: e => setNewClassForm({
+      ...newClassForm,
+      major: e.target.value
+    })
+  })), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'grid',
+      gridTemplateColumns: 'repeat(4,1fr)',
+      gap: 10,
+      marginBottom: 10
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "field"
+  }, /*#__PURE__*/React.createElement("label", {
+    className: "lbl"
+  }, "ระดับชั้น"), /*#__PURE__*/React.createElement("select", {
+    className: "sel",
+    value: newClassForm.level,
+    onChange: e => {
+      const lv = e.target.value;
+      // สลับชื่อสาขาให้ตรงระดับชั้น เว้นแต่ผู้ใช้พิมพ์สาขาอื่นเองไว้แล้ว
+      const keepCustom = newClassForm.major && !DEFAULT_MAJORS.includes(newClassForm.major.trim());
+      setNewClassForm({
+        ...newClassForm,
+        level: lv,
+        year: 1,
+        major: keepCustom ? newClassForm.major : MAJOR_BY_LEVEL[lv]
+      });
+    }
+  }, /*#__PURE__*/React.createElement("option", {
+    value: "ปวช."
+  }, "ปวช."), /*#__PURE__*/React.createElement("option", {
+    value: "ปวส."
+  }, "ปวส."))), /*#__PURE__*/React.createElement("div", {
+    className: "field"
+  }, /*#__PURE__*/React.createElement("label", {
+    className: "lbl"
+  }, "ชั้นปีที่"), /*#__PURE__*/React.createElement("select", {
+    className: "sel mono",
+    value: newClassForm.year,
+    onChange: e => setNewClassForm({
+      ...newClassForm,
+      year: parseInt(e.target.value)
+    })
+  }, yearOptions(newClassForm.level, newClassForm.year).map(y => /*#__PURE__*/React.createElement("option", {
+    key: y,
+    value: y
+  }, y)))), /*#__PURE__*/React.createElement("div", {
+    className: "field"
+  }, /*#__PURE__*/React.createElement("label", {
+    className: "lbl"
+  }, "ห้องที่"), /*#__PURE__*/React.createElement("select", {
+    className: "sel mono",
+    value: newClassForm.room,
+    onChange: e => setNewClassForm({
+      ...newClassForm,
+      room: parseInt(e.target.value)
+    })
+  }, numOptions(MAX_ROOM_NO, newClassForm.room).map(r => /*#__PURE__*/React.createElement("option", {
+    key: r,
+    value: r
+  }, r)))), /*#__PURE__*/React.createElement("div", {
+    className: "field"
+  }, /*#__PURE__*/React.createElement("label", {
+    className: "lbl"
+  }, "จำนวนนักเรียน"), /*#__PURE__*/React.createElement("input", {
+    type: "number",
+    className: "inp inp-num mono",
+    placeholder: "30",
+    value: newClassForm.studentCount,
+    onChange: e => setNewClassForm({
+      ...newClassForm,
+      studentCount: e.target.value
+    })
+  }))), /*#__PURE__*/React.createElement("div", {
+    className: "field",
+    style: {
+      marginBottom: 12
+    }
+  }, /*#__PURE__*/React.createElement("label", {
+    className: "lbl"
+  }, "ครูที่ปรึกษา"), /*#__PURE__*/React.createElement("select", {
+    className: "sel",
+    value: newClassForm.advisor,
+    onChange: e => setNewClassForm({
+      ...newClassForm,
+      advisor: e.target.value
+    })
+  }, /*#__PURE__*/React.createElement("option", {
+    value: ""
+  }, "ยังไม่ระบุ"), teachers.map(t => /*#__PURE__*/React.createElement("option", {
+    key: t.id,
+    value: t.name
+  }, t.name)))), /*#__PURE__*/React.createElement("div", {
+    className: "note note-info",
+    style: {
+      marginBottom: 12
+    }
+  }, "จะได้ชื่อห้องว่า ", /*#__PURE__*/React.createElement("b", {
+    style: {
+      color: 'var(--ink)'
+    }
+  }, `${newClassForm.major.trim() ? newClassForm.major.trim() + ' ' : ''}${newClassForm.level} ${newClassForm.year}/${newClassForm.room}`), ' ', "· พักกลางวันคาบ ", newClassForm.level === 'ปวช.' ? 5 : 4), /*#__PURE__*/React.createElement("button", {
+    onClick: handleAddClass,
+    className: "btn btn-primary",
+    style: {
+      width: '100%'
+    }
+  }, "เพิ่มห้องเรียน")), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    className: "eyebrow",
+    style: {
+      marginBottom: 9
+    }
+  }, "ห้องเรียนทั้งหมด · แก้ไขได้ทันที"), deptClasses.map(c => /*#__PURE__*/React.createElement("div", {
+    key: c.id,
+    className: "list-row"
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      marginBottom: 11
+    }
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontSize: 17.5,
+      fontWeight: 700
+    }
+  }, c.name), /*#__PURE__*/React.createElement("span", {
+    className: "mono",
+    style: {
+      fontSize: 15,
+      color: 'var(--ink-3)',
+      marginLeft: 9
+    }
+  }, (classSubjects[c.id] || []).length, " วิชา · ", schedule.filter(s => s.classId === c.id && s.subjectId).length, " คาบ")), /*#__PURE__*/React.createElement("button", {
+    onClick: () => handleDeleteClass(c.id),
+    className: "x-btn",
+    style: {
+      color: 'var(--danger)'
+    },
+    title: "ลบห้องเรียนนี้"
+  }, /*#__PURE__*/React.createElement(Trash2, {
+    className: "w-4 h-4"
+  }))), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'grid',
+      gridTemplateColumns: 'repeat(4,1fr)',
+      gap: 8
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "field",
+    style: {
+      gridColumn: 'span 4'
+    }
+  }, /*#__PURE__*/React.createElement("label", {
+    className: "lbl"
+  }, "สาขางาน"), /*#__PURE__*/React.createElement("input", {
+    type: "text",
+    className: "inp",
+    style: {
+      padding: '6px 8px',
+      fontSize: 13.5
+    },
+    value: c.major || '',
+    onChange: e => handleUpdateClassComplex(c.id, 'major', e.target.value)
+  })), /*#__PURE__*/React.createElement("div", {
+    className: "field"
+  }, /*#__PURE__*/React.createElement("label", {
+    className: "lbl"
+  }, "ระดับชั้น"), /*#__PURE__*/React.createElement("select", {
+    className: "sel",
+    style: {
+      padding: '6px 8px',
+      fontSize: 13.5
+    },
+    value: c.level || 'ปวช.',
+    onChange: e => handleUpdateClassComplex(c.id, 'level', e.target.value)
+  }, /*#__PURE__*/React.createElement("option", {
+    value: "ปวช."
+  }, "ปวช."), /*#__PURE__*/React.createElement("option", {
+    value: "ปวส."
+  }, "ปวส."))), /*#__PURE__*/React.createElement("div", {
+    className: "field"
+  }, /*#__PURE__*/React.createElement("label", {
+    className: "lbl"
+  }, "ชั้นปีที่"), /*#__PURE__*/React.createElement("select", {
+    className: "sel mono",
+    style: {
+      padding: '6px 8px',
+      fontSize: 13.5
+    },
+    value: c.year || 1,
+    onChange: e => handleUpdateClassComplex(c.id, 'year', parseInt(e.target.value))
+  }, yearOptions(c.level, c.year).map(y => /*#__PURE__*/React.createElement("option", {
+    key: y,
+    value: y
+  }, y)))), /*#__PURE__*/React.createElement("div", {
+    className: "field"
+  }, /*#__PURE__*/React.createElement("label", {
+    className: "lbl"
+  }, "ห้องที่"), /*#__PURE__*/React.createElement("select", {
+    className: "sel mono",
+    style: {
+      padding: '6px 8px',
+      fontSize: 13.5
+    },
+    value: c.room || 1,
+    onChange: e => handleUpdateClassComplex(c.id, 'room', parseInt(e.target.value))
+  }, numOptions(MAX_ROOM_NO, c.room).map(r => /*#__PURE__*/React.createElement("option", {
+    key: r,
+    value: r
+  }, r)))), /*#__PURE__*/React.createElement("div", {
+    className: "field"
+  }, /*#__PURE__*/React.createElement("label", {
+    className: "lbl"
+  }, "นักเรียน"), /*#__PURE__*/React.createElement("input", {
+    type: "number",
+    className: "inp inp-num mono",
+    style: {
+      padding: '6px 8px',
+      fontSize: 13.5
+    },
+    value: c.studentCount || '',
+    onChange: e => handleUpdateClassComplex(c.id, 'studentCount', e.target.value)
+  })), /*#__PURE__*/React.createElement("div", {
+    className: "field",
+    style: {
+      gridColumn: 'span 4'
+    }
+  }, /*#__PURE__*/React.createElement("label", {
+    className: "lbl"
+  }, "ครูที่ปรึกษา"), /*#__PURE__*/React.createElement("select", {
+    className: "sel",
+    style: {
+      padding: '6px 8px',
+      fontSize: 13.5
+    },
+    value: c.advisor || '',
+    onChange: e => handleUpdateClassComplex(c.id, 'advisor', e.target.value)
+  }, /*#__PURE__*/React.createElement("option", {
+    value: ""
+  }, "ยังไม่ระบุ"), c.advisor && !teachers.find(t => t.name === c.advisor) && /*#__PURE__*/React.createElement("option", {
+    value: c.advisor
+  }, c.advisor), teachers.map(t => /*#__PURE__*/React.createElement("option", {
+    key: t.id,
+    value: t.name
+  }, t.name)))))))), classes.some(c => c.external) && /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    className: "eyebrow",
+    style: {
+      marginBottom: 9
+    }
+  }, "กลุ่มนอกแผนก · เกิดจากการพิมพ์ชื่อเองตอนวางคาบในมุมมองตารางสอน"), classes.filter(c => c.external).map(c => /*#__PURE__*/React.createElement("div", {
+    key: c.id,
+    className: "list-row",
+    style: {
+      display: 'flex',
+      alignItems: 'center',
+      gap: 10
+    }
+  }, /*#__PURE__*/React.createElement("input", {
+    type: "text",
+    value: c.name,
+    className: "inp",
+    style: {
+      padding: '7px 9px',
+      fontSize: 14.5
+    },
+    onChange: e => setClasses(prev => prev.map(x => x.id === c.id ? {
+      ...x,
+      name: e.target.value
+    } : x)),
+    onBlur: () => saveHistory()
+  }), /*#__PURE__*/React.createElement("span", {
+    className: "mono",
+    style: {
+      fontSize: 13,
+      color: 'var(--ink-3)',
+      whiteSpace: 'nowrap'
+    }
+  }, schedule.filter(s => s.classId === c.id && s.subjectId).length, " คาบ"), /*#__PURE__*/React.createElement("button", {
+    onClick: () => handleDeleteClass(c.id),
+    className: "x-btn",
+    style: {
+      color: 'var(--danger)',
+      flexShrink: 0
+    },
+    title: "ลบกลุ่มนี้"
+  }, /*#__PURE__*/React.createElement(Trash2, {
+    className: "w-4 h-4"
+  })))))))), isTeacherModalOpen && /*#__PURE__*/React.createElement("div", {
+    className: "ov",
+    onClick: () => safeCloseModal(editingTeacherId, () => setIsTeacherModalOpen(false))
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "modal",
+    style: {
+      maxWidth: 500
+    },
+    onClick: e => e.stopPropagation()
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "modal-head"
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    className: "modal-title"
+  }, "ครูผู้สอน"), /*#__PURE__*/React.createElement("div", {
+    className: "modal-sub"
+  }, teachers.length, " คนในระบบ")), /*#__PURE__*/React.createElement("button", {
+    onClick: () => safeCloseModal(editingTeacherId, () => setIsTeacherModalOpen(false)),
+    className: "x-btn"
+  }, /*#__PURE__*/React.createElement(X, {
+    className: "w-4 h-4"
+  }))), /*#__PURE__*/React.createElement("div", {
+    className: "modal-body",
+    style: {
+      display: 'flex',
+      flexDirection: 'column',
+      gap: 16
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "box"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "box-title"
+  }, /*#__PURE__*/React.createElement(Plus, {
+    className: "w-3.5 h-3.5"
+  }), " เพิ่มครูผู้สอน"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'grid',
+      gridTemplateColumns: '1fr 130px',
+      gap: 10,
+      marginBottom: 12
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "field"
+  }, /*#__PURE__*/React.createElement("label", {
+    className: "lbl"
+  }, "ชื่อ-สกุล"), /*#__PURE__*/React.createElement("input", {
+    type: "text",
+    className: "inp",
+    placeholder: "ครูสมชาย ใจดี",
+    value: newTeacherForm.name,
+    onChange: e => setNewTeacherForm({
+      ...newTeacherForm,
+      name: e.target.value
+    })
+  })), /*#__PURE__*/React.createElement("div", {
+    className: "field"
+  }, /*#__PURE__*/React.createElement("label", {
+    className: "lbl"
+  }, "ห้องประจำ"), /*#__PURE__*/React.createElement("select", {
+    className: "sel",
+    value: newTeacherForm.roomId,
+    onChange: e => setNewTeacherForm({
+      ...newTeacherForm,
+      roomId: e.target.value
+    })
+  }, /*#__PURE__*/React.createElement("option", {
+    value: ""
+  }, "ไม่ระบุ"), rooms.map(r => /*#__PURE__*/React.createElement("option", {
+    key: r.id,
+    value: r.id
+  }, r.name))))), /*#__PURE__*/React.createElement("button", {
+    onClick: handleAddTeacher,
+    className: "btn btn-primary",
+    style: {
+      width: '100%',
+      marginBottom: 10
+    }
+  }, "เพิ่มครูผู้สอน"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'flex',
+      gap: 8
+    }
+  }, /*#__PURE__*/React.createElement("label", {
+    className: "btn btn-sm",
+    style: {
+      flex: 1,
+      cursor: 'pointer'
+    }
+  }, /*#__PURE__*/React.createElement(Upload, {
+    className: "w-3.5 h-3.5"
+  }), " นำเข้า CSV", /*#__PURE__*/React.createElement("input", {
+    type: "file",
+    accept: ".csv",
+    onChange: handleTeacherFileUpload,
+    style: {
+      display: 'none'
+    }
+  })), /*#__PURE__*/React.createElement("button", {
+    onClick: downloadTeacherTemplate,
+    className: "btn btn-sm",
+    style: {
+      flex: 1
+    }
+  }, /*#__PURE__*/React.createElement(Download, {
+    className: "w-3.5 h-3.5"
+  }), " ไฟล์ตัวอย่าง"))), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    className: "eyebrow",
+    style: {
+      marginBottom: 9
+    }
+  }, "รายชื่อครูผู้สอน"), teachers.length === 0 ? /*#__PURE__*/React.createElement("div", {
+    className: "note note-info",
+    style: {
+      justifyContent: 'center'
+    }
+  }, "ยังไม่มีครูในระบบ เพิ่มด้านบนหรือนำเข้าจากไฟล์ CSV") : teachers.map(t => {
+    const load = calculateTeacherSummary(t.id, schedule, classSubjects).sumHours;
+    return /*#__PURE__*/React.createElement("div", {
+      key: t.id,
+      className: "list-row"
+    }, editingTeacherId === t.id ? /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 9
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: 'grid',
+        gridTemplateColumns: '1fr 110px',
+        gap: 8
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "field"
+    }, /*#__PURE__*/React.createElement("label", {
+      className: "lbl"
+    }, "ชื่อ-สกุล"), /*#__PURE__*/React.createElement("input", {
+      type: "text",
+      className: "inp",
+      style: {
+        padding: '6px 8px',
+        fontSize: 13.5
+      },
+      value: editTeacherForm.name,
+      onChange: e => setEditTeacherForm({
+        ...editTeacherForm,
+        name: e.target.value
+      })
+    })), /*#__PURE__*/React.createElement("div", {
+      className: "field"
+    }, /*#__PURE__*/React.createElement("label", {
+      className: "lbl"
+    }, "ห้องประจำ"), /*#__PURE__*/React.createElement("select", {
+      className: "sel",
+      style: {
+        padding: '6px 8px',
+        fontSize: 13.5
+      },
+      value: editTeacherForm.roomId,
+      onChange: e => setEditTeacherForm({
+        ...editTeacherForm,
+        roomId: e.target.value
+      })
+    }, /*#__PURE__*/React.createElement("option", {
+      value: ""
+    }, "ไม่ระบุ"), rooms.map(r => /*#__PURE__*/React.createElement("option", {
+      key: r.id,
+      value: r.id
+    }, r.name))))), /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: 'flex',
+        gap: 7,
+        justifyContent: 'flex-end'
+      }
+    }, /*#__PURE__*/React.createElement("button", {
+      onClick: cancelEditTeacher,
+      className: "btn btn-sm"
+    }, "ยกเลิก"), /*#__PURE__*/React.createElement("button", {
+      onClick: () => saveEditTeacher(t.id),
+      className: "btn btn-accent btn-sm"
+    }, /*#__PURE__*/React.createElement(Check, {
+      className: "w-3.5 h-3.5"
+    }), " บันทึก"))) : /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: 'flex',
+        alignItems: 'center',
+        gap: 11
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        flex: 1,
+        minWidth: 0
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 17.5,
+        fontWeight: 600
+      }
+    }, t.name), /*#__PURE__*/React.createElement("div", {
+      className: "mono",
+      style: {
+        fontSize: 15,
+        color: 'var(--ink-3)',
+        marginTop: 2
+      }
+    }, t.roomId ? `ห้อง ${roomLabel(t.roomId)} · ` : '', "สอน ", load, " คาบ/สัปดาห์")), /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: 'flex',
+        gap: 3
+      }
+    }, /*#__PURE__*/React.createElement("button", {
+      onClick: () => startEditTeacher(t),
+      className: "x-btn",
+      title: "แก้ไข"
+    }, /*#__PURE__*/React.createElement(Edit2, {
+      className: "w-4 h-4"
+    })), /*#__PURE__*/React.createElement("button", {
+      onClick: () => handleDeleteTeacher(t.id),
+      className: "x-btn",
+      style: {
+        color: 'var(--danger)'
+      },
+      title: "ลบ"
+    }, /*#__PURE__*/React.createElement(Trash2, {
+      className: "w-4 h-4"
+    })))));
+  }))))), isTermModalOpen && /*#__PURE__*/React.createElement("div", {
+    className: "ov",
+    onClick: () => setIsTermModalOpen(false)
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "modal",
+    style: {
+      maxWidth: 420
+    },
+    onClick: e => e.stopPropagation()
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "modal-head"
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    className: "modal-title"
+  }, "ปีการศึกษาและภาคเรียน"), /*#__PURE__*/React.createElement("div", {
+    className: "modal-sub"
+  }, "ใช้แสดงบนหัวกระดาษของทุกตารางที่พิมพ์ออกไป")), /*#__PURE__*/React.createElement("button", {
+    onClick: () => setIsTermModalOpen(false),
+    className: "x-btn"
+  }, /*#__PURE__*/React.createElement(X, {
+    className: "w-4 h-4"
+  }))), /*#__PURE__*/React.createElement("div", {
+    className: "modal-body",
+    style: {
+      display: 'flex',
+      flexDirection: 'column',
+      gap: 14
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "field"
+  }, /*#__PURE__*/React.createElement("label", {
+    className: "lbl"
+  }, "ปีการศึกษา"), /*#__PURE__*/React.createElement("select", {
+    className: "sel",
+    value: config.year,
+    style: !config.year ? {
+      color: 'var(--ink-3)',
+      borderColor: 'var(--accent-line)',
+      background: 'var(--accent-soft)'
+    } : undefined,
+    onChange: e => {
+      const v = e.target.value;
+      setConfig({
+        ...config,
+        year: v ? parseInt(v) : ''
+      });
+    }
+  }, /*#__PURE__*/React.createElement("option", {
+    value: ""
+  }, "เลือกปีการศึกษา"), YEARS.map(y => /*#__PURE__*/React.createElement("option", {
+    key: y,
+    value: y
+  }, y)))), /*#__PURE__*/React.createElement("div", {
+    className: "field"
+  }, /*#__PURE__*/React.createElement("label", {
+    className: "lbl"
+  }, "ภาคเรียน"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'flex',
+      gap: 8
+    }
+  }, [1, 2].map(t => /*#__PURE__*/React.createElement("button", {
+    key: t,
+    onClick: () => setConfig({
+      ...config,
+      term: t
+    }),
+    className: `btn ${config.term === t ? 'btn-primary' : ''}`,
+    style: {
+      flex: 1
+    }
+  }, "ภาคเรียนที่ ", t)))), /*#__PURE__*/React.createElement("div", {
+    className: "note note-info"
+  }, /*#__PURE__*/React.createElement(AlertCircle, {
+    className: "w-4 h-4",
+    style: {
+      flexShrink: 0,
+      marginTop: 1,
+      color: 'var(--warn)'
+    }
+  }), /*#__PURE__*/React.createElement("div", null, "การเปลี่ยนตรงนี้เป็นการ", /*#__PURE__*/React.createElement("b", {
+    style: {
+      color: 'var(--ink)'
+    }
+  }, "แก้ป้ายกำกับของตารางชุดนี้"), " ไม่ได้เปิดตารางชุดใหม่", /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginTop: 4
+    }
+  }, "ถ้าจะขึ้นภาคเรียนใหม่ ให้สำรองไฟล์ของภาคเดิมเก็บไว้ก่อน แล้วค่อยล้างข้อมูลเริ่มใหม่")))), /*#__PURE__*/React.createElement("div", {
+    className: "modal-foot",
+    style: {
+      justifyContent: 'space-between'
+    }
+  }, /*#__PURE__*/React.createElement("button", {
+    onClick: () => {
+      setIsTermModalOpen(false);
+      setIsDataModalOpen(true);
+    },
+    className: "btn btn-sm"
+  }, /*#__PURE__*/React.createElement(Save, {
+    className: "w-3.5 h-3.5"
+  }), " สำรองไฟล์ก่อน"), /*#__PURE__*/React.createElement("button", {
+    onClick: () => setIsTermModalOpen(false),
+    className: "btn btn-accent"
+  }, /*#__PURE__*/React.createElement(Check, {
+    className: "w-4 h-4"
+  }), " เสร็จสิ้น")))), auditResult && (() => {
+    const {
+      conflicts,
+      shortages
+    } = auditResult;
+    const clean = conflicts.length === 0 && shortages.length === 0;
+    const byType = {
+      class: 'ห้องเรียนซ้อน',
+      teacher: 'ครูซ้อน',
+      room: 'ห้องซ้อน'
+    };
+    const goTo = it => {
+      setAuditResult(null);
+      setViewMode('student');
+      if (it.classId) setCurrentClass(it.classId);
+      if (it.day && it.period) setTimeout(() => handleCellClick(it.day, it.period), 60);
+    };
+    return /*#__PURE__*/React.createElement("div", {
+      className: "ov",
+      onClick: () => setAuditResult(null)
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "modal",
+      style: {
+        maxWidth: 580
+      },
+      onClick: e => e.stopPropagation()
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "modal-head"
+    }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+      className: "modal-title"
+    }, "ผลตรวจตาราง"), /*#__PURE__*/React.createElement("div", {
+      className: "modal-sub"
+    }, "สแกน ", classes.length, " ห้องเรียน · ", teachers.length, " ครู · ", rooms.length, " ห้อง · ", schedule.filter(x => x.subjectId).length, " คาบ")), /*#__PURE__*/React.createElement("button", {
+      onClick: () => setAuditResult(null),
+      className: "x-btn"
+    }, /*#__PURE__*/React.createElement(X, {
+      className: "w-4 h-4"
+    }))), /*#__PURE__*/React.createElement("div", {
+      className: "modal-body",
+      style: {
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 16
+      }
+    }, clean ? /*#__PURE__*/React.createElement("div", {
+      className: "note",
+      style: {
+        background: 'var(--ok-soft)',
+        border: '1px solid #A8D8C4',
+        color: '#0E5A42'
+      }
+    }, /*#__PURE__*/React.createElement(Check, {
+      className: "w-4 h-4",
+      style: {
+        flexShrink: 0,
+        marginTop: 1
+      }
+    }), /*#__PURE__*/React.createElement("span", null, "ไม่พบปัญหา ตารางไม่มีคาบชน และทุกวิชาลงครบตามหลักสูตรแล้ว")) : /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: 'flex',
+        gap: 22,
+        flexWrap: 'wrap'
+      }
+    }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+      className: "eyebrow"
+    }, "คาบชน"), /*#__PURE__*/React.createElement("div", {
+      className: "mono",
+      style: {
+        fontSize: 27.5,
+        fontWeight: 600,
+        marginTop: 3,
+        color: conflicts.length ? 'var(--danger)' : 'var(--ok)'
+      }
+    }, conflicts.length)), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+      className: "eyebrow"
+    }, "วิชาลงไม่ครบ"), /*#__PURE__*/React.createElement("div", {
+      className: "mono",
+      style: {
+        fontSize: 27.5,
+        fontWeight: 600,
+        marginTop: 3,
+        color: shortages.length ? 'var(--warn)' : 'var(--ok)'
+      }
+    }, shortages.length))), conflicts.length > 0 && /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+      className: "eyebrow",
+      style: {
+        marginBottom: 9
+      }
+    }, "คาบชน — ต้องแก้ก่อนประกาศตาราง"), conflicts.map((it, i) => /*#__PURE__*/React.createElement("div", {
+      key: i,
+      className: "list-row",
+      style: {
+        borderColor: 'var(--danger-soft)'
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: 'flex',
+        alignItems: 'center',
+        gap: 11
+      }
+    }, /*#__PURE__*/React.createElement("span", {
+      style: {
+        background: 'var(--danger-soft)',
+        color: 'var(--danger)',
+        fontSize: 13,
+        fontWeight: 700,
+        padding: '3px 7px',
+        borderRadius: 4,
+        flexShrink: 0
+      }
+    }, byType[it.type]), /*#__PURE__*/React.createElement("div", {
+      style: {
+        flex: 1,
+        minWidth: 0
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 16.5,
+        fontWeight: 600
+      }
+    }, it.title), /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 14.5,
+        color: 'var(--ink-3)',
+        marginTop: 2
+      }
+    }, it.day, " คาบ ", it.period, " · ", it.detail)), /*#__PURE__*/React.createElement("button", {
+      onClick: () => goTo(it),
+      className: "btn btn-sm",
+      style: {
+        flexShrink: 0
+      }
+    }, "ไปแก้"))))), shortages.length > 0 && /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+      className: "eyebrow",
+      style: {
+        marginBottom: 9
+      }
+    }, "วิชาที่ยังลงไม่ครบตามหลักสูตร"), shortages.map((it, i) => /*#__PURE__*/React.createElement("div", {
+      key: i,
+      className: "list-row"
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: 'flex',
+        alignItems: 'center',
+        gap: 11
+      }
+    }, /*#__PURE__*/React.createElement("span", {
+      style: {
+        background: it.type === 'over' ? 'var(--danger-soft)' : 'var(--warn-soft)',
+        color: it.type === 'over' ? 'var(--danger)' : 'var(--warn)',
+        fontSize: 13,
+        fontWeight: 700,
+        padding: '3px 7px',
+        borderRadius: 4,
+        flexShrink: 0
+      }
+    }, it.type === 'over' ? 'เกิน' : 'ขาด'), /*#__PURE__*/React.createElement("div", {
+      style: {
+        flex: 1,
+        minWidth: 0
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 16.5,
+        fontWeight: 600
+      }
+    }, it.title), /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 14.5,
+        color: 'var(--ink-3)',
+        marginTop: 2
+      }
+    }, it.detail)), /*#__PURE__*/React.createElement("button", {
+      onClick: () => {
+        setAuditResult(null);
+        setViewMode('student');
+        setCurrentClass(it.classId);
+      },
+      className: "btn btn-sm",
+      style: {
+        flexShrink: 0
+      }
+    }, "เปิดห้อง"))))))));
+  })(), isRoomModalOpen && /*#__PURE__*/React.createElement("div", {
+    className: "ov",
+    onClick: () => safeCloseModal(editingRoomId, () => setIsRoomModalOpen(false))
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "modal",
+    style: {
+      maxWidth: 540
+    },
+    onClick: e => e.stopPropagation()
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "modal-head"
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    className: "modal-title"
+  }, "ทะเบียนห้อง"), /*#__PURE__*/React.createElement("div", {
+    className: "modal-sub"
+  }, deptRooms.length, " ห้องของแผนก", rooms.length - deptRooms.length > 0 ? ` · ${rooms.length - deptRooms.length} ห้องนอกแผนก` : '', " · ระบบเตือนทันทีเมื่อสองห้องเรียนใช้ห้องเดียวกันในเวลาเดียวกัน")), /*#__PURE__*/React.createElement("button", {
+    onClick: () => safeCloseModal(editingRoomId, () => setIsRoomModalOpen(false)),
+    className: "x-btn"
+  }, /*#__PURE__*/React.createElement(X, {
+    className: "w-4 h-4"
+  }))), /*#__PURE__*/React.createElement("div", {
+    className: "modal-body",
+    style: {
+      display: 'flex',
+      flexDirection: 'column',
+      gap: 16
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "box"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "box-title"
+  }, /*#__PURE__*/React.createElement(Plus, {
+    className: "w-3.5 h-3.5"
+  }), " เพิ่มห้อง"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'grid',
+      gridTemplateColumns: '160px 1fr',
+      gap: 10,
+      marginBottom: 12
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "field"
+  }, /*#__PURE__*/React.createElement("label", {
+    className: "lbl"
+  }, "ชื่อห้อง"), /*#__PURE__*/React.createElement("input", {
+    type: "text",
+    className: "inp",
+    placeholder: "114, Shop 2",
+    value: newRoomForm.name,
+    onChange: e => setNewRoomForm({
+      ...newRoomForm,
+      name: e.target.value
+    })
+  })), /*#__PURE__*/React.createElement("div", {
+    className: "field"
+  }, /*#__PURE__*/React.createElement("label", {
+    className: "lbl"
+  }, "หมายเหตุ"), /*#__PURE__*/React.createElement("input", {
+    type: "text",
+    className: "inp",
+    placeholder: "เช่น โรงฝึกไฟฟ้า, ห้องทฤษฎี",
+    value: newRoomForm.note,
+    onChange: e => setNewRoomForm({
+      ...newRoomForm,
+      note: e.target.value
+    })
+  }))), /*#__PURE__*/React.createElement("button", {
+    onClick: handleAddRoom,
+    className: "btn btn-primary",
+    style: {
+      width: '100%',
+      marginBottom: 10
+    }
+  }, "เพิ่มห้อง"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'flex',
+      gap: 8
+    }
+  }, /*#__PURE__*/React.createElement("label", {
+    className: "btn btn-sm",
+    style: {
+      flex: 1,
+      cursor: 'pointer'
+    }
+  }, /*#__PURE__*/React.createElement(Upload, {
+    className: "w-3.5 h-3.5"
+  }), " นำเข้า CSV", /*#__PURE__*/React.createElement("input", {
+    type: "file",
+    accept: ".csv",
+    onChange: handleRoomFileUpload,
+    style: {
+      display: 'none'
+    }
+  })), /*#__PURE__*/React.createElement("button", {
+    onClick: downloadRoomTemplate,
+    className: "btn btn-sm",
+    style: {
+      flex: 1
+    }
+  }, /*#__PURE__*/React.createElement(Download, {
+    className: "w-3.5 h-3.5"
+  }), " ไฟล์ตัวอย่าง"))), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    className: "eyebrow",
+    style: {
+      marginBottom: 9
+    }
+  }, "ห้องทั้งหมด"), rooms.length === 0 ? /*#__PURE__*/React.createElement("div", {
+    className: "note note-info",
+    style: {
+      justifyContent: 'center'
+    }
+  }, "ยังไม่มีห้องในทะเบียน เพิ่มด้านบนหรือนำเข้าจากไฟล์ CSV แล้วระบบจะเริ่มตรวจห้องชนให้") : [...rooms].sort((a, b) => (a.external ? 1 : 0) - (b.external ? 1 : 0)).map(r => {
+    const used = roomUsageCount(r.id);
+    return /*#__PURE__*/React.createElement("div", {
+      key: r.id,
+      className: "list-row"
+    }, editingRoomId === r.id ? /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 9
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: 'grid',
+        gridTemplateColumns: '140px 1fr',
+        gap: 8
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "field"
+    }, /*#__PURE__*/React.createElement("label", {
+      className: "lbl"
+    }, "ชื่อห้อง"), /*#__PURE__*/React.createElement("input", {
+      type: "text",
+      className: "inp",
+      style: {
+        padding: '6px 8px',
+        fontSize: 13.5
+      },
+      value: editRoomForm.name,
+      onChange: e => setEditRoomForm({
+        ...editRoomForm,
+        name: e.target.value
+      })
+    })), /*#__PURE__*/React.createElement("div", {
+      className: "field"
+    }, /*#__PURE__*/React.createElement("label", {
+      className: "lbl"
+    }, "หมายเหตุ"), /*#__PURE__*/React.createElement("input", {
+      type: "text",
+      className: "inp",
+      style: {
+        padding: '6px 8px',
+        fontSize: 13.5
+      },
+      value: editRoomForm.note,
+      onChange: e => setEditRoomForm({
+        ...editRoomForm,
+        note: e.target.value
+      })
+    }))), /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: 'flex',
+        gap: 7,
+        justifyContent: 'flex-end'
+      }
+    }, /*#__PURE__*/React.createElement("button", {
+      onClick: cancelEditRoom,
+      className: "btn btn-sm"
+    }, "ยกเลิก"), /*#__PURE__*/React.createElement("button", {
+      onClick: () => saveEditRoom(r.id),
+      className: "btn btn-accent btn-sm"
+    }, /*#__PURE__*/React.createElement(Check, {
+      className: "w-3.5 h-3.5"
+    }), " บันทึก"))) : /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: 'flex',
+        alignItems: 'center',
+        gap: 11
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        flex: 1,
+        minWidth: 0
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 17.5,
+        fontWeight: 600,
+        display: 'flex',
+        alignItems: 'center',
+        gap: 7,
+        flexWrap: 'wrap'
+      }
+    }, r.name, r.external && /*#__PURE__*/React.createElement("span", {
+      style: {
+        background: 'var(--surface-2)',
+        color: 'var(--ink-3)',
+        fontSize: 12,
+        fontWeight: 700,
+        padding: '2px 7px',
+        borderRadius: 4,
+        border: '1px solid var(--rule)'
+      }
+    }, "นอกแผนก")), /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 15,
+        color: 'var(--ink-3)',
+        marginTop: 2
+      }
+    }, r.note ? `${r.note} · ` : '', "ใช้อยู่ ", used, " คาบ/สัปดาห์", r.external ? ' · ไม่แสดงในแท็บตารางห้อง' : '')), /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: 'flex',
+        gap: 3
+      }
+    }, /*#__PURE__*/React.createElement("button", {
+      onClick: () => {
+        saveHistory();
+        setRooms(rooms.map(x => x.id === r.id ? {
+          ...x,
+          external: !x.external
+        } : x));
+      },
+      className: "x-btn",
+      title: r.external ? 'ย้ายมาเป็นห้องของแผนก' : 'ทำเป็นห้องนอกแผนก (ซ่อนจากแท็บตารางห้อง)'
+    }, /*#__PURE__*/React.createElement(DoorOpen, {
+      className: "w-4 h-4",
+      style: {
+        opacity: r.external ? .5 : 1
+      }
+    })), /*#__PURE__*/React.createElement("button", {
+      onClick: () => startEditRoom(r),
+      className: "x-btn",
+      title: "แก้ไข"
+    }, /*#__PURE__*/React.createElement(Edit2, {
+      className: "w-4 h-4"
+    })), /*#__PURE__*/React.createElement("button", {
+      onClick: () => handleDeleteRoom(r.id),
+      className: "x-btn",
+      style: {
+        color: 'var(--danger)'
+      },
+      title: "ลบห้อง"
+    }, /*#__PURE__*/React.createElement(Trash2, {
+      className: "w-4 h-4"
+    })))));
+  }))))), isDataModalOpen && /*#__PURE__*/React.createElement("div", {
+    className: "ov",
+    onClick: () => setIsDataModalOpen(false)
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "modal",
+    style: {
+      maxWidth: 520
+    },
+    onClick: e => e.stopPropagation()
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "modal-head"
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    className: "modal-title"
+  }, "พิมพ์ตารางและจัดการข้อมูล"), /*#__PURE__*/React.createElement("div", {
+    className: "modal-sub"
+  }, "ระบบบันทึกให้อัตโนมัติอยู่แล้ว ไฟล์สำรองใช้เมื่อต้องการย้ายเครื่องหรือเก็บไว้เป็นรุ่น")), /*#__PURE__*/React.createElement("button", {
+    onClick: () => setIsDataModalOpen(false),
+    className: "x-btn"
+  }, /*#__PURE__*/React.createElement(X, {
+    className: "w-4 h-4"
+  }))), /*#__PURE__*/React.createElement("div", {
+    className: "modal-body",
+    style: {
+      display: 'flex',
+      flexDirection: 'column',
+      gap: 16
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "box"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "box-title"
+  }, /*#__PURE__*/React.createElement(Printer, {
+    className: "w-3.5 h-3.5"
+  }), " ออกไฟล์ PDF"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'grid',
+      gridTemplateColumns: '1fr 1fr',
+      gap: 8
+    }
+  }, /*#__PURE__*/React.createElement("button", {
+    onClick: () => handleExportPDF('current'),
+    className: "btn btn-sm",
+    style: {
+      flexDirection: 'column',
+      gap: 3,
+      padding: '12px 8px'
+    }
+  }, /*#__PURE__*/React.createElement(Users, {
+    className: "w-4 h-4"
+  }), /*#__PURE__*/React.createElement("span", null, "ตารางเรียนห้องนี้")), /*#__PURE__*/React.createElement("button", {
+    onClick: () => handleExportPDF('all'),
+    className: "btn btn-sm",
+    style: {
+      flexDirection: 'column',
+      gap: 3,
+      padding: '12px 8px'
+    }
+  }, /*#__PURE__*/React.createElement(FileSpreadsheet, {
+    className: "w-4 h-4"
+  }), /*#__PURE__*/React.createElement("span", null, "ตารางเรียนทุกห้อง")), /*#__PURE__*/React.createElement("button", {
+    onClick: () => handleExportPDF('teacher_current'),
+    disabled: !activeTeacherObj.id,
+    className: "btn btn-sm",
+    style: {
+      flexDirection: 'column',
+      gap: 3,
+      padding: '12px 8px'
+    }
+  }, /*#__PURE__*/React.createElement(User, {
+    className: "w-4 h-4"
+  }), /*#__PURE__*/React.createElement("span", null, "ตารางสอนครูท่านนี้")), /*#__PURE__*/React.createElement("button", {
+    onClick: () => handleExportPDF('teacher_all'),
+    disabled: teachers.length === 0,
+    className: "btn btn-sm",
+    style: {
+      flexDirection: 'column',
+      gap: 3,
+      padding: '12px 8px'
+    }
+  }, /*#__PURE__*/React.createElement(Printer, {
+    className: "w-4 h-4"
+  }), /*#__PURE__*/React.createElement("span", null, "ตารางสอนครูทุกคน")), /*#__PURE__*/React.createElement("button", {
+    onClick: () => handleExportPDF('room_current'),
+    disabled: !activeRoomObj.id,
+    className: "btn btn-sm",
+    style: {
+      flexDirection: 'column',
+      gap: 3,
+      padding: '12px 8px'
+    }
+  }, /*#__PURE__*/React.createElement(DoorOpen, {
+    className: "w-4 h-4"
+  }), /*#__PURE__*/React.createElement("span", null, "ตารางใช้ห้องนี้")), /*#__PURE__*/React.createElement("button", {
+    onClick: () => handleExportPDF('room_all'),
+    disabled: deptRooms.length === 0,
+    className: "btn btn-sm",
+    style: {
+      flexDirection: 'column',
+      gap: 3,
+      padding: '12px 8px'
+    }
+  }, /*#__PURE__*/React.createElement(DoorOpen, {
+    className: "w-4 h-4"
+  }), /*#__PURE__*/React.createElement("span", null, "ตารางใช้ห้องทุกห้อง")))), /*#__PURE__*/React.createElement("div", {
+    className: "box"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "box-title"
+  }, /*#__PURE__*/React.createElement(Save, {
+    className: "w-3.5 h-3.5"
+  }), " ไฟล์สำรองข้อมูล"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'flex',
+      gap: 8
+    }
+  }, /*#__PURE__*/React.createElement("button", {
+    onClick: exportBackup,
+    className: "btn btn-sm",
+    style: {
+      flex: 1
+    }
+  }, /*#__PURE__*/React.createElement(Download, {
+    className: "w-3.5 h-3.5"
+  }), " บันทึกเป็นไฟล์"), /*#__PURE__*/React.createElement("label", {
+    className: "btn btn-sm",
+    style: {
+      flex: 1,
+      cursor: 'pointer'
+    }
+  }, /*#__PURE__*/React.createElement(FolderOpen, {
+    className: "w-3.5 h-3.5"
+  }), " เปิดจากไฟล์", /*#__PURE__*/React.createElement("input", {
+    type: "file",
+    accept: ".json",
+    onChange: importBackup,
+    style: {
+      display: 'none'
+    }
+  }))), lastSavedTime && /*#__PURE__*/React.createElement("div", {
+    className: "hint",
+    style: {
+      marginTop: 9
+    }
+  }, "บันทึกอัตโนมัติล่าสุดเมื่อ ", lastSavedTime)), /*#__PURE__*/React.createElement("div", {
+    className: "box",
+    style: {
+      borderColor: 'var(--danger-soft)'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "box-title",
+    style: {
+      color: 'var(--danger)'
+    }
+  }, /*#__PURE__*/React.createElement(AlertCircle, {
+    className: "w-3.5 h-3.5"
+  }), " ล้างข้อมูล"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'flex',
+      gap: 8
+    }
+  }, /*#__PURE__*/React.createElement("button", {
+    onClick: handleClearCurrentClass,
+    className: "btn btn-ghost-danger btn-sm",
+    style: {
+      flex: 1
+    }
+  }, /*#__PURE__*/React.createElement(RefreshCw, {
+    className: "w-3.5 h-3.5"
+  }), " ล้างตารางห้องนี้"), /*#__PURE__*/React.createElement("button", {
+    onClick: handleClearAllData,
+    className: "btn btn-danger btn-sm",
+    style: {
+      flex: 1
+    }
+  }, /*#__PURE__*/React.createElement(Trash2, {
+    className: "w-3.5 h-3.5"
+  }), " ล้างข้อมูลทั้งหมด")), /*#__PURE__*/React.createElement("div", {
+    className: "hint",
+    style: {
+      marginTop: 9
+    }
+  }, "สำรองข้อมูลเป็นไฟล์ไว้ก่อนล้างทุกครั้ง เพราะกู้คืนไม่ได้หลังจากนั้น"))))), alertDialog.isOpen && /*#__PURE__*/React.createElement("div", {
+    className: "ov",
+    style: {
+      zIndex: 90
+    },
+    onClick: () => setAlertDialog({
+      isOpen: false,
+      message: ''
+    })
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "modal",
+    style: {
+      maxWidth: 380
+    },
+    onClick: e => e.stopPropagation()
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "modal-body",
+    style: {
+      textAlign: 'center'
+    }
+  }, /*#__PURE__*/React.createElement("p", {
+    style: {
+      fontSize: 17.5,
+      lineHeight: 1.65,
+      whiteSpace: 'pre-line',
+      margin: '4px 0 16px'
+    }
+  }, alertDialog.message), /*#__PURE__*/React.createElement("button", {
+    onClick: () => setAlertDialog({
+      isOpen: false,
+      message: ''
+    }),
+    className: "btn btn-primary",
+    style: {
+      width: '100%'
+    }
+  }, "ตกลง")))), confirmDialog.isOpen && /*#__PURE__*/React.createElement("div", {
+    className: "ov",
+    style: {
+      zIndex: 90
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "modal",
+    style: {
+      maxWidth: 410
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "modal-body"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "modal-title",
+    style: {
+      marginBottom: 8
+    }
+  }, confirmDialog.title), /*#__PURE__*/React.createElement("p", {
+    style: {
+      fontSize: 17,
+      lineHeight: 1.65,
+      color: 'var(--ink-3)',
+      whiteSpace: 'pre-line',
+      margin: 0
+    }
+  }, confirmDialog.message)), /*#__PURE__*/React.createElement("div", {
+    className: "modal-foot",
+    style: {
+      justifyContent: 'flex-end'
+    }
+  }, /*#__PURE__*/React.createElement("button", {
+    onClick: () => setConfirmDialog(prev => ({
+      ...prev,
+      isOpen: false
+    })),
+    className: "btn"
+  }, confirmDialog.cancelText), /*#__PURE__*/React.createElement("button", {
+    onClick: executeConfirm,
+    className: `btn ${confirmDialog.isDestructive ? 'btn-danger' : 'btn-accent'}`
+  }, confirmDialog.confirmText)))));
+}
+
+// ==========================================
+// Error Boundary
+// ==========================================
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      hasError: false
+    };
+  }
+  static getDerivedStateFromError() {
+    return {
+      hasError: true
+    };
+  }
+  componentDidCatch(error, info) {
+    console.error('Timetable app crashed:', error, info);
+  }
+  render() {
+    if (this.state.hasError) {
+      return /*#__PURE__*/React.createElement("div", {
+        style: {
+          fontFamily: PRINT_FONT,
+          minHeight: '100vh',
+          background: '#ECEEF3',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          padding: 24
+        }
+      }, /*#__PURE__*/React.createElement("style", null, `*{ font-family:${PRINT_FONT}; box-sizing:border-box; }`), /*#__PURE__*/React.createElement("div", {
+        style: {
+          maxWidth: 400,
+          width: '100%',
+          background: '#fff',
+          border: '1px solid #CFD5DF',
+          borderRadius: 10,
+          padding: 28,
+          textAlign: 'center'
+        }
+      }, /*#__PURE__*/React.createElement(AlertCircle, {
+        style: {
+          width: 26,
+          height: 26,
+          color: '#B81F2D',
+          margin: '0 auto 12px'
+        }
+      }), /*#__PURE__*/React.createElement("h2", {
+        style: {
+          fontSize: 16.5,
+          fontWeight: 700,
+          color: '#0F1E3D',
+          margin: '0 0 8px'
+        }
+      }, "แอปหยุดทำงานกลางคัน"), /*#__PURE__*/React.createElement("p", {
+        style: {
+          fontSize: 14.5,
+          color: '#48597D',
+          lineHeight: 1.65,
+          margin: '0 0 18px'
+        }
+      }, "ข้อมูลที่บันทึกไว้ยังอยู่ครบ กดปุ่มด้านล่างเพื่อกลับเข้าหน้าตารางอีกครั้ง"), /*#__PURE__*/React.createElement("button", {
+        onClick: () => this.setState({
+          hasError: false
+        }),
+        style: {
+          width: '100%',
+          background: '#0F1E3D',
+          color: '#fff',
+          fontWeight: 700,
+          fontSize: 14.5,
+          padding: '11px',
+          borderRadius: 6
+        }
+      }, "กลับเข้าหน้าตาราง")));
+    }
+    return this.props.children;
+  }
+}
+function App() {
+  return /*#__PURE__*/React.createElement(ErrorBoundary, null, /*#__PURE__*/React.createElement(TimetableApp, null));
+}
+// ---- window.storage polyfill: replaces the Claude-artifact-only window.storage API
+// with a plain localStorage-backed implementation, so the app's autosave/load code
+// works unmodified on a normal web host.
+window.storage = {
+  get: function (key) {
+    return new Promise(function (resolve) {
+      try {
+        var v = window.localStorage.getItem(key);
+        resolve({ value: v });
+      } catch (e) {
+        resolve({ value: null });
+      }
+    });
+  },
+  set: function (key, value) {
+    return new Promise(function (resolve) {
+      try { window.localStorage.setItem(key, value); } catch (e) {}
+      resolve(true);
+    });
+  },
+  delete: function (key) {
+    return new Promise(function (resolve) {
+      try { window.localStorage.removeItem(key); } catch (e) {}
+      resolve(true);
+    });
+  }
+};
+
+var __rootEl = document.getElementById('root');
+var __root = ReactDOM.createRoot(__rootEl);
+__root.render(React.createElement(App));
