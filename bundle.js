@@ -29,91 +29,40 @@ function makeIcon(inner) {
   });
 }
 
-var BookOpen = makeIcon(`<path d="M12 5v16" />
-  <path d="M20.001 19A2 2 0 0022 17V5a2 2 0 00-1.999-2L16 3.002A5 5 0 0012 5a5 5 0 00-4-2H4a2 2 0 00-2 2v12a2 2 0 001.999 2H8a5 5 0 014 2 5 5 0 014-2z" />`);
-var User = makeIcon(`<path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
-  <circle cx="12" cy="7" r="4" />`);
-var DoorOpen = makeIcon(`<path d="M10 21H2" />
-  <path d="M10 3H7a2 2 0 00-2 2v16" />
-  <path d="M14 12h.01" />
-  <path d="M19 21V5a2 2 0 00-1.675-1.974l-6.163-1.013A1 1 0 0010 3v18a1 1 0 001.124.992z" />
-  <path d="M22 21h-3" />`);
-var ShieldCheck = makeIcon(`<path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" />
-  <path d="m9 12 2 2 4-4" />`);
-var ChevronDown = makeIcon(`<path d="m6 9 6 6 6-6" />`);
-var AlertCircle = makeIcon(`<circle cx="12" cy="12" r="10" />
-  <line x1="12" x2="12" y1="8" y2="12" />
-  <line x1="12" x2="12.01" y1="16" y2="16" />`);
-var X = makeIcon(`<path d="M18 6 6 18" />
-  <path d="m6 6 12 12" />`);
-var Check = makeIcon(`<path d="M20 6 9 17l-5-5" />`);
-var Calendar = makeIcon(`<path d="M8 2v3" />
-  <path d="M16 2v3" />
-  <rect x="3" y="3" width="18" height="18" rx="2" />
-  <path d="M3 9h18" />`);
-var Trash2 = makeIcon(`<path d="M10 11v6" />
-  <path d="M14 11v6" />
-  <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6" />
-  <path d="M3 6h18" />
-  <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />`);
-var Settings = makeIcon(`<path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915" />
-  <circle cx="12" cy="12" r="3" />`);
-var ArrowRight = makeIcon(`<path d="M5 12h14" />
-  <path d="m12 5 7 7-7 7" />`);
-var Plus = makeIcon(`<path d="M5 12h14" />
-  <path d="M12 5v14" />`);
-var Upload = makeIcon(`<path d="M12 3v12" />
-  <path d="m17 8-5-5-5 5" />
-  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />`);
-var Download = makeIcon(`<path d="M12 15V3" />
-  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-  <path d="m7 10 5 5 5-5" />`);
-var FileSpreadsheet = makeIcon(`<path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z" />
-  <path d="M14 2v5a1 1 0 0 0 1 1h5" />
-  <path d="M8 13h2" />
-  <path d="M14 13h2" />
-  <path d="M8 17h2" />
-  <path d="M14 17h2" />`);
-var Copy = makeIcon(`<rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
-  <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />`);
-var Save = makeIcon(`<path d="M15.2 3a2 2 0 0 1 1.4.6l3.8 3.8a2 2 0 0 1 .6 1.4V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z" />
-  <path d="M17 21v-7a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v7" />
-  <path d="M7 3v4a1 1 0 0 0 1 1h7" />`);
-var FolderOpen = makeIcon(`<path d="m6 14 1.5-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.54 6a2 2 0 0 1-1.95 1.5H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H18a2 2 0 0 1 2 2v2" />`);
-var RefreshCw = makeIcon(`<path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8" />
-  <path d="M21 3v5h-5" />
-  <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16" />
-  <path d="M8 16H3v5" />`);
-var Clock = makeIcon(`<circle cx="12" cy="12" r="10" />
-  <path d="M12 6v6l4 2" />`);
-var Users = makeIcon(`<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-  <path d="M16 3.128a4 4 0 0 1 0 7.744" />
-  <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
-  <circle cx="9" cy="7" r="4" />`);
-var Printer = makeIcon(`<path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" />
-  <path d="M6 9V3a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v6" />
-  <rect x="6" y="14" width="12" height="8" rx="1" />`);
-var Undo2 = makeIcon(`<path d="M9 14 4 9l5-5" />
-  <path d="M4 9h10.5a5.5 5.5 0 0 1 5.5 5.5a5.5 5.5 0 0 1-5.5 5.5H11" />`);
-var Edit2 = makeIcon(`<path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z" />`);
-var Loader2 = makeIcon(`<path d="M21 12a9 9 0 1 1-6.219-8.56" />`);
-var PanelRightClose = makeIcon(`<rect width="18" height="18" x="3" y="3" rx="2" />
-  <path d="M15 3v18" />
-  <path d="m8 9 3 3-3 3" />`);
-var PanelRightOpen = makeIcon(`<rect width="18" height="18" x="3" y="3" rx="2" />
-  <path d="M15 3v18" />
-  <path d="m10 15-3-3 3-3" />`);
-var GripVertical = makeIcon(`<circle cx="9" cy="12" r="1" />
-  <circle cx="9" cy="5" r="1" />
-  <circle cx="9" cy="19" r="1" />
-  <circle cx="15" cy="12" r="1" />
-  <circle cx="15" cy="5" r="1" />
-  <circle cx="15" cy="19" r="1" />`);
+var BookOpen = makeIcon("<path d=\"M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z\"></path><path d=\"M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z\"></path>");
+var User = makeIcon("<path d=\"M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2\"></path><circle cx=\"12\" cy=\"7\" r=\"4\"></circle>");
+var DoorOpen = makeIcon("<path d=\"M13 4h3a2 2 0 0 1 2 2v14\"></path><path d=\"M2 20h3\"></path><path d=\"M13 20h9\"></path><path d=\"M10 12v.01\"></path><path d=\"M13 4.562v16.157a1 1 0 0 1-1.242.97L5 20V5.562a2 2 0 0 1 1.515-1.94l4-1A2 2 0 0 1 13 4.561Z\"></path>");
+var ShieldCheck = makeIcon("<path d=\"M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z\"></path><path d=\"m9 12 2 2 4-4\"></path>");
+var ChevronDown = makeIcon("<path d=\"m6 9 6 6 6-6\"></path>");
+var AlertCircle = makeIcon("<circle cx=\"12\" cy=\"12\" r=\"10\"></circle><line x1=\"12\" x2=\"12\" y1=\"8\" y2=\"12\"></line><line x1=\"12\" x2=\"12.01\" y1=\"16\" y2=\"16\"></line>");
+var X = makeIcon("<path d=\"M18 6 6 18\"></path><path d=\"m6 6 12 12\"></path>");
+var Check = makeIcon("<path d=\"M20 6 9 17l-5-5\"></path>");
+var Calendar = makeIcon("<path d=\"M8 2v4\"></path><path d=\"M16 2v4\"></path><rect width=\"18\" height=\"18\" x=\"3\" y=\"4\" rx=\"2\"></rect><path d=\"M3 10h18\"></path>");
+var Trash2 = makeIcon("<path d=\"M3 6h18\"></path><path d=\"M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6\"></path><path d=\"M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2\"></path><line x1=\"10\" x2=\"10\" y1=\"11\" y2=\"17\"></line><line x1=\"14\" x2=\"14\" y1=\"11\" y2=\"17\"></line>");
+var Settings = makeIcon("<path d=\"M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z\"></path><circle cx=\"12\" cy=\"12\" r=\"3\"></circle>");
+var ArrowRight = makeIcon("<path d=\"M5 12h14\"></path><path d=\"m12 5 7 7-7 7\"></path>");
+var Plus = makeIcon("<path d=\"M5 12h14\"></path><path d=\"M12 5v14\"></path>");
+var Upload = makeIcon("<path d=\"M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4\"></path><polyline points=\"17 8 12 3 7 8\"></polyline><line x1=\"12\" x2=\"12\" y1=\"3\" y2=\"15\"></line>");
+var Download = makeIcon("<path d=\"M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4\"></path><polyline points=\"7 10 12 15 17 10\"></polyline><line x1=\"12\" x2=\"12\" y1=\"15\" y2=\"3\"></line>");
+var FileSpreadsheet = makeIcon("<path d=\"M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z\"></path><path d=\"M14 2v4a2 2 0 0 0 2 2h4\"></path><path d=\"M8 13h2\"></path><path d=\"M14 13h2\"></path><path d=\"M8 17h2\"></path><path d=\"M14 17h2\"></path>");
+var Copy = makeIcon("<rect width=\"14\" height=\"14\" x=\"8\" y=\"8\" rx=\"2\" ry=\"2\"></rect><path d=\"M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2\"></path>");
+var Save = makeIcon("<path d=\"M15.2 3a2 2 0 0 1 1.4.6l3.8 3.8a2 2 0 0 1 .6 1.4V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z\"></path><path d=\"M17 21v-7a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v7\"></path><path d=\"M7 3v4a1 1 0 0 0 1 1h7\"></path>");
+var FolderOpen = makeIcon("<path d=\"m6 14 1.5-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.54 6a2 2 0 0 1-1.95 1.5H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H18a2 2 0 0 1 2 2v2\"></path>");
+var RefreshCw = makeIcon("<path d=\"M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8\"></path><path d=\"M21 3v5h-5\"></path><path d=\"M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16\"></path><path d=\"M8 16H3v5\"></path>");
+var Clock = makeIcon("<circle cx=\"12\" cy=\"12\" r=\"10\"></circle><polyline points=\"12 6 12 12 16 14\"></polyline>");
+var Users = makeIcon("<path d=\"M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2\"></path><circle cx=\"9\" cy=\"7\" r=\"4\"></circle><path d=\"M22 21v-2a4 4 0 0 0-3-3.87\"></path><path d=\"M16 3.13a4 4 0 0 1 0 7.75\"></path>");
+var Printer = makeIcon("<path d=\"M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2\"></path><path d=\"M6 9V3a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v6\"></path><rect x=\"6\" y=\"14\" width=\"12\" height=\"8\" rx=\"1\"></rect>");
+var Undo2 = makeIcon("<path d=\"M9 14 4 9l5-5\"></path><path d=\"M4 9h10.5a5.5 5.5 0 0 1 5.5 5.5v0a5.5 5.5 0 0 1-5.5 5.5H11\"></path>");
 var Redo2 = makeIcon("<path d=\"m15 14 5-5-5-5\"></path><path d=\"M20 9H9.5A5.5 5.5 0 0 0 4 14.5v0A5.5 5.5 0 0 0 9.5 20H13\"></path>");
 var Home = makeIcon("<path d=\"m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\"></path><polyline points=\"9 22 9 12 15 12 15 22\"></polyline>");
 var Search = makeIcon("<circle cx=\"11\" cy=\"11\" r=\"8\"></circle><path d=\"m21 21-4.3-4.3\"></path>");
 var BarChart3 = makeIcon("<path d=\"M3 3v18h18\"></path><path d=\"M18 17V9\"></path><path d=\"M13 17V5\"></path><path d=\"M8 17v-3\"></path>");
 var CalendarSearch = makeIcon("<path d=\"M21 12V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h7.5\"></path><path d=\"M16 2v4\"></path><path d=\"M8 2v4\"></path><path d=\"M3 10h18\"></path><circle cx=\"18\" cy=\"18\" r=\"3\"></circle><path d=\"m22 22-1.5-1.5\"></path>");
+var Edit2 = makeIcon("<path d=\"M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z\"></path>");
+var Loader2 = makeIcon("<path d=\"M21 12a9 9 0 1 1-6.219-8.56\"></path>");
+var PanelRightClose = makeIcon("<rect width=\"18\" height=\"18\" x=\"3\" y=\"3\" rx=\"2\"></rect><path d=\"M15 3v18\"></path><path d=\"m8 9 3 3-3 3\"></path>");
+var PanelRightOpen = makeIcon("<rect width=\"18\" height=\"18\" x=\"3\" y=\"3\" rx=\"2\"></rect><path d=\"M15 3v18\"></path><path d=\"m10 15-3-3 3-3\"></path>");
+var GripVertical = makeIcon("<circle cx=\"9\" cy=\"12\" r=\"1\"></circle><circle cx=\"9\" cy=\"5\" r=\"1\"></circle><circle cx=\"9\" cy=\"19\" r=\"1\"></circle><circle cx=\"15\" cy=\"12\" r=\"1\"></circle><circle cx=\"15\" cy=\"5\" r=\"1\"></circle><circle cx=\"15\" cy=\"19\" r=\"1\"></circle>");
 
 // ==========================================
 // ข้อมูลจำลองและโครงสร้างเริ่มต้น
@@ -568,17 +517,20 @@ function TimetableApp() {
   const [auditResult, setAuditResult] = useState(null);
   const [isTermModalOpen, setIsTermModalOpen] = useState(false);
   const [editingSlot, setEditingSlot] = useState(null);
-  const [isLoadModalOpen, setIsLoadModalOpen] = useState(false);
+  const [isLoadModalOpen, setIsLoadModalOpen] = useState(false); // สรุปภาระงานสอนรายครู
 
+  // ช่องค้นหา (ครู ห้องเรียน ห้อง รายวิชา) บนแถบบนสุด
   const [searchQ, setSearchQ] = useState('');
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchIdx, setSearchIdx] = useState(0);
   const [searchRect, setSearchRect] = useState(null);
   const searchInputRef = useRef(null);
   const searchBlurTimerRef = useRef(null);
+  // ไฮไลต์การ์ดของวิชาที่เพิ่งค้นหาเจอชั่วครู่ ให้มองหาบนตารางได้ทันที
   const [flashSubject, setFlashSubject] = useState(null);
   const flashTimerRef = useRef(null);
 
+  // แถบบนสุดปรับตัวเองตามฟอนต์และความกว้างจอจริง — ถ้าปุ่มล้นจอ ซ่อนชื่อปุ่มเหลือแต่ไอคอน
   const railRef = useRef(null);
   const railNaturalRef = useRef(0);
   const [railCompact, setRailCompact] = useState(false);
@@ -615,9 +567,15 @@ function TimetableApp() {
   const [printMode, setPrintMode] = useState('none');
   const [pdfError, setPdfError] = useState('');
   const [history, setHistory] = useState([]);
+  // ขั้นที่ถูกย้อนกลับไปแล้ว เก็บไว้ให้กด "ทำซ้ำ" คืนได้ — ล้างทิ้งทันทีเมื่อมีการแก้ไขใหม่ (แบบเดียวกับโปรแกรมทั่วไป)
   const [future, setFuture] = useState([]);
   const [lastSavedTime, setLastSavedTime] = useState(null);
   const isFirstSaveRender = useRef(true);
+  // ข้อมูลล่าสุดที่รับมาจากแท็บอื่น (เก็บเป็นข้อความไว้เทียบ) — กันไม่ให้แท็บนี้บันทึกชุดเดียวกันกลับไปวนไม่จบ
+  const externalCoreRef = useRef(null);
+  const saveFailAlertedRef = useRef(false);
+  const [syncedFromOtherTab, setSyncedFromOtherTab] = useState(false);
+  const syncNoticeTimerRef = useRef(null);
   const [saveStatus, setSaveStatus] = useState('idle');
   const historyPersistRef = useRef(null);
   const saveTimeoutRef = useRef(null);
@@ -887,6 +845,19 @@ function TimetableApp() {
     setSaveStatus('saving');
     if (saveTimeoutRef.current) clearTimeout(saveTimeoutRef.current);
     saveTimeoutRef.current = setTimeout(() => {
+      // ข้อมูลชุดนี้เพิ่งรับมาจากแท็บอื่น ซึ่งบันทึกไว้แล้ว ไม่ต้องเขียนซ้ำ
+      if (externalCoreRef.current !== null && externalCoreRef.current === JSON.stringify({
+        classes,
+        classSubjects,
+        config,
+        schedule,
+        teachers,
+        rooms
+      })) {
+        setSaveStatus('saved');
+        return;
+      }
+      externalCoreRef.current = null;
       const now = new Date().toLocaleTimeString('th-TH', {
         hour: '2-digit',
         minute: '2-digit'
@@ -906,9 +877,18 @@ function TimetableApp() {
           setLastSavedTime(now);
           setHasSavedData(true);
           setSaveStatus('saved');
+          saveFailAlertedRef.current = false;
         } catch (e) {
           console.error('Storage save error:', e);
           setSaveStatus('error');
+          // เตือนชัดๆ หนึ่งครั้งต่อการล้มเหลวหนึ่งช่วง — ป้ายเล็กบนแถบอย่างเดียวมองข้ามง่าย และงานที่ทำต่อจะหายถ้าปิดหน้า
+          if (!saveFailAlertedRef.current) {
+            saveFailAlertedRef.current = true;
+            setAlertDialog({
+              isOpen: true,
+              message: 'บันทึกลงเครื่องไม่สำเร็จ งานที่แก้ตอนนี้ยังไม่ถูกเก็บ\n\nสาเหตุที่พบบ่อย: พื้นที่เก็บข้อมูลของเบราว์เซอร์เต็ม หรือเปิดในโหมดไม่ระบุตัวตน\n\nแนะนำให้กด "พิมพ์ / ข้อมูล" แล้ว "บันทึกเป็นไฟล์" เพื่อสำรองงานไว้ก่อนปิดหน้านี้'
+            });
+          }
         }
       })();
     }, 700);
@@ -916,6 +896,78 @@ function TimetableApp() {
       if (saveTimeoutRef.current) clearTimeout(saveTimeoutRef.current);
     };
   }, [classes, classSubjects, config, schedule, teachers, rooms, isLoaded]);
+
+  /**
+   * เปิดเว็บไว้หลายแท็บ: เมื่อแท็บอื่นบันทึกข้อมูล ให้แท็บนี้รับข้อมูลชุดใหม่มาแสดงทันที
+   *
+   * เดิมแต่ละแท็บถือข้อมูลของตัวเอง แท็บที่บันทึกทีหลังจะเขียนทับงานของอีกแท็บทั้งชุดโดยไม่มีอะไรเตือน
+   * (เหตุการณ์ storage เกิดเฉพาะในแท็บ "อื่น" ของเว็บเดียวกัน — ใน Claude ไม่มีผลอะไร)
+   */
+  useEffect(() => {
+    const onStorage = e => {
+      try {
+        if (e.key === HISTORY_KEY && e.newValue) {
+          const arr = JSON.parse(e.newValue);
+          if (Array.isArray(arr)) {
+            setHistory(arr);
+            setFuture([]);
+          }
+          return;
+        }
+        if (e.key !== DATA_KEY || !e.newValue || e.newValue === e.oldValue) return;
+        const parsed = JSON.parse(e.newValue);
+        if (!parsed || !Array.isArray(parsed.schedule)) return;
+        const nextClasses = (parsed.classes || []).map(c => ({
+          ...c,
+          lunchPeriod: c.lunchPeriod || 5,
+          level: c.level || 'ปวช.',
+          year: c.year || 1,
+          room: c.room || 1
+        }));
+        const nextSubjects = {};
+        Object.entries(parsed.classSubjects || {}).forEach(([cid, list]) => {
+          nextSubjects[cid] = (list || []).map((x, i) => ({
+            ...x,
+            colorKey: x.colorKey || normalizeSubjectColor(x, i).key
+          }));
+        });
+        const mig = migrateRooms(parsed);
+        const nextConfig = {
+          term: parsed.config?.term || 1,
+          year: parsed.config?.year || ''
+        };
+        externalCoreRef.current = JSON.stringify({
+          classes: nextClasses,
+          classSubjects: nextSubjects,
+          config: nextConfig,
+          schedule: mig.schedule,
+          teachers: mig.teachers,
+          rooms: mig.rooms
+        });
+        lastEditRef.current = {
+          tag: null,
+          at: 0
+        };
+        setClasses(nextClasses);
+        setClassSubjects(nextSubjects);
+        setTeachers(mig.teachers);
+        setRooms(mig.rooms);
+        setConfig(nextConfig);
+        setSchedule(mig.schedule);
+        setFuture([]);
+        setLastSavedTime(parsed.lastSaved || null);
+        setHasSavedData(true);
+        setSyncedFromOtherTab(true);
+        if (syncNoticeTimerRef.current) clearTimeout(syncNoticeTimerRef.current);
+        syncNoticeTimerRef.current = setTimeout(() => setSyncedFromOtherTab(false), 6000);
+      } catch (err) {/* ข้อมูลจากแท็บอื่นอ่านไม่ได้ ก็ใช้ของแท็บนี้ต่อไป */}
+    };
+    window.addEventListener('storage', onStorage);
+    return () => {
+      window.removeEventListener('storage', onStorage);
+      if (syncNoticeTimerRef.current) clearTimeout(syncNoticeTimerRef.current);
+    };
+  }, []);
 
   /**
    * เก็บประวัติย้อนกลับลงเครื่อง
@@ -973,6 +1025,7 @@ function TimetableApp() {
     const onKey = e => {
       const anyModalOpen = alertDialog.isOpen || confirmDialog.isOpen || editingSlot || isSubjectModalOpen || isClassModalOpen || isTeacherModalOpen || isDataModalOpen || isRoomModalOpen || auditResult || isTermModalOpen || isLoadModalOpen;
 
+      // Ctrl+K หรือ / เพื่อไปที่ช่องค้นหา
       const elK = e.target;
       const inFieldK = elK && (elK.tagName === 'INPUT' || elK.tagName === 'TEXTAREA' || elK.tagName === 'SELECT' || elK.isContentEditable);
       if (!anyModalOpen && searchInputRef.current && ((e.ctrlKey || e.metaKey) && (e.key === 'k' || e.key === 'K') || e.key === '/' && !inFieldK)) {
@@ -1554,6 +1607,7 @@ function TimetableApp() {
     gs.started = true;
     suppressClickRef.current = true;
     document.body.classList.add('tt-dragging');
+    // สั่นเบาๆ บอกว่า "ยกการ์ดขึ้นแล้ว ลากได้" (เฉพาะเครื่องที่รองรับ)
     if (gs.isTouch) {
       try {
         if (navigator.vibrate) navigator.vibrate(12);
@@ -1677,6 +1731,13 @@ function TimetableApp() {
     if (isTouch) gestureRef.current.holdTimer = setTimeout(() => startDrag(), 220);
   };
 
+  /**
+   * จอสัมผัส: เมื่อกดค้างจนเริ่มลากการ์ดแล้ว ต้องห้ามเบราว์เซอร์เอาท่าทางนั้นไปเลื่อนจอ
+   * ไม่งั้นเบราว์เซอร์จะส่ง pointercancel มาทันทีที่นิ้วขยับ แล้วการลากถูกยกเลิก
+   * (preventDefault ที่ pointermove ห้ามการเลื่อนไม่ได้ ต้องทำที่ touchmove แบบ non-passive)
+   * ก่อนเริ่มลากไม่แตะต้องอะไร การปัดเลื่อนตารางจึงยังทำได้ตามปกติ
+   * และกันเมนูกดค้างของเบราว์เซอร์เด้งขึ้นมาระหว่างลาก
+   */
   useEffect(() => {
     const blockScroll = e => {
       const gs = gestureRef.current;
@@ -2155,6 +2216,7 @@ function TimetableApp() {
       at: 0
     };
     const last = history[history.length - 1];
+    // เก็บสถานะปัจจุบันไว้ก่อนย้อน เพื่อให้กด "ทำซ้ำ" กลับมาได้
     setFuture(prev => [...prev, {
       schedule,
       classes,
@@ -2170,6 +2232,7 @@ function TimetableApp() {
     setHistory(prev => prev.slice(0, -1));
   };
 
+  // ทำซ้ำ — คืนขั้นที่เพิ่งย้อนกลับไป
   const handleRedo = () => {
     if (future.length === 0) return;
     lastEditRef.current = {
@@ -2447,6 +2510,8 @@ window.addEventListener('load', function(){ setTimeout(function(){ try{ window.p
       targetClassId = existing ? existing.classId : '';
     }
 
+    // fresh = ช่องว่างที่กำลังจะวางคาบใหม่ — เฉพาะกรณีนี้ที่ให้กดย้ายไปช่องว่างอื่นได้จากตัวช่วยหาเวลาว่าง
+    // (ถ้าเป็นคาบเดิม การย้ายตำแหน่งในหน้าต่างนี้จะกลายเป็นการคัดลอก จึงให้ใช้การลากการ์ดแทน)
     setEditingSlot({
       day,
       period,
@@ -2727,6 +2792,14 @@ window.addEventListener('load', function(){ setTimeout(function(){ try{ window.p
     };
   })();
 
+  /**
+   * ตัวช่วยหาเวลาว่าง — ใช้กฎชุดเดียวกับตอนกดบันทึก (handleSaveSlot) ทุกประการ
+   * ช่องที่ขึ้นเขียวคือ "วางได้จริง" ไม่ใช่แค่ดูว่างเฉยๆ
+   *   ห้องเรียน: ไม่มีวิชาอื่นเรียนอยู่ (วิชาเดียวกันที่วางไว้แล้วไม่นับว่าชน)
+   *   ครู: ไม่ได้สอนห้องเรียนอื่นอยู่
+   *   ห้อง: ไม่มีห้องเรียนอื่นใช้อยู่
+   * และต้องว่างครบทุกคาบตามจำนวนคาบติดกันที่เลือก โดยข้ามคาบพักกลางวัน
+   */
   const slotFinder = (() => {
     if (!editingSlot) return null;
     const tName = manualTeacherName.trim();
@@ -2790,6 +2863,9 @@ window.addEventListener('load', function(){ setTimeout(function(){ try{ window.p
     };
   })();
 
+  // ==========================================
+  // ค้นหา
+  // ==========================================
   const searchResults = (() => {
     const q = searchQ.trim().toLowerCase();
     if (!q) return [];
@@ -2829,6 +2905,7 @@ window.addEventListener('load', function(){ setTimeout(function(){ try{ window.p
         sub: `${sub.code ? `${sub.code} · ` : ''}${c.name}`
       });
     }));
+    // ห้องเรียนที่ตรงแค่ชื่อครูที่ปรึกษา ไว้ท้ายสุด — พิมพ์ชื่อครูแล้วกด Enter ควรได้ตารางสอนของครูก่อน
     deptClasses.forEach(c => {
       if (!hit(c.name) && hit(c.advisor)) out.push(classRow(c));
     });
@@ -2875,6 +2952,11 @@ window.addEventListener('load', function(){ setTimeout(function(){ try{ window.p
     if (searchBlurTimerRef.current) clearTimeout(searchBlurTimerRef.current);
   }, []);
 
+  /**
+   * จอแคบ (มือถือ/แท็บเล็ตแนวตั้ง) แผงสรุปเป็นแผ่นเลื่อนขึ้นจากด้านล่าง ปิดไว้ก่อนให้เห็นตารางเต็มจอ
+   * แยกสถานะเปิด/ปิดของจอแคบออกจากของจอคอมฯ และไม่บันทึกลงเครื่อง
+   * ไม่งั้นเปิดดูบนมือถือครั้งเดียว กลับมาที่คอมฯ แผงสรุปจะถูกปิดตามไปด้วย
+   */
   const [isNarrow, setIsNarrow] = useState(() => typeof window !== 'undefined' && window.innerWidth <= 900);
   const [narrowPanelOpen, setNarrowPanelOpen] = useState(false);
   useEffect(() => {
@@ -2897,9 +2979,11 @@ window.addEventListener('load', function(){ setTimeout(function(){ try{ window.p
       setRailCompact(false);
     }
   };
+  // ตรวจทุกครั้งที่วาดใหม่ (เนื้อหาในแถบเปลี่ยนได้ เช่นป้ายบันทึก) — แค่อ่านขนาด ไม่หนัก
   useEffect(() => {
     railCheckRef.current();
   });
+  // และตรวจเมื่อขนาดจอเปลี่ยน
   useEffect(() => {
     const el = railRef.current;
     if (!el) return;
@@ -2913,6 +2997,14 @@ window.addEventListener('load', function(){ setTimeout(function(){ try{ window.p
     return () => ro.disconnect();
   }, [step, printMode]);
 
+  // ==========================================
+  // สรุปภาระงานสอนรายครู
+  // ==========================================
+  /**
+   * นับจากคาบที่วางในตารางจริง (1 คาบ = 1 ชั่วโมง) ไม่นับคาบตายตัวอย่างกิจกรรม/โฮมรูม
+   * แยกตามระดับของห้องเรียน: ปวช. / ปวส. / กลุ่มนอกแผนก
+   * ครูนอกแผนกที่พิมพ์ชื่อเองก็นับด้วย จัดกลุ่มตามชื่อ
+   */
   const teacherLoads = (() => {
     if (!isLoadModalOpen) return null;
     const rows = {};
@@ -2972,6 +3064,10 @@ window.addEventListener('load', function(){ setTimeout(function(){ try{ window.p
     };
   })();
 
+  /**
+   * พิมพ์สรุปภาระงานสอน — สร้างเอกสารแยกของตัวเอง (A4 แนวตั้ง)
+   * ไม่ยุ่งกับระบบพิมพ์ตารางเดิมเลย แต่ใช้วิธีเปิดแท็บใหม่/ดาวน์โหลดสำรองแบบเดียวกัน
+   */
   const printLoadSummary = () => {
     const data = teacherLoads;
     if (!data) return;
@@ -4915,7 +5011,7 @@ ${PRINT_PAGE_CSS}
       .seg-btn svg{ width:18px; height:18px; }
       .search-pop{ width:calc(100vw - 16px); left:8px !important; }
       .chip{ font-size:13.5px; padding:3px 6px; }
-      .rail .chip:not(.chip-btn){ display:none; }
+      .rail .chip:not(.chip-btn):not(.chip-keep){ display:none; }
 
       .context-bar > div:first-child .eyebrow{ display:none; }
       .context-bar > div:first-child > div:nth-child(2){ font-size:18px !important; }
@@ -5780,14 +5876,14 @@ ${PRINT_PAGE_CSS}
     style: {
       opacity: .7
     }
-  })), React.createElement("div", {
+  })), /*#__PURE__*/React.createElement("div", {
     className: "search-box",
     style: {
       flexShrink: 0
     }
-  }, React.createElement(Search, {
+  }, /*#__PURE__*/React.createElement(Search, {
     className: "w-3.5 h-3.5 search-ico"
-  }), React.createElement("input", {
+  }), /*#__PURE__*/React.createElement("input", {
     ref: searchInputRef,
     type: "search",
     className: "search-inp",
@@ -5846,7 +5942,7 @@ ${PRINT_PAGE_CSS}
   }, /*#__PURE__*/React.createElement(Check, {
     className: "w-3 h-3"
   }), " บันทึก ", lastSavedTime), saveStatus === 'error' && /*#__PURE__*/React.createElement("span", {
-    className: "chip",
+    className: "chip chip-keep",
     style: {
       background: 'rgba(184,31,45,.25)',
       color: '#FFB4BB',
@@ -5854,7 +5950,17 @@ ${PRINT_PAGE_CSS}
     }
   }, /*#__PURE__*/React.createElement(AlertCircle, {
     className: "w-3 h-3"
-  }), " บันทึกไม่สำเร็จ"), /*#__PURE__*/React.createElement("div", {
+  }), " บันทึกไม่สำเร็จ"), syncedFromOtherTab && /*#__PURE__*/React.createElement("span", {
+    className: "chip chip-keep",
+    title: "มีการแก้ไขจากอีกแท็บหนึ่งของเว็บนี้ แท็บนี้ปรับให้ตรงกันแล้ว",
+    style: {
+      background: 'rgba(240,168,92,.22)',
+      color: '#F6C58F',
+      flexShrink: 0
+    }
+  }, /*#__PURE__*/React.createElement(RefreshCw, {
+    className: "w-3 h-3"
+  }), " อัปเดตจากแท็บอื่น"), /*#__PURE__*/React.createElement("div", {
     className: "rail-sep",
     style: {
       flexShrink: 0
@@ -5886,9 +5992,9 @@ ${PRINT_PAGE_CSS}
     style: {
       flexShrink: 0
     }
-  }), React.createElement("div", {
+  }), /*#__PURE__*/React.createElement("div", {
     className: "undo-group"
-  }, React.createElement("button", {
+  }, /*#__PURE__*/React.createElement("button", {
     onClick: handleUndo,
     disabled: history.length === 0,
     className: "rail-btn rail-icon",
@@ -5896,19 +6002,19 @@ ${PRINT_PAGE_CSS}
     title: history.length === 0 ? 'ยังไม่มีการแก้ไขให้ย้อนกลับ' : `ย้อนกลับการแก้ไขล่าสุด (ย้อนได้อีก ${history.length} ครั้ง) · Ctrl+Z`
   }, /*#__PURE__*/React.createElement(Undo2, {
     className: "w-4 h-4"
-  }), history.length > 0 && React.createElement("b", {
+  }), history.length > 0 && /*#__PURE__*/React.createElement("b", {
     className: "undo-badge mono"
-  }, history.length)), React.createElement("button", {
+  }, history.length)), /*#__PURE__*/React.createElement("button", {
     onClick: handleRedo,
     disabled: future.length === 0,
     className: "rail-btn rail-icon",
     "aria-label": "ทำซ้ำ",
     title: future.length === 0 ? 'ยังไม่มีขั้นที่ย้อนกลับไปให้ทำซ้ำ' : `ทำซ้ำขั้นที่เพิ่งย้อนกลับ (ทำซ้ำได้อีก ${future.length} ครั้ง) · Ctrl+Y`
-  }, React.createElement(Redo2, {
+  }, /*#__PURE__*/React.createElement(Redo2, {
     className: "w-4 h-4"
-  }), future.length > 0 && React.createElement("b", {
+  }), future.length > 0 && /*#__PURE__*/React.createElement("b", {
     className: "undo-badge mono"
-  }, future.length))), React.createElement("button", {
+  }, future.length))), /*#__PURE__*/React.createElement("button", {
     onClick: () => setIsSubjectModalOpen(true),
     className: "rail-btn rail-opt",
     title: "จัดการรายวิชาของห้องนี้"
@@ -5930,9 +6036,9 @@ ${PRINT_PAGE_CSS}
     onClick: () => setIsLoadModalOpen(true),
     className: "rail-btn",
     title: "สรุปภาระงานสอนของครูทุกคน"
-  }, React.createElement(BarChart3, {
+  }, /*#__PURE__*/React.createElement(BarChart3, {
     className: "w-3.5 h-3.5"
-  }), " ", React.createElement("span", null, "ภาระสอน")), React.createElement("button", {
+  }), " ", /*#__PURE__*/React.createElement("span", null, "ภาระสอน")), /*#__PURE__*/React.createElement("button", {
     onClick: () => setAuditResult(auditSchedule()),
     className: "rail-btn",
     title: "สแกนทั้งตารางหาครูชน ห้องชน และวิชาที่ลงไม่ครบ"
@@ -5948,7 +6054,7 @@ ${PRINT_PAGE_CSS}
     onClick: () => setPanelShown(!panelShown),
     className: "rail-btn",
     title: panelShown ? 'ซ่อนแผงสรุป' : 'แสดงแผงสรุป'
-  }, panelShown ? React.createElement(PanelRightClose, {
+  }, panelShown ? /*#__PURE__*/React.createElement(PanelRightClose, {
     className: "w-3.5 h-3.5"
   }) : /*#__PURE__*/React.createElement(PanelRightOpen, {
     className: "w-3.5 h-3.5"
@@ -5961,9 +6067,9 @@ ${PRINT_PAGE_CSS}
     onClick: () => setStep('home'),
     className: "rail-btn rail-home",
     title: "กลับหน้าแรก"
-  }, React.createElement(Home, {
+  }, /*#__PURE__*/React.createElement(Home, {
     className: "w-3.5 h-3.5"
-  }), " ", React.createElement("span", null, "หน้าแรก"))), React.createElement("div", {
+  }), " ", /*#__PURE__*/React.createElement("span", null, "หน้าแรก"))), /*#__PURE__*/React.createElement("div", {
     style: {
       display: 'flex',
       flex: 1,
@@ -6315,16 +6421,16 @@ ${PRINT_PAGE_CSS}
       borderLeft: '1px solid var(--rule-soft)',
       whiteSpace: 'nowrap'
     }
-  }, "ลากการ์ดเพื่อย้ายคาบ · ดับเบิลคลิกแท็บเพื่อตั้งค่า"))), panelShown && React.createElement("div", {
+  }, "ลากการ์ดเพื่อย้ายคาบ · ดับเบิลคลิกแท็บเพื่อตั้งค่า"))), panelShown && /*#__PURE__*/React.createElement("div", {
     className: "panel-backdrop",
     onClick: () => setPanelShown(false)
-  }), panelShown && React.createElement("div", {
+  }), panelShown && /*#__PURE__*/React.createElement("div", {
     className: "panel"
   }, /*#__PURE__*/React.createElement("div", {
     className: "panel-grip",
     onClick: () => setPanelShown(false),
     title: "ซ่อนแผงสรุป"
-  }), React.createElement("div", {
+  }), /*#__PURE__*/React.createElement("div", {
     className: "panel-head"
   }, /*#__PURE__*/React.createElement("div", {
     style: {
@@ -6975,7 +7081,7 @@ ${PRINT_PAGE_CSS}
   }, "เลือกครูผู้สอน"), teachers.map(t => /*#__PURE__*/React.createElement("option", {
     key: t.id,
     value: t.id
-  }, t.name, t.roomId ? ` · ห้อง ${roomLabel(t.roomId)}` : '')))), slotFinder && React.createElement("div", {
+  }, t.name, t.roomId ? ` · ห้อง ${roomLabel(t.roomId)}` : '')))), slotFinder && /*#__PURE__*/React.createElement("div", {
     className: "box",
     style: {
       background: 'var(--surface-2)',
@@ -6990,19 +7096,19 @@ ${PRINT_PAGE_CSS}
       marginBottom: 8,
       flexWrap: 'wrap'
     }
-  }, React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("div", {
     className: "eyebrow",
     style: {
       display: 'flex',
       alignItems: 'center',
       gap: 6
     }
-  }, React.createElement(CalendarSearch, {
+  }, /*#__PURE__*/React.createElement(CalendarSearch, {
     className: "w-3.5 h-3.5"
-  }), slotFinder.fresh ? `หาเวลาว่าง · ${slotFinder.dur} คาบติดกัน` : 'คิวว่างทั้งสัปดาห์'), slotFinder.fresh && React.createElement("span", {
+  }), slotFinder.fresh ? `หาเวลาว่าง · ${slotFinder.dur} คาบติดกัน` : 'คิวว่างทั้งสัปดาห์'), slotFinder.fresh && /*#__PURE__*/React.createElement("span", {
     className: "finder-count",
     "data-fit-count": slotFinder.fitCount
-  }, slotFinder.fitCount > 0 ? `วางได้ ${slotFinder.fitCount} ตำแหน่ง` : 'ไม่มีตำแหน่งที่ว่างพร้อมกัน')), React.createElement("table", {
+  }, slotFinder.fitCount > 0 ? `วางได้ ${slotFinder.fitCount} ตำแหน่ง` : 'ไม่มีตำแหน่งที่ว่างพร้อมกัน')), /*#__PURE__*/React.createElement("table", {
     className: "mini"
   }, /*#__PURE__*/React.createElement("thead", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", {
     style: {
@@ -7077,21 +7183,21 @@ ${PRINT_PAGE_CSS}
     }));
   }))), /*#__PURE__*/React.createElement("div", {
     className: "mini-legend"
-  }, slotFinder.fresh && React.createElement("span", null, React.createElement("i", {
+  }, slotFinder.fresh && /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("i", {
     style: {
       background: 'var(--ok)'
     }
-  }), "วางได้"), slotFinder.hasTeacher && React.createElement("span", null, React.createElement("i", {
+  }), "วางได้"), slotFinder.hasTeacher && /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("i", {
     style: {
       background: 'var(--danger)'
     }
-  }), "ครูติดสอน"), slotFinder.hasClass && React.createElement("span", null, React.createElement("i", {
+  }), "ครูติดสอน"), slotFinder.hasClass && /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("i", {
     className: "lg-cbusy"
-  }), "นักเรียนมีเรียน"), slotFinder.roomId && React.createElement("span", null, React.createElement("i", {
+  }), "นักเรียนมีเรียน"), slotFinder.roomId && /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("i", {
     style: {
       background: '#C9A227'
     }
-  }), "ห้องไม่ว่าง"), React.createElement("span", null, React.createElement("i", {
+  }), "ห้องไม่ว่าง"), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("i", {
     style: {
       background: 'var(--accent)'
     }
@@ -7099,13 +7205,13 @@ ${PRINT_PAGE_CSS}
     style: {
       background: '#7E1019'
     }
-  }), "ชนกัน")), slotFinder.fresh && React.createElement("div", {
+  }), "ชนกัน")), slotFinder.fresh && /*#__PURE__*/React.createElement("div", {
     className: "hint",
     style: {
       textAlign: 'center',
       marginTop: 6
     }
-  }, !slotFinder.hasTeacher ? 'เลือกครูผู้สอนด้วย ระบบจะหาเวลาที่ครูว่างตรงกันให้' : slotFinder.fitCount > 0 ? 'กดช่องสีเขียวเพื่อย้ายไปวางตรงนั้น' : `ลองลดจำนวนคาบติดกัน เปลี่ยนห้อง หรือติ๊ก "ให้สอนซ้อนเวลาได้" ถ้าตั้งใจ`)), React.createElement("label", {
+  }, !slotFinder.hasTeacher ? 'เลือกครูผู้สอนด้วย ระบบจะหาเวลาที่ครูว่างตรงกันให้' : slotFinder.fitCount > 0 ? 'กดช่องสีเขียวเพื่อย้ายไปวางตรงนั้น' : `ลองลดจำนวนคาบติดกัน เปลี่ยนห้อง หรือติ๊ก "ให้สอนซ้อนเวลาได้" ถ้าตั้งใจ`)), /*#__PURE__*/React.createElement("label", {
     style: {
       display: 'flex',
       gap: 9,
@@ -8316,7 +8422,7 @@ ${PRINT_PAGE_CSS}
     className: "btn btn-accent"
   }, /*#__PURE__*/React.createElement(Check, {
     className: "w-4 h-4"
-  }), " เสร็จสิ้น")))), searchOpen && searchQ.trim() && React.createElement("div", {
+  }), " เสร็จสิ้น")))), searchOpen && searchQ.trim() && /*#__PURE__*/React.createElement("div", {
     className: "search-pop",
     style: searchRect ? {
       left: Math.max(8, Math.min(searchRect.left, (typeof window !== 'undefined' ? window.innerWidth : 1200) - 348)),
@@ -8325,104 +8431,104 @@ ${PRINT_PAGE_CSS}
       left: 8,
       top: 60
     }
-  }, searchResults.length === 0 ? React.createElement("div", {
+  }, searchResults.length === 0 ? /*#__PURE__*/React.createElement("div", {
     className: "search-empty"
-  }, "ไม่พบ \"", searchQ.trim(), "\"") : searchResults.map((r, i) => React.createElement("button", {
+  }, "ไม่พบ \"", searchQ.trim(), "\"") : searchResults.map((r, i) => /*#__PURE__*/React.createElement("button", {
     key: `${r.kind}-${r.classId || ''}-${r.id}`,
     className: `search-item ${i === searchIdx ? 'on' : ''}`,
     onMouseDown: e => e.preventDefault(),
     onMouseEnter: () => setSearchIdx(i),
     onClick: () => goSearchResult(r)
-  }, React.createElement("span", {
+  }, /*#__PURE__*/React.createElement("span", {
     className: "search-kind"
-  }, r.kind === 'class' ? React.createElement(Users, {
+  }, r.kind === 'class' ? /*#__PURE__*/React.createElement(Users, {
     className: "w-3.5 h-3.5"
-  }) : r.kind === 'teacher' ? React.createElement(User, {
+  }) : r.kind === 'teacher' ? /*#__PURE__*/React.createElement(User, {
     className: "w-3.5 h-3.5"
-  }) : r.kind === 'room' ? React.createElement(DoorOpen, {
+  }) : r.kind === 'room' ? /*#__PURE__*/React.createElement(DoorOpen, {
     className: "w-3.5 h-3.5"
-  }) : React.createElement(BookOpen, {
+  }) : /*#__PURE__*/React.createElement(BookOpen, {
     className: "w-3.5 h-3.5"
-  })), React.createElement("span", {
+  })), /*#__PURE__*/React.createElement("span", {
     style: {
       minWidth: 0,
       flex: 1
     }
-  }, React.createElement("span", {
+  }, /*#__PURE__*/React.createElement("span", {
     className: "search-label"
-  }, r.label), React.createElement("span", {
+  }, r.label), /*#__PURE__*/React.createElement("span", {
     className: "search-sub"
-  }, r.sub))))), isLoadModalOpen && teacherLoads && React.createElement("div", {
+  }, r.sub))))), isLoadModalOpen && teacherLoads && /*#__PURE__*/React.createElement("div", {
     className: "ov",
     onClick: () => setIsLoadModalOpen(false)
-  }, React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("div", {
     className: "modal",
     style: {
       maxWidth: 980
     },
     onClick: e => e.stopPropagation()
-  }, React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("div", {
     className: "modal-head"
-  }, React.createElement("div", null, React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
     className: "modal-title"
-  }, "สรุปภาระงานสอน"), React.createElement("div", {
+  }, "สรุปภาระงานสอน"), /*#__PURE__*/React.createElement("div", {
     className: "modal-sub"
-  }, "ภาคเรียนที่ ", config.term, " ปีการศึกษา ", config.year, " · นับจากคาบที่จัดลงตารางจริง ไม่รวมคาบตายตัว")), React.createElement("button", {
+  }, "ภาคเรียนที่ ", config.term, " ปีการศึกษา ", config.year, " · นับจากคาบที่จัดลงตารางจริง ไม่รวมคาบตายตัว")), /*#__PURE__*/React.createElement("button", {
     onClick: () => setIsLoadModalOpen(false),
     className: "x-btn"
-  }, React.createElement(X, {
+  }, /*#__PURE__*/React.createElement(X, {
     className: "w-4 h-4"
-  }))), React.createElement("div", {
+  }))), /*#__PURE__*/React.createElement("div", {
     className: "modal-body",
     style: {
       padding: 0
     }
-  }, React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("div", {
     className: "load-stats"
-  }, React.createElement("div", null, React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
     className: "eyebrow"
-  }, "ครูในทะเบียน"), React.createElement("div", {
+  }, "ครูในทะเบียน"), /*#__PURE__*/React.createElement("div", {
     className: "load-num mono"
-  }, teacherLoads.regCount, React.createElement("small", null, " คน"))), React.createElement("div", null, React.createElement("div", {
+  }, teacherLoads.regCount, /*#__PURE__*/React.createElement("small", null, " คน"))), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
     className: "eyebrow"
-  }, "รวมทั้งแผนก"), React.createElement("div", {
+  }, "รวมทั้งแผนก"), /*#__PURE__*/React.createElement("div", {
     className: "load-num mono"
-  }, teacherLoads.totals.total, React.createElement("small", null, " คาบ/สัปดาห์"))), React.createElement("div", null, React.createElement("div", {
+  }, teacherLoads.totals.total, /*#__PURE__*/React.createElement("small", null, " คาบ/สัปดาห์"))), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
     className: "eyebrow"
-  }, "เฉลี่ยต่อคน"), React.createElement("div", {
+  }, "เฉลี่ยต่อคน"), /*#__PURE__*/React.createElement("div", {
     className: "load-num mono"
-  }, teacherLoads.avg.toFixed(1), React.createElement("small", null, " คาบ"))), React.createElement("div", null, React.createElement("div", {
+  }, teacherLoads.avg.toFixed(1), /*#__PURE__*/React.createElement("small", null, " คาบ"))), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
     className: "eyebrow"
-  }, "ปวช. / ปวส. / นอกแผนก"), React.createElement("div", {
+  }, "ปวช. / ปวส. / นอกแผนก"), /*#__PURE__*/React.createElement("div", {
     className: "load-num mono"
-  }, teacherLoads.totals.pvc, React.createElement("small", null, " / "), teacherLoads.totals.pvs, React.createElement("small", null, " / "), teacherLoads.totals.ext))), teacherLoads.list.length === 0 ? React.createElement("div", {
+  }, teacherLoads.totals.pvc, /*#__PURE__*/React.createElement("small", null, " / "), teacherLoads.totals.pvs, /*#__PURE__*/React.createElement("small", null, " / "), teacherLoads.totals.ext))), teacherLoads.list.length === 0 ? /*#__PURE__*/React.createElement("div", {
     style: {
       padding: '36px 20px',
       textAlign: 'center',
       color: 'var(--ink-3)',
       fontSize: 16.5
     }
-  }, "ยังไม่มีครูในทะเบียน เพิ่มครูผู้สอนก่อนจึงจะสรุปภาระงานสอนได้") : React.createElement("div", {
+  }, "ยังไม่มีครูในทะเบียน เพิ่มครูผู้สอนก่อนจึงจะสรุปภาระงานสอนได้") : /*#__PURE__*/React.createElement("div", {
     className: "load-scroll"
-  }, React.createElement("table", {
+  }, /*#__PURE__*/React.createElement("table", {
     className: "load-tbl"
-  }, React.createElement("thead", null, React.createElement("tr", null, React.createElement("th", {
+  }, /*#__PURE__*/React.createElement("thead", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", {
     className: "l",
     style: {
       minWidth: 170
     }
-  }, "ครูผู้สอน"), React.createElement("th", {
+  }, "ครูผู้สอน"), /*#__PURE__*/React.createElement("th", {
     className: "l",
     style: {
       minWidth: 190
     }
-  }, "รวม (คาบ/สัปดาห์)"), React.createElement("th", null, "ปวช."), React.createElement("th", null, "ปวส."), React.createElement("th", {
+  }, "รวม (คาบ/สัปดาห์)"), /*#__PURE__*/React.createElement("th", null, "ปวช."), /*#__PURE__*/React.createElement("th", null, "ปวส."), /*#__PURE__*/React.createElement("th", {
     title: "กลุ่มนักเรียนนอกแผนก"
-  }, "นอก"), DAYS.map(d => React.createElement("th", {
+  }, "นอก"), DAYS.map(d => /*#__PURE__*/React.createElement("th", {
     key: d
-  }, DAY_SHORT[d])), React.createElement("th", null, "วิชา"), React.createElement("th", null, "ห้อง"))), React.createElement("tbody", null, teacherLoads.list.map(r => {
+  }, DAY_SHORT[d])), /*#__PURE__*/React.createElement("th", null, "วิชา"), /*#__PURE__*/React.createElement("th", null, "ห้อง"))), /*#__PURE__*/React.createElement("tbody", null, teacherLoads.list.map(r => {
     const above = teacherLoads.regCount > 0 && !r.manual && r.total > teacherLoads.avg * 1.25;
-    return React.createElement("tr", {
+    return /*#__PURE__*/React.createElement("tr", {
       key: r.key,
       className: r.teacherId ? 'load-row clickable' : 'load-row',
       title: r.teacherId ? 'กดเพื่อเปิดตารางสอนของครูท่านนี้' : 'ครูนอกแผนก (พิมพ์ชื่อเอง)',
@@ -8431,23 +8537,23 @@ ${PRINT_PAGE_CSS}
         setCurrentTeacherTab(r.teacherId);
         setIsLoadModalOpen(false);
       } : undefined
-    }, React.createElement("td", {
+    }, /*#__PURE__*/React.createElement("td", {
       className: "l"
-    }, React.createElement("div", {
+    }, /*#__PURE__*/React.createElement("div", {
       style: {
         fontWeight: 700
       }
-    }, r.name), r.manual && React.createElement("div", {
+    }, r.name), r.manual && /*#__PURE__*/React.createElement("div", {
       className: "search-sub"
-    }, "ครูนอกแผนก (พิมพ์ชื่อเอง)")), React.createElement("td", {
+    }, "ครูนอกแผนก (พิมพ์ชื่อเอง)")), /*#__PURE__*/React.createElement("td", {
       className: "l"
-    }, React.createElement("div", {
+    }, /*#__PURE__*/React.createElement("div", {
       style: {
         display: 'flex',
         alignItems: 'center',
         gap: 8
       }
-    }, React.createElement("span", {
+    }, /*#__PURE__*/React.createElement("span", {
       className: "mono",
       style: {
         fontWeight: 700,
@@ -8455,85 +8561,85 @@ ${PRINT_PAGE_CSS}
         textAlign: 'right',
         color: above ? 'var(--accent)' : 'var(--ink)'
       }
-    }, r.total), React.createElement("span", {
+    }, r.total), /*#__PURE__*/React.createElement("span", {
       className: "load-bar"
-    }, React.createElement("i", {
+    }, /*#__PURE__*/React.createElement("i", {
       style: {
         width: `${r.pvc / teacherLoads.max * 100}%`,
         background: 'hsl(350 62% 42%)'
       }
-    }), React.createElement("i", {
+    }), /*#__PURE__*/React.createElement("i", {
       style: {
         width: `${r.pvs / teacherLoads.max * 100}%`,
         background: 'hsl(213 66% 40%)'
       }
-    }), React.createElement("i", {
+    }), /*#__PURE__*/React.createElement("i", {
       style: {
         width: `${r.ext / teacherLoads.max * 100}%`,
         background: '#7C8AA6'
       }
-    })))), React.createElement("td", {
+    })))), /*#__PURE__*/React.createElement("td", {
       className: "mono"
-    }, r.pvc || '–'), React.createElement("td", {
+    }, r.pvc || '–'), /*#__PURE__*/React.createElement("td", {
       className: "mono"
-    }, r.pvs || '–'), React.createElement("td", {
+    }, r.pvs || '–'), /*#__PURE__*/React.createElement("td", {
       className: "mono"
-    }, r.ext || '–'), r.perDay.map((n, i) => React.createElement("td", {
+    }, r.ext || '–'), r.perDay.map((n, i) => /*#__PURE__*/React.createElement("td", {
       key: i,
       className: "mono",
       style: {
         color: n === 0 ? 'var(--ink-3)' : 'var(--ink)'
       }
-    }, n || '–')), React.createElement("td", {
+    }, n || '–')), /*#__PURE__*/React.createElement("td", {
       className: "mono"
-    }, r.subjects), React.createElement("td", {
+    }, r.subjects), /*#__PURE__*/React.createElement("td", {
       className: "mono"
     }, r.classCount));
-  })), React.createElement("tfoot", null, React.createElement("tr", null, React.createElement("td", {
+  })), /*#__PURE__*/React.createElement("tfoot", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", {
     className: "l"
-  }, "รวมทั้งแผนก"), React.createElement("td", {
+  }, "รวมทั้งแผนก"), /*#__PURE__*/React.createElement("td", {
     className: "l mono"
-  }, teacherLoads.totals.total), React.createElement("td", {
+  }, teacherLoads.totals.total), /*#__PURE__*/React.createElement("td", {
     className: "mono"
-  }, teacherLoads.totals.pvc), React.createElement("td", {
+  }, teacherLoads.totals.pvc), /*#__PURE__*/React.createElement("td", {
     className: "mono"
-  }, teacherLoads.totals.pvs), React.createElement("td", {
+  }, teacherLoads.totals.pvs), /*#__PURE__*/React.createElement("td", {
     className: "mono"
-  }, teacherLoads.totals.ext), teacherLoads.totals.perDay.map((n, i) => React.createElement("td", {
+  }, teacherLoads.totals.ext), teacherLoads.totals.perDay.map((n, i) => /*#__PURE__*/React.createElement("td", {
     key: i,
     className: "mono"
-  }, n)), React.createElement("td", {
+  }, n)), /*#__PURE__*/React.createElement("td", {
     colSpan: 2
-  }))))), React.createElement("div", {
+  }))))), /*#__PURE__*/React.createElement("div", {
     className: "load-legend"
-  }, React.createElement("span", null, React.createElement("i", {
+  }, /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("i", {
     style: {
       background: 'hsl(350 62% 42%)'
     }
-  }), "ปวช."), React.createElement("span", null, React.createElement("i", {
+  }), "ปวช."), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("i", {
     style: {
       background: 'hsl(213 66% 40%)'
     }
-  }), "ปวส."), React.createElement("span", null, React.createElement("i", {
+  }), "ปวส."), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("i", {
     style: {
       background: '#7C8AA6'
     }
-  }), "กลุ่มนอกแผนก"), React.createElement("span", {
+  }), "กลุ่มนอกแผนก"), /*#__PURE__*/React.createElement("span", {
     style: {
       color: 'var(--accent)'
     }
-  }, "ตัวเลขสีส้ม = สูงกว่าค่าเฉลี่ยเกิน 25%"))), React.createElement("div", {
+  }, "ตัวเลขสีส้ม = สูงกว่าค่าเฉลี่ยเกิน 25%"))), /*#__PURE__*/React.createElement("div", {
     className: "modal-foot"
-  }, React.createElement("span", {
+  }, /*#__PURE__*/React.createElement("span", {
     className: "hint",
     style: {
       margin: 0
     }
-  }, "กดชื่อครูเพื่อเปิดตารางสอน"), React.createElement("button", {
+  }, "กดชื่อครูเพื่อเปิดตารางสอน"), /*#__PURE__*/React.createElement("button", {
     onClick: printLoadSummary,
     className: "btn btn-primary btn-sm",
     disabled: teacherLoads.list.length === 0
-  }, React.createElement(Printer, {
+  }, /*#__PURE__*/React.createElement(Printer, {
     className: "w-3.5 h-3.5"
   }), " พิมพ์ / บันทึก PDF")))), auditResult && (() => {
     const {
@@ -9305,35 +9411,44 @@ function App() {
   return /*#__PURE__*/React.createElement(ErrorBoundary, null, /*#__PURE__*/React.createElement(TimetableApp, null));
 }
 
-// ---- window.storage polyfill: replaces the Claude-artifact-only window.storage API
-// with a plain localStorage-backed implementation, so the app's autosave/load code
-// works unmodified on a normal web host.
-window.storage = {
-  get: function (key) {
-    return new Promise(function (resolve) {
-      try {
-        var v = window.localStorage.getItem(key);
-        resolve({ value: v });
-      } catch (e) {
-        resolve({ value: null });
-      }
-    });
-  },
-  set: function (key, value) {
-    return new Promise(function (resolve) {
-      try { window.localStorage.setItem(key, value); } catch (e) {}
-      resolve(true);
-    });
-  },
-  delete: function (key) {
-    return new Promise(function (resolve) {
-      try { window.localStorage.removeItem(key); } catch (e) {}
-      resolve(true);
-    });
+// ---- window.storage polyfill: แทน window.storage ของ Claude ด้วย localStorage ของเบราว์เซอร์
+// สำคัญ: ถ้าเขียนไม่สำเร็จต้อง "แจ้งกลับว่าล้มเหลว" แอปจะได้ขึ้นเตือนผู้ใช้ — ห้ามกลืน error เงียบๆ
+window.storage = (function () {
+  var HISTORY_KEY = 'timetable-history';
+  function write(key, value) {
+    window.localStorage.setItem(key, value);
+    // อ่านกลับมาตรวจ เผื่อเบราว์เซอร์รับคำสั่งแต่ไม่ได้เก็บจริง
+    if (window.localStorage.getItem(key) !== value) throw new Error('storage verify failed');
   }
-};
+  return {
+    get: function (key) {
+      return new Promise(function (resolve) {
+        try { resolve({ value: window.localStorage.getItem(key) }); }
+        catch (e) { resolve({ value: null }); }
+      });
+    },
+    set: function (key, value) {
+      return new Promise(function (resolve, reject) {
+        try { write(key, value); resolve(true); }
+        catch (e) {
+          // พื้นที่เต็ม: ข้อมูลตารางสำคัญกว่าประวัติย้อนกลับ ลบประวัติที่เก็บไว้แล้วลองอีกครั้ง
+          if (key !== HISTORY_KEY) {
+            try { window.localStorage.removeItem(HISTORY_KEY); write(key, value); resolve(true); return; }
+            catch (e2) { reject(e2); return; }
+          }
+          reject(e);
+        }
+      });
+    },
+    delete: function (key) {
+      return new Promise(function (resolve) {
+        try { window.localStorage.removeItem(key); } catch (e) {}
+        resolve(true);
+      });
+    }
+  };
+})();
 
 var __rootEl = document.getElementById('root');
 var __root = ReactDOM.createRoot(__rootEl);
 __root.render(React.createElement(App));
-
