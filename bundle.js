@@ -231,6 +231,7 @@ const calculateClassSummary = (classId, subjects) => {
 const calculateTeacherSummary = (teacherId, currentSchedule, allClassSubjects) => {
   const tSlots = currentSchedule.filter(s => !s.isManualTeacher && s.teacherId === teacherId);
   const summaryMap = {};
+  const seenCombined = new Set();
   tSlots.forEach(slot => {
     const subj = (allClassSubjects[slot.classId] || []).find(s => s.id === slot.subjectId);
     // วิชานอกแผนก (พิมพ์เองแบบไม่ผูกรหัสวิชา) ต้องนับรวมในชั่วโมงสอนด้วย
@@ -252,6 +253,10 @@ const calculateTeacherSummary = (teacherId, currentSchedule, allClassSubjects) =
       external: true
     } : null;
     if (entry) {
+      // สอนรวมหลายห้องเรียนในคาบเดียวกัน (วิชาเดียวกัน) คือการสอน 1 คาบ ไม่ใช่ 2 — นับครั้งเดียว
+      const once = `${entry.key}|${slot.day}|${slot.period}`;
+      if (seenCombined.has(once)) return;
+      seenCombined.add(once);
       if (!summaryMap[entry.key]) summaryMap[entry.key] = {
         ...entry,
         hours: 0
@@ -310,7 +315,8 @@ const calculateRoomSummary = (roomId, currentSchedule, allClassSubjects, allClas
     sumTheory: summary.reduce((a, x) => a + x.theory, 0),
     sumPractical: summary.reduce((a, x) => a + x.practical, 0),
     sumCredit: summary.reduce((a, x) => a + x.credit, 0),
-    sumHours: summary.reduce((a, x) => a + x.hours, 0)
+    // จำนวนคาบที่ห้องถูกใช้จริง — สองห้องเรียนเรียนรวมกันในคาบเดียวคือห้องถูกใช้ 1 คาบ
+    sumHours: new Set(slots.map(x => `${x.day}|${x.period}`)).size
   };
 };
 const SUBJECT_COLORS = [{
@@ -518,6 +524,7 @@ function TimetableApp() {
   const [isTermModalOpen, setIsTermModalOpen] = useState(false);
   const [editingSlot, setEditingSlot] = useState(null);
   const [isLoadModalOpen, setIsLoadModalOpen] = useState(false); // สรุปภาระงานสอนรายครู
+  const [slotPick, setSlotPick] = useState(null); // เลือกห้องเรียนที่จะแก้ เมื่อช่องเดียวมีหลายห้องเรียน
 
   // ช่องค้นหา (ครู ห้องเรียน ห้อง รายวิชา) บนแถบบนสุด
   const [searchQ, setSearchQ] = useState('');
@@ -617,7 +624,9 @@ function TimetableApp() {
   });
   const [newTeacherForm, setNewTeacherForm] = useState({
     name: '',
-    roomId: ''
+    roomId: '',
+    roomNew: '',
+    typing: false
   });
   const [newRoomForm, setNewRoomForm] = useState({
     name: '',
@@ -639,7 +648,9 @@ function TimetableApp() {
   const [editingTeacherId, setEditingTeacherId] = useState(null);
   const [editTeacherForm, setEditTeacherForm] = useState({
     name: '',
-    roomId: ''
+    roomId: '',
+    roomNew: '',
+    typing: false
   });
   const [modalClassId, setModalClassId] = useState('');
   const [editingSubjectId, setEditingSubjectId] = useState(null);
@@ -707,6 +718,47 @@ function TimetableApp() {
       external: true
     };
     return null;
+  };
+
+  // ==========================================
+  // สอนรวม — หลายห้องเรียน เรียนวิชาเดียวกัน คาบเดียวกัน
+  // ==========================================
+  // "วิชาเดียวกัน" ข้ามห้องเรียน ดูจากรหัส+ชื่อวิชา เพราะแต่ละห้องเรียนเก็บรายวิชาแยกชุดกัน (id ไม่ตรงกัน)
+  const slotSubjectKey = slot => {
+    if (!slot) return '';
+    if (slot.isFixed) return `fx:${slot.label || ''}`;
+    const info = slotSubjectInfo(slot);
+    if (!info) return `id:${slot.subjectId || ''}`;
+    return `${String(info.code || '').trim().toLowerCase()}|${String(info.name || '').trim().toLowerCase()}`;
+  };
+  const classOrderOf = id => {
+    const i = classes.findIndex(c => c.id === id);
+    return i < 0 ? 9999 : i;
+  };
+  // จัดคาบในช่องเดียวกันเป็นกลุ่มตามวิชา — กลุ่มที่มีหลายห้องเรียนคือ "สอนรวม" แสดงเป็นการ์ดเดียว
+  const groupSlotsBySubject = slots => {
+    const map = new Map();
+    [...slots].sort((a, b) => classOrderOf(a.classId) - classOrderOf(b.classId)).forEach(sl => {
+      const k = slotSubjectKey(sl);
+      if (!map.has(k)) map.set(k, {
+        key: k,
+        slots: []
+      });
+      map.get(k).slots.push(sl);
+    });
+    return [...map.values()];
+  };
+  // "ชฟ ปวช. 2/1" + "ชฟ ปวช. 2/6" → "ชฟ ปวช. 2/1, 2/6" (ถ้าส่วนหน้าไม่ตรงกันก็เขียนเต็มทุกห้อง)
+  const mergedClassLabel = classIds => {
+    const names = [...new Set(classIds)].map(id => classes.find(c => c.id === id)?.name || '').filter(Boolean);
+    if (names.length <= 1) return names[0] || '';
+    const parts = names.map(n => {
+      const i = n.lastIndexOf(' ');
+      return i > 0 ? [n.slice(0, i), n.slice(i + 1)] : ['', n];
+    });
+    const head = parts[0][0];
+    if (head && parts.every(x => x[0] === head)) return `${head} ${parts.map(x => x[1]).join(', ')}`;
+    return names.join(', ');
   };
   const activeModalClassId = modalClassId || currentClass;
   const currentSubjectObj = (classSubjects[activeModalClassId] || []).find(s => s.id === selectedSubject);
@@ -1023,7 +1075,7 @@ function TimetableApp() {
   // ปิดหน้าต่างด้วยปุ่ม Esc และย้อนกลับด้วย Ctrl+Z
   useEffect(() => {
     const onKey = e => {
-      const anyModalOpen = alertDialog.isOpen || confirmDialog.isOpen || editingSlot || isSubjectModalOpen || isClassModalOpen || isTeacherModalOpen || isDataModalOpen || isRoomModalOpen || auditResult || isTermModalOpen || isLoadModalOpen;
+      const anyModalOpen = alertDialog.isOpen || confirmDialog.isOpen || editingSlot || isSubjectModalOpen || isClassModalOpen || isTeacherModalOpen || isDataModalOpen || isRoomModalOpen || auditResult || isTermModalOpen || isLoadModalOpen || slotPick;
 
       // Ctrl+K หรือ / เพื่อไปที่ช่องค้นหา
       const elK = e.target;
@@ -1064,13 +1116,14 @@ function TimetableApp() {
       if (isRoomModalOpen) return safeCloseModal(editingRoomId, () => setIsRoomModalOpen(false));
       if (auditResult) return setAuditResult(null);
       if (isTermModalOpen) return setIsTermModalOpen(false);
+      if (slotPick) return setSlotPick(null);
       if (isLoadModalOpen) return setIsLoadModalOpen(false);
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
     // ต้องมี history ด้วย ไม่งั้นตัวจัดการปุ่มจะจับภาพประวัติค้างไว้ แล้ว Ctrl+Z จะย้อนไปผิดขั้น
     // ต้องมี editingSubjectId/editingTeacherId/editingRoomId ด้วย เพราะ safeCloseModal ใช้ค่าล่าสุดเช็คฉบับร่างค้าง
-  }, [alertDialog.isOpen, confirmDialog.isOpen, editingSlot, isSubjectModalOpen, isClassModalOpen, isTeacherModalOpen, isDataModalOpen, isRoomModalOpen, auditResult, isTermModalOpen, isLoadModalOpen, history, future, editingSubjectId, editingTeacherId, editingRoomId]);
+  }, [alertDialog.isOpen, confirmDialog.isOpen, editingSlot, isSubjectModalOpen, isClassModalOpen, isTeacherModalOpen, isDataModalOpen, isRoomModalOpen, auditResult, isTermModalOpen, isLoadModalOpen, slotPick, history, future, editingSubjectId, editingTeacherId, editingRoomId]);
 
   // ไม่มีการโหลดฟอนต์หรือสคริปต์จากภายนอกอีกต่อไป
   // แอปทำงานได้เต็มรูปแบบแม้ไม่มีอินเทอร์เน็ต
@@ -1123,6 +1176,7 @@ function TimetableApp() {
    */
   const auditSchedule = () => {
     const issues = [];
+    let combined = 0; // จำนวนคาบที่สอนรวมหลายห้องเรียน (แจ้งให้ทราบ ไม่นับเป็นปัญหา)
     const clsName = id => classes.find(c => c.id === id)?.name || 'ไม่ทราบห้องเรียน';
     DAYS.forEach(day => {
       for (let period = 1; period <= 11; period++) {
@@ -1157,6 +1211,11 @@ function TimetableApp() {
         });
         Object.entries(byTeacher).forEach(([key, list]) => {
           const uniq = [...new Set(list.map(x => x.classId))];
+          // ครูคนเดียว วิชาเดียวกัน หลายห้องเรียน = ตั้งใจสอนรวม ไม่ใช่คาบชน
+          if (uniq.length > 1 && new Set(list.map(slotSubjectKey)).size === 1) {
+            combined++;
+            return;
+          }
           if (uniq.length > 1) {
             const nm = key.startsWith('n:') ? key.slice(2) : teachers.find(t => t.id === key.slice(2))?.name || 'ไม่ทราบครู';
             issues.push({
@@ -1179,6 +1238,9 @@ function TimetableApp() {
         });
         Object.entries(byRoom).forEach(([rid, list]) => {
           const uniq = [...new Set(list.map(x => x.classId))];
+          // เรียนรวมกันในห้องเดียว (วิชาเดียวกัน ครูคนเดียวกัน) ไม่ถือว่าห้องชน
+          const oneTeacher = new Set(list.map(x => x.isManualTeacher ? `n:${(x.teacherName || '').trim()}` : `t:${x.teacherId || ''}`)).size === 1;
+          if (uniq.length > 1 && oneTeacher && !list.some(x => x.isFixed) && new Set(list.map(slotSubjectKey)).size === 1) return;
           if (uniq.length > 1) {
             issues.push({
               type: 'room',
@@ -1212,7 +1274,8 @@ function TimetableApp() {
     });
     return {
       conflicts: issues,
-      shortages
+      shortages,
+      combined
     };
   };
 
@@ -1358,7 +1421,7 @@ function TimetableApp() {
    * ไม่รู้ว่าอีก 3 คาบที่เหลือชนหรือว่าง ต้องลองขยับไปเรื่อยๆ
    * แบบใหม่คืนสถานะทุกคาบ จึงระบายสีบอกได้ว่าคาบไหนว่าง คาบไหนชน และชนเพราะอะไร
    */
-  const evaluateDrop = (block, day, startPeriod) => {
+  const evaluateDropOne = (block, day, startPeriod, groupKeys) => {
     const cObj = classes.find(c => c.id === block.classId) || {};
     const lunch = cObj.lunchPeriod || 5;
     const need = block.len;
@@ -1397,7 +1460,7 @@ function TimetableApp() {
           ok = false;
           reason = `มี ${occupied.isFixed ? occupied.label : subj?.name || occupied.subjectName || 'วิชาอื่น'} อยู่แล้ว`;
         } else if (!block.slot.isFixed) {
-          const busy = schedule.find(s => s.day === day && s.period === p && s.classId !== block.classId && (block.slot.isManualTeacher ? s.isManualTeacher && s.teacherName === block.slot.teacherName : !s.isManualTeacher && s.teacherId === block.slot.teacherId));
+          const busy = schedule.find(s => s.day === day && s.period === p && s.classId !== block.classId && !(groupKeys && groupKeys.has(`${s.classId}|${s.day}|${s.period}`)) && (block.slot.isManualTeacher ? s.isManualTeacher && s.teacherName === block.slot.teacherName : !s.isManualTeacher && s.teacherId === block.slot.teacherId));
           if (busy) {
             const bc = classes.find(c => c.id === busy.classId);
             ok = false;
@@ -1405,7 +1468,7 @@ function TimetableApp() {
           } else {
             // ห้องปฏิบัติการชนกัน — ข้อจำกัดที่บีบที่สุดของแผนกช่าง
             const rid = slotRoomId(block.slot);
-            const rc = roomClashAt(rid, day, p, block.classId, movingKeys);
+            const rc = roomClashAt(rid, day, p, block.classId, groupKeys || movingKeys);
             if (rc) {
               const rcCls = classes.find(c => c.id === rc.classId);
               ok = false;
@@ -1430,19 +1493,72 @@ function TimetableApp() {
       need
     };
   };
+
+  /**
+   * ตรวจปลายทางของการลาก — รองรับ "การ์ดสอนรวม" ที่ย้ายหลายห้องเรียนไปพร้อมกัน (block.mates)
+   * ทุกห้องเรียนในกลุ่มต้องวางได้ครบ จึงถือว่าวางได้ คาบของกลุ่มที่กำลังย้ายไม่นับว่าชนกันเอง
+   */
+  const evaluateDrop = (block, day, startPeriod) => {
+    const mates = block.mates || [];
+    if (mates.length === 0) return evaluateDropOne(block, day, startPeriod, null);
+    const groupKeys = new Set();
+    [block, ...mates].forEach(b => b.periods.forEach(p => groupKeys.add(`${b.classId}|${b.day}|${p}`)));
+    const base = evaluateDropOne(block, day, startPeriod, groupKeys);
+    let periods = base.periods;
+    let overflow = base.overflow;
+    for (const m of mates) {
+      const r = evaluateDropOne(m, day, startPeriod, groupKeys);
+      const mName = classes.find(c => c.id === m.classId)?.name || 'อีกห้องเรียน';
+      const samePeriods = r.periods.length === periods.length && r.periods.every((x, i) => x.period === periods[i].period);
+      if (!samePeriods) {
+        // คาบพักกลางวันของแต่ละห้องเรียนไม่ตรงกัน ปลายทางจึงลงไม่ตรงคาบกัน
+        return {
+          periods: periods.map(x => x.ok ? {
+            ...x,
+            ok: false,
+            reason: `คาบพักกลางวันของ ${mName} ไม่ตรงกัน`
+          } : x),
+          allOk: false,
+          overflow: overflow || r.overflow,
+          fitCount: 0,
+          need: base.need
+        };
+      }
+      periods = periods.map((x, i) => x.ok && !r.periods[i].ok ? {
+        ...x,
+        ok: false,
+        reason: `${mName} ${r.periods[i].reason}`
+      } : x);
+      overflow = overflow || r.overflow;
+    }
+    const fitCount = periods.filter(x => x.ok).length;
+    return {
+      periods,
+      allOk: !overflow && periods.length === base.need && fitCount === base.need,
+      overflow,
+      fitCount,
+      need: base.need
+    };
+  };
   const commitDrop = (block, day, startPeriod) => {
     const v = evaluateDrop(block, day, startPeriod);
     if (!v.allOk) return false;
     const target = v.periods.map(x => x.period);
     if (day === block.day && target[0] === block.periods[0]) return false; // วางที่เดิม ไม่ต้องทำอะไร
 
-    const movingKeys = new Set(block.periods.map(p => `${block.classId}|${block.day}|${p}`));
-    const originals = block.periods.map(p => schedule.find(s => s.classId === block.classId && s.day === block.day && s.period === p));
+    // การ์ดสอนรวม: ย้ายทุกห้องเรียนในกลุ่มไปพร้อมกัน
+    const movingBlocks = [block, ...(block.mates || [])];
+    const movingKeys = new Set();
+    movingBlocks.forEach(b => b.periods.forEach(p => movingKeys.add(`${b.classId}|${b.day}|${p}`)));
     const kept = schedule.filter(s => !movingKeys.has(`${s.classId}|${s.day}|${s.period}`));
-    const moved = originals.map((orig, i) => ({
-      ...orig,
-      day,
-      period: target[i]
+    const moved = [];
+    movingBlocks.forEach(b => b.periods.forEach((p, i) => {
+      const orig = schedule.find(s => s.classId === b.classId && s.day === b.day && s.period === p);
+      if (orig) moved.push({
+        ...orig,
+        day,
+        period: target[i]
+      });
     }));
     const nextSchedule = [...kept, ...moved];
     saveHistory();
@@ -1469,9 +1585,9 @@ function TimetableApp() {
       verb: 'ย้าย',
       name: block.slot.isFixed ? block.slot.label : subjName || 'คาบเรียน',
       where,
-      className: cls?.name || '',
+      className: movingBlocks.length > 1 ? mergedClassLabel(movingBlocks.map(b => b.classId)) : cls?.name || '',
       len: target.length,
-      stat,
+      stat: movingBlocks.length > 1 ? null : stat,
       // จำความยาวประวัติไว้ ถ้ามีการแก้ไขอื่นแทรกเข้ามา ต้องซ่อนแถบนี้ทิ้ง
       // ไม่งั้นปุ่มย้อนกลับจะไปย้อนการแก้ไขอันใหม่แทนการย้ายครั้งนี้
       historyLen: history.length + 1
@@ -1629,7 +1745,8 @@ function TimetableApp() {
       g.style.borderLeftColor = pal ? pal.line : '#48597D';
       g.style.color = pal ? pal.text : '#0F1E3D';
       if (ghostNameRef.current) ghostNameRef.current.textContent = block.slot.isFixed ? block.slot.label : subjInfoForGhost?.name || 'วิชา';
-      if (ghostSubRef.current) ghostSubRef.current.textContent = `${cls?.name || ''}${block.len > 1 ? ` · ${block.len} คาบ` : ' · 1 คาบ'}`;
+      const ghostCls = block.mates && block.mates.length ? mergedClassLabel([block.classId, ...block.mates.map(m => m.classId)]) : cls?.name || '';
+      if (ghostSubRef.current) ghostSubRef.current.textContent = `${ghostCls}${block.len > 1 ? ` · ${block.len} คาบ` : ' · 1 คาบ'}`;
     }
     setGhostPos(gs.x, gs.y);
 
@@ -1689,10 +1806,15 @@ function TimetableApp() {
   };
   const onPointerUp = () => endDrag(true);
   const onPointerCancel = () => endDrag(false);
-  const onCardPointerDown = (e, classId, day, period) => {
+  const onCardPointerDown = (e, classId, day, period, mateClassIds) => {
     if (e.button !== undefined && e.button !== 0) return; // เฉพาะปุ่มซ้าย
     const block = getBlockAt(classId, day, period);
     if (!block) return;
+    // การ์ดสอนรวม: พาห้องเรียนอื่นที่เรียนวิชาเดียวกันและคาบตรงกันทั้งก้อนไปด้วย
+    if (mateClassIds && mateClassIds.length) {
+      const subjKey = slotSubjectKey(block.slot);
+      block.mates = mateClassIds.map(id => getBlockAt(id, day, period)).filter(b => b && slotSubjectKey(b.slot) === subjKey && b.periods.length === block.periods.length && b.periods.every((p, i) => p === block.periods[i]));
+    }
     const rect = e.currentTarget.getBoundingClientRect();
     const isTouch = e.pointerType === 'touch';
     gestureRef.current = {
@@ -2493,7 +2615,7 @@ window.addEventListener('load', function(){ setTimeout(function(){ try{ window.p
       setPdfError(code === 'NODOM' || code === 'NOPAGE' ? 'ไม่พบหน้าตารางสำหรับสร้างไฟล์ กดกลับไปแก้ตารางแล้วสั่งพิมพ์อีกครั้ง' : 'สร้างไฟล์สำหรับพิมพ์ไม่สำเร็จ ลองรีเฟรชหน้านี้แล้วทำอีกครั้ง');
     }
   };
-  const handleCellClick = (day, period) => {
+  const handleCellClick = (day, period, pickClassId) => {
     if (viewMode === 'student' && period === activeLunchPeriod) return;
     let existing = null;
     let targetClassId = '';
@@ -2506,7 +2628,16 @@ window.addEventListener('load', function(){ setTimeout(function(){ try{ window.p
       }
     } else {
       const vSlots = viewMode === 'teacher' ? getSlotsForTeacher(currentTeacherTab, day, period) : getSlotsForRoom(currentRoomTab, day, period);
-      existing = vSlots[0];
+      // ช่องนี้มีหลายห้องเรียน (สอนรวมหรือสอนซ้อน) ต้องรู้ก่อนว่าจะแก้ของห้องเรียนไหน
+      if (vSlots.length > 1 && !pickClassId) {
+        setSlotPick({
+          day,
+          period,
+          classIds: groupSlotsBySubject(vSlots).flatMap(g => g.slots.map(x => x.classId))
+        });
+        return;
+      }
+      existing = pickClassId && vSlots.find(x => x.classId === pickClassId) || vSlots[0];
       targetClassId = existing ? existing.classId : '';
     }
 
@@ -2519,7 +2650,10 @@ window.addEventListener('load', function(){ setTimeout(function(){ try{ window.p
     });
     setErrorMsg('');
     setSelectedDuration(1);
-    setAllowOverlap(false);
+    // คาบที่ตั้งใจสอนรวม/ซ้อนไว้อยู่แล้ว เปิดมาแก้ต้องไม่ถูกเตือนว่าชนซ้ำอีก — ติ๊ก "ให้สอนซ้อนเวลาได้" ไว้ให้ตามสภาพเดิม
+    const exRoom = existing ? slotRoomId(existing) : null;
+    const alreadyOverlapping = !!existing && !existing.isFixed && schedule.some(x => x.day === day && x.period === period && x.classId !== existing.classId && !x.isFixed && ((existing.isManualTeacher ? x.isManualTeacher && !!existing.teacherName && x.teacherName === existing.teacherName : !x.isManualTeacher && !!existing.teacherId && x.teacherId === existing.teacherId) || !!exRoom && slotRoomId(x) === exRoom));
+    setAllowOverlap(alreadyOverlapping);
     setModalClassId(targetClassId);
 
     // ห้องเรียนของคาบนี้เป็นกลุ่มนอกแผนกหรือไม่ (เกิดจากการเปิดคาบเดิมที่เคยตั้งไว้)
@@ -3022,7 +3156,10 @@ window.addEventListener('load', function(){ setTimeout(function(){ try{ window.p
       cls: new Set()
     });
     teachers.forEach(t => ensure(`t:${t.id}`, t.name, false, t.id));
-    schedule.forEach(sl => {
+    // สอนรวมหลายห้องเรียน (วิชาเดียวกัน คาบเดียวกัน) นับเป็นการสอน 1 คาบ
+    // เรียงตามลำดับห้องเรียนก่อน เพื่อให้คาบสอนรวมถูกนับเข้าระดับชั้นของห้องแรกเสมอ ไม่สลับไปมา
+    const countedOnce = new Set();
+    [...schedule].sort((a, b) => classOrderOf(a.classId) - classOrderOf(b.classId)).forEach(sl => {
       if (sl.isFixed) return;
       let row;
       if (sl.isManualTeacher) {
@@ -3034,13 +3171,16 @@ window.addEventListener('load', function(){ setTimeout(function(){ try{ window.p
         row = rows[`t:${sl.teacherId}`];
       }
       const c = classes.find(x => x.id === sl.classId);
+      const info = slotSubjectInfo(sl);
+      if (info) row.subj.add(`${info.code}_${info.name}`);
+      row.cls.add(sl.classId);
+      const once = `${row.key}|${sl.day}|${sl.period}|${slotSubjectKey(sl)}`;
+      if (countedOnce.has(once)) return;
+      countedOnce.add(once);
       if (!c || c.external) row.ext++;else if (c.level === 'ปวส.') row.pvs++;else row.pvc++;
       row.total++;
       const di = DAYS.indexOf(sl.day);
       if (di >= 0) row.perDay[di]++;
-      const info = slotSubjectInfo(sl);
-      if (info) row.subj.add(`${info.code}_${info.name}`);
-      row.cls.add(sl.classId);
     });
     const list = Object.values(rows).map(r => ({
       ...r,
@@ -3116,7 +3256,7 @@ window.addEventListener('load', function(){ setTimeout(function(){ try{ window.p
     <tbody>${rowsHtml}</tbody>
     <tfoot><tr><td colspan="2" class="l">รวมทั้งแผนก</td>${t.perDay.map(n => `<td>${n}</td>`).join('')}<td>${t.pvc}</td><td>${t.pvs}</td><td>${t.ext}</td><td class="b">${t.total}</td><td colspan="2">เฉลี่ย ${data.avg.toFixed(1)} คาบ/คน</td></tr></tfoot>
   </table>
-  <div class="note">นับจากคาบที่จัดลงตารางจริง 1 คาบ = 1 ชั่วโมง ไม่รวมคาบตายตัว (กิจกรรม/โฮมรูม) · ค่าเฉลี่ยคิดเฉพาะครูในทะเบียน ${data.regCount} คน</div>
+  <div class="note">นับจากคาบที่จัดลงตารางจริง 1 คาบ = 1 ชั่วโมง ไม่รวมคาบตายตัว (กิจกรรม/โฮมรูม) คาบที่สอนรวมหลายห้องเรียนนับเป็น 1 คาบ · ค่าเฉลี่ยคิดเฉพาะครูในทะเบียน ${data.regCount} คน</div>
   <div class="sign"><div>ลงชื่อ ...........................................................<br>(...........................................................)<br>หัวหน้าแผนกวิชาช่างไฟฟ้า</div></div>
 </div>
 <script>window.addEventListener('load',function(){setTimeout(function(){try{window.print();}catch(e){}},500);});<\/script>
@@ -3257,24 +3397,69 @@ window.addEventListener('load', function(){ setTimeout(function(){ try{ window.p
     }
     requestConfirm('DELETE_CLASS', id, target?.external ? 'ลบกลุ่มนอกแผนก' : 'ลบห้องเรียน', 'ตารางและรายวิชาของห้องนี้จะถูกลบไปด้วยทั้งหมด', target?.external ? 'ลบกลุ่มนอกแผนก' : 'ลบห้องเรียน');
   };
+
+  /**
+   * ห้องประจำของครู เลือกได้สองทาง: เลือกจากทะเบียนห้อง หรือพิมพ์เลขห้องเองในหน้านี้เลย
+   * ถ้าพิมพ์เลขห้องที่ยังไม่มีในทะเบียน จะเพิ่มเข้าทะเบียนให้อัตโนมัติ ถ้าตรงกับห้องที่มีอยู่แล้วก็ใช้ห้องนั้น (ไม่สร้างซ้ำ)
+   * ทะเบียนห้องยังว่างอยู่ = แสดงช่องพิมพ์ให้เลย เพราะยังไม่มีอะไรให้เลือก
+   */
+  const teacherRoomTyping = form => !!form.typing || rooms.length === 0;
+  const findRoomByName = nm => {
+    const key = String(nm || '').trim().toLowerCase();
+    return key ? rooms.find(r => String(r.name || '').trim().toLowerCase() === key) : null;
+  };
+  const resolveTeacherRoom = form => {
+    if (!teacherRoomTyping(form)) return {
+      roomId: form.roomId || null,
+      add: null
+    };
+    const nm = String(form.roomNew || '').trim();
+    if (!nm) return {
+      roomId: null,
+      add: null
+    };
+    const found = findRoomByName(nm);
+    if (found) return {
+      roomId: found.id,
+      add: null
+    };
+    const add = {
+      id: `r${Date.now()}`,
+      name: nm,
+      note: ''
+    };
+    return {
+      roomId: add.id,
+      add
+    };
+  };
   const handleAddTeacher = () => {
-    if (!newTeacherForm.name) return;
+    if (!newTeacherForm.name.trim()) return;
+    const {
+      roomId,
+      add
+    } = resolveTeacherRoom(newTeacherForm);
     saveHistory();
+    if (add) setRooms([...rooms, add]);
     setTeachers([...teachers, {
       id: `t${Date.now()}`,
-      name: newTeacherForm.name,
-      roomId: newTeacherForm.roomId || null
+      name: newTeacherForm.name.trim(),
+      roomId
     }]);
     setNewTeacherForm({
       name: '',
-      roomId: ''
+      roomId: '',
+      roomNew: '',
+      typing: false
     });
   };
   const startEditTeacher = t => {
     setEditingTeacherId(t.id);
     setEditTeacherForm({
       name: t.name,
-      roomId: t.roomId || ''
+      roomId: t.roomId || '',
+      roomNew: '',
+      typing: false
     });
   };
   const cancelEditTeacher = () => setEditingTeacherId(null);
@@ -3283,13 +3468,82 @@ window.addEventListener('load', function(){ setTimeout(function(){ try{ window.p
       customAlert('กรอกชื่อครูผู้สอนก่อนบันทึก');
       return;
     }
+    const {
+      roomId,
+      add
+    } = resolveTeacherRoom(editTeacherForm);
     saveHistory();
+    if (add) setRooms([...rooms, add]);
     setTeachers(teachers.map(t => t.id === id ? {
       ...t,
       name: editTeacherForm.name.trim(),
-      roomId: editTeacherForm.roomId || null
+      roomId
     } : t));
     setEditingTeacherId(null);
+  };
+
+  // ช่อง "ห้องประจำ" ใช้ร่วมกันทั้งฟอร์มเพิ่มครูและฟอร์มแก้ไขครู
+  const renderTeacherRoomField = (form, setForm, compact) => {
+    const sty = compact ? {
+      padding: '6px 8px',
+      fontSize: 13.5
+    } : undefined;
+    if (teacherRoomTyping(form)) {
+      const nm = String(form.roomNew || '').trim();
+      const found = findRoomByName(nm);
+      return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("input", {
+        type: "text",
+        className: "inp teacher-room-inp",
+        style: sty,
+        placeholder: "เช่น 835",
+        list: compact ? 'teacher-room-suggest-edit' : 'teacher-room-suggest-new',
+        value: form.roomNew || '',
+        onChange: e => setForm({
+          ...form,
+          roomNew: e.target.value
+        })
+      }), /*#__PURE__*/React.createElement("datalist", {
+        id: compact ? 'teacher-room-suggest-edit' : 'teacher-room-suggest-new'
+      }, rooms.map(r => /*#__PURE__*/React.createElement("option", {
+        key: r.id,
+        value: r.name
+      }))), /*#__PURE__*/React.createElement("div", {
+        className: "hint",
+        style: {
+          margin: '4px 0 0',
+          fontSize: 13.5,
+          lineHeight: 1.35
+        }
+      }, !nm ? 'เว้นว่างได้ถ้ายังไม่ระบุ' : found ? `ใช้ห้อง ${found.name} ที่มีในทะเบียน` : 'ห้องใหม่ จะเพิ่มเข้าทะเบียนห้องให้', rooms.length > 0 && /*#__PURE__*/React.createElement(React.Fragment, null, " · ", /*#__PURE__*/React.createElement("button", {
+        type: "button",
+        className: "link-btn",
+        onClick: () => setForm({
+          ...form,
+          typing: false,
+          roomNew: ''
+        })
+      }, "เลือกจากรายการ"))));
+    }
+    return /*#__PURE__*/React.createElement("select", {
+      className: "sel",
+      style: sty,
+      value: form.roomId,
+      onChange: e => e.target.value === '__type__' ? setForm({
+        ...form,
+        typing: true,
+        roomNew: ''
+      }) : setForm({
+        ...form,
+        roomId: e.target.value
+      })
+    }, /*#__PURE__*/React.createElement("option", {
+      value: ""
+    }, "ไม่ระบุ"), rooms.map(r => /*#__PURE__*/React.createElement("option", {
+      key: r.id,
+      value: r.id
+    }, r.name)), /*#__PURE__*/React.createElement("option", {
+      value: "__type__"
+    }, "+ พิมพ์เลขห้องเอง…"));
   };
   // ==========================================
   // จัดการทะเบียนห้อง
@@ -4115,7 +4369,9 @@ window.addEventListener('load', function(){ setTimeout(function(){ try{ window.p
       }
     }, day), PERIODS.map(period => {
       const slots = getSlotsForTeacher(tId, day, period.id);
-      const count = slots.length;
+      // สอนรวม (วิชาเดียวกันหลายห้องเรียน) พิมพ์เป็นช่องเดียว ชื่อวิชาไม่ซ้ำสองรอบ
+      const groups = groupSlotsBySubject(slots);
+      const count = groups.length;
       const totalStudents = slots.reduce((sum, slot) => {
         const cInfo = classes.find(c => c.id === slot.classId);
         return sum + (parseInt(cInfo?.studentCount, 10) || 0);
@@ -4134,10 +4390,13 @@ window.addEventListener('load', function(){ setTimeout(function(){ try{ window.p
           height: '100%',
           minHeight: '70px'
         }
-      }, slots.map((slotData, i) => {
+      }, groups.map((g, i) => {
+        const slotData = g.slots[0];
         const subjectInfo = slotSubjectInfo(slotData);
-        const classInfo = classes.find(c => c.id === slotData.classId);
-        const displayRoom = slotRoomText(slotData) || roomLabel(teacherObj.roomId);
+        const classInfo = {
+          name: mergedClassLabel(g.slots.map(x => x.classId))
+        };
+        const displayRoom = [...new Set(g.slots.map(x => slotRoomText(x) || roomLabel(teacherObj.roomId)).filter(Boolean))].join('/');
         let topFs = 11.5,
           midFs = 13.5,
           botFs = 11.5;
@@ -4196,7 +4455,14 @@ window.addEventListener('load', function(){ setTimeout(function(){ try{ window.p
             overflow: 'hidden'
           }
         }, subjectInfo?.name)), /*#__PURE__*/React.createElement("div", {
-          style: {
+          style: g.slots.length > 1 ? {
+            fontSize: `${botFs}px`,
+            color: '#1e3a8a',
+            fontWeight: 700,
+            textAlign: 'center',
+            lineHeight: 1.1,
+            overflowWrap: 'anywhere'
+          } : {
             fontSize: `${botFs}px`,
             color: '#1e3a8a',
             fontWeight: 700,
@@ -4361,7 +4627,9 @@ window.addEventListener('load', function(){ setTimeout(function(){ try{ window.p
       }
     }, day), PERIODS.map(period => {
       const slots = getSlotsForRoom(rid, day, period.id);
-      const count = slots.length;
+      // เรียนรวมกันในห้องเดียว (วิชาเดียวกัน) พิมพ์เป็นช่องเดียว
+      const groups = groupSlotsBySubject(slots);
+      const count = groups.length;
       return /*#__PURE__*/React.createElement("td", {
         key: period.id,
         style: {
@@ -4376,11 +4644,13 @@ window.addEventListener('load', function(){ setTimeout(function(){ try{ window.p
           height: '100%',
           minHeight: '70px'
         }
-      }, slots.map((slotData, i) => {
+      }, groups.map((g, i) => {
+        const slotData = g.slots[0];
         const subjectInfo = slotSubjectInfo(slotData);
-        const classInfo = classes.find(c => c.id === slotData.classId);
-        const tInfo = !slotData.isManualTeacher ? teachers.find(t => t.id === slotData.teacherId) : null;
-        const tName = slotData.isManualTeacher ? slotData.teacherName : tInfo?.name;
+        const classInfo = {
+          name: mergedClassLabel(g.slots.map(x => x.classId))
+        };
+        const tNames = [...new Set(g.slots.map(x => x.isManualTeacher ? x.teacherName : teachers.find(t => t.id === x.teacherId)?.name).filter(Boolean))];
         let topFs = 11.5,
           midFs = 13.5,
           botFs = 11.5;
@@ -4406,7 +4676,14 @@ window.addEventListener('load', function(){ setTimeout(function(){ try{ window.p
             backgroundColor: pal ? pal.bg : '#fff'
           }
         }, /*#__PURE__*/React.createElement("div", {
-          style: {
+          style: g.slots.length > 1 ? {
+            fontSize: `${topFs}px`,
+            fontWeight: 700,
+            color: '#1e3a8a',
+            textAlign: 'center',
+            lineHeight: 1.1,
+            overflowWrap: 'anywhere'
+          } : {
             fontSize: `${topFs}px`,
             fontWeight: 700,
             color: '#1e3a8a',
@@ -4441,7 +4718,7 @@ window.addEventListener('load', function(){ setTimeout(function(){ try{ window.p
             overflow: 'hidden',
             textOverflow: 'ellipsis'
           }
-        }, getFirstName(tName)));
+        }, tNames.map(getFirstName).join(', ')));
       })));
     })))))), /*#__PURE__*/React.createElement("div", {
       style: {
@@ -4620,6 +4897,19 @@ ${PRINT_PAGE_CSS}
     }
     .card:hover{ box-shadow:0 3px 8px rgba(15,30,61,.14); transform:translateY(-1px); }
     .card + .card{ margin-top:3px; }
+    /* ช่องที่มีหลายวิชาซ้อนกัน (คนละวิชา): แบ่งความสูงของช่องเท่าๆ กัน ไม่ให้ล้นไปแถววันถัดไป */
+    .cell-stack{ display:flex; flex-direction:column; gap:3px; height:100%; min-height:86px; }
+    .cell-stack .card{ height:auto; min-height:0 !important; flex:1 1 0; padding-top:3px; padding-bottom:2px; }
+    .cell-stack .card + .card{ margin-top:0; }
+    .cell-stack .card-top{ font-size:11px; }
+    .cell-stack .card-foot{ font-size:11px; }
+    /* การ์ดสอนรวม: แถบซ้ายสองชั้น บอกว่ามีมากกว่าหนึ่งห้องเรียน */
+    .link-btn{ color:var(--accent); font-weight:700; text-decoration:underline; text-underline-offset:2px; font-size:inherit; }
+    .card-merged{ border-left-style:double; border-left-width:6px; }
+    /* ป้ายห้องเรียนของการ์ดสอนรวมยาวกว่าปกติ ให้ขึ้นบรรทัดใหม่ได้ ไม่ตัดเลขห้องท้ายป้ายทิ้ง */
+    .card-merged .card-foot{ white-space:normal; overflow:visible; text-overflow:clip; line-height:1.15; overflow-wrap:anywhere; }
+    .slot-pick-row{ display:flex; align-items:center; gap:12px; width:100%; text-align:left; padding:11px 13px; border:1px solid var(--rule); border-radius:8px; background:var(--surface); transition:background .1s, border-color .1s; }
+    .slot-pick-row:hover{ background:var(--surface-2); border-color:var(--accent-line); }
     .card-top{ display:flex; justify-content:space-between; align-items:center; gap:4px; font-size:13px; font-weight:600; line-height:1; opacity:.75; }
     .card-name{
       flex:1; display:flex; align-items:center; font-size:16px; font-weight:700; line-height:1.25;
@@ -6354,42 +6644,69 @@ ${PRINT_PAGE_CSS}
         if (suppressClickRef.current) return;
         handleCellClick(day, period.id);
       }
-    }, slots.length > 0 ? slots.map((slotData, idx) => {
-      const subjectInfo = slotSubjectInfo(slotData);
-      const teacherInfo = !slotData.isManualTeacher ? teachers.find(t => t.id === slotData.teacherId) : null;
-      const classInfo = classes.find(c => c.id === slotData.classId);
-      const displayRoom = slotRoomText(slotData) || (viewMode === 'teacher' ? roomLabel(activeTeacherObj?.roomId) : '');
-      const displayTeacherName = slotData.isManualTeacher ? slotData.teacherName : teacherInfo?.name;
-      const pal = subjectInfo ? subjectInfo.pal : SUBJECT_COLORS[0];
-      const many = slots.length > 1;
-      return /*#__PURE__*/React.createElement("div", {
-        key: idx,
-        className: `card card-drag${flashSubject && flashSubject.classId === slotData.classId && flashSubject.subjectId === slotData.subjectId ? ' card-flash' : ''}`,
-        "data-cardkey": `${slotData.classId}|${day}|${period.id}`,
-        onPointerDown: e => onCardPointerDown(e, slotData.classId, day, period.id),
-        title: subjectInfo?.external ? 'วิชานอกแผนก · ลากเพื่อย้ายคาบ · คลิกเพื่อแก้ไข' : 'ลากเพื่อย้ายคาบ · คลิกเพื่อแก้ไข',
-        style: {
-          background: pal.bg,
-          borderLeftColor: pal.line,
-          color: pal.text,
-          minHeight: many ? 34 : 70
-        }
-      }, /*#__PURE__*/React.createElement("div", {
-        className: "card-top mono"
-      }, /*#__PURE__*/React.createElement("span", null, viewMode === 'teacher' && totalStudents > 0 ? `นร.${totalStudents}` : subjectInfo?.code || ''), /*#__PURE__*/React.createElement("span", null, displayRoom || '')), /*#__PURE__*/React.createElement("div", {
-        className: "card-name",
-        style: {
-          fontSize: many ? 10.5 : 11.5,
-          margin: many ? '1px 0' : '3px 0'
-        }
-      }, /*#__PURE__*/React.createElement("span", {
-        style: {
-          WebkitLineClamp: many ? 1 : 3
-        }
-      }, subjectInfo?.name || '—')), /*#__PURE__*/React.createElement("div", {
-        className: "card-foot"
-      }, viewMode === 'student' ? getFirstName(displayTeacherName) : viewMode === 'teacher' ? classInfo?.name : `${classInfo?.name || ''}${displayTeacherName ? ` · ${getFirstName(displayTeacherName)}` : ''}`));
-    }) : /*#__PURE__*/React.createElement("div", {
+    }, slots.length > 0 ? (() => {
+      // ตารางครู/ตารางห้อง: ห้องเรียนที่เรียนวิชาเดียวกันในคาบเดียวกัน รวมเป็นการ์ดเดียว ("สอนรวม")
+      // ถ้าเป็นคนละวิชาจริงๆ จึงแบ่งช่องเป็นแถบย่อย ให้เห็นว่าซ้อนกัน
+      const groups = viewMode === 'student' ? slots.map(x => ({
+        key: 'one',
+        slots: [x]
+      })) : groupSlotsBySubject(slots);
+      const many = groups.length > 1;
+      const cards = groups.map((g, idx) => {
+        const slotData = g.slots[0];
+        const merged = g.slots.length > 1;
+        const classIds = g.slots.map(x => x.classId);
+        const subjectInfo = slotSubjectInfo(slotData);
+        const classLabel = mergedClassLabel(classIds);
+        const roomTexts = [...new Set(g.slots.map(x => slotRoomText(x) || (viewMode === 'teacher' ? roomLabel(activeTeacherObj?.roomId) : '')).filter(Boolean))];
+        const displayRoom = roomTexts.join('/');
+        const teacherNames = [...new Set(g.slots.map(x => x.isManualTeacher ? x.teacherName : teachers.find(t => t.id === x.teacherId)?.name).filter(Boolean))];
+        const displayTeacherName = teacherNames[0];
+        const groupStudents = g.slots.reduce((sum, x) => sum + (parseInt(classes.find(c => c.id === x.classId)?.studentCount, 10) || 0), 0);
+        const pal = subjectInfo ? subjectInfo.pal : SUBJECT_COLORS[0];
+        const baseTitle = subjectInfo?.external ? 'วิชานอกแผนก · ลากเพื่อย้ายคาบ · คลิกเพื่อแก้ไข' : 'ลากเพื่อย้ายคาบ · คลิกเพื่อแก้ไข';
+        return /*#__PURE__*/React.createElement("div", {
+          key: idx,
+          className: `card card-drag${merged ? ' card-merged' : ''}${flashSubject && flashSubject.classId === slotData.classId && flashSubject.subjectId === slotData.subjectId ? ' card-flash' : ''}`,
+          "data-cardkey": `${slotData.classId}|${day}|${period.id}`,
+          "data-merged": merged ? classIds.length : undefined,
+          onPointerDown: e => onCardPointerDown(e, slotData.classId, day, period.id, merged ? classIds.slice(1) : undefined),
+          onClick: viewMode === 'student' ? undefined : e => {
+            e.stopPropagation();
+            if (suppressClickRef.current) return;
+            if (merged) setSlotPick({
+              day,
+              period: period.id,
+              classIds
+            });else handleCellClick(day, period.id, slotData.classId);
+          },
+          title: merged ? `สอนรวม ${classIds.length} ห้องเรียน: ${classIds.map(id => classes.find(c => c.id === id)?.name || '').join(', ')} · ลากเพื่อย้ายทุกห้องพร้อมกัน · คลิกเพื่อเลือกห้องที่จะแก้ไข` : baseTitle,
+          style: {
+            background: pal.bg,
+            borderLeftColor: pal.line,
+            color: pal.text,
+            minHeight: many ? 0 : 70
+          }
+        }, /*#__PURE__*/React.createElement("div", {
+          className: "card-top mono"
+        }, /*#__PURE__*/React.createElement("span", null, viewMode === 'teacher' && groupStudents > 0 ? `นร.${groupStudents}` : subjectInfo?.code || ''), /*#__PURE__*/React.createElement("span", null, displayRoom || '')), /*#__PURE__*/React.createElement("div", {
+          className: "card-name",
+          style: {
+            fontSize: many ? 10.5 : 11.5,
+            margin: many ? '1px 0' : '3px 0'
+          }
+        }, /*#__PURE__*/React.createElement("span", {
+          style: {
+            WebkitLineClamp: many ? 1 : merged ? 2 : 3
+          }
+        }, subjectInfo?.name || '—')), /*#__PURE__*/React.createElement("div", {
+          className: "card-foot"
+        }, viewMode === 'student' ? getFirstName(displayTeacherName) : viewMode === 'teacher' ? classLabel : `${classLabel}${teacherNames.length ? ` · ${teacherNames.map(getFirstName).join(', ')}` : ''}`));
+      });
+      return many ? /*#__PURE__*/React.createElement("div", {
+        className: "cell-stack"
+      }, cards) : cards;
+    })() : /*#__PURE__*/React.createElement("div", {
       className: "slot-empty"
     }, /*#__PURE__*/React.createElement(Plus, {
       className: "w-3 h-3"
@@ -8128,9 +8445,10 @@ ${PRINT_PAGE_CSS}
   }), " เพิ่มครูผู้สอน"), /*#__PURE__*/React.createElement("div", {
     style: {
       display: 'grid',
-      gridTemplateColumns: '1fr 130px',
+      gridTemplateColumns: 'minmax(0,1fr) 172px',
       gap: 10,
-      marginBottom: 12
+      marginBottom: 12,
+      alignItems: 'start'
     }
   }, /*#__PURE__*/React.createElement("div", {
     className: "field"
@@ -8149,19 +8467,7 @@ ${PRINT_PAGE_CSS}
     className: "field"
   }, /*#__PURE__*/React.createElement("label", {
     className: "lbl"
-  }, "ห้องประจำ"), /*#__PURE__*/React.createElement("select", {
-    className: "sel",
-    value: newTeacherForm.roomId,
-    onChange: e => setNewTeacherForm({
-      ...newTeacherForm,
-      roomId: e.target.value
-    })
-  }, /*#__PURE__*/React.createElement("option", {
-    value: ""
-  }, "ไม่ระบุ"), rooms.map(r => /*#__PURE__*/React.createElement("option", {
-    key: r.id,
-    value: r.id
-  }, r.name))))), /*#__PURE__*/React.createElement("button", {
+  }, "ห้องประจำ"), renderTeacherRoomField(newTeacherForm, setNewTeacherForm, false))), /*#__PURE__*/React.createElement("button", {
     onClick: handleAddTeacher,
     className: "btn btn-primary",
     style: {
@@ -8220,8 +8526,9 @@ ${PRINT_PAGE_CSS}
     }, /*#__PURE__*/React.createElement("div", {
       style: {
         display: 'grid',
-        gridTemplateColumns: '1fr 110px',
-        gap: 8
+        gridTemplateColumns: 'minmax(0,1fr) 160px',
+        gap: 8,
+        alignItems: 'start'
       }
     }, /*#__PURE__*/React.createElement("div", {
       className: "field"
@@ -8243,23 +8550,7 @@ ${PRINT_PAGE_CSS}
       className: "field"
     }, /*#__PURE__*/React.createElement("label", {
       className: "lbl"
-    }, "ห้องประจำ"), /*#__PURE__*/React.createElement("select", {
-      className: "sel",
-      style: {
-        padding: '6px 8px',
-        fontSize: 13.5
-      },
-      value: editTeacherForm.roomId,
-      onChange: e => setEditTeacherForm({
-        ...editTeacherForm,
-        roomId: e.target.value
-      })
-    }, /*#__PURE__*/React.createElement("option", {
-      value: ""
-    }, "ไม่ระบุ"), rooms.map(r => /*#__PURE__*/React.createElement("option", {
-      key: r.id,
-      value: r.id
-    }, r.name))))), /*#__PURE__*/React.createElement("div", {
+    }, "ห้องประจำ"), renderTeacherRoomField(editTeacherForm, setEditTeacherForm, true))), /*#__PURE__*/React.createElement("div", {
       style: {
         display: 'flex',
         gap: 7,
@@ -8458,7 +8749,99 @@ ${PRINT_PAGE_CSS}
     className: "search-label"
   }, r.label), /*#__PURE__*/React.createElement("span", {
     className: "search-sub"
-  }, r.sub))))), isLoadModalOpen && teacherLoads && /*#__PURE__*/React.createElement("div", {
+  }, r.sub))))), slotPick && (() => {
+    const rows = slotPick.classIds.map(cid => ({
+      cid,
+      slot: getSlotData(cid, slotPick.day, slotPick.period),
+      cls: classes.find(c => c.id === cid)
+    })).filter(r => r.slot);
+    const combined = new Set(rows.map(r => slotSubjectKey(r.slot))).size === 1 && rows.length > 1;
+    return /*#__PURE__*/React.createElement("div", {
+      className: "ov",
+      onClick: () => setSlotPick(null)
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "modal",
+      style: {
+        maxWidth: 440
+      },
+      onClick: e => e.stopPropagation()
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "modal-head"
+    }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+      className: "modal-title"
+    }, combined ? 'คาบสอนรวม' : 'คาบนี้มีหลายห้องเรียน'), /*#__PURE__*/React.createElement("div", {
+      className: "modal-sub"
+    }, slotPick.day, " · คาบ ", slotPick.period, " · เลือกห้องเรียนที่จะแก้ไข")), /*#__PURE__*/React.createElement("button", {
+      onClick: () => setSlotPick(null),
+      className: "x-btn"
+    }, /*#__PURE__*/React.createElement(X, {
+      className: "w-4 h-4"
+    }))), /*#__PURE__*/React.createElement("div", {
+      className: "modal-body",
+      style: {
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 8
+      }
+    }, rows.map(r => {
+      const info = slotSubjectInfo(r.slot);
+      const tName = r.slot.isManualTeacher ? r.slot.teacherName : teachers.find(t => t.id === r.slot.teacherId)?.name;
+      const pal = info ? info.pal : SUBJECT_COLORS[0];
+      return /*#__PURE__*/React.createElement("button", {
+        key: r.cid,
+        className: "slot-pick-row",
+        "data-pick-class": r.cid,
+        onClick: () => {
+          const {
+            day,
+            period
+          } = slotPick;
+          setSlotPick(null);
+          handleCellClick(day, period, r.cid);
+        }
+      }, /*#__PURE__*/React.createElement("span", {
+        style: {
+          width: 6,
+          alignSelf: 'stretch',
+          borderRadius: 3,
+          background: pal.line,
+          flexShrink: 0
+        }
+      }), /*#__PURE__*/React.createElement("span", {
+        style: {
+          minWidth: 0,
+          flex: 1
+        }
+      }, /*#__PURE__*/React.createElement("span", {
+        style: {
+          display: 'block',
+          fontSize: 17,
+          fontWeight: 700,
+          color: 'var(--ink)'
+        }
+      }, r.cls?.name || 'ไม่ทราบห้องเรียน'), /*#__PURE__*/React.createElement("span", {
+        style: {
+          display: 'block',
+          fontSize: 14.5,
+          color: 'var(--ink-3)',
+          overflow: 'hidden',
+          textOverflow: 'ellipsis',
+          whiteSpace: 'nowrap'
+        }
+      }, info?.name || '—', slotRoomText(r.slot) ? ` · ห้อง ${slotRoomText(r.slot)}` : '', tName ? ` · ${getFirstName(tName)}` : '')), /*#__PURE__*/React.createElement(ArrowRight, {
+        className: "w-4 h-4",
+        style: {
+          color: 'var(--ink-3)',
+          flexShrink: 0
+        }
+      }));
+    }), /*#__PURE__*/React.createElement("div", {
+      className: "hint",
+      style: {
+        margin: '4px 0 0'
+      }
+    }, combined ? 'การแก้ไขหรือลบมีผลกับห้องเรียนที่เลือกเท่านั้น ถ้าจะย้ายคาบทุกห้องพร้อมกัน ให้ลากการ์ดบนตาราง' : 'ห้องเรียนเหล่านี้ถูกจัดไว้ในคาบเดียวกันแต่เป็นคนละวิชา'))));
+  })(), isLoadModalOpen && teacherLoads && /*#__PURE__*/React.createElement("div", {
     className: "ov",
     onClick: () => setIsLoadModalOpen(false)
   }, /*#__PURE__*/React.createElement("div", {
@@ -8473,7 +8856,7 @@ ${PRINT_PAGE_CSS}
     className: "modal-title"
   }, "สรุปภาระงานสอน"), /*#__PURE__*/React.createElement("div", {
     className: "modal-sub"
-  }, "ภาคเรียนที่ ", config.term, " ปีการศึกษา ", config.year, " · นับจากคาบที่จัดลงตารางจริง ไม่รวมคาบตายตัว")), /*#__PURE__*/React.createElement("button", {
+  }, "ภาคเรียนที่ ", config.term, " ปีการศึกษา ", config.year, " · นับจากคาบที่จัดลงตารางจริง ไม่รวมคาบตายตัว · สอนรวมหลายห้องนับ 1 คาบ")), /*#__PURE__*/React.createElement("button", {
     onClick: () => setIsLoadModalOpen(false),
     className: "x-btn"
   }, /*#__PURE__*/React.createElement(X, {
@@ -8644,7 +9027,8 @@ ${PRINT_PAGE_CSS}
   }), " พิมพ์ / บันทึก PDF")))), auditResult && (() => {
     const {
       conflicts,
-      shortages
+      shortages,
+      combined = 0
     } = auditResult;
     const clean = conflicts.length === 0 && shortages.length === 0;
     const byType = {
@@ -8685,7 +9069,13 @@ ${PRINT_PAGE_CSS}
         flexDirection: 'column',
         gap: 16
       }
-    }, clean ? /*#__PURE__*/React.createElement("div", {
+    }, combined > 0 && /*#__PURE__*/React.createElement("div", {
+      className: "hint",
+      style: {
+        margin: 0
+      },
+      "data-audit-combined": combined
+    }, "มีคาบสอนรวมหลายห้องเรียน ", combined, " คาบ (ครูและวิชาเดียวกัน) ไม่นับเป็นคาบชน"), clean ? /*#__PURE__*/React.createElement("div", {
       className: "note",
       style: {
         background: 'var(--ok-soft)',
